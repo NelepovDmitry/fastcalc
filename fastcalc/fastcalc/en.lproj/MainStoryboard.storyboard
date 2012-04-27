@@ -16,7 +16,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yvC-Kb-kXr">
+<<<<<<< HEAD
                                 <rect key="frame" x="124" y="212" width="72" height="37"/>
+=======
+                                <rect key="frame" x="124" y="177" width="72" height="37"/>
+>>>>>>> c67603039c1d79b74d0da775e528a32fb12f896a
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal">
@@ -47,7 +51,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Вася Пупкин" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FZw-BS-oG3">
+<<<<<<< HEAD
                                 <rect key="frame" x="67" y="220" width="186" height="21"/>
+=======
+                                <rect key="frame" x="67" y="175" width="186" height="21"/>
+>>>>>>> c67603039c1d79b74d0da775e528a32fb12f896a
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
