@@ -1,0 +1,4 @@
+fastcalc
+========
+
+Fast food calculator
