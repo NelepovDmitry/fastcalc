@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8478E348157362C300EE43B3 /* ExampleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478E347157362C300EE43B3 /* ExampleController.m */; };
 		847A13A3154A74EB00F67CF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847A13A2154A74EB00F67CF1 /* UIKit.framework */; };
 		847A13A5154A74EB00F67CF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847A13A4154A74EB00F67CF1 /* Foundation.framework */; };
 		847A13A7154A74EB00F67CF1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847A13A6154A74EB00F67CF1 /* CoreGraphics.framework */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8478E346157362C300EE43B3 /* ExampleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleController.h; sourceTree = "<group>"; };
+		8478E347157362C300EE43B3 /* ExampleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleController.m; sourceTree = "<group>"; };
 		847A139E154A74EB00F67CF1 /* fastcalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fastcalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847A13A2154A74EB00F67CF1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		847A13A4154A74EB00F67CF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -82,6 +85,8 @@
 				847A13B4154A74EB00F67CF1 /* MainStoryboard.storyboard */,
 				847A13B7154A74EB00F67CF1 /* ViewController.h */,
 				847A13B8154A74EB00F67CF1 /* ViewController.m */,
+				8478E346157362C300EE43B3 /* ExampleController.h */,
+				8478E347157362C300EE43B3 /* ExampleController.m */,
 				847A13A9154A74EB00F67CF1 /* Supporting Files */,
 			);
 			path = fastcalc;
@@ -163,6 +168,7 @@
 				847A13AF154A74EB00F67CF1 /* main.m in Sources */,
 				847A13B3154A74EB00F67CF1 /* AppDelegate.m in Sources */,
 				847A13B9154A74EB00F67CF1 /* ViewController.m in Sources */,
+				8478E348157362C300EE43B3 /* ExampleController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +278,7 @@
 				847A13BE154A74EB00F67CF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
