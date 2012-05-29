@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		847760EA1574AE7900E146DC /* MLocationGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 847760E91574AE7900E146DC /* MLocationGetter.m */; };
+		847760ED1574AECE00E146DC /* OSInternetUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 847760EC1574AECE00E146DC /* OSInternetUtils.m */; };
+		847760EF1574AEE700E146DC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847760EE1574AEE700E146DC /* SystemConfiguration.framework */; };
+		847760F21574AF1D00E146DC /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 847760F11574AF1D00E146DC /* Reachability.m */; };
+		847760F51574AF4900E146DC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847760F31574AF4900E146DC /* CoreLocation.framework */; };
+		847760F61574AF4900E146DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847760F41574AF4900E146DC /* QuartzCore.framework */; };
 		8478E348157362C300EE43B3 /* ExampleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478E347157362C300EE43B3 /* ExampleController.m */; };
 		847A13A3154A74EB00F67CF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847A13A2154A74EB00F67CF1 /* UIKit.framework */; };
 		847A13A5154A74EB00F67CF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847A13A4154A74EB00F67CF1 /* Foundation.framework */; };
@@ -19,6 +25,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		847760E81574AE7900E146DC /* MLocationGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLocationGetter.h; sourceTree = "<group>"; };
+		847760E91574AE7900E146DC /* MLocationGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLocationGetter.m; sourceTree = "<group>"; };
+		847760EB1574AECE00E146DC /* OSInternetUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSInternetUtils.h; sourceTree = "<group>"; };
+		847760EC1574AECE00E146DC /* OSInternetUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSInternetUtils.m; sourceTree = "<group>"; };
+		847760EE1574AEE700E146DC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		847760F01574AF1D00E146DC /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		847760F11574AF1D00E146DC /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		847760F31574AF4900E146DC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		847760F41574AF4900E146DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8478E346157362C300EE43B3 /* ExampleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleController.h; sourceTree = "<group>"; };
 		8478E347157362C300EE43B3 /* ExampleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleController.m; sourceTree = "<group>"; };
 		847A139E154A74EB00F67CF1 /* fastcalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fastcalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +56,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847760F51574AF4900E146DC /* CoreLocation.framework in Frameworks */,
+				847760F61574AF4900E146DC /* QuartzCore.framework in Frameworks */,
+				847760EF1574AEE700E146DC /* SystemConfiguration.framework in Frameworks */,
 				847A13A3154A74EB00F67CF1 /* UIKit.framework in Frameworks */,
 				847A13A5154A74EB00F67CF1 /* Foundation.framework in Frameworks */,
 				847A13A7154A74EB00F67CF1 /* CoreGraphics.framework in Frameworks */,
@@ -50,6 +68,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		847760E61574AE6A00E146DC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				847760F01574AF1D00E146DC /* Reachability.h */,
+				847760F11574AF1D00E146DC /* Reachability.m */,
+				847760EB1574AECE00E146DC /* OSInternetUtils.h */,
+				847760EC1574AECE00E146DC /* OSInternetUtils.m */,
+				847760E81574AE7900E146DC /* MLocationGetter.h */,
+				847760E91574AE7900E146DC /* MLocationGetter.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		847A1393154A74EB00F67CF1 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +101,9 @@
 		847A13A1154A74EB00F67CF1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				847760F31574AF4900E146DC /* CoreLocation.framework */,
+				847760F41574AF4900E146DC /* QuartzCore.framework */,
+				847760EE1574AEE700E146DC /* SystemConfiguration.framework */,
 				847A13A2154A74EB00F67CF1 /* UIKit.framework */,
 				847A13A4154A74EB00F67CF1 /* Foundation.framework */,
 				847A13A6154A74EB00F67CF1 /* CoreGraphics.framework */,
@@ -80,6 +114,7 @@
 		847A13A8154A74EB00F67CF1 /* fastcalc */ = {
 			isa = PBXGroup;
 			children = (
+				847760E61574AE6A00E146DC /* Helpers */,
 				847A13B1154A74EB00F67CF1 /* AppDelegate.h */,
 				847A13B2154A74EB00F67CF1 /* AppDelegate.m */,
 				847A13B4154A74EB00F67CF1 /* MainStoryboard.storyboard */,
@@ -169,6 +204,9 @@
 				847A13B3154A74EB00F67CF1 /* AppDelegate.m in Sources */,
 				847A13B9154A74EB00F67CF1 /* ViewController.m in Sources */,
 				8478E348157362C300EE43B3 /* ExampleController.m in Sources */,
+				847760EA1574AE7900E146DC /* MLocationGetter.m in Sources */,
+				847760ED1574AECE00E146DC /* OSInternetUtils.m in Sources */,
+				847760F21574AF1D00E146DC /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
