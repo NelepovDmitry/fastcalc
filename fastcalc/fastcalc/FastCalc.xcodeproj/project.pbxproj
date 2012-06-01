@@ -17,6 +17,9 @@
 		84794E0B1578A143004010F7 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84794E091578A143004010F7 /* ViewController.xib */; };
 		84794E171578A31B004010F7 /* ChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E151578A31B004010F7 /* ChooseViewController.m */; };
 		84794E181578A31B004010F7 /* ChooseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84794E161578A31B004010F7 /* ChooseViewController.xib */; };
+		84794E231578A569004010F7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E221578A569004010F7 /* Reachability.m */; };
+		84794E261578A582004010F7 /* InternetUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E251578A582004010F7 /* InternetUtils.m */; };
+		84794E281578A740004010F7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84794E271578A740004010F7 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,11 @@
 		84794E141578A31B004010F7 /* ChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseViewController.h; sourceTree = "<group>"; };
 		84794E151578A31B004010F7 /* ChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseViewController.m; sourceTree = "<group>"; };
 		84794E161578A31B004010F7 /* ChooseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseViewController.xib; sourceTree = "<group>"; };
+		84794E211578A569004010F7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		84794E221578A569004010F7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		84794E241578A582004010F7 /* InternetUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetUtils.h; sourceTree = "<group>"; };
+		84794E251578A582004010F7 /* InternetUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetUtils.m; sourceTree = "<group>"; };
+		84794E271578A740004010F7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84794E281578A740004010F7 /* SystemConfiguration.framework in Frameworks */,
 				84794DF51578A143004010F7 /* UIKit.framework in Frameworks */,
 				84794DF71578A143004010F7 /* Foundation.framework in Frameworks */,
 				84794DF91578A143004010F7 /* CoreGraphics.framework in Frameworks */,
@@ -72,6 +81,7 @@
 		84794DF31578A143004010F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84794E271578A740004010F7 /* SystemConfiguration.framework */,
 				84794DF41578A143004010F7 /* UIKit.framework */,
 				84794DF61578A143004010F7 /* Foundation.framework */,
 				84794DF81578A143004010F7 /* CoreGraphics.framework */,
@@ -83,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				84794E111578A1C2004010F7 /* Helpers */,
+				84794E131578A26C004010F7 /* Main Controllers */,
 				84794E031578A143004010F7 /* AppDelegate.h */,
 				84794E041578A143004010F7 /* AppDelegate.m */,
 				84794E061578A143004010F7 /* ViewController.h */,
@@ -107,7 +118,6 @@
 		84794E111578A1C2004010F7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				84794E131578A26C004010F7 /* Main Controllers */,
 				84794E121578A1CC004010F7 /* Internet classes */,
 			);
 			name = Helpers;
@@ -116,6 +126,10 @@
 		84794E121578A1CC004010F7 /* Internet classes */ = {
 			isa = PBXGroup;
 			children = (
+				84794E241578A582004010F7 /* InternetUtils.h */,
+				84794E251578A582004010F7 /* InternetUtils.m */,
+				84794E211578A569004010F7 /* Reachability.h */,
+				84794E221578A569004010F7 /* Reachability.m */,
 			);
 			name = "Internet classes";
 			sourceTree = "<group>";
@@ -197,6 +211,8 @@
 				84794E051578A143004010F7 /* AppDelegate.m in Sources */,
 				84794E081578A143004010F7 /* ViewController.m in Sources */,
 				84794E171578A31B004010F7 /* ChooseViewController.m in Sources */,
+				84794E231578A569004010F7 /* Reachability.m in Sources */,
+				84794E261578A582004010F7 /* InternetUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

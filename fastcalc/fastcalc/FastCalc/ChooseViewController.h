@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChooseViewController : UIViewController{
+@class InternetUtils;
+
+@interface ChooseViewController : UIViewController {
     NSMutableArray *mArrayOfCities;
     NSMutableArray *mArrayOfBrands;
+    
+    InternetUtils *mInternetUtils;
 }
 
 @end

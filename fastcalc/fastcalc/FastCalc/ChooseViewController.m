@@ -7,8 +7,12 @@
 //
 
 #import "ChooseViewController.h"
+#import "InternetUtils.h"
 
 @interface ChooseViewController ()
+
+- (void)getCities;
+- (void)getBrands;
 
 @end
 
@@ -26,6 +30,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //mInternetUtils = [[InternetUtils alloc] init];
+    //NSDate *date = [NSDate date];
+    //UIImage *image = [UIImage imageNamed:@"IMG_0255.JPG"];
+    //NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+    //NSDate *date1 = [NSDate date];
+    //NSLog(@"timing %f", [date1 timeIntervalSinceDate:date]);
+    //[mInternetUtils makeURLDataRequestByNameResponser:@"sendData:" urlCall:[NSURL URLWithString:@"http://rent.orionsource.ru/api/test.php"] responder:self data:imageData];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -39,6 +50,16 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Custom functions
+
+- (void)getCities {
+    
+}
+
+- (void)getBrands {
+
 }
 
 @end
