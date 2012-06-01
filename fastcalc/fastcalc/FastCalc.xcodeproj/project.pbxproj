@@ -1,0 +1,313 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84794DF51578A143004010F7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84794DF41578A143004010F7 /* UIKit.framework */; };
+		84794DF71578A143004010F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84794DF61578A143004010F7 /* Foundation.framework */; };
+		84794DF91578A143004010F7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84794DF81578A143004010F7 /* CoreGraphics.framework */; };
+		84794DFF1578A143004010F7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84794DFD1578A143004010F7 /* InfoPlist.strings */; };
+		84794E011578A143004010F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E001578A143004010F7 /* main.m */; };
+		84794E051578A143004010F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E041578A143004010F7 /* AppDelegate.m */; };
+		84794E081578A143004010F7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E071578A143004010F7 /* ViewController.m */; };
+		84794E0B1578A143004010F7 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84794E091578A143004010F7 /* ViewController.xib */; };
+		84794E171578A31B004010F7 /* ChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E151578A31B004010F7 /* ChooseViewController.m */; };
+		84794E181578A31B004010F7 /* ChooseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84794E161578A31B004010F7 /* ChooseViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		84794DF01578A143004010F7 /* FastCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84794DF41578A143004010F7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		84794DF61578A143004010F7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		84794DF81578A143004010F7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		84794DFC1578A143004010F7 /* FastCalc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FastCalc-Info.plist"; sourceTree = "<group>"; };
+		84794DFE1578A143004010F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84794E001578A143004010F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		84794E021578A143004010F7 /* FastCalc-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FastCalc-Prefix.pch"; sourceTree = "<group>"; };
+		84794E031578A143004010F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		84794E041578A143004010F7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		84794E061578A143004010F7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		84794E071578A143004010F7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		84794E0A1578A143004010F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		84794E141578A31B004010F7 /* ChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseViewController.h; sourceTree = "<group>"; };
+		84794E151578A31B004010F7 /* ChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseViewController.m; sourceTree = "<group>"; };
+		84794E161578A31B004010F7 /* ChooseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84794DED1578A143004010F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84794DF51578A143004010F7 /* UIKit.framework in Frameworks */,
+				84794DF71578A143004010F7 /* Foundation.framework in Frameworks */,
+				84794DF91578A143004010F7 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		84794DE51578A142004010F7 = {
+			isa = PBXGroup;
+			children = (
+				84794DFA1578A143004010F7 /* FastCalc */,
+				84794DF31578A143004010F7 /* Frameworks */,
+				84794DF11578A143004010F7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		84794DF11578A143004010F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84794DF01578A143004010F7 /* FastCalc.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84794DF31578A143004010F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84794DF41578A143004010F7 /* UIKit.framework */,
+				84794DF61578A143004010F7 /* Foundation.framework */,
+				84794DF81578A143004010F7 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84794DFA1578A143004010F7 /* FastCalc */ = {
+			isa = PBXGroup;
+			children = (
+				84794E111578A1C2004010F7 /* Helpers */,
+				84794E031578A143004010F7 /* AppDelegate.h */,
+				84794E041578A143004010F7 /* AppDelegate.m */,
+				84794E061578A143004010F7 /* ViewController.h */,
+				84794E071578A143004010F7 /* ViewController.m */,
+				84794E091578A143004010F7 /* ViewController.xib */,
+				84794DFB1578A143004010F7 /* Supporting Files */,
+			);
+			path = FastCalc;
+			sourceTree = "<group>";
+		};
+		84794DFB1578A143004010F7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84794DFC1578A143004010F7 /* FastCalc-Info.plist */,
+				84794DFD1578A143004010F7 /* InfoPlist.strings */,
+				84794E001578A143004010F7 /* main.m */,
+				84794E021578A143004010F7 /* FastCalc-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84794E111578A1C2004010F7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				84794E131578A26C004010F7 /* Main Controllers */,
+				84794E121578A1CC004010F7 /* Internet classes */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		84794E121578A1CC004010F7 /* Internet classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Internet classes";
+			sourceTree = "<group>";
+		};
+		84794E131578A26C004010F7 /* Main Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84794E141578A31B004010F7 /* ChooseViewController.h */,
+				84794E151578A31B004010F7 /* ChooseViewController.m */,
+				84794E161578A31B004010F7 /* ChooseViewController.xib */,
+			);
+			name = "Main Controllers";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84794DEF1578A143004010F7 /* FastCalc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84794E0E1578A143004010F7 /* Build configuration list for PBXNativeTarget "FastCalc" */;
+			buildPhases = (
+				84794DEC1578A143004010F7 /* Sources */,
+				84794DED1578A143004010F7 /* Frameworks */,
+				84794DEE1578A143004010F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FastCalc;
+			productName = FastCalc;
+			productReference = 84794DF01578A143004010F7 /* FastCalc.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84794DE71578A142004010F7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 84794DEA1578A142004010F7 /* Build configuration list for PBXProject "FastCalc" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 84794DE51578A142004010F7;
+			productRefGroup = 84794DF11578A143004010F7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84794DEF1578A143004010F7 /* FastCalc */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84794DEE1578A143004010F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84794DFF1578A143004010F7 /* InfoPlist.strings in Resources */,
+				84794E0B1578A143004010F7 /* ViewController.xib in Resources */,
+				84794E181578A31B004010F7 /* ChooseViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84794DEC1578A143004010F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84794E011578A143004010F7 /* main.m in Sources */,
+				84794E051578A143004010F7 /* AppDelegate.m in Sources */,
+				84794E081578A143004010F7 /* ViewController.m in Sources */,
+				84794E171578A31B004010F7 /* ChooseViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		84794DFD1578A143004010F7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84794DFE1578A143004010F7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		84794E091578A143004010F7 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84794E0A1578A143004010F7 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84794E0C1578A143004010F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		84794E0D1578A143004010F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84794E0F1578A143004010F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FastCalc/FastCalc-Prefix.pch";
+				INFOPLIST_FILE = "FastCalc/FastCalc-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		84794E101578A143004010F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FastCalc/FastCalc-Prefix.pch";
+				INFOPLIST_FILE = "FastCalc/FastCalc-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84794DEA1578A142004010F7 /* Build configuration list for PBXProject "FastCalc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84794E0C1578A143004010F7 /* Debug */,
+				84794E0D1578A143004010F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84794E0E1578A143004010F7 /* Build configuration list for PBXNativeTarget "FastCalc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84794E0F1578A143004010F7 /* Debug */,
+				84794E101578A143004010F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 84794DE71578A142004010F7 /* Project object */;
+}

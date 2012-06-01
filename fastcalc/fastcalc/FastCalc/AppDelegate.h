@@ -1,15 +1,19 @@
 //
 //  AppDelegate.h
-//  fastcalc
+//  FastCalc
 //
-//  Created by Gevorg Petrosyan on 27.04.12.
+//  Created by Gevorg Petrosyan on 01.06.12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
+@class ViewController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) ViewController *viewController;
 
 @end

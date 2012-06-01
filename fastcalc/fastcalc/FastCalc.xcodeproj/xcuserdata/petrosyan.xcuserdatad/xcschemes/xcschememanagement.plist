@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>fastcalc.xcscheme</key>
+		<key>FastCalc.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>847A139D154A74EB00F67CF1</key>
+		<key>84794DEF1578A143004010F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

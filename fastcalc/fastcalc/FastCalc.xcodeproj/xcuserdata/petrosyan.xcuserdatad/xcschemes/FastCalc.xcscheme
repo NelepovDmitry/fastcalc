@@ -13,10 +13,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "847A139D154A74EB00F67CF1"
-               BuildableName = "fastcalc.app"
-               BlueprintName = "fastcalc"
-               ReferencedContainer = "container:fastcalc.xcodeproj">
+               BlueprintIdentifier = "84794DEF1578A143004010F7"
+               BuildableName = "FastCalc.app"
+               BlueprintName = "FastCalc"
+               ReferencedContainer = "container:FastCalc.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,10 +31,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "847A139D154A74EB00F67CF1"
-            BuildableName = "fastcalc.app"
-            BlueprintName = "fastcalc"
-            ReferencedContainer = "container:fastcalc.xcodeproj">
+            BlueprintIdentifier = "84794DEF1578A143004010F7"
+            BuildableName = "FastCalc.app"
+            BlueprintName = "FastCalc"
+            ReferencedContainer = "container:FastCalc.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -50,10 +50,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "847A139D154A74EB00F67CF1"
-            BuildableName = "fastcalc.app"
-            BlueprintName = "fastcalc"
-            ReferencedContainer = "container:fastcalc.xcodeproj">
+            BlueprintIdentifier = "84794DEF1578A143004010F7"
+            BuildableName = "FastCalc.app"
+            BlueprintName = "FastCalc"
+            ReferencedContainer = "container:FastCalc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -68,10 +68,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "847A139D154A74EB00F67CF1"
-            BuildableName = "fastcalc.app"
-            BlueprintName = "fastcalc"
-            ReferencedContainer = "container:fastcalc.xcodeproj">
+            BlueprintIdentifier = "84794DEF1578A143004010F7"
+            BuildableName = "FastCalc.app"
+            BlueprintName = "FastCalc"
+            ReferencedContainer = "container:FastCalc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

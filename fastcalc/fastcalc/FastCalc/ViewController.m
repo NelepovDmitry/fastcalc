@@ -1,8 +1,8 @@
 //
 //  ViewController.m
-//  fastcalc
+//  FastCalc
 //
-//  Created by Gevorg Petrosyan on 27.04.12.
+//  Created by Gevorg Petrosyan on 01.06.12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
