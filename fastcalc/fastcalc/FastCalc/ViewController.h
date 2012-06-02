@@ -10,4 +10,6 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)chooseBrandsClicked:(id)sender;
+
 @end

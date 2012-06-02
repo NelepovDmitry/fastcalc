@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ChooseViewController.h"
 
 @interface ViewController ()
 
@@ -29,6 +30,14 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+#pragma mark - Custom functions
+
+- (IBAction)chooseBrandsClicked:(id)sender {
+    ChooseViewController *chooseViewController = [[ChooseViewController alloc] initWithNibName:@"ChooseViewController" bundle:nil];
+    [self.navigationController pushViewController:chooseViewController animated:YES];
+    [chooseViewController release];
 }
 
 @end

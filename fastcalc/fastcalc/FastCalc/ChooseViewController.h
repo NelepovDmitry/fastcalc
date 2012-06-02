@@ -7,14 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MLocationGetter.h"
 
 @class InternetUtils;
 
-@interface ChooseViewController : UIViewController {
+@interface ChooseViewController : UIViewController<MLocationGetterDelegate> {
     NSMutableArray *mArrayOfCities;
     NSMutableArray *mArrayOfBrands;
     
     InternetUtils *mInternetUtils;
+    MLocationGetter *mLocationGetter;
+    
+    bool isLoadingAddress;
 }
 
 @end
