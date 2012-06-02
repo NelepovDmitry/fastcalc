@@ -38,6 +38,8 @@
 
 - (void)viewDidUnload
 {
+    [mBrandsTable release];
+    mBrandsTable = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -51,6 +53,7 @@
 - (void)dealloc {
     [mInternetUtils release];
     [mLocationGetter release];
+    [mBrandsTable release];
     [super dealloc];
 }
 
@@ -59,6 +62,7 @@
 - (void)initPrivate {
     mInternetUtils = [[InternetUtils alloc] init];
     mApplicationSingleton = [ApplicationSingleton createSingleton];
+    mArrayOfBrands = [[NSMutableArray alloc] init];
     mLocationGetter = [[MLocationGetter alloc] init];
     mLocationGetter.delegate = self;
     [mLocationGetter startUpdates];
@@ -73,7 +77,26 @@
     NSString *cityName = [mainDict valueForKeyPath:@"response.city.string_value"];
     mApplicationSingleton.idOfCity = cityId;
     mApplicationSingleton.nameOfCity = cityName;
-    NSLog(@"json %@", [mainDict valueForKeyPath:@"response.brands"]);
+    NSArray *arrayOfBrands = [mainDict valueForKeyPath:@"response.brands.menus"];
+    
+    NSMutableDictionary *lastDict = [NSMutableDictionary dictionary];
+    [lastDict setObject:[mainDict valueForKeyPath:@"response.brands.brandname"] forKey:@"name"];
+    
+    NSMutableArray *arrayOfMenus = [NSMutableArray array];
+    for(NSDictionary *brand in [arrayOfBrands objectAtIndex:0]) {
+        NSArray *objectValues = [brand objectForKey:@"objectValues"];
+        for(NSDictionary *objectValue in objectValues) {
+            NSString *attrname = [objectValue objectForKey:@"attrname"];
+            if([attrname isEqualToString:@"Menu info_Name"]) {
+                [arrayOfMenus addObject:objectValue];
+            }
+        }
+    }
+    [lastDict setObject:arrayOfMenus forKey:@"menus"];
+    [mArrayOfBrands addObject:lastDict];
+    NSLog(@"lastDict %@", lastDict);
+    [mBrandsTable reloadData];
+    //NSLog(@"json %@", [mainDict valueForKeyPath:@"response.brands"]);
 }
 
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getFastFoodsOnCity={%22city_name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22,%22locale%22:%22ru%22}
@@ -120,17 +143,21 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return mArrayOfBrands.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    NSArray *array = [[mArrayOfBrands objectAtIndex:section] objectForKey:@"menus"];
+    return array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"SearchListCell";
+    
+    NSArray *array = [[mArrayOfBrands objectAtIndex:indexPath.section] objectForKey:@"menus"];
+    NSDictionary *objects = [array objectAtIndex:indexPath.row];
     
     UITableViewCell *cell= (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -143,6 +170,8 @@
             }
         }*/
     }
+    cell.textLabel.text = [objects objectForKey:@"string_value"];
+    
     
     return cell;
 }

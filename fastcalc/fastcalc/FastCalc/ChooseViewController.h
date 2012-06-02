@@ -12,7 +12,6 @@
 @class InternetUtils, ApplicationSingleton;
 
 @interface ChooseViewController : UIViewController<MLocationGetterDelegate, UITableViewDataSource, UITableViewDelegate> {
-    NSMutableArray *mArrayOfCities;
     NSMutableArray *mArrayOfBrands;
     
     InternetUtils *mInternetUtils;
@@ -20,6 +19,7 @@
     ApplicationSingleton *mApplicationSingleton;
     
     bool isLoadingAddress;
+    IBOutlet UITableView *mBrandsTable;
 }
 
 @end
