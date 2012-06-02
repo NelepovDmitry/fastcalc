@@ -24,7 +24,7 @@ BOOL didUpdate = NO;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 	if([self.delegate conformsToProtocol:@protocol(MLocationGetterDelegate)]) {  // Check if the class assigning itself as the delegate conforms to our protocol.  If not, the message will go nowhere.  Not good.
-        SEL getAddress = NSSelectorFromString(@"getUserAddress:");
+        //SEL getAddress = NSSelectorFromString(@"getUserAddress:");
         [self getUserAddress:newLocation];
         //[self performSelectorInBackground:getAddress withObject:newLocation];
 		[self.delegate newPhysicalLocation:newLocation];
