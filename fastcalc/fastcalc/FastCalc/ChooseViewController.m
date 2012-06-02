@@ -9,13 +9,13 @@
 #import "ChooseViewController.h"
 #import "InternetUtils.h"
 #import "JSON.h"
+#import "ApplicationSingleton.h"
 
 @interface ChooseViewController ()
 
 - (void)initPrivate;
-- (void)getCities;
-- (void)getBrands;
-- (void)getFastFoodCitys:(NSData *)jsonData;
+- (void)requestCity:(NSString *)cityName;
+- (void)getBrandsFromData:(NSData *)data;
 
 @end
 
@@ -34,14 +34,6 @@
 {
     [super viewDidLoad];
     [self initPrivate];
-    //mInternetUtils = [[InternetUtils alloc] init];
-    //NSDate *date = [NSDate date];
-    //UIImage *image = [UIImage imageNamed:@"IMG_0255.JPG"];
-    //NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
-    //NSDate *date1 = [NSDate date];
-    //NSLog(@"timing %f", [date1 timeIntervalSinceDate:date]);
-    //[mInternetUtils makeURLDataRequestByNameResponser:@"sendData:" urlCall:[NSURL URLWithString:@"http://rent.orionsource.ru/api/test.php"] responder:self data:imageData];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
@@ -66,38 +58,32 @@
 
 - (void)initPrivate {
     mInternetUtils = [[InternetUtils alloc] init];
+    mApplicationSingleton = [ApplicationSingleton createSingleton];
     mLocationGetter = [[MLocationGetter alloc] init];
     mLocationGetter.delegate = self;
     [mLocationGetter startUpdates];
     isLoadingAddress = true;
-    //http://fastcalc.orionsource.ru/api?apifastcalc.getFastFoodsOnCity={"city_id":2,"locale":"ru"}
-    //[self getCities];
 }
 
-//http://fastcalc.orionsource.ru/api?apifastcalc.getFastFoodCitys={"locale":"ru"}
-- (void)getCities {
+
+- (void)getBrandsFromData:(NSData *)data {
+    NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSDictionary *mainDict = [json JSONValue];
+    NSNumber *cityId = [mainDict valueForKeyPath:@"response.city.object_id"];
+    NSString *cityName = [mainDict valueForKeyPath:@"response.city.string_value"];
+    mApplicationSingleton.idOfCity = cityId;
+    mApplicationSingleton.nameOfCity = cityName;
+    NSLog(@"json %@", [mainDict valueForKeyPath:@"response.brands"]);
+}
+
+//http://fastcalc.orionsource.ru/api/?apifastcalc.getFastFoodsOnCity={%22city_name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22,%22locale%22:%22ru%22}
+- (void)requestCity:(NSString *)cityName {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:@"ru" forKey:@"locale"];
+    [dict setObject:cityName forKey:@"city_name"];
     //http://rent.orionsource.ru/api?apirent.getUserLocation={"access_token":"","google_json":""}
-    [mInternetUtils makeURLRequestByNameResponser:@"getFastFoodCitys:" 
+    [mInternetUtils makeURLRequestByNameResponser:@"getBrandsFromData:" 
                                           urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
-                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getFastFoodCitys="]
-                                        responder:self
-                             progressFunctionName:nil
-     ];
-}
-
-- (void)getFastFoodCitys:(NSData *)jsonData {
-    
-}
-
-- (void)getBrands {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:@"ru" forKey:@"locale"];
-    //http://rent.orionsource.ru/api?apirent.getUserLocation={"access_token":"","google_json":""}
-    [mInternetUtils makeURLRequestByNameResponser:@"getFastFoodCitys:" 
-                                          urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
-                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getFastFoodCitys="]
+                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getFastFoodsOnCity"]
                                         responder:self
                              progressFunctionName:nil
      ];
@@ -120,9 +106,54 @@
             }
         }
     }
-
+    [self requestCity:@"Москва"];
     isLoadingAddress = false;
 }
+
+#pragma mark - Table view data source
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    //UIView v = nil;
+    return nil;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"SearchListCell";
+    
+    UITableViewCell *cell= (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        /*NSArray *array = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+        for (id currentObject in array) {
+            if ([currentObject isKindOfClass:[UITableViewCell class]]) {
+                cell = currentObject;
+                break;
+            }
+        }*/
+    }
+    
+    return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
 
 
 @end

@@ -15,6 +15,7 @@
 		8478CF521579EF73001F0054 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478CF4C1579EF73001F0054 /* SBJsonWriter.m */; };
 		8478CF561579F0F7001F0054 /* MLocationGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478CF551579F0F7001F0054 /* MLocationGetter.m */; };
 		8478CF581579F103001F0054 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8478CF571579F103001F0054 /* CoreLocation.framework */; };
+		8478CF66157A130C001F0054 /* ApplicationSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478CF65157A130C001F0054 /* ApplicationSingleton.m */; };
 		84794DF51578A143004010F7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84794DF41578A143004010F7 /* UIKit.framework */; };
 		84794DF71578A143004010F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84794DF61578A143004010F7 /* Foundation.framework */; };
 		84794DF91578A143004010F7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84794DF81578A143004010F7 /* CoreGraphics.framework */; };
@@ -47,6 +48,8 @@
 		8478CF541579F0F7001F0054 /* MLocationGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLocationGetter.h; sourceTree = "<group>"; };
 		8478CF551579F0F7001F0054 /* MLocationGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLocationGetter.m; sourceTree = "<group>"; };
 		8478CF571579F103001F0054 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8478CF64157A130C001F0054 /* ApplicationSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationSingleton.h; sourceTree = "<group>"; };
+		8478CF65157A130C001F0054 /* ApplicationSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationSingleton.m; sourceTree = "<group>"; };
 		84794DF01578A143004010F7 /* FastCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84794DF41578A143004010F7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84794DF61578A143004010F7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,6 +118,15 @@
 			name = "Location Getter";
 			sourceTree = "<group>";
 		};
+		8478CF63157A12C7001F0054 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				8478CF64157A130C001F0054 /* ApplicationSingleton.h */,
+				8478CF65157A130C001F0054 /* ApplicationSingleton.m */,
+			);
+			name = Singletons;
+			sourceTree = "<group>";
+		};
 		84794DE51578A142004010F7 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +185,7 @@
 		84794E111578A1C2004010F7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8478CF63157A12C7001F0054 /* Singletons */,
 				8478CF531579F0CC001F0054 /* Location Getter */,
 				8478CF3E1579EF64001F0054 /* JSON */,
 				84794E121578A1CC004010F7 /* Internet classes */,
@@ -277,6 +290,7 @@
 				8478CF511579EF73001F0054 /* SBJsonParser.m in Sources */,
 				8478CF521579EF73001F0054 /* SBJsonWriter.m in Sources */,
 				8478CF561579F0F7001F0054 /* MLocationGetter.m in Sources */,
+				8478CF66157A130C001F0054 /* ApplicationSingleton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

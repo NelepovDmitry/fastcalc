@@ -9,14 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "MLocationGetter.h"
 
-@class InternetUtils;
+@class InternetUtils, ApplicationSingleton;
 
-@interface ChooseViewController : UIViewController<MLocationGetterDelegate> {
+@interface ChooseViewController : UIViewController<MLocationGetterDelegate, UITableViewDataSource, UITableViewDelegate> {
     NSMutableArray *mArrayOfCities;
     NSMutableArray *mArrayOfBrands;
     
     InternetUtils *mInternetUtils;
     MLocationGetter *mLocationGetter;
+    ApplicationSingleton *mApplicationSingleton;
     
     bool isLoadingAddress;
 }
