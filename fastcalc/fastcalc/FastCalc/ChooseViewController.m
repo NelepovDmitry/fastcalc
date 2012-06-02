@@ -106,7 +106,6 @@
 #pragma mark - Location Delegate 
 
 - (void)newPhysicalLocation:(CLLocation *)location {
-    //NSLog(@"new addres %@", mLocationGetter.addresJSON);
     NSDictionary *dictOfFullLocal = [mLocationGetter.addresJSON JSONValue];
     NSArray *types = [[dictOfFullLocal valueForKeyPath:@"results.address_components"] objectAtIndex:0];
     NSString *cityName = @"";
@@ -121,7 +120,7 @@
             }
         }
     }
-    NSLog(@"cityName %@", cityName);
+
     isLoadingAddress = false;
 }
 
