@@ -29,6 +29,10 @@
 		84794E231578A569004010F7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E221578A569004010F7 /* Reachability.m */; };
 		84794E261578A582004010F7 /* InternetUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E251578A582004010F7 /* InternetUtils.m */; };
 		84794E281578A740004010F7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84794E271578A740004010F7 /* SystemConfiguration.framework */; };
+		847B60D1157C95DD00BC8B89 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60CF157C95DD00BC8B89 /* MainViewController.m */; };
+		847B60D2157C95DD00BC8B89 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B60D0157C95DD00BC8B89 /* MainViewController.xib */; };
+		847B60D6157C988700BC8B89 /* PriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60D5157C988700BC8B89 /* PriceTableViewController.m */; };
+		847B60D9157C98CC00BC8B89 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60D8157C98CC00BC8B89 /* MenuTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +75,13 @@
 		84794E241578A582004010F7 /* InternetUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetUtils.h; sourceTree = "<group>"; };
 		84794E251578A582004010F7 /* InternetUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetUtils.m; sourceTree = "<group>"; };
 		84794E271578A740004010F7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		847B60CE157C95DD00BC8B89 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		847B60CF157C95DD00BC8B89 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		847B60D0157C95DD00BC8B89 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		847B60D4157C988700BC8B89 /* PriceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceTableViewController.h; sourceTree = "<group>"; };
+		847B60D5157C988700BC8B89 /* PriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceTableViewController.m; sourceTree = "<group>"; };
+		847B60D7157C98CC00BC8B89 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
+		847B60D8157C98CC00BC8B89 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,11 +218,34 @@
 		84794E131578A26C004010F7 /* Main Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				847B60DB157CBB7D00BC8B89 /* Main Controller */,
+				847B60DA157CBB6900BC8B89 /* Choose controller */,
+			);
+			name = "Main Controllers";
+			sourceTree = "<group>";
+		};
+		847B60DA157CBB6900BC8B89 /* Choose controller */ = {
+			isa = PBXGroup;
+			children = (
 				84794E141578A31B004010F7 /* ChooseViewController.h */,
 				84794E151578A31B004010F7 /* ChooseViewController.m */,
 				84794E161578A31B004010F7 /* ChooseViewController.xib */,
 			);
-			name = "Main Controllers";
+			name = "Choose controller";
+			sourceTree = "<group>";
+		};
+		847B60DB157CBB7D00BC8B89 /* Main Controller */ = {
+			isa = PBXGroup;
+			children = (
+				847B60CE157C95DD00BC8B89 /* MainViewController.h */,
+				847B60CF157C95DD00BC8B89 /* MainViewController.m */,
+				847B60D0157C95DD00BC8B89 /* MainViewController.xib */,
+				847B60D4157C988700BC8B89 /* PriceTableViewController.h */,
+				847B60D5157C988700BC8B89 /* PriceTableViewController.m */,
+				847B60D7157C98CC00BC8B89 /* MenuTableViewController.h */,
+				847B60D8157C98CC00BC8B89 /* MenuTableViewController.m */,
+			);
+			name = "Main Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +301,7 @@
 				84794DFF1578A143004010F7 /* InfoPlist.strings in Resources */,
 				84794E0B1578A143004010F7 /* ViewController.xib in Resources */,
 				84794E181578A31B004010F7 /* ChooseViewController.xib in Resources */,
+				847B60D2157C95DD00BC8B89 /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +326,9 @@
 				8478CF521579EF73001F0054 /* SBJsonWriter.m in Sources */,
 				8478CF561579F0F7001F0054 /* MLocationGetter.m in Sources */,
 				8478CF66157A130C001F0054 /* ApplicationSingleton.m in Sources */,
+				847B60D1157C95DD00BC8B89 /* MainViewController.m in Sources */,
+				847B60D6157C988700BC8B89 /* PriceTableViewController.m in Sources */,
+				847B60D9157C98CC00BC8B89 /* MenuTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

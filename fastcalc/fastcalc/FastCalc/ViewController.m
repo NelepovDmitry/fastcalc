@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ChooseViewController.h"
+#import "MainViewController.h"
 
 @interface ViewController ()
 
@@ -18,6 +19,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    MainViewController *mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    [self.view addSubview:mainViewController.view];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -35,9 +38,9 @@
 #pragma mark - Custom functions
 
 - (IBAction)chooseBrandsClicked:(id)sender {
-    ChooseViewController *chooseViewController = [[ChooseViewController alloc] initWithNibName:@"ChooseViewController" bundle:nil];
-    [self.navigationController pushViewController:chooseViewController animated:YES];
-    [chooseViewController release];
+    //ChooseViewController *chooseViewController = [[ChooseViewController alloc] initWithNibName:@"ChooseViewController" bundle:nil];
+    //[self.navigationController pushViewController:chooseViewController animated:YES];
+    //[chooseViewController release];
 }
 
 @end
