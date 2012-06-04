@@ -10,4 +10,8 @@
 
 @interface MenuCell : UITableViewCell
 
+@property (retain, nonatomic) IBOutlet UIButton *backgroundImage;
+@property (retain, nonatomic) IBOutlet UIImageView *menuImage;
+@property (retain, nonatomic) IBOutlet UILabel *textLabel;
+
 @end

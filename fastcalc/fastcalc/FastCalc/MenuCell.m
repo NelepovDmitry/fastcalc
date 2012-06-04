@@ -9,6 +9,9 @@
 #import "MenuCell.h"
 
 @implementation MenuCell
+@synthesize backgroundImage;
+@synthesize menuImage;
+@synthesize textLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -21,9 +24,13 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
+- (void)dealloc {
+    [backgroundImage release];
+    [menuImage release];
+    [textLabel release];
+    [super dealloc];
+}
 @end
