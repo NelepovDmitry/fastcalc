@@ -1,5 +1,5 @@
 //
-//  MenuTableViewController.h
+//  PriceCell.h
 //  FastCalc
 //
 //  Created by Gevorg Petrosyan on 04.06.12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuTableViewController : UITableViewController
+@interface PriceCell : UITableViewCell
 
 @end

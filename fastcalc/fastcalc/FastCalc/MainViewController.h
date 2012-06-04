@@ -11,6 +11,7 @@
 @class PriceTableViewController, MenuTableViewController;
 
 @interface MainViewController : UIViewController
+
 @property (retain, nonatomic) IBOutlet PriceTableViewController *priceTableViewController;
 @property (retain, nonatomic) IBOutlet MenuTableViewController *menuTableViewController;
 

@@ -7,6 +7,7 @@
 //
 
 #import "PriceTableViewController.h"
+#import "PriceCell.h"
 
 @interface PriceTableViewController ()
 
@@ -69,18 +70,19 @@
     return count;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *v = nil;
-    return v;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {    
-    static NSString *CellIdentifier = @"FMJoinMeditationCell";
-    UITableViewCell *cell= (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"PriceCell";
+    PriceCell *cell= (PriceCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[PriceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        NSArray *array = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+        for (id currentObject in array) {
+            if ([currentObject isKindOfClass:[PriceCell class]]) {
+                cell = currentObject;
+                break;
+            }
+        }
     }
     cell.textLabel.text = @"data";
     return cell;
