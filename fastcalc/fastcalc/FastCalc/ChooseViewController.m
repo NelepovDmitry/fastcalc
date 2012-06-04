@@ -10,6 +10,8 @@
 #import "InternetUtils.h"
 #import "JSON.h"
 #import "ApplicationSingleton.h"
+#import "MenuViewController.h"
+#import "MainViewController.h"
 
 @interface ChooseViewController ()
 
@@ -179,8 +181,12 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    MenuViewController *menuController = (MenuViewController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
+    MainViewController *controller = [[MainViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
     
+    [menuController setRootController:navController animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

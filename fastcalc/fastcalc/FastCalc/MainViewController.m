@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "ChooseViewController.h"
 
 @interface MainViewController ()
 
@@ -28,7 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgorund.png"]];
+    self.navigationController.navigationBarHidden = YES;
+    //[self.view addGestureRecognizer:self.slidingViewController.panGesture];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
