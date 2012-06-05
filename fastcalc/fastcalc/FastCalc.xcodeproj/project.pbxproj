@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FA882D7157D46E5005DF341 /* DDMenuController.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 2FA882D6157D46E5005DF341 /* DDMenuController.entitlements */; };
+		2FA882DB157D4764005DF341 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA882DA157D4764005DF341 /* MenuViewController.m */; };
+		2FA882DD157D48F0005DF341 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA882DC157D48F0005DF341 /* QuartzCore.framework */; };
 		844243CB157CCC6200F156A1 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844243CA157CCC6200F156A1 /* MenuCell.xib */; };
 		844243CF157CCC8000F156A1 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 844243CE157CCC8000F156A1 /* MenuCell.m */; };
 		8478CF4D1579EF73001F0054 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478CF421579EF73001F0054 /* NSObject+SBJSON.m */; };
@@ -24,8 +27,6 @@
 		84794DFF1578A143004010F7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84794DFD1578A143004010F7 /* InfoPlist.strings */; };
 		84794E011578A143004010F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E001578A143004010F7 /* main.m */; };
 		84794E051578A143004010F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E041578A143004010F7 /* AppDelegate.m */; };
-		84794E081578A143004010F7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E071578A143004010F7 /* ViewController.m */; };
-		84794E0B1578A143004010F7 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84794E091578A143004010F7 /* ViewController.xib */; };
 		84794E171578A31B004010F7 /* ChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E151578A31B004010F7 /* ChooseViewController.m */; };
 		84794E181578A31B004010F7 /* ChooseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84794E161578A31B004010F7 /* ChooseViewController.xib */; };
 		84794E231578A569004010F7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E221578A569004010F7 /* Reachability.m */; };
@@ -46,6 +47,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2FA882D6157D46E5005DF341 /* DDMenuController.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DDMenuController.entitlements; sourceTree = "<group>"; };
+		2FA882D9157D4764005DF341 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		2FA882DA157D4764005DF341 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		2FA882DC157D48F0005DF341 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		844243CA157CCC6200F156A1 /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
 		844243CD157CCC8000F156A1 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		844243CE157CCC8000F156A1 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
@@ -77,9 +82,6 @@
 		84794E021578A143004010F7 /* FastCalc-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FastCalc-Prefix.pch"; sourceTree = "<group>"; };
 		84794E031578A143004010F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84794E041578A143004010F7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		84794E061578A143004010F7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		84794E071578A143004010F7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		84794E0A1578A143004010F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		84794E141578A31B004010F7 /* ChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseViewController.h; sourceTree = "<group>"; };
 		84794E151578A31B004010F7 /* ChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseViewController.m; sourceTree = "<group>"; };
 		84794E161578A31B004010F7 /* ChooseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseViewController.xib; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA882DD157D48F0005DF341 /* QuartzCore.framework in Frameworks */,
 				8478CF581579F103001F0054 /* CoreLocation.framework in Frameworks */,
 				84794E281578A740004010F7 /* SystemConfiguration.framework in Frameworks */,
 				84794DF51578A143004010F7 /* UIKit.framework in Frameworks */,
@@ -122,6 +125,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FE5085B157D2B280010618B /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				2FA882D9157D4764005DF341 /* MenuViewController.h */,
+				2FA882DA157D4764005DF341 /* MenuViewController.m */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
 		8478CF3E1579EF64001F0054 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +192,7 @@
 		84794DF31578A143004010F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2FA882DC157D48F0005DF341 /* QuartzCore.framework */,
 				8478CF571579F103001F0054 /* CoreLocation.framework */,
 				84794E271578A740004010F7 /* SystemConfiguration.framework */,
 				84794DF41578A143004010F7 /* UIKit.framework */,
@@ -192,14 +205,13 @@
 		84794DFA1578A143004010F7 /* FastCalc */ = {
 			isa = PBXGroup;
 			children = (
+				2FA882D6157D46E5005DF341 /* DDMenuController.entitlements */,
 				847B60DC157CC65500BC8B89 /* Resources */,
+				2FE5085B157D2B280010618B /* Libs */,
 				84794E111578A1C2004010F7 /* Helpers */,
 				84794E131578A26C004010F7 /* Main Controllers */,
 				84794E031578A143004010F7 /* AppDelegate.h */,
 				84794E041578A143004010F7 /* AppDelegate.m */,
-				84794E061578A143004010F7 /* ViewController.h */,
-				84794E071578A143004010F7 /* ViewController.m */,
-				84794E091578A143004010F7 /* ViewController.xib */,
 				84794DFB1578A143004010F7 /* Supporting Files */,
 			);
 			path = FastCalc;
@@ -357,7 +369,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				84794DFF1578A143004010F7 /* InfoPlist.strings in Resources */,
-				84794E0B1578A143004010F7 /* ViewController.xib in Resources */,
 				84794E181578A31B004010F7 /* ChooseViewController.xib in Resources */,
 				847B60D2157C95DD00BC8B89 /* MainViewController.xib in Resources */,
 				847B60DE157CC66600BC8B89 /* backgorund.png in Resources */,
@@ -368,6 +379,7 @@
 				847B60E8157CC6B100BC8B89 /* table-mask.png in Resources */,
 				847B60EF157CC9BB00BC8B89 /* PriceCell.xib in Resources */,
 				844243CB157CCC6200F156A1 /* MenuCell.xib in Resources */,
+				2FA882D7157D46E5005DF341 /* DDMenuController.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +392,6 @@
 			files = (
 				84794E011578A143004010F7 /* main.m in Sources */,
 				84794E051578A143004010F7 /* AppDelegate.m in Sources */,
-				84794E081578A143004010F7 /* ViewController.m in Sources */,
 				84794E171578A31B004010F7 /* ChooseViewController.m in Sources */,
 				84794E231578A569004010F7 /* Reachability.m in Sources */,
 				84794E261578A582004010F7 /* InternetUtils.m in Sources */,
@@ -397,6 +408,7 @@
 				847B60D9157C98CC00BC8B89 /* MenuTableViewController.m in Sources */,
 				847B60ED157CC97200BC8B89 /* PriceCell.m in Sources */,
 				844243CF157CCC8000F156A1 /* MenuCell.m in Sources */,
+				2FA882DB157D4764005DF341 /* MenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,14 +421,6 @@
 				84794DFE1578A143004010F7 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		84794E091578A143004010F7 /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84794E0A1578A143004010F7 /* en */,
-			);
-			name = ViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -441,7 +445,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -458,7 +462,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -471,6 +475,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FastCalc/FastCalc-Prefix.pch";
 				INFOPLIST_FILE = "FastCalc/FastCalc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -482,6 +487,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FastCalc/FastCalc-Prefix.pch";
 				INFOPLIST_FILE = "FastCalc/FastCalc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

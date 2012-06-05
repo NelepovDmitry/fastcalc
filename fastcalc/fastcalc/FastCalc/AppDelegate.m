@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "MainViewController.h"
+#import "MenuViewController.h"
+#import "ChooseViewController.h"
 
 @implementation AppDelegate
 
@@ -24,13 +26,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent
-                                                animated:NO];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
-    [self.window addSubview:navigationController.view];
+    
+    
+    MainViewController *mainController = [[[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil] autorelease];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainController];
+    
+    
+    MenuViewController *rootController = [[MenuViewController alloc] initWithRootViewController:navigationController];
+    _viewController = rootController;
+    
+    ChooseViewController *leftController = [[ChooseViewController alloc] initWithNibName:@"ChooseViewController" bundle:nil];
+    rootController.leftViewController = leftController;
+    
+    self.window.rootViewController = rootController;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
