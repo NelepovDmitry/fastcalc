@@ -30,6 +30,7 @@
 {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     //[self.view addGestureRecognizer:self.slidingViewController.panGesture];
     
     // Do any additional setup after loading the view from its nib.
