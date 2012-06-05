@@ -36,6 +36,7 @@
 {
     [super viewDidLoad];
     [self initPrivate];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
 }
 
 - (void)viewDidUnload
@@ -69,6 +70,10 @@
     mLocationGetter.delegate = self;
     [mLocationGetter startUpdates];
     isLoadingAddress = true;
+    
+    mBrandsTable.layer.cornerRadius = 10;
+    [mBrandsTable.layer setBorderColor:[[UIColor colorWithRed:24.0/255.0 green:92.0/255.0 blue:52.0/255.0 alpha:1.0f] CGColor]];
+    [mBrandsTable.layer setBorderWidth:1.0];
 }
 
 
