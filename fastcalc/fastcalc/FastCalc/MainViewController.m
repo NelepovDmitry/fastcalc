@@ -88,6 +88,7 @@
     //set main prop
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    mCheckView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     
     //set scroll prop
     [mMainView setContentSize:CGSizeMake(320, 830)];

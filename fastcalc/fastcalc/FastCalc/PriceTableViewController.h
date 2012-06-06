@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define COUNT 3
+#define BEGIN_HEIGHT 370
+
 @interface PriceTableViewController : UITableViewController {
     
     IBOutlet UITableView *mTableView;

@@ -64,7 +64,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int count = 30;
+    int count = COUNT;
     return count;
 }
 
@@ -100,11 +100,21 @@
 #pragma mark - Custom Functions
 
 - (void)goToTop:(BOOL)toTop {
+    if(COUNT > 8) {
+        [mTableView setFrame: CGRectMake(0, 0, mTableView.frame.size.width, BEGIN_HEIGHT)];
+    } else {
+        //set size from count of cells
+        CGRect frame = [mTableView frame];
+        frame.size.height = [[mTableView dataSource] tableView: mTableView numberOfRowsInSection: 0] *
+        [[mTableView delegate] tableView: mTableView heightForRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
+        frame.origin.y = BEGIN_HEIGHT - frame.size.height;
+        [mTableView setFrame: frame];
+    }
     if(toTop) {
         NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
     } else {
-        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:29 inSection:0];
+        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:COUNT - 1 inSection:0];
         [[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
     }
 }
