@@ -10,7 +10,17 @@
 
 @class PriceTableViewController, MenuTableViewController;
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController {
+    IBOutlet UIView *mAnimationView;
+    IBOutlet UISwipeGestureRecognizer *mGestureRecognizerDown;
+    IBOutlet UISwipeGestureRecognizer *mGestureRecognizerUp;
+    IBOutlet UILabel *mTotalLbl;
+    IBOutlet UIView *mCheckView;
+    IBOutlet UIScrollView *mMainView;
+}
+
+- (void)newCheck;
+- (IBAction)gestureTaped:(id)sender;
 
 @property (retain, nonatomic) IBOutlet PriceTableViewController *priceTableViewController;
 @property (retain, nonatomic) IBOutlet MenuTableViewController *menuTableViewController;
