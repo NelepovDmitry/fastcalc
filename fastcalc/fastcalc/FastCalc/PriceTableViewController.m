@@ -35,10 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -92,6 +90,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)dealloc {
+    [mTableView release];
+    [super dealloc];
+}
+
+#pragma mark - Custom Functions
+
+- (void)goToTop:(BOOL)toTop {
+    if(toTop) {
+        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    } else {
+        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:29 inSection:0];
+        [[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    }
 }
 
 @end

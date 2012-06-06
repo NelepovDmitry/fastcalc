@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PriceTableViewController : UITableViewController
+@interface PriceTableViewController : UITableViewController {
+    
+    IBOutlet UITableView *mTableView;
+}
+
+- (void)goToTop:(BOOL)toTop;
 
 @end

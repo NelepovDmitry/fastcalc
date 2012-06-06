@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "ChooseViewController.h"
+#import "PriceTableViewController.h"
 
 @interface MainViewController ()
 
@@ -32,15 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationController.navigationBarHidden = YES;
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-    [self initGestureProp];
     [self setMainProp];
-    //[self performSelector:@selector(newCheck) withObject:nil afterDelay:3];
-    //[self.view addGestureRecognizer:self.slidingViewController.panGesture];
-    
-    // Do any additional setup after loading the view from its nib.
+    [self initGestureProp];
 }
 
 - (void)viewDidUnload
@@ -84,7 +78,6 @@
 #pragma mark - Custom functions
 
 - (void)initGestureProp {
-    //mGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(gestureTaped:)];
     [mGestureRecognizerDown setDirection:UISwipeGestureRecognizerDirectionDown];
     [mGestureRecognizerUp setDirection:UISwipeGestureRecognizerDirectionUp];
     [mCheckView addGestureRecognizer:mGestureRecognizerDown];
@@ -92,10 +85,19 @@
 }
 
 - (void)setMainProp {
+    //set main prop
+    self.navigationController.navigationBarHidden = YES;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    
+    //set scroll prop
     [mMainView setContentSize:CGSizeMake(320, 830)];
     CGPoint bottomOffset = CGPointMake(0, mMainView.contentSize.height - mMainView.frame.size.height);
     [mMainView setContentOffset:bottomOffset animated:NO];
     [mMainView setScrollEnabled:NO];
+    
+    //set price prop
+    [priceTableViewController goToTop:NO];
+    [priceTableViewController tableView].scrollEnabled = NO;
 }
 
 - (void)newCheck {
@@ -112,18 +114,17 @@
 - (IBAction)gestureTaped:(id)sender {
     UISwipeGestureRecognizer *gesture = sender;
     if(gesture.direction == UISwipeGestureRecognizerDirectionDown) {
-        CGPoint bottomOffset = CGPointMake(0, 0);
-        [mMainView setContentOffset:bottomOffset animated:YES];
-    } else if (gesture.direction == UISwipeGestureRecognizerDirectionUp){
+        CGPoint topOffset = CGPointMake(0, 0);
+        [mMainView setContentOffset:topOffset animated:YES];
+        [priceTableViewController goToTop:YES];
+        [priceTableViewController tableView].scrollEnabled = YES;
+    } else if (gesture.direction == UISwipeGestureRecognizerDirectionUp) {
         CGPoint bottomOffset =  CGPointMake(0, mMainView.contentSize.height - mMainView.frame.size.height);
         [mMainView setContentOffset:bottomOffset animated:YES];
+        [priceTableViewController goToTop:NO];
+        [priceTableViewController tableView].scrollEnabled = NO;
     }
 }
 
-#pragma mark - Scroll View Delegate
-
-- (void) scrollRectToVisible:(CGRect)rect animated:(BOOL)animated {
-    NSLog(@"gveorg");
-}
 
 @end
