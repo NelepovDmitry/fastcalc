@@ -36,7 +36,7 @@
 {
     [super viewDidLoad];
     [self initPrivate];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgorund.png"]];
 }
 
 - (void)viewDidUnload

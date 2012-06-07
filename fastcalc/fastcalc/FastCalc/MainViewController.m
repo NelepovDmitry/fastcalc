@@ -88,7 +88,7 @@
 - (void)setMainProp {
     //set main prop
     self.navigationController.navigationBarHidden = YES;
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgorund.png"]];
     mCheckView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     
     //set scroll prop
