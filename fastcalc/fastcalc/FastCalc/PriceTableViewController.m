@@ -35,6 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self tableView].backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -107,7 +108,7 @@
         CGRect frame = [mTableView frame];
         frame.size.height = [[mTableView dataSource] tableView: mTableView numberOfRowsInSection: 0] *
         [[mTableView delegate] tableView: mTableView heightForRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
-        frame.origin.y = BEGIN_HEIGHT - frame.size.height;
+        frame.origin.y = 0;
         [mTableView setFrame: frame];
     }
     if(toTop) {

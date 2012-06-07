@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define COUNT 3
+#define COUNT 10
 #define BEGIN_HEIGHT 370
 
 @interface PriceTableViewController : UITableViewController {

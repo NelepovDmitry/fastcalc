@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #define BEGIN_RECT CGRectMake(0, 453, 288, 438)
-#define END_RECT CGRectMake(0, 0, 288, 438)
 
 @class PriceTableViewController, MenuTableViewController;
 
@@ -20,6 +19,7 @@
     IBOutlet UISwipeGestureRecognizer *mGestureRecognizerLeft;
     IBOutlet UILabel *mTotalLbl;
     IBOutlet UIView *mCheckView;
+    IBOutlet UIView *mMaskView;
     IBOutlet UIScrollView *mMainView;
 }
 

@@ -58,6 +58,8 @@
     mGestureRecognizerUp = nil;
     [mGestureRecognizerLeft release];
     mGestureRecognizerLeft = nil;
+    [mMaskView release];
+    mMaskView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -78,6 +80,7 @@
     [mMainView release];
     [mGestureRecognizerUp release];
     [mGestureRecognizerLeft release];
+    [mMaskView release];
     [super dealloc];
 }
 
@@ -96,7 +99,7 @@
     //set main prop
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgorund.png"]];
-    mCheckView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
+    mTotalLbl.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     
     //set scroll prop
     [mMainView setContentSize:CGSizeMake(320, 830)];
@@ -118,22 +121,35 @@
      
                     animations:^{
                         mCheckView.hidden = YES;
+                        mMaskView.clipsToBounds = NO;
                     }
-     
+    
                     completion:^(BOOL finished) {
-                        mCheckView.frame = BEGIN_RECT;
+                        CGRect rect = BEGIN_RECT;
+                        rect.size.height = [priceTableViewController tableView].frame.size.height + mTotalLbl.frame.size.height;
+                        mCheckView.frame = rect;
                         mCheckView.hidden = NO;
+                        mMaskView.clipsToBounds = YES;
                         [self newPriceViewAnimate];
                     }];
 }
 
 - (void)newPriceViewAnimate {
     [UIView beginAnimations : @"Display notif" context:nil];
-    [UIView setAnimationDuration:4.0f];
+    [UIView setAnimationDuration:1.0f];
     [UIView setAnimationBeginsFromCurrentState:FALSE];
     [UIView setAnimationDelegate:self];
-    //[UIView setAnimationDidStopSelector:@selector(rotationAnimationFinished)];
-    mCheckView.frame = END_RECT;
+    CGRect priceRect = [priceTableViewController tableView].frame;
+    priceRect.origin.x = 0;
+    priceRect.origin.y = 0;
+    [[priceTableViewController tableView] setFrame:priceRect];
+    CGRect totalRect = mTotalLbl.frame;
+    totalRect.origin.x = 0;
+    totalRect.origin.y = priceRect.origin.y + priceRect.size.height;
+    [mTotalLbl setFrame:totalRect];
+    CGRect checkRect = mCheckView.frame;
+    checkRect.origin.y -= checkRect.size.height;
+    [mCheckView setFrame:checkRect];
     [UIView commitAnimations];
 }
 
