@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define BEGIN_RECT CGRectMake(0, 425, 288, 425)
+#define BEGIN_RECT CGRectMake(0, 416, 288, 416)
 
 @class PriceTableViewController, MenuTableViewController;
 

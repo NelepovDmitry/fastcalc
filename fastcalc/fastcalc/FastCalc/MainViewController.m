@@ -16,6 +16,7 @@
 - (void)initGestureProp;
 - (void)setMainProp;
 - (void)newPriceViewAnimate;
+- (void)finishAnimation;
 
 @end
 
@@ -156,10 +157,12 @@
 }
 
 - (void)newPriceViewAnimate {
+    mPaperTopImageView.hidden = YES;
     [UIView beginAnimations : @"Display notif" context:nil];
     [UIView setAnimationDuration:1.0f];
     [UIView setAnimationBeginsFromCurrentState:FALSE];
     [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(finishAnimation)];
     CGRect priceRect = [priceTableViewController tableView].frame;
     priceRect.origin.x = 0;
     priceRect.origin.y = 0;
@@ -171,7 +174,14 @@
     CGRect checkRect = mCheckView.frame;
     checkRect.origin.y -= checkRect.size.height;
     [mCheckView setFrame:checkRect];
+    //CGRect bottomRect = mPaperTopImageView.frame;
+    //bottomRect.origin.y = mCheckView.frame.origin.y;
+    //[mPaperTopImageView setFrame:bottomRect];
     [UIView commitAnimations];
+}
+
+- (void)finishAnimation {
+    mPaperTopImageView.hidden = NO;
 }
 
 - (IBAction)gestureTaped:(id)sender {
