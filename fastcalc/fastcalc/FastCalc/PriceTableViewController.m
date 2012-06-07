@@ -103,8 +103,10 @@
 - (void)goToTop:(BOOL)toTop {
     if(COUNT > 8) {
         [mTableView setFrame: CGRectMake(0, 0, mTableView.frame.size.width, BEGIN_HEIGHT)];
+        mTableView.scrollEnabled = YES;
     } else {
         //set size from count of cells
+        mTableView.scrollEnabled = NO;
         CGRect frame = [mTableView frame];
         frame.size.height = [[mTableView dataSource] tableView: mTableView numberOfRowsInSection: 0] *
         [[mTableView delegate] tableView: mTableView heightForRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];

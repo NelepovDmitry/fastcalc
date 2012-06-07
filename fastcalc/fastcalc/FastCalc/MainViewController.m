@@ -110,6 +110,23 @@
     //set price prop
     [priceTableViewController goToTop:NO];
     [priceTableViewController tableView].scrollEnabled = NO;
+    
+    //set price frame
+    CGRect rect = BEGIN_RECT;
+    rect.size.height = [priceTableViewController tableView].frame.size.height + mTotalLbl.frame.size.height;
+    mCheckView.frame = rect;
+    CGRect priceRect = [priceTableViewController tableView].frame;
+    priceRect.origin.x = 0;
+    priceRect.origin.y = 0;
+    [[priceTableViewController tableView] setFrame:priceRect];
+    CGRect totalRect = mTotalLbl.frame;
+    totalRect.origin.x = 0;
+    totalRect.origin.y = priceRect.origin.y + priceRect.size.height;
+    [mTotalLbl setFrame:totalRect];
+    CGRect checkRect = mCheckView.frame;
+    checkRect.origin.y -= checkRect.size.height;
+    [mCheckView setFrame:checkRect];
+    
 }
 
 - (void)newCheck {
