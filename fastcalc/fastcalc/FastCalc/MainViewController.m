@@ -15,6 +15,7 @@
 
 - (void)initGestureProp;
 - (void)setMainProp;
+- (void)newPriceViewAnimate;
 
 @end
 
@@ -34,6 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self performSelector:@selector(newCheck) withObject:nil afterDelay:3.0f];
     [self setMainProp];
     [self initGestureProp];
 }
@@ -54,6 +56,8 @@
     mMainView = nil;
     [mGestureRecognizerUp release];
     mGestureRecognizerUp = nil;
+    [mGestureRecognizerLeft release];
+    mGestureRecognizerLeft = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -73,6 +77,7 @@
     [mCheckView release];
     [mMainView release];
     [mGestureRecognizerUp release];
+    [mGestureRecognizerLeft release];
     [super dealloc];
 }
 
@@ -81,8 +86,10 @@
 - (void)initGestureProp {
     [mGestureRecognizerDown setDirection:UISwipeGestureRecognizerDirectionDown];
     [mGestureRecognizerUp setDirection:UISwipeGestureRecognizerDirectionUp];
+    [mGestureRecognizerLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
     [mCheckView addGestureRecognizer:mGestureRecognizerDown];
     [mCheckView addGestureRecognizer:mGestureRecognizerUp];
+    [mCheckView addGestureRecognizer:mGestureRecognizerLeft];
 }
 
 - (void)setMainProp {
@@ -103,13 +110,30 @@
 }
 
 - (void)newCheck {
-    float viewHeight = 200;
+    [UIView transitionWithView:mCheckView
+                    
+                      duration:1
+     
+                       options:UIViewAnimationOptionTransitionCurlUp
+     
+                    animations:^{
+                        mCheckView.hidden = YES;
+                    }
+     
+                    completion:^(BOOL finished) {
+                        mCheckView.frame = BEGIN_RECT;
+                        mCheckView.hidden = NO;
+                        [self newPriceViewAnimate];
+                    }];
+}
+
+- (void)newPriceViewAnimate {
     [UIView beginAnimations : @"Display notif" context:nil];
     [UIView setAnimationDuration:4.0f];
     [UIView setAnimationBeginsFromCurrentState:FALSE];
     [UIView setAnimationDelegate:self];
     //[UIView setAnimationDidStopSelector:@selector(rotationAnimationFinished)];
-    mAnimationView.frame = CGRectMake(mAnimationView.frame.origin.x, mAnimationView.frame.origin.y - viewHeight, mAnimationView.frame.size.width, mAnimationView.frame.size.height + viewHeight);
+    mCheckView.frame = END_RECT;
     [UIView commitAnimations];
 }
 
@@ -128,8 +152,9 @@
         [priceTableViewController goToTop:NO];
         [priceTableViewController tableView].scrollEnabled = NO;
         [appDelegate.viewController disableGestureRecognizer:NO];
+    } else if(gesture.direction == UISwipeGestureRecognizerDirectionLeft) {
+        [self newCheck];
     }
 }
-
 
 @end
