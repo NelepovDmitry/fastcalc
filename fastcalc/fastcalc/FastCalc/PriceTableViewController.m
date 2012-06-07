@@ -113,8 +113,7 @@
         [mTableView setFrame: frame];
     }
     if(toTop) {
-        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+        [mTableView setContentOffset:CGPointZero animated:YES];
         if(COUNT > 8) {
             mTableView.scrollEnabled = YES;
         } else {
@@ -122,7 +121,7 @@
         }
     } else {
         NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:COUNT - 1 inSection:0];
-        [[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        [mTableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
         mTableView.scrollEnabled = NO;
     }
 }

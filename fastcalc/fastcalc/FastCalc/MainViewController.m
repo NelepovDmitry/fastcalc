@@ -35,7 +35,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self performSelector:@selector(newCheck) withObject:nil afterDelay:3.0f];
     [self setMainProp];
     [self initGestureProp];
 }
@@ -60,6 +59,12 @@
     mGestureRecognizerLeft = nil;
     [mMaskView release];
     mMaskView = nil;
+    [mPriceView release];
+    mPriceView = nil;
+    [mPaperBottomImageView release];
+    mPaperBottomImageView = nil;
+    [mPaperTopImageView release];
+    mPaperTopImageView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -81,6 +86,9 @@
     [mGestureRecognizerUp release];
     [mGestureRecognizerLeft release];
     [mMaskView release];
+    [mPriceView release];
+    [mPaperBottomImageView release];
+    [mPaperTopImageView release];
     [super dealloc];
 }
 
@@ -99,7 +107,9 @@
     //set main prop
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgorund.png"]];
-    mTotalLbl.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
+    mPriceView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
+    
+    
     
     //set scroll prop
     [mMainView setContentSize:CGSizeMake(320, 830)];
@@ -112,20 +122,23 @@
     [priceTableViewController tableView].scrollEnabled = NO;
     
     //set price frame
-    CGRect rect = BEGIN_RECT;
-    rect.size.height = [priceTableViewController tableView].frame.size.height + mTotalLbl.frame.size.height;
-    mCheckView.frame = rect;
     CGRect priceRect = [priceTableViewController tableView].frame;
     priceRect.origin.x = 0;
     priceRect.origin.y = 0;
     [[priceTableViewController tableView] setFrame:priceRect];
-    CGRect totalRect = mTotalLbl.frame;
+    CGRect totalRect = mPriceView.frame;
     totalRect.origin.x = 0;
-    totalRect.origin.y = priceRect.origin.y + priceRect.size.height - 15;
-    [mTotalLbl setFrame:totalRect];
-    CGRect checkRect = mCheckView.frame;
-    checkRect.origin.y -= checkRect.size.height;
-    [mCheckView setFrame:checkRect];
+    totalRect.origin.y = priceRect.origin.y + priceRect.size.height;
+    [mPriceView setFrame:totalRect];
+    
+    CGRect rect = BEGIN_RECT;
+    rect.size.height = [priceTableViewController tableView].frame.size.height + mPriceView.frame.size.height;
+    rect.origin.y = rect.origin.y - rect.size.height;
+    [mCheckView setFrame:rect];
+    NSLog(@"[priceTableViewController tableView].frame %@", NSStringFromCGRect([priceTableViewController tableView].frame));
+    NSLog(@"mPriceView %@", NSStringFromCGRect(mPriceView.frame));
+    //NSLog(@"mPaperBottomImageView %@", NSStringFromCGRect(mPaperBottomImageView.frame));
+    NSLog(@"mCheck %@", NSStringFromCGRect(mCheckView.frame));
     
 }
 
@@ -140,10 +153,9 @@
                         mCheckView.hidden = YES;
                         mMaskView.clipsToBounds = NO;
                     }
-     
                     completion:^(BOOL finished) {
                         CGRect rect = BEGIN_RECT;
-                        rect.size.height = [priceTableViewController tableView].frame.size.height + mTotalLbl.frame.size.height;
+                        rect.size.height = [priceTableViewController tableView].frame.size.height + mPriceView.frame.size.height;
                         mCheckView.frame = rect;
                         mCheckView.hidden = NO;
                         mMaskView.clipsToBounds = YES;
@@ -160,10 +172,10 @@
     priceRect.origin.x = 0;
     priceRect.origin.y = 0;
     [[priceTableViewController tableView] setFrame:priceRect];
-    CGRect totalRect = mTotalLbl.frame;
+    CGRect totalRect = mPriceView.frame;
     totalRect.origin.x = 0;
-    totalRect.origin.y = priceRect.origin.y + priceRect.size.height - 15;
-    [mTotalLbl setFrame:totalRect];
+    totalRect.origin.y = priceRect.origin.y + priceRect.size.height;
+    [mPriceView setFrame:totalRect];
     CGRect checkRect = mCheckView.frame;
     checkRect.origin.y -= checkRect.size.height;
     [mCheckView setFrame:checkRect];

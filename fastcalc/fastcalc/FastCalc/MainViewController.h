@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define BEGIN_RECT CGRectMake(0, 453, 288, 438)
+#define BEGIN_RECT CGRectMake(0, 425, 288, 425)
 
 @class PriceTableViewController, MenuTableViewController;
 
@@ -20,7 +20,10 @@
     IBOutlet UILabel *mTotalLbl;
     IBOutlet UIView *mCheckView;
     IBOutlet UIView *mMaskView;
+    IBOutlet UIView *mPriceView;
     IBOutlet UIScrollView *mMainView;
+    IBOutlet UIImageView *mPaperBottomImageView;
+    IBOutlet UIImageView *mPaperTopImageView;
 }
 
 - (void)newCheck;
