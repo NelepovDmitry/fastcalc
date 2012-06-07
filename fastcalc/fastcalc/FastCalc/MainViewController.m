@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "ChooseViewController.h"
 #import "PriceTableViewController.h"
+#import "MenuViewController.h"
 
 @interface MainViewController ()
 
@@ -113,17 +114,20 @@
 }
 
 - (IBAction)gestureTaped:(id)sender {
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     UISwipeGestureRecognizer *gesture = sender;
     if(gesture.direction == UISwipeGestureRecognizerDirectionDown) {
         CGPoint topOffset = CGPointMake(0, 0);
         [mMainView setContentOffset:topOffset animated:YES];
         [priceTableViewController goToTop:YES];
         [priceTableViewController tableView].scrollEnabled = YES;
+        [appDelegate.viewController disableGestureRecognizer:YES];
     } else if (gesture.direction == UISwipeGestureRecognizerDirectionUp) {
         CGPoint bottomOffset =  CGPointMake(0, mMainView.contentSize.height - mMainView.frame.size.height);
         [mMainView setContentOffset:bottomOffset animated:YES];
         [priceTableViewController goToTop:NO];
         [priceTableViewController tableView].scrollEnabled = NO;
+        [appDelegate.viewController disableGestureRecognizer:NO];
     }
 }
 

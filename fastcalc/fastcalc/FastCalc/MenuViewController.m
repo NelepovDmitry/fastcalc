@@ -27,7 +27,7 @@
 #import "MenuViewController.h"
 
 #define kMenuFullWidth 320.0f
-#define kMenuDisplayedWidth 300.0f
+#define kMenuDisplayedWidth 310.0f
 #define kMenuOverlayWidth (self.view.bounds.size.width - kMenuDisplayedWidth)
 #define kMenuBounceOffset 10.0f
 #define kMenuBounceDuration .3f
@@ -651,6 +651,14 @@
     
 }
 
+
+- (void)disableGestureRecognizer:(BOOL)disable {
+    if(disable) {
+        [_root.view removeGestureRecognizer:_pan];
+    } else {
+        [_root.view addGestureRecognizer:_pan];
+    }
+}
 
 #pragma mark - Root Controller Navigation
 

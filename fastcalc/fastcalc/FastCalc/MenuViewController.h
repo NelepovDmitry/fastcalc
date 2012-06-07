@@ -70,6 +70,7 @@ typedef enum {
 
 @property(nonatomic,assign) Class barButtonItemClass;
 
+- (void)disableGestureRecognizer:(BOOL)disable;
 - (void)setRootController:(UIViewController *)controller animated:(BOOL)animated; // used to push a new controller on the stack
 - (void)showRootController:(BOOL)animated; // reset to "home" view controller
 - (void)showRightController:(BOOL)animated;  // show right
