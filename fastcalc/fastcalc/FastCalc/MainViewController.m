@@ -121,7 +121,7 @@
     [[priceTableViewController tableView] setFrame:priceRect];
     CGRect totalRect = mTotalLbl.frame;
     totalRect.origin.x = 0;
-    totalRect.origin.y = priceRect.origin.y + priceRect.size.height;
+    totalRect.origin.y = priceRect.origin.y + priceRect.size.height - 15;
     [mTotalLbl setFrame:totalRect];
     CGRect checkRect = mCheckView.frame;
     checkRect.origin.y -= checkRect.size.height;
@@ -131,7 +131,7 @@
 
 - (void)newCheck {
     [UIView transitionWithView:mCheckView
-                    
+     
                       duration:1
      
                        options:UIViewAnimationOptionTransitionCurlUp
@@ -140,7 +140,7 @@
                         mCheckView.hidden = YES;
                         mMaskView.clipsToBounds = NO;
                     }
-    
+     
                     completion:^(BOOL finished) {
                         CGRect rect = BEGIN_RECT;
                         rect.size.height = [priceTableViewController tableView].frame.size.height + mTotalLbl.frame.size.height;
@@ -162,7 +162,7 @@
     [[priceTableViewController tableView] setFrame:priceRect];
     CGRect totalRect = mTotalLbl.frame;
     totalRect.origin.x = 0;
-    totalRect.origin.y = priceRect.origin.y + priceRect.size.height;
+    totalRect.origin.y = priceRect.origin.y + priceRect.size.height - 15;
     [mTotalLbl setFrame:totalRect];
     CGRect checkRect = mCheckView.frame;
     checkRect.origin.y -= checkRect.size.height;
