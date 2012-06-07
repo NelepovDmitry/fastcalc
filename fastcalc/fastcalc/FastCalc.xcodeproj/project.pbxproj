@@ -45,6 +45,7 @@
 		847B60ED157CC97200BC8B89 /* PriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60EC157CC97200BC8B89 /* PriceCell.m */; };
 		847B60EF157CC9BB00BC8B89 /* PriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B60EE157CC9BB00BC8B89 /* PriceCell.xib */; };
 		84800197157F327D00457ADB /* chek_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 84800196157F327D00457ADB /* chek_top.png */; };
+		849B2FCF1580907100D53A99 /* icon-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 849B2FCE1580907100D53A99 /* icon-114x114.png */; };
 		84AC123C157F90B900FBD95F /* paper_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AC123B157F90B900FBD95F /* paper_texture.png */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +110,7 @@
 		847B60EC157CC97200BC8B89 /* PriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceCell.m; sourceTree = "<group>"; };
 		847B60EE157CC9BB00BC8B89 /* PriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceCell.xib; sourceTree = "<group>"; };
 		84800196157F327D00457ADB /* chek_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chek_top.png; sourceTree = "<group>"; };
+		849B2FCE1580907100D53A99 /* icon-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-114x114.png"; path = "../icon-114x114.png"; sourceTree = "<group>"; };
 		84AC123B157F90B900FBD95F /* paper_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paper_texture.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -288,6 +290,7 @@
 		847B60DC157CC65500BC8B89 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				849B2FCE1580907100D53A99 /* icon-114x114.png */,
 				84AC123B157F90B900FBD95F /* paper_texture.png */,
 				84800196157F327D00457ADB /* chek_top.png */,
 				847B60E1157CC6B100BC8B89 /* cell-off.png */,
@@ -388,6 +391,7 @@
 				2FA882D7157D46E5005DF341 /* DDMenuController.entitlements in Resources */,
 				84800197157F327D00457ADB /* chek_top.png in Resources */,
 				84AC123C157F90B900FBD95F /* paper_texture.png in Resources */,
+				849B2FCF1580907100D53A99 /* icon-114x114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
