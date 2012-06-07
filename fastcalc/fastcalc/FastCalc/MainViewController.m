@@ -135,20 +135,12 @@
     rect.size.height = [priceTableViewController tableView].frame.size.height + mPriceView.frame.size.height;
     rect.origin.y = rect.origin.y - rect.size.height;
     [mCheckView setFrame:rect];
-    NSLog(@"[priceTableViewController tableView].frame %@", NSStringFromCGRect([priceTableViewController tableView].frame));
-    NSLog(@"mPriceView %@", NSStringFromCGRect(mPriceView.frame));
-    //NSLog(@"mPaperBottomImageView %@", NSStringFromCGRect(mPaperBottomImageView.frame));
-    NSLog(@"mCheck %@", NSStringFromCGRect(mCheckView.frame));
-    
 }
 
 - (void)newCheck {
     [UIView transitionWithView:mCheckView
-     
                       duration:1
-     
                        options:UIViewAnimationOptionTransitionCurlUp
-     
                     animations:^{
                         mCheckView.hidden = YES;
                         mMaskView.clipsToBounds = NO;

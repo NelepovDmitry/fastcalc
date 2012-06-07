@@ -126,7 +126,7 @@
 										<string key="NSFrameSize">{288, 370}</string>
 										<reference key="NSSuperview" ref="696399524"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="484955708"/>
+										<reference key="NSNextKeyView" ref="598479531"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<object class="NSColor" key="IBUIBackgroundColor" id="62128074">
 											<int key="NSColorSpace">3</int>
@@ -142,17 +142,17 @@
 										<float key="IBUISectionHeaderHeight">22</float>
 										<float key="IBUISectionFooterHeight">22</float>
 									</object>
-									<object class="IBUIView" id="484955708">
+									<object class="IBUIView" id="598479531">
 										<reference key="NSNextResponder" ref="696399524"/>
 										<int key="NSvFlags">292</int>
 										<array class="NSMutableArray" key="NSSubviews">
 											<object class="IBUILabel" id="84019993">
-												<reference key="NSNextResponder" ref="484955708"/>
+												<reference key="NSNextResponder" ref="598479531"/>
 												<int key="NSvFlags">292</int>
 												<string key="NSFrameSize">{288, 43}</string>
-												<reference key="NSSuperview" ref="484955708"/>
+												<reference key="NSSuperview" ref="598479531"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="577228771"/>
+												<reference key="NSNextKeyView" ref="224267275"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<bool key="IBUIOpaque">NO</bool>
 												<bool key="IBUIClipsSubviews">YES</bool>
@@ -177,13 +177,13 @@
 													<int key="NSfFlags">16</int>
 												</object>
 											</object>
-											<object class="IBUIImageView" id="577228771">
-												<reference key="NSNextResponder" ref="484955708"/>
+											<object class="IBUIImageView" id="224267275">
+												<reference key="NSNextResponder" ref="598479531"/>
 												<int key="NSvFlags">292</int>
 												<string key="NSFrame">{{0, 35}, {288, 14}}</string>
-												<reference key="NSSuperview" ref="484955708"/>
+												<reference key="NSSuperview" ref="598479531"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="105567343"/>
+												<reference key="NSNextKeyView" ref="315875925"/>
 												<bool key="IBUIOpaque">NO</bool>
 												<bool key="IBUIClipsSubviews">YES</bool>
 												<int key="IBUIContentMode">4</int>
@@ -231,7 +231,7 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIImageView" id="105567343">
+					<object class="IBUIImageView" id="315875925">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{16, 436}, {288, 14}}</string>
@@ -394,7 +394,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">mPriceView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="484955708"/>
+						<reference key="destination" ref="598479531"/>
 					</object>
 					<int key="connectionID">60</int>
 				</object>
@@ -402,7 +402,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">mPaperBottomImageView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="577228771"/>
+						<reference key="destination" ref="224267275"/>
 					</object>
 					<int key="connectionID">63</int>
 				</object>
@@ -410,7 +410,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">mPaperTopImageView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="105567343"/>
+						<reference key="destination" ref="315875925"/>
 					</object>
 					<int key="connectionID">64</int>
 				</object>
@@ -513,7 +513,7 @@
 							<reference ref="97418279"/>
 							<reference ref="926368938"/>
 							<reference ref="461678569"/>
-							<reference ref="105567343"/>
+							<reference ref="315875925"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Main Scroll View</string>
@@ -598,7 +598,7 @@
 						<reference key="object" ref="696399524"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="658427827"/>
-							<reference ref="484955708"/>
+							<reference ref="598479531"/>
 						</array>
 						<reference key="parent" ref="461678569"/>
 						<string key="objectName">Price View</string>
@@ -611,10 +611,10 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">59</int>
-						<reference key="object" ref="484955708"/>
+						<reference key="object" ref="598479531"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="84019993"/>
-							<reference ref="577228771"/>
+							<reference ref="224267275"/>
 						</array>
 						<reference key="parent" ref="696399524"/>
 						<string key="objectName">Price View</string>
@@ -622,13 +622,13 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">36</int>
 						<reference key="object" ref="84019993"/>
-						<reference key="parent" ref="484955708"/>
+						<reference key="parent" ref="598479531"/>
 						<string key="objectName">Price Label</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">61</int>
-						<reference key="object" ref="577228771"/>
-						<reference key="parent" ref="484955708"/>
+						<reference key="object" ref="224267275"/>
+						<reference key="parent" ref="598479531"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">32</int>
@@ -638,7 +638,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">62</int>
-						<reference key="object" ref="105567343"/>
+						<reference key="object" ref="315875925"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
