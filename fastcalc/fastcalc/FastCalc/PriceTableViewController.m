@@ -103,7 +103,6 @@
 - (void)goToTop:(BOOL)toTop {
     if(COUNT > 8) {
         [mTableView setFrame: CGRectMake(0, 0, mTableView.frame.size.width, BEGIN_HEIGHT)];
-        mTableView.scrollEnabled = YES;
     } else {
         //set size from count of cells
         mTableView.scrollEnabled = NO;
@@ -116,9 +115,15 @@
     if(toTop) {
         NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+        if(COUNT > 8) {
+            mTableView.scrollEnabled = YES;
+        } else {
+            mTableView.scrollEnabled = NO;
+        }
     } else {
         NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:COUNT - 1 inSection:0];
         [[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        mTableView.scrollEnabled = NO;
     }
 }
 

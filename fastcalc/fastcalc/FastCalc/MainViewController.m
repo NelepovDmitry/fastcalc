@@ -177,13 +177,11 @@
         CGPoint topOffset = CGPointMake(0, 0);
         [mMainView setContentOffset:topOffset animated:YES];
         [priceTableViewController goToTop:YES];
-        [priceTableViewController tableView].scrollEnabled = YES;
         [appDelegate.viewController disableGestureRecognizer:YES];
     } else if (gesture.direction == UISwipeGestureRecognizerDirectionUp) {
         CGPoint bottomOffset =  CGPointMake(0, mMainView.contentSize.height - mMainView.frame.size.height);
         [mMainView setContentOffset:bottomOffset animated:YES];
         [priceTableViewController goToTop:NO];
-        [priceTableViewController tableView].scrollEnabled = NO;
         [appDelegate.viewController disableGestureRecognizer:NO];
     } else if(gesture.direction == UISwipeGestureRecognizerDirectionLeft) {
         [self newCheck];
