@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuTableViewController : UITableViewController
+@interface MenuTableViewController : UITableViewController {
+    NSMutableArray *mArrayOfProducts;
+}
+
+- (void)nextMenu;
 
 @end

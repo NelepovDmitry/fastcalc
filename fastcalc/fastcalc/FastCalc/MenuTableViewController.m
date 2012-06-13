@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    mArrayOfProducts = [[NSMutableArray alloc] init];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -47,6 +47,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)dealloc {
+    [mArrayOfProducts release];
+    [super dealloc];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -58,7 +63,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 15;
+    return mArrayOfProducts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -75,7 +80,7 @@
             }
         }
     }
-    //cell.textLabel.text = @"menu";
+    cell.textLabel.text = @"menu";
     return cell;
 }
 
@@ -132,6 +137,50 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+#pragma mark - Custom functions
+
+- (void)nextMenu {
+    [mArrayOfProducts removeAllObjects];
+    static int a = 0;
+    switch (a) {
+        case 0:
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            break;
+        case 1:
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            break;
+        case 2:
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];[mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];[mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            break;
+        default:
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
+            break;
+    }
+    [self.tableView reloadData];
+    a++;
+    a %= 4;
 }
 
 @end

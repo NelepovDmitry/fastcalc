@@ -184,6 +184,8 @@
     mPaperTopImageView.hidden = NO;
 }
 
+#pragma mark - Actions
+
 - (IBAction)gestureTaped:(id)sender {
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     UISwipeGestureRecognizer *gesture = sender;
@@ -200,6 +202,10 @@
     } else if(gesture.direction == UISwipeGestureRecognizerDirectionLeft) {
         [self newCheck];
     }
+}
+
+- (IBAction)changeMenuClicked:(id)sender {
+    [menuTableViewController nextMenu];
 }
 
 @end

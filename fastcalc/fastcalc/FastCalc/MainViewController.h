@@ -28,6 +28,7 @@
 
 - (void)newCheck;
 - (IBAction)gestureTaped:(id)sender;
+- (IBAction)changeMenuClicked:(id)sender;
 
 @property (retain, nonatomic) IBOutlet PriceTableViewController *priceTableViewController;
 @property (retain, nonatomic) IBOutlet MenuTableViewController *menuTableViewController;
