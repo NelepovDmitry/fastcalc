@@ -81,6 +81,7 @@
 - (void)getBrandsFromData:(NSData *)data {
     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSDictionary *mainDict = [json JSONValue];
+    NSLog(@"mainDict %@", mainDict);
     NSNumber *cityId = [mainDict valueForKeyPath:@"response.city.object_id"];
     NSString *cityName = [mainDict valueForKeyPath:@"response.city.string_value"];
     mApplicationSingleton.idOfCity = cityId;
@@ -195,12 +196,6 @@
     MainViewController *rootViewController = [viewControllers objectAtIndex:0];
     [rootViewController.menuTableViewController requsetMenuById:numberId];
     [menuController showRootController:YES];
-    ///[controller.menuTableViewController requsetMenuById:numberId];
-    //UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-    
-    //[menuController setRootController:navController animated:YES];
 }
-
-
 
 @end
