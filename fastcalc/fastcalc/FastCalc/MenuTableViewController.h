@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class InternetUtils;
+
 @interface MenuTableViewController : UITableViewController {
     NSMutableArray *mArrayOfProducts;
+    
+    InternetUtils *mInternetUtils;
 }
 
 - (void)nextMenu;
+- (void)requsetMenuById:(NSNumber *)menuId;
 
 @end

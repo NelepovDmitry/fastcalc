@@ -12,6 +12,7 @@
 #import "ApplicationSingleton.h"
 #import "MenuViewController.h"
 #import "MainViewController.h"
+#import "MenuTableViewController.h"
 
 @interface ChooseViewController ()
 
@@ -101,9 +102,7 @@
     }
     [lastDict setObject:arrayOfMenus forKey:@"menus"];
     [mArrayOfBrands addObject:lastDict];
-    NSLog(@"lastDict %@", lastDict);
     [mBrandsTable reloadData];
-    //NSLog(@"json %@", [mainDict valueForKeyPath:@"response.brands"]);
 }
 
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getFastFoodsOnCity={%22city_name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22,%22locale%22:%22ru%22}
@@ -179,19 +178,27 @@
     }
     cell.textLabel.text = [objects objectForKey:@"string_value"];
     
-    
     return cell;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    MenuViewController *menuController = (MenuViewController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
-    MainViewController *controller = [[MainViewController alloc] init];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-    
-    [menuController setRootController:navController animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSArray *array = [[mArrayOfBrands objectAtIndex:indexPath.section] objectForKey:@"menus"];
+    NSDictionary *objects = [array objectAtIndex:indexPath.row];
+    NSNumber *numberId =  [objects objectForKey:@"object_id"];
+    
+    MenuViewController *menuController = (MenuViewController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
+    UINavigationController *rootNavController = (UINavigationController *)menuController.rootViewController;
+    NSArray *viewControllers = rootNavController.viewControllers;
+    MainViewController *rootViewController = [viewControllers objectAtIndex:0];
+    [rootViewController.menuTableViewController requsetMenuById:numberId];
+    [menuController showRootController:YES];
+    ///[controller.menuTableViewController requsetMenuById:numberId];
+    //UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+    
+    //[menuController setRootController:navController animated:YES];
 }
 
 

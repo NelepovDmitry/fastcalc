@@ -8,8 +8,12 @@
 
 #import "MenuTableViewController.h"
 #import "MenuCell.h"
+#import "InternetUtils.h"
+#import "JSON.h"
 
 @interface MenuTableViewController ()
+
+- (void)getMenuItems:(NSData *)data;
 
 @end
 
@@ -28,6 +32,7 @@
 {
     [super viewDidLoad];
     mArrayOfProducts = [[NSMutableArray alloc] init];
+    mInternetUtils = [[InternetUtils alloc] init];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -49,6 +54,7 @@
 
 - (void)dealloc {
     [mArrayOfProducts release];
+    [mInternetUtils release];
     [super dealloc];
 }
 
@@ -181,6 +187,24 @@
     [self.tableView reloadData];
     a++;
     a %= 4;
+}
+
+//http://fastcalc.orionsource.ru/api/?apifastcalc.getMenuItems={menu_id:6}
+- (void)requsetMenuById:(NSNumber *)menuId {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setObject:menuId forKey:@"menu_id"];
+    [mInternetUtils makeURLRequestByNameResponser:@"getMenuItems:" 
+                                          urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
+                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getMenuItems"]
+                                        responder:self
+                             progressFunctionName:nil
+     ];
+}
+
+- (void)getMenuItems:(NSData *)data {
+    NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSDictionary *mainDict = [json JSONValue];
+    NSLog(@"mainDict %@", mainDict);
 }
 
 @end
