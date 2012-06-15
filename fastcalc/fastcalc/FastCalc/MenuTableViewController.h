@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MenuTableViewControllerDelegate <NSObject>
+
+- (void)getNewPrice:(NSNumber *)price;
+
+@end
+
 @class InternetUtils;
 
 @interface MenuTableViewController : UITableViewController {
@@ -19,6 +25,8 @@
     
     
 }
+
+@property (nonatomic, assign) id<MenuTableViewControllerDelegate> delegate;
 
 - (void)nextMenu;
 - (void)requsetMenuById:(NSNumber *)menuId;

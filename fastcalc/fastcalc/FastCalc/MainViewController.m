@@ -66,6 +66,8 @@
     mPaperBottomImageView = nil;
     [mPaperTopImageView release];
     mPaperTopImageView = nil;
+    [mPriceLbl release];
+    mPriceLbl = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -90,6 +92,7 @@
     [mPriceView release];
     [mPaperBottomImageView release];
     [mPaperTopImageView release];
+    [mPriceLbl release];
     [super dealloc];
 }
 
@@ -109,7 +112,7 @@
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgorund.png"]];
     mPriceView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
-    
+    menuTableViewController.delegate = self;
     
     
     //set scroll prop
@@ -140,6 +143,8 @@
 
 - (void)newCheck {
     [priceTableViewController clearCheck];
+    mPrice = 0;
+    mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
     [UIView transitionWithView:mCheckView
                       duration:1
                        options:UIViewAnimationOptionTransitionCurlUp
@@ -212,6 +217,17 @@
 
 - (IBAction)changeMenuClicked:(id)sender {
     [menuTableViewController nextMenu];
+}
+
+#pragma mark - MenuTableViewController Delegate
+
+- (void)getNewPrice:(NSNumber *)price {
+    mPrice += price.integerValue;
+    mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
+    [priceTableViewController addNewProduct];
+    //[priceTableViewController.tableView beginUpdates];
+    //[priceTableViewController.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
+    //[priceTableViewController.tableView endUpdates];
 }
 
 @end

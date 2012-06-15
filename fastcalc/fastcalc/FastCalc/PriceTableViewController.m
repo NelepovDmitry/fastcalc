@@ -94,6 +94,12 @@
     return cell;
 }
 
+/*- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [[self tableView] insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationTop];
+}*/
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -106,6 +112,14 @@
 }
 
 #pragma mark - Public Functions
+
+- (void)addNewProduct {
+    [mArrayOfProducts addObject:@"gev"];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
+    [self.tableView reloadData];
+    
+}
 
 - (void)goToTop:(BOOL)toTop {
     int count = mArrayOfProducts.count;

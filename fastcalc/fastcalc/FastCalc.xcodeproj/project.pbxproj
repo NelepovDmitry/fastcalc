@@ -316,6 +316,8 @@
 			isa = PBXGroup;
 			children = (
 				847B60DB157CBB7D00BC8B89 /* Main Controller */,
+				847B60EA157CC93800BC8B89 /* Menu Table View Controller */,
+				847B60E9157CC92800BC8B89 /* Price Table ViewController */,
 				847B60DA157CBB6900BC8B89 /* Choose controller */,
 			);
 			name = "Main Controllers";
@@ -337,8 +339,6 @@
 				847B60CE157C95DD00BC8B89 /* MainViewController.h */,
 				847B60CF157C95DD00BC8B89 /* MainViewController.m */,
 				847B60D0157C95DD00BC8B89 /* MainViewController.xib */,
-				847B60E9157CC92800BC8B89 /* Price Table ViewController */,
-				847B60EA157CC93800BC8B89 /* Menu Table View Controller */,
 			);
 			name = "Main Controller";
 			sourceTree = "<group>";

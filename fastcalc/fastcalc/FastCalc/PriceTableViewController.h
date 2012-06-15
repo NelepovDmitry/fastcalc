@@ -16,5 +16,6 @@
 
 - (void)clearCheck;
 - (void)goToTop:(BOOL)toTop;
+- (void)addNewProduct;
 
 @end

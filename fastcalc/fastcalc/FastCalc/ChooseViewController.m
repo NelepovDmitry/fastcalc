@@ -83,7 +83,6 @@
 - (void)getBrandsFromData:(NSData *)data {
     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSDictionary *mainDict = [json JSONValue];
-    NSLog(@"mainDict %@", mainDict);
     NSNumber *cityId = [mainDict valueForKeyPath:@"response.city.object_id"];
     NSString *cityName = [mainDict valueForKeyPath:@"response.city.string_value"];
     mApplicationSingleton.idOfCity = cityId;

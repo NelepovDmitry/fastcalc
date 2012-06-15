@@ -21,6 +21,8 @@
 
 @implementation MenuTableViewController
 
+@synthesize delegate;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -145,8 +147,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
+    NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
+    MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
+    [delegate getNewPrice:menuItem.menuPrice];
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
@@ -194,10 +198,8 @@
     
     for(NSDictionary *dictOfgroup in arrayOfGroups) {
         NSArray *objectValues = [dictOfgroup objectForKey:@"items"];
-        NSLog(@"objectValues %@", arrayOfGroups);
         NSMutableArray *arrayOfobjects = [NSMutableArray array];
         for(NSDictionary *objectValue in objectValues) {
-            NSLog(@"objectValue %@", objectValue);
             MenuItem *menuItem = [[MenuItem alloc] initWithArray:[objectValue objectForKey:@"objectValues"]];
             [arrayOfobjects addObject:menuItem];
             [menuItem release];
