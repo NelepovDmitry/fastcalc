@@ -12,6 +12,8 @@
 		2FA882DD157D48F0005DF341 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA882DC157D48F0005DF341 /* QuartzCore.framework */; };
 		844243CB157CCC6200F156A1 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844243CA157CCC6200F156A1 /* MenuCell.xib */; };
 		844243CF157CCC8000F156A1 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 844243CE157CCC8000F156A1 /* MenuCell.m */; };
+		8453CD22158B75E3009E60C5 /* UDBObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8453CD21158B75E3009E60C5 /* UDBObject.m */; };
+		8453CD25158B79AE009E60C5 /* Brand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8453CD24158B79AE009E60C5 /* Brand.m */; };
 		8478CF4D1579EF73001F0054 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478CF421579EF73001F0054 /* NSObject+SBJSON.m */; };
 		8478CF4E1579EF73001F0054 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478CF441579EF73001F0054 /* NSString+SBJSON.m */; };
 		8478CF4F1579EF73001F0054 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478CF461579EF73001F0054 /* SBJSON.m */; };
@@ -70,6 +72,10 @@
 		844243CA157CCC6200F156A1 /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
 		844243CD157CCC8000F156A1 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		844243CE157CCC8000F156A1 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
+		8453CD20158B75E3009E60C5 /* UDBObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UDBObject.h; sourceTree = "<group>"; };
+		8453CD21158B75E3009E60C5 /* UDBObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UDBObject.m; sourceTree = "<group>"; };
+		8453CD23158B79AE009E60C5 /* Brand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brand.h; sourceTree = "<group>"; };
+		8453CD24158B79AE009E60C5 /* Brand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Brand.m; sourceTree = "<group>"; };
 		8478CF401579EF73001F0054 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		8478CF411579EF73001F0054 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		8478CF421579EF73001F0054 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -164,6 +170,17 @@
 				2FA882DA157D4764005DF341 /* MenuViewController.m */,
 			);
 			name = Libs;
+			sourceTree = "<group>";
+		};
+		8453CD1E158B75BF009E60C5 /* Main Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8453CD20158B75E3009E60C5 /* UDBObject.h */,
+				8453CD21158B75E3009E60C5 /* UDBObject.m */,
+				8453CD23158B79AE009E60C5 /* Brand.h */,
+				8453CD24158B79AE009E60C5 /* Brand.m */,
+			);
+			name = "Main Classes";
 			sourceTree = "<group>";
 		};
 		8478CF3E1579EF64001F0054 /* JSON */ = {
@@ -265,6 +282,7 @@
 		84794E111578A1C2004010F7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8453CD1E158B75BF009E60C5 /* Main Classes */,
 				8478CF63157A12C7001F0054 /* Singletons */,
 				8478CF531579F0CC001F0054 /* Location Getter */,
 				8478CF3E1579EF64001F0054 /* JSON */,
@@ -473,6 +491,8 @@
 				847B60ED157CC97200BC8B89 /* PriceCell.m in Sources */,
 				844243CF157CCC8000F156A1 /* MenuCell.m in Sources */,
 				2FA882DB157D4764005DF341 /* MenuViewController.m in Sources */,
+				8453CD22158B75E3009E60C5 /* UDBObject.m in Sources */,
+				8453CD25158B79AE009E60C5 /* Brand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
