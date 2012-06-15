@@ -33,9 +33,9 @@
     return self;
 }
 
-- (id)getFieldValue:(NSString *)attrName attrFieldType:(NSString *)fielddType {
+- (id)getFieldValue:(NSString *)attrName attrFieldType:(NSString *)fieldType {
     NSDictionary *attribute = [mValues objectForKey:@"attrName"];
-    return [attribute objectForKey:@"fielddType"];
+    return [attribute objectForKey:fieldType];
 }
 
 @end
