@@ -14,6 +14,7 @@
 @interface MenuTableViewController ()
 
 - (void)getMenuItems:(NSData *)data;
+- (void)setMainProp;
 
 @end
 
@@ -31,8 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    mArrayOfProducts = [[NSMutableArray alloc] init];
-    mInternetUtils = [[InternetUtils alloc] init];
+    [self setMainProp];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -53,8 +53,9 @@
 }
 
 - (void)dealloc {
-    [mArrayOfProducts release];
+    [mArrayOfProductsNames release];
     [mInternetUtils release];
+    [mDictOfProducts release];
     [super dealloc];
 }
 
@@ -69,7 +70,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return mArrayOfProducts.count;
+    return mArrayOfProductsNames.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -145,48 +146,10 @@
      */
 }
 
-#pragma mark - Custom functions
+#pragma mark - Public functions
 
 - (void)nextMenu {
-    [mArrayOfProducts removeAllObjects];
-    static int a = 0;
-    switch (a) {
-        case 0:
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            break;
-        case 1:
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            break;
-        case 2:
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];[mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];[mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            break;
-        default:
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            [mArrayOfProducts addObject:[NSNumber numberWithInt:4]];
-            break;
-    }
-    [self.tableView reloadData];
-    a++;
-    a %= 4;
+    
 }
 
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getMenuItems={menu_id:6}
@@ -201,10 +164,34 @@
      ];
 }
 
+#pragma mark - Private functions
+
+- (void)setMainProp {
+    mArrayOfProductsNames = [[NSMutableArray alloc] init];
+    mInternetUtils = [[InternetUtils alloc] init];
+    mDictOfProducts = [[NSMutableDictionary alloc] init];
+    indexOfMenu = 0;
+}
+
 - (void)getMenuItems:(NSData *)data {
+    [mDictOfProducts removeAllObjects];
+    [mArrayOfProductsNames removeAllObjects];
+    
     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSDictionary *mainDict = [json JSONValue];
-    NSLog(@"mainDict %@", mainDict);
+    NSArray *arrayOfGroups = [mainDict valueForKeyPath:@"response.groups"];
+    
+    for(NSDictionary *dictOfgroup in arrayOfGroups) {
+        NSArray *objectValues = [dictOfgroup objectForKey:@"items"];
+        NSMutableArray *arrayOfibjects = [NSMutableArray array];
+        for(NSDictionary *objectValue in objectValues) {
+            NSLog(@"objectValue %@", objectValue);
+            [arrayOfibjects addObject:[objectValue objectForKey:@"objectValues"]];
+        }
+        [mArrayOfProductsNames addObject:[dictOfgroup objectForKey:@"groupname"]];
+        [mDictOfProducts setObject:arrayOfibjects forKey:[dictOfgroup objectForKey:@"groupname"]];
+    }
+    [self.tableView reloadData];
 }
 
 @end

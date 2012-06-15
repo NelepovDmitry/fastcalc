@@ -11,9 +11,13 @@
 @class InternetUtils;
 
 @interface MenuTableViewController : UITableViewController {
-    NSMutableArray *mArrayOfProducts;
+    NSMutableArray *mArrayOfProductsNames;
+    NSMutableDictionary *mDictOfProducts;
+    NSInteger indexOfMenu;
     
     InternetUtils *mInternetUtils;
+    
+    
 }
 
 - (void)nextMenu;
