@@ -11,6 +11,8 @@
 
 @implementation UDBObject
 
+@synthesize objectId;
+
 - (id)init {
     self = [super init];
     if(self) {
@@ -22,7 +24,7 @@
 - (id)initWithArray:(NSArray *)array {
     self = [super init];
     if(self) {
-        mObjectId = [[array objectAtIndex:0] objectForKey:@"object_id"];
+        objectId = [[array objectAtIndex:0] objectForKey:@"object_id"];
         mValues = [[NSMutableDictionary alloc] init];
         for (int i = 0; i < array.count; ++i) {
             NSDictionary *oneValue = [array objectAtIndex:i];

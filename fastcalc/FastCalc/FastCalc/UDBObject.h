@@ -16,9 +16,10 @@
 #define REFERENCE_VALUE @"reference_value"
 
 @interface UDBObject : NSObject {
-    NSNumber *mObjectId;
     NSMutableDictionary *mValues;
 }
+
+@property (nonatomic, retain) NSNumber *objectId;
 
 - (id)initWithArray:(NSArray *)array;
 - (id)getFieldValue:(NSString *)attrName attrFieldType:(NSString *)fielddType;

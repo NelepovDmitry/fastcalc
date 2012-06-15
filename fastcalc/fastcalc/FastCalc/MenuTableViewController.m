@@ -160,7 +160,7 @@
 #pragma mark - Public functions
 
 - (void)nextMenu {
-    
+    indexOfMenu = (indexOfMenu + 1) % mDictOfProducts.count;
 }
 
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getMenuItems={menu_id:6}

@@ -13,6 +13,8 @@
 #import "MenuViewController.h"
 #import "MainViewController.h"
 #import "MenuTableViewController.h"
+#import "Brand.h"
+#import "BrandMenu.h"
 
 @interface ChooseViewController ()
 
@@ -94,12 +96,9 @@
     NSMutableArray *arrayOfMenus = [NSMutableArray array];
     for(NSDictionary *brand in [arrayOfBrands objectAtIndex:0]) {
         NSArray *objectValues = [brand objectForKey:@"objectValues"];
-        for(NSDictionary *objectValue in objectValues) {
-            NSString *attrname = [objectValue objectForKey:@"attrname"];
-            if([attrname isEqualToString:@"Menu info_Name"]) {
-                [arrayOfMenus addObject:objectValue];
-            }
-        }
+        BrandMenu *brand = [[BrandMenu alloc] initWithArray:objectValues];
+        [arrayOfMenus addObject:brand];
+        [brand release];
     }
     [lastDict setObject:arrayOfMenus forKey:@"menus"];
     [mArrayOfBrands addObject:lastDict];
@@ -164,7 +163,7 @@
     static NSString *CellIdentifier = @"SearchListCell";
     
     NSArray *array = [[mArrayOfBrands objectAtIndex:indexPath.section] objectForKey:@"menus"];
-    NSDictionary *objects = [array objectAtIndex:indexPath.row];
+    BrandMenu *brand = [array objectAtIndex:indexPath.row];
     
     UITableViewCell *cell= (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -177,7 +176,7 @@
             }
         }*/
     }
-    cell.textLabel.text = [objects objectForKey:@"string_value"];
+    cell.textLabel.text = brand.brandMenuName;
     
     return cell;
 }
@@ -187,8 +186,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSArray *array = [[mArrayOfBrands objectAtIndex:indexPath.section] objectForKey:@"menus"];
-    NSDictionary *objects = [array objectAtIndex:indexPath.row];
-    NSNumber *numberId =  [objects objectForKey:@"object_id"];
+    BrandMenu *brandMenu = [array objectAtIndex:indexPath.row];
+    NSNumber *numberId =  brandMenu.objectId;
     
     MenuViewController *menuController = (MenuViewController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
     UINavigationController *rootNavController = (UINavigationController *)menuController.rootViewController;
