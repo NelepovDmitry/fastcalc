@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#define COUNT 4
 #define BEGIN_HEIGHT 370
 
 @interface PriceTableViewController : UITableViewController {
-    
-    IBOutlet UITableView *mTableView;
+    NSMutableArray *mArrayOfProducts;
 }
 
+- (void)clearCheck;
 - (void)goToTop:(BOOL)toTop;
 
 @end

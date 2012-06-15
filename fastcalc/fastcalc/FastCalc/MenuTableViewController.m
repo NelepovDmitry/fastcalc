@@ -76,7 +76,6 @@
         NSArray *arrayOfBrands = [mDictOfProducts objectForKey:key];
         count = arrayOfBrands.count;
     }
-   
     return count;
 }
 

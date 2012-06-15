@@ -139,6 +139,7 @@
 }
 
 - (void)newCheck {
+    [priceTableViewController clearCheck];
     [UIView transitionWithView:mCheckView
                       duration:1
                        options:UIViewAnimationOptionTransitionCurlUp

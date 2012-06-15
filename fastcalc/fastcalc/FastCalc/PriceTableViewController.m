@@ -11,6 +11,8 @@
 
 @interface PriceTableViewController ()
 
+- (void)setTableViewFrameByCells;
+
 @end
 
 @implementation PriceTableViewController
@@ -35,7 +37,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self tableView].backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
+    mArrayOfProducts = [[NSMutableArray alloc] init];
+    [mArrayOfProducts addObject:@"кофе"];
+    [mArrayOfProducts addObject:@"чизбургер"];
+    [mArrayOfProducts addObject:@"мак"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -65,7 +71,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int count = COUNT;
+    int count = mArrayOfProducts.count;
     return count;
 }
 
@@ -83,7 +89,7 @@
             }
         }
     }
-    cell.textLabel.text = @"data";
+    cell.textLabel.text = [mArrayOfProducts objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -94,36 +100,52 @@
 }
 
 - (void)dealloc {
-    [mTableView release];
+    [mArrayOfProducts release];
     [super dealloc];
 }
 
-#pragma mark - Custom Functions
+#pragma mark - Public Functions
 
 - (void)goToTop:(BOOL)toTop {
-    if(COUNT > 8) {
-        [mTableView setFrame: CGRectMake(0, 0, mTableView.frame.size.width, BEGIN_HEIGHT)];
-    } else {
-        //set size from count of cells
-        mTableView.scrollEnabled = NO;
-        CGRect frame = [mTableView frame];
-        frame.size.height = [[mTableView dataSource] tableView: mTableView numberOfRowsInSection: 0] *
-        [[mTableView delegate] tableView: mTableView heightForRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
-        frame.origin.y = 0;
-        [mTableView setFrame: frame];
-    }
-    if(toTop) {
-        [mTableView setContentOffset:CGPointZero animated:YES];
-        if(COUNT > 8) {
-            mTableView.scrollEnabled = YES;
+    int count = mArrayOfProducts.count;
+    if(count > 0) {
+        if(count > 8) {
+            [self.tableView setFrame: CGRectMake(0, 0, self.tableView.frame.size.width, BEGIN_HEIGHT)];
         } else {
-            mTableView.scrollEnabled = NO;
+            //set size from count of cells
+            self.tableView.scrollEnabled = NO;
+            [self setTableViewFrameByCells];
         }
-    } else {
-        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:COUNT - 1 inSection:0];
-        [mTableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-        mTableView.scrollEnabled = NO;
+        if(toTop) {
+            [self.tableView setContentOffset:CGPointZero animated:YES];
+            if(count > 8) {
+                self.tableView.scrollEnabled = YES;
+            } else {
+                self.tableView.scrollEnabled = NO;
+            }
+        } else {
+            NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:count - 1 inSection:0];
+            [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+            self.tableView.scrollEnabled = NO;
+        }
     }
+}
+
+- (void)clearCheck {
+    [mArrayOfProducts removeAllObjects];
+    [mArrayOfProducts addObject:@"Спасибо за покупку"];
+    [self.tableView reloadData];
+    [self setTableViewFrameByCells];
+}
+
+#pragma mark - Private Functions
+
+- (void)setTableViewFrameByCells {
+    CGRect frame = [self.tableView frame];
+    frame.size.height = [[self.tableView dataSource] tableView: self.tableView numberOfRowsInSection: 0] *
+    [[self.tableView delegate] tableView: self.tableView heightForRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
+    frame.origin.y = 0;
+    [self.tableView setFrame: frame];
 }
 
 @end
