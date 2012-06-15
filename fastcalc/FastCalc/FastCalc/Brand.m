@@ -11,8 +11,8 @@
 @implementation Brand
 @synthesize brandName;
 
-- (id)initWithDictionary:(NSArray *)array {
-    self = [super initWithDictionary:array];
+- (id)initWithArray:(NSArray *)array {
+    self = [super initWithArray:array];
     if(self) {
         brandName = [self getFieldValue:@"Brand main info_Name" attrFieldType:STRING_VALUE];
     }

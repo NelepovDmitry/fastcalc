@@ -20,7 +20,7 @@
     NSMutableDictionary *mValues;
 }
 
-- (id)initWithDictionary:(NSArray *)array;
+- (id)initWithArray:(NSArray *)array;
 - (id)getFieldValue:(NSString *)attrName attrFieldType:(NSString *)fielddType;
 
 @end

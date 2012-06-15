@@ -19,7 +19,7 @@
     return self;
 }
 
-- (id)initWithDictionary:(NSArray *)array {
+- (id)initWithArray:(NSArray *)array {
     self = [super init];
     if(self) {
         mObjectId = [[array objectAtIndex:0] objectForKey:@"object_id"];
@@ -34,7 +34,7 @@
 }
 
 - (id)getFieldValue:(NSString *)attrName attrFieldType:(NSString *)fieldType {
-    NSDictionary *attribute = [mValues objectForKey:@"attrName"];
+    NSDictionary *attribute = [mValues objectForKey:attrName];
     return [attribute objectForKey:fieldType];
 }
 

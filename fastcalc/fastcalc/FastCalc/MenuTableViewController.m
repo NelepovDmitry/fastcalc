@@ -10,6 +10,7 @@
 #import "MenuCell.h"
 #import "InternetUtils.h"
 #import "JSON.h"
+#import "MenuItem.h"
 
 @interface MenuTableViewController ()
 
@@ -85,8 +86,7 @@
     
     NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
     NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
-    NSArray *arrayOfAttributes = [arrayOfProducts objectAtIndex:indexPath.row];
-    
+    MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
     MenuCell *cell= (MenuCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[MenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -98,7 +98,7 @@
             }
         }
     }
-    cell.textLabel.text = @"menu";
+    cell.textLabel.text = menuItem.menuName;
     return cell;
 }
 
@@ -194,13 +194,16 @@
     
     for(NSDictionary *dictOfgroup in arrayOfGroups) {
         NSArray *objectValues = [dictOfgroup objectForKey:@"items"];
-        NSMutableArray *arrayOfibjects = [NSMutableArray array];
+        NSLog(@"objectValues %@", arrayOfGroups);
+        NSMutableArray *arrayOfobjects = [NSMutableArray array];
         for(NSDictionary *objectValue in objectValues) {
             NSLog(@"objectValue %@", objectValue);
-            [arrayOfibjects addObject:[objectValue objectForKey:@"objectValues"]];
+            MenuItem *menuItem = [[MenuItem alloc] initWithArray:[objectValue objectForKey:@"objectValues"]];
+            [arrayOfobjects addObject:menuItem];
+            [menuItem release];
         }
         [mArrayOfProductsNames addObject:[dictOfgroup objectForKey:@"groupname"]];
-        [mDictOfProducts setObject:arrayOfibjects forKey:[dictOfgroup objectForKey:@"groupname"]];
+        [mDictOfProducts setObject:arrayOfobjects forKey:[dictOfgroup objectForKey:@"groupname"]];
     }
     [self.tableView reloadData];
 }
