@@ -70,12 +70,22 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return mArrayOfProductsNames.count;
+    int count = 0;
+    if(mArrayOfProductsNames.count > indexOfMenu) {
+        NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
+        NSArray *arrayOfBrands = [mDictOfProducts objectForKey:key];
+        count = arrayOfBrands.count;
+    }
+   
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MenuCell";
+    
+    NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
+    NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
     MenuCell *cell= (MenuCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[MenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
