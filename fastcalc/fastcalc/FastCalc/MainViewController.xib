@@ -63,6 +63,7 @@
 						<string key="NSFrame">{{15, 550}, {288, 264}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
@@ -123,7 +124,7 @@
 									<object class="IBUITableView" id="658427827">
 										<reference key="NSNextResponder" ref="696399524"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{0, 5}, {288, 348}}</string>
+										<string key="NSFrame">{{0, 5}, {288, 356}}</string>
 										<reference key="NSSuperview" ref="696399524"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="267428017"/>
@@ -195,7 +196,7 @@
 												</object>
 											</object>
 										</array>
-										<string key="NSFrame">{{0, 352}, {288, 55}}</string>
+										<string key="NSFrame">{{0, 361}, {288, 55}}</string>
 										<reference key="NSSuperview" ref="696399524"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="84019993"/>
@@ -680,12 +681,6 @@
 						<reference key="parent" ref="267428017"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">32</int>
-						<reference key="object" ref="97418279"/>
-						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Price View Mask</string>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">62</int>
 						<reference key="object" ref="731729578"/>
 						<reference key="parent" ref="191373211"/>
@@ -699,6 +694,12 @@
 						<int key="objectID">68</int>
 						<reference key="object" ref="560746229"/>
 						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">32</int>
+						<reference key="object" ref="97418279"/>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">Price View Mask</string>
 					</object>
 				</array>
 			</object>

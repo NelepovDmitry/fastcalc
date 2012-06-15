@@ -39,6 +39,7 @@
     [super viewDidLoad];
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     mArrayOfProducts = [[NSMutableArray alloc] init];
+    [mArrayOfProducts addObject:@"Спасибо за покупку"];
     [mArrayOfProducts addObject:@"кофе"];
     [mArrayOfProducts addObject:@"чизбургер"];
     [mArrayOfProducts addObject:@"мак"];

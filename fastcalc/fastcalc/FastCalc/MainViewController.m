@@ -148,6 +148,11 @@
                         mMaskView.clipsToBounds = NO;
                     }
                     completion:^(BOOL finished) {
+                        CGRect priceRect = [priceTableViewController tableView].frame;
+                        CGRect totalRect = mPriceView.frame;
+                        totalRect.origin.x = 0;
+                        totalRect.origin.y = priceRect.origin.y + priceRect.size.height;
+                        [mPriceView setFrame:totalRect];
                         CGRect rect = BEGIN_RECT;
                         rect.size.height = [priceTableViewController tableView].frame.size.height + mPriceView.frame.size.height;
                         mCheckView.frame = rect;
