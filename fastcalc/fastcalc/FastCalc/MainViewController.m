@@ -10,6 +10,7 @@
 #import "ChooseViewController.h"
 #import "PriceTableViewController.h"
 #import "MenuViewController.h"
+#import "MenuItem.h"
 
 @interface MainViewController ()
 
@@ -221,10 +222,10 @@
 
 #pragma mark - MenuTableViewController Delegate
 
-- (void)getNewPrice:(NSNumber *)price {
-    mPrice += price.integerValue;
+- (void)getNewPrice:(MenuItem *)menu {
+    mPrice += menu.menuPrice.integerValue;
     mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
-    [priceTableViewController addNewProduct];
+    [priceTableViewController addNewProduct:menu];
     //[priceTableViewController.tableView beginUpdates];
     //[priceTableViewController.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
     //[priceTableViewController.tableView endUpdates];

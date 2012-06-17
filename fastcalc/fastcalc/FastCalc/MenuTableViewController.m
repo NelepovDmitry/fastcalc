@@ -150,7 +150,7 @@
     NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
     NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
     MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
-    [delegate getNewPrice:menuItem.menuPrice];
+    [delegate getNewPrice:menuItem];
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

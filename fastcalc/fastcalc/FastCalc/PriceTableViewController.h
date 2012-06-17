@@ -10,12 +10,14 @@
 
 #define BEGIN_HEIGHT 370
 
+@class MenuItem;
+
 @interface PriceTableViewController : UITableViewController {
     NSMutableArray *mArrayOfProducts;
 }
 
 - (void)clearCheck;
 - (void)goToTop:(BOOL)toTop;
-- (void)addNewProduct;
+- (void)addNewProduct:(MenuItem *)menuItem;
 
 @end

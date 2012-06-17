@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class InternetUtils, MenuItem;
+
 @protocol MenuTableViewControllerDelegate <NSObject>
 
-- (void)getNewPrice:(NSNumber *)price;
+- (void)getNewPrice:(MenuItem *)price;
 
 @end
 
-@class InternetUtils;
 
 @interface MenuTableViewController : UITableViewController {
     NSMutableArray *mArrayOfProductsNames;
