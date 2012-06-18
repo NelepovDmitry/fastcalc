@@ -115,9 +115,9 @@
 #pragma mark - Public Functions
 
 - (void)addNewProduct:(MenuItem *)menuItem {
-    //NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
-    //[self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
     [mArrayOfProducts addObject:menuItem.menuName];
+    //NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:mArrayOfProducts.count - 1 inSection:0]];
+    //[self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationRight];
     [self.tableView reloadData];
     [self goToTop:NO];
 }
@@ -133,7 +133,6 @@
             [self setTableViewFrameByCells];
         }
         if(toTop) {
-            [self.tableView setContentOffset:CGPointZero animated:YES];
             if(count > 8) {
                 self.tableView.scrollEnabled = YES;
             } else {
