@@ -44,6 +44,7 @@
     [mArrayOfProducts addObject:@"кофе"];
     [mArrayOfProducts addObject:@"чизбургер"];
     [mArrayOfProducts addObject:@"мак"];
+    self.tableView.editing = YES;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -154,6 +155,10 @@
 }
 
 #pragma mark - Private Functions
+
+- (void)removePriduct {
+    
+}
 
 - (void)setTableViewFrameByCells {
     //[UIView beginAnimations : @"Display notif" context:nil];
