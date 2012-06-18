@@ -115,10 +115,9 @@
 #pragma mark - Public Functions
 
 - (void)addNewProduct:(MenuItem *)menuItem {
-    [mArrayOfProducts addObject:menuItem.menuName];
-    NSLog(@"mArrayOfProducts %@", mArrayOfProducts);
     //NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
     //[self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
+    [mArrayOfProducts addObject:menuItem.menuName];
     [self.tableView reloadData];
     [self goToTop:NO];
 }
@@ -158,16 +157,15 @@
 #pragma mark - Private Functions
 
 - (void)setTableViewFrameByCells {
-    [UIView beginAnimations : @"Display notif" context:nil];
-    [UIView setAnimationDuration:1.0f];
-    [UIView setAnimationBeginsFromCurrentState:FALSE];
+    //[UIView beginAnimations : @"Display notif" context:nil];
+    //[UIView setAnimationDuration:1.0f];
+    //[UIView setAnimationBeginsFromCurrentState:FALSE];
     CGRect frame = [self.tableView frame];
     frame.size.height = [[self.tableView dataSource] tableView: self.tableView numberOfRowsInSection: 0] *
     [[self.tableView delegate] tableView: self.tableView heightForRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
     frame.origin.y = 0;
     [self.tableView setFrame: frame];
-    NSLog(@"self.tableView %@", NSStringFromCGRect(self.tableView.frame));
-    [UIView commitAnimations];
+    //[UIView commitAnimations];
 }
 
 @end

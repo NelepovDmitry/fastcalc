@@ -19,6 +19,9 @@
 - (void)newPriceViewAnimate;
 - (void)finishAnimation;
 
+- (void)setTotalPriceFrame;
+- (void)setMainCheckViewFrame;
+
 @end
 
 @implementation MainViewController
@@ -154,11 +157,7 @@
                         mMaskView.clipsToBounds = NO;
                     }
                     completion:^(BOOL finished) {
-                        CGRect priceRect = [priceTableViewController tableView].frame;
-                        CGRect totalRect = mPriceView.frame;
-                        totalRect.origin.x = 0;
-                        totalRect.origin.y = priceRect.origin.y + priceRect.size.height;
-                        [mPriceView setFrame:totalRect];
+                        [self setTotalPriceFrame];
                         CGRect rect = BEGIN_RECT;
                         rect.size.height = [priceTableViewController tableView].frame.size.height + mPriceView.frame.size.height;
                         mCheckView.frame = rect;
@@ -179,16 +178,8 @@
     priceRect.origin.x = 0;
     priceRect.origin.y = 0;
     [[priceTableViewController tableView] setFrame:priceRect];
-    CGRect totalRect = mPriceView.frame;
-    totalRect.origin.x = 0;
-    totalRect.origin.y = priceRect.origin.y + priceRect.size.height;
-    [mPriceView setFrame:totalRect];
-    CGRect checkRect = mCheckView.frame;
-    checkRect.origin.y -= checkRect.size.height;
-    [mCheckView setFrame:checkRect];
-    //CGRect bottomRect = mPaperTopImageView.frame;
-    //bottomRect.origin.y = mCheckView.frame.origin.y;
-    //[mPaperTopImageView setFrame:bottomRect];
+    [self setTotalPriceFrame];
+    [self setMainCheckViewFrame];
     [UIView commitAnimations];
 }
 
@@ -226,9 +217,28 @@
     mPrice += menu.menuPrice.integerValue;
     mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
     [priceTableViewController addNewProduct:menu];
-    //[priceTableViewController.tableView beginUpdates];
-    //[priceTableViewController.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
-    //[priceTableViewController.tableView endUpdates];
+    
+    [self setTotalPriceFrame];
+    CGRect rect = BEGIN_RECT;
+    rect.size.height = [priceTableViewController tableView].frame.size.height + mPriceView.frame.size.height;
+    mCheckView.frame = rect;
+    [self setMainCheckViewFrame];
+}
+
+#pragma mark - Set Frames Functions
+
+- (void)setTotalPriceFrame {
+    CGRect priceRect = [priceTableViewController tableView].frame;
+    CGRect totalRect = mPriceView.frame;
+    totalRect.origin.x = 0;
+    totalRect.origin.y = priceRect.origin.y + priceRect.size.height;
+    [mPriceView setFrame:totalRect];
+}
+
+- (void)setMainCheckViewFrame {
+    CGRect checkRect = mCheckView.frame;
+    checkRect.origin.y -= checkRect.size.height;
+    [mCheckView setFrame:checkRect];
 }
 
 @end
