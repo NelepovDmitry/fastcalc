@@ -15,6 +15,7 @@
 #import "MenuTableViewController.h"
 #import "Brand.h"
 #import "BrandMenu.h"
+#import "EGOCache.h"
 
 @interface ChooseViewController ()
 
@@ -70,6 +71,7 @@
     mApplicationSingleton = [ApplicationSingleton createSingleton];
     mArrayOfBrands = [[NSMutableArray alloc] init];
     mLocationGetter = [[MLocationGetter alloc] init];
+    mCache = [EGOCache currentCache];
     mLocationGetter.delegate = self;
     [mLocationGetter startUpdates];
     isLoadingAddress = true;
@@ -79,9 +81,22 @@
     [mBrandsTable.layer setBorderWidth:1.0];
 }
 
+- (void)getBrandsFromCacheById:(NSNumber *)brandId {
+    
+}
 
 - (void)getBrandsFromData:(NSData *)data {
     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    NSString* cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *storePath = [cachesDirectory stringByAppendingPathComponent:@"brands.json"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:storePath]) {
+        [data writeToFile:storePath atomically:YES];
+    }
+    
+    //NSLog(@"cachesDirectory %@", storePath);
+    
+    
     NSDictionary *mainDict = [json JSONValue];
     NSNumber *cityId = [mainDict valueForKeyPath:@"response.city.object_id"];
     NSString *cityName = [mainDict valueForKeyPath:@"response.city.string_value"];
@@ -106,15 +121,23 @@
 
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getFastFoodsOnCity={%22city_name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22,%22locale%22:%22ru%22}
 - (void)requestCity:(NSString *)cityName {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:cityName forKey:@"city_name"];
-    //http://rent.orionsource.ru/api?apirent.getUserLocation={"access_token":"","google_json":""}
-    [mInternetUtils makeURLRequestByNameResponser:@"getBrandsFromData:" 
-                                          urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
-                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getFastFoodsOnCity"]
-                                        responder:self
-                             progressFunctionName:nil
-     ];
+    
+    NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *storePath = [cachesDirectory stringByAppendingPathComponent:@"brands.json"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:storePath]) {
+        NSData *data = [NSData dataWithContentsOfFile:storePath];
+        [self getBrandsFromData:data];
+    } else {
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setObject:cityName forKey:@"city_name"];
+        //http://rent.orionsource.ru/api?apirent.getUserLocation={"access_token":"","google_json":""}
+        [mInternetUtils makeURLRequestByNameResponser:@"getBrandsFromData:" 
+                                              urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
+                                        requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getFastFoodsOnCity"]
+                                            responder:self
+                                 progressFunctionName:nil
+         ];
+    }
 }
 
 #pragma mark - Location Delegate 

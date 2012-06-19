@@ -43,6 +43,8 @@
     
     self.window.rootViewController = rootController;
     
+    [rootController showLeftController:YES];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

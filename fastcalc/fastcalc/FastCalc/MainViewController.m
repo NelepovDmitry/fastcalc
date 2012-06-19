@@ -11,6 +11,7 @@
 #import "PriceTableViewController.h"
 #import "MenuViewController.h"
 #import "MenuItem.h"
+#import "EGOCache.h"
 
 @interface MainViewController ()
 
@@ -42,6 +43,7 @@
     [super viewDidLoad];
     [self setMainProp];
     [self initGestureProp];
+    
 }
 
 - (void)viewDidUnload
