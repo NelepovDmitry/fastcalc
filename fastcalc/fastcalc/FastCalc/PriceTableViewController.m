@@ -13,10 +13,13 @@
 @interface PriceTableViewController ()
 
 - (void)setTableViewFrameByCells;
+- (void)removeProduct;
 
 @end
 
 @implementation PriceTableViewController
+
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,11 +43,9 @@
     [super viewDidLoad];
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     mArrayOfProducts = [[NSMutableArray alloc] init];
-    [mArrayOfProducts addObject:@"Спасибо за покупку"];
-    [mArrayOfProducts addObject:@"кофе"];
-    [mArrayOfProducts addObject:@"чизбургер"];
-    [mArrayOfProducts addObject:@"мак"];
-    self.tableView.editing = YES;
+    [mArrayOfProducts addObject:[MenuItem menuItemWithName:@"Спасибо за покупку" price:[NSNumber numberWithInt:0]]];
+    //[mArrayOfProducts addObject:[MenuItem menuItemWithName:@"чизбургер" price:[NSNumber numberWithInt:12]]];
+    //[mArrayOfProducts addObject:[MenuItem menuItemWithName:@"мак" price:[NSNumber numberWithInt:12]]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -81,7 +82,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     static NSString *CellIdentifier = @"PriceCell";
-    PriceCell *cell= (PriceCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    PriceCell *cell= (PriceCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[PriceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         NSArray *array = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
@@ -91,8 +93,11 @@
                 break;
             }
         }
+        cell.deleteBtn.tag = indexPath.row;
+        [cell.deleteBtn addTarget:self action:@selector(deleteAtIndex:) forControlEvents:UIControlEventTouchUpInside];
     }
-    cell.textLabel.text = [mArrayOfProducts objectAtIndex:indexPath.row];
+    MenuItem *menuItem = [mArrayOfProducts objectAtIndex:indexPath.row];
+    cell.textLabel.text = menuItem.menuName;
     return cell;
 }
 
@@ -105,7 +110,7 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)dealloc {
@@ -116,7 +121,7 @@
 #pragma mark - Public Functions
 
 - (void)addNewProduct:(MenuItem *)menuItem {
-    [mArrayOfProducts addObject:menuItem.menuName];
+    [mArrayOfProducts addObject:menuItem];
     //NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:mArrayOfProducts.count - 1 inSection:0]];
     //[self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationRight];
     [self.tableView reloadData];
@@ -149,14 +154,14 @@
 
 - (void)clearCheck {
     [mArrayOfProducts removeAllObjects];
-    [mArrayOfProducts addObject:@"Спасибо за покупку"];
+    [mArrayOfProducts addObject:[MenuItem menuItemWithName:@"Спасибо за покупку" price:[NSNumber numberWithInt:0]]];
     [self.tableView reloadData];
     [self setTableViewFrameByCells];
 }
 
 #pragma mark - Private Functions
 
-- (void)removePriduct {
+- (void)removeProduct {
     
 }
 
@@ -170,6 +175,20 @@
     frame.origin.y = 0;
     [self.tableView setFrame: frame];
     //[UIView commitAnimations];
+}
+
+#pragma  mark - Price Cell Delegate 
+
+- (void)deleteAtIndex:(id)sender {
+    UIButton *btn = sender;
+    MenuItem *menuItem = [mArrayOfProducts objectAtIndex:btn.tag];
+    [mArrayOfProducts removeObjectAtIndex:btn.tag];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:btn.tag inSection:0]];
+    [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView reloadData];
+    [self goToTop:NO];
+    
+    [delegate deleteProductWithPrice:menuItem];
 }
 
 @end

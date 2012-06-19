@@ -21,4 +21,11 @@
     return self;
 }
 
++ (id)menuItemWithName:(NSString *)name price:(NSNumber *)price {
+    MenuItem *menuItem = [[[MenuItem alloc] init] autorelease];
+    menuItem.menuName = name;
+    menuItem.menuPrice = price;
+    return menuItem;
+}
+
 @end

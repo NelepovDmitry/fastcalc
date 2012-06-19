@@ -10,4 +10,6 @@
 
 @interface PriceCell : UITableViewCell
 
+@property (retain, nonatomic) IBOutlet UIButton *deleteBtn;
+
 @end

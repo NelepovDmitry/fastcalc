@@ -117,7 +117,7 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgorund.png"]];
     mPriceView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     menuTableViewController.delegate = self;
-    
+    priceTableViewController.delegate = self;
     
     //set scroll prop
     [mMainView setContentSize:CGSizeMake(320, 830)];
@@ -218,6 +218,18 @@
     mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
     [priceTableViewController addNewProduct:menu];
     
+    [self setTotalPriceFrame];
+    CGRect rect = BEGIN_RECT;
+    rect.size.height = [priceTableViewController tableView].frame.size.height + mPriceView.frame.size.height;
+    mCheckView.frame = rect;
+    [self setMainCheckViewFrame];
+}
+
+#pragma mark - PriceTableViewController Delegate
+
+- (void)deleteProductWithPrice:(MenuItem *)menuItem {
+    mPrice -= menuItem.menuPrice.integerValue;
+    mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
     [self setTotalPriceFrame];
     CGRect rect = BEGIN_RECT;
     rect.size.height = [priceTableViewController tableView].frame.size.height + mPriceView.frame.size.height;

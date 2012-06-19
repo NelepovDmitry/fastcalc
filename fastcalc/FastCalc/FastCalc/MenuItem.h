@@ -14,4 +14,6 @@
 @property (nonatomic, retain) NSString *menuName;
 @property (nonatomic, retain) NSNumber *menuPrice;
 
++ (id)menuItemWithName:(NSString *)name price:(NSNumber *)price;
+
 @end

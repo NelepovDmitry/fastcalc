@@ -86,9 +86,6 @@
 {
     static NSString *CellIdentifier = @"MenuCell";
     
-    NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
-    NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
-    MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
     MenuCell *cell= (MenuCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[MenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -100,6 +97,10 @@
             }
         }
     }
+    
+    NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
+    NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
+    MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
     cell.textLabel.text = menuItem.menuName;
     return cell;
 }

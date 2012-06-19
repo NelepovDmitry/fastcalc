@@ -12,9 +12,17 @@
 
 @class MenuItem;
 
+@protocol PriceTableViewControllerDelegate
+
+- (void)deleteProductWithPrice:(MenuItem *)menuItem;
+
+@end
+
 @interface PriceTableViewController : UITableViewController {
     NSMutableArray *mArrayOfProducts;
 }
+
+@property (retain, nonatomic) id<PriceTableViewControllerDelegate> delegate;
 
 - (void)clearCheck;
 - (void)goToTop:(BOOL)toTop;

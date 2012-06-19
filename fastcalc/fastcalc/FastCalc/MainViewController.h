@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "MenuTableViewController.h"
+#import "PriceTableViewController.h"
 
 #define BEGIN_RECT CGRectMake(0, 416, 288, 416)
 
-@class PriceTableViewController;
 
-@interface MainViewController : UIViewController <MenuTableViewControllerDelegate> {
+@interface MainViewController : UIViewController <MenuTableViewControllerDelegate, PriceTableViewControllerDelegate> {
     IBOutlet UIView *mAnimationView;
     IBOutlet UISwipeGestureRecognizer *mGestureRecognizerDown;
     IBOutlet UISwipeGestureRecognizer *mGestureRecognizerUp;
