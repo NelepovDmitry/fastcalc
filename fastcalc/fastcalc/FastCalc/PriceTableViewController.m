@@ -13,7 +13,6 @@
 @interface PriceTableViewController ()
 
 - (void)setTableViewFrameByCells;
-- (void)removeProduct;
 
 @end
 
@@ -161,10 +160,6 @@
 
 #pragma mark - Private Functions
 
-- (void)removeProduct {
-    
-}
-
 - (void)setTableViewFrameByCells {
     //[UIView beginAnimations : @"Display notif" context:nil];
     //[UIView setAnimationDuration:1.0f];
@@ -184,7 +179,7 @@
     MenuItem *menuItem = [mArrayOfProducts objectAtIndex:btn.tag];
     [mArrayOfProducts removeObjectAtIndex:btn.tag];
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:btn.tag inSection:0]];
-    [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
     [self.tableView reloadData];
     [self goToTop:NO];
     
