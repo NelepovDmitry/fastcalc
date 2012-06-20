@@ -36,4 +36,23 @@
     [super dealloc];
 }
 
+#pragma mark - Public functions
+
+
+
+- (void)updateSettings {
+    NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
+    [prefs synchronize];
+    
+    self.idOfCity = [NSNumber numberWithInt:[prefs integerForKey:ID_OF_CITY]];
+    self.nameOfCity = [prefs stringForKey:NAME_OF_CITY];
+}
+
+- (void)commitSettings {
+    NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setInteger:idOfCity.intValue forKey:ID_OF_CITY];
+    [prefs setObject:nameOfCity forKey:NAME_OF_CITY];
+    [prefs synchronize];
+}
+
 @end

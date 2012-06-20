@@ -8,11 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+#define ID_OF_CITY @"id_of_city"
+#define NAME_OF_CITY @"name_of_city"
+
 @interface ApplicationSingleton : NSObject
 
 + (ApplicationSingleton *)createSingleton;
 
 @property (nonatomic, retain) NSNumber *idOfCity;
 @property (nonatomic, retain) NSString *nameOfCity;
+
+- (void)updateSettings;
+- (void)commitSettings;
 
 @end

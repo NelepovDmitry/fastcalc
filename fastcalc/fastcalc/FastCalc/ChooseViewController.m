@@ -15,13 +15,13 @@
 #import "MenuTableViewController.h"
 #import "Brand.h"
 #import "BrandMenu.h"
-#import "EGOCache.h"
 
 @interface ChooseViewController ()
 
 - (void)initPrivate;
 - (void)requestCity:(NSString *)cityName;
 - (void)getBrandsFromData:(NSData *)data;
+
 
 @end
 
@@ -71,7 +71,6 @@
     mApplicationSingleton = [ApplicationSingleton createSingleton];
     mArrayOfBrands = [[NSMutableArray alloc] init];
     mLocationGetter = [[MLocationGetter alloc] init];
-    mCache = [EGOCache currentCache];
     mLocationGetter.delegate = self;
     [mLocationGetter startUpdates];
     isLoadingAddress = true;
@@ -102,6 +101,7 @@
     NSString *cityName = [mainDict valueForKeyPath:@"response.city.string_value"];
     mApplicationSingleton.idOfCity = cityId;
     mApplicationSingleton.nameOfCity = cityName;
+    [mApplicationSingleton commitSettings];
     NSArray *arrayOfBrands = [mainDict valueForKeyPath:@"response.brands.menus"];
     
     NSMutableDictionary *lastDict = [NSMutableDictionary dictionary];
@@ -159,6 +159,21 @@
     }
     [self requestCity:@"Москва"];
     isLoadingAddress = false;
+}
+
+- (void)errorWithGettingLocation:(NSError *)error {
+    NSInteger errorCode = [error code];
+    switch (errorCode) {
+        case 1:
+            
+            NSLog(@"error with location getting");
+            break;
+        case 256:
+            NSLog(@"error with internet");
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - Table view data source

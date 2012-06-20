@@ -11,7 +11,6 @@
 #import "PriceTableViewController.h"
 #import "MenuViewController.h"
 #import "MenuItem.h"
-#import "EGOCache.h"
 
 @interface MainViewController ()
 

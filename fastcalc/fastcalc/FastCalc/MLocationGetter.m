@@ -25,11 +25,12 @@ BOOL didUpdate = NO;
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     static bool firstLocation = true;
 	if([self.delegate conformsToProtocol:@protocol(MLocationGetterDelegate)]) {  // Check if the class assigning itself as the delegate conforms to our protocol.  If not, the message will go nowhere.  Not good.
-        //SEL getAddress = NSSelectorFromString(@"getUserAddress:");
-        [self getUserAddress:newLocation];
-        //[self performSelectorInBackground:getAddress withObject:newLocation];
-        if(firstLocation)
-            [self.delegate newPhysicalLocation:newLocation];
+        if(firstLocation) {
+            [self getUserAddress:newLocation];
+            if(addresJSON != nil) {
+                [self.delegate newPhysicalLocation:newLocation];
+            }
+        }
         firstLocation = false;
 	}
     [locationManager stopUpdatingLocation];
@@ -39,7 +40,7 @@ BOOL didUpdate = NO;
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	if([self.delegate conformsToProtocol:@protocol(MLocationGetterDelegate)]) {  // Check if the class assigning itself as the delegate conforms to our protocol.  If not, the message will go nowhere.  Not good.
-        NSLog(@"error Location");
+        [self.delegate errorWithGettingLocation:error];
         [locationManager stopUpdatingLocation];
 	}
 }
@@ -49,8 +50,13 @@ BOOL didUpdate = NO;
 
 - (void)getUserAddress:(CLLocation *)location{
     [addresJSON release];
+    NSError *error = nil;
     NSString *getRequest = [NSString stringWithFormat:GOOGLE_MAP_API, location.coordinate.latitude, location.coordinate.longitude];
-    addresJSON = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:getRequest] encoding:NSUTF8StringEncoding error:nil];
+    addresJSON = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:getRequest] encoding:NSUTF8StringEncoding error:&error];
+    
+    if(error) {
+        [self.delegate errorWithGettingLocation:error];
+    }
     
     /*
     if (getAddressUser.count>0){

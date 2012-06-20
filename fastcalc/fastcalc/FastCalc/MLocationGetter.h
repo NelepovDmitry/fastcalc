@@ -13,8 +13,10 @@
 //http://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&sensor=false
 
 @protocol MLocationGetterDelegate <NSObject>
+@optional
+- (void)errorWithGettingLocation:(NSError *)error;
 @required
-- (void) newPhysicalLocation:(CLLocation *)location;
+- (void)newPhysicalLocation:(CLLocation *)location;
 @end
 
 @interface MLocationGetter : NSObject <CLLocationManagerDelegate> { 

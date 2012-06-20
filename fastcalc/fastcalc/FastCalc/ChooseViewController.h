@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MLocationGetter.h"
 
-@class InternetUtils, ApplicationSingleton, EGOCache;
+@class InternetUtils, ApplicationSingleton;
 
 @interface ChooseViewController : UIViewController<MLocationGetterDelegate, UITableViewDataSource, UITableViewDelegate> {
     NSMutableArray *mArrayOfBrands;
@@ -17,7 +17,6 @@
     InternetUtils *mInternetUtils;
     MLocationGetter *mLocationGetter;
     ApplicationSingleton *mApplicationSingleton;
-    EGOCache *mCache;
     
     bool isLoadingAddress;
     IBOutlet UITableView *mBrandsTable;
