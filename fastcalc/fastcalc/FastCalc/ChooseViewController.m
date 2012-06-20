@@ -22,6 +22,7 @@
 - (void)requestCity:(NSString *)cityName;
 - (void)getBrandsFromData:(NSData *)data;
 
+- (void)startPreloader;
 
 @end
 
@@ -66,6 +67,7 @@
 
 #pragma mark - Custom functions
 
+
 - (void)initPrivate {
     mInternetUtils = [[InternetUtils alloc] init];
     mApplicationSingleton = [ApplicationSingleton createSingleton];
@@ -73,29 +75,34 @@
     mLocationGetter = [[MLocationGetter alloc] init];
     mLocationGetter.delegate = self;
     [mLocationGetter startUpdates];
-    isLoadingAddress = true;
+    
+    [self startPreloader];
     
     mBrandsTable.layer.cornerRadius = 10;
     [mBrandsTable.layer setBorderColor:[[UIColor colorWithRed:24.0/255.0 green:92.0/255.0 blue:52.0/255.0 alpha:1.0f] CGColor]];
     [mBrandsTable.layer setBorderWidth:1.0];
 }
 
-- (void)getBrandsFromCacheById:(NSNumber *)brandId {
-    
+- (void)startPreloader {
+    mLoader = [[[UIAlertView alloc] initWithTitle:@"Loading the data list\nPlease Wait..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil] autorelease];
+    [mLoader show];
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    // Adjust the indicator so it is up a few pixels from the bottom of the alert
+    indicator.center = CGPointMake(mLoader.bounds.size.width / 2, mLoader.bounds.size.height - 50);
+    [indicator startAnimating];
+    [mLoader addSubview:indicator];
+    [indicator release];
+}
+
+- (void)getBrandsFromCacheById:(NSNumber *)cityId {
+    NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *storePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.json", cityId.intValue]];
+    NSData *data = [NSData dataWithContentsOfFile:storePath];
+    [self getBrandsFromData:data];
 }
 
 - (void)getBrandsFromData:(NSData *)data {
     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    NSString* cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *storePath = [cachesDirectory stringByAppendingPathComponent:@"brands.json"];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:storePath]) {
-        [data writeToFile:storePath atomically:YES];
-    }
-    
-    //NSLog(@"cachesDirectory %@", storePath);
-    
-    
     NSDictionary *mainDict = [json JSONValue];
     NSNumber *cityId = [mainDict valueForKeyPath:@"response.city.object_id"];
     NSString *cityName = [mainDict valueForKeyPath:@"response.city.string_value"];
@@ -114,35 +121,41 @@
         [arrayOfMenus addObject:brand];
         [brand release];
     }
+    
     [lastDict setObject:arrayOfMenus forKey:@"menus"];
     [mArrayOfBrands addObject:lastDict];
     [mBrandsTable reloadData];
+    [json release];
+    
+    NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *storePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.json", mApplicationSingleton.idOfCity.intValue]];
+    [data writeToFile:storePath atomically:YES];
+    
+    [mLoader dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getFastFoodsOnCity={%22city_name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22,%22locale%22:%22ru%22}
 - (void)requestCity:(NSString *)cityName {
     
-    NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *storePath = [cachesDirectory stringByAppendingPathComponent:@"brands.json"];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:storePath]) {
-        NSData *data = [NSData dataWithContentsOfFile:storePath];
-        [self getBrandsFromData:data];
-    } else {
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        [dict setObject:cityName forKey:@"city_name"];
-        //http://rent.orionsource.ru/api?apirent.getUserLocation={"access_token":"","google_json":""}
-        [mInternetUtils makeURLRequestByNameResponser:@"getBrandsFromData:" 
-                                              urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
-                                        requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getFastFoodsOnCity"]
-                                            responder:self
-                                 progressFunctionName:nil
-         ];
-    }
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setObject:cityName forKey:@"city_name"];
+    //http://rent.orionsource.ru/api?apirent.getUserLocation={"access_token":"","google_json":""}
+    [mInternetUtils makeURLRequestByNameResponser:@"getBrandsFromData:" 
+                                          urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
+                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getFastFoodsOnCity"]
+                                        responder:self
+                             progressFunctionName:nil
+     ];
+}
+
+- (void)updateCache {
+    
 }
 
 #pragma mark - Location Delegate 
 
 - (void)newPhysicalLocation:(CLLocation *)location {
+    [mLocationGetter getUserAddress:location];
     NSDictionary *dictOfFullLocal = [mLocationGetter.addresJSON JSONValue];
     NSArray *types = [[dictOfFullLocal valueForKeyPath:@"results.address_components"] objectAtIndex:0];
     NSString *cityName = @"";
@@ -165,10 +178,23 @@
     NSInteger errorCode = [error code];
     switch (errorCode) {
         case 1:
-            
             NSLog(@"error with location getting");
+            [mApplicationSingleton updateSettings];
+            if(mApplicationSingleton.idOfCity.intValue == 0) {
+                [self requestCity:@"Москва"];
+            } else {
+                [self getBrandsFromCacheById:mApplicationSingleton.idOfCity];
+            }
             break;
         case 256:
+            if(mApplicationSingleton.idOfCity.intValue != 0)
+                [self getBrandsFromCacheById:mApplicationSingleton.idOfCity];
+            else {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error with connect to internet" message:@"Connect to internet" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+                [alertView show];
+                [alertView release];
+                [mLoader dismissWithClickedButtonIndex:0 animated:YES];
+            }
             NSLog(@"error with internet");
             break;
         default:

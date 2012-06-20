@@ -23,7 +23,7 @@
     CLLocationManager *locationManager;
     id<MLocationGetterDelegate> delegate;
 }
-
+- (void)getUserAddress:(CLLocation *)location;
 - (void)startUpdates;
 
 @property (nonatomic, retain) NSString *addresJSON;

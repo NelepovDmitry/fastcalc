@@ -20,8 +20,11 @@
     
     bool isLoadingAddress;
     IBOutlet UITableView *mBrandsTable;
+    
+    UIAlertView *mLoader;
 }
 
 - (void)getBrandsFromCacheById:(NSNumber *)brandId;
+- (void)updateCache;
 
 @end

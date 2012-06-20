@@ -26,10 +26,7 @@ BOOL didUpdate = NO;
     static bool firstLocation = true;
 	if([self.delegate conformsToProtocol:@protocol(MLocationGetterDelegate)]) {  // Check if the class assigning itself as the delegate conforms to our protocol.  If not, the message will go nowhere.  Not good.
         if(firstLocation) {
-            [self getUserAddress:newLocation];
-            if(addresJSON != nil) {
-                [self.delegate newPhysicalLocation:newLocation];
-            }
+            [self.delegate newPhysicalLocation:newLocation];
         }
         firstLocation = false;
 	}
@@ -48,7 +45,7 @@ BOOL didUpdate = NO;
 
 //http://maps.google.com/maps/geo?ll=46.3,30.46&output=json
 
-- (void)getUserAddress:(CLLocation *)location{
+- (void)getUserAddress:(CLLocation *)location {
     [addresJSON release];
     NSError *error = nil;
     NSString *getRequest = [NSString stringWithFormat:GOOGLE_MAP_API, location.coordinate.latitude, location.coordinate.longitude];
