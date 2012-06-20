@@ -18,7 +18,6 @@
     MLocationGetter *mLocationGetter;
     ApplicationSingleton *mApplicationSingleton;
     
-    bool isLoadingAddress;
     IBOutlet UITableView *mBrandsTable;
     
     UIAlertView *mLoader;

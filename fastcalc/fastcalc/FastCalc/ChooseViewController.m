@@ -74,9 +74,12 @@
     mArrayOfBrands = [[NSMutableArray alloc] init];
     mLocationGetter = [[MLocationGetter alloc] init];
     mLocationGetter.delegate = self;
-    [mLocationGetter startUpdates];
-    
-    [self startPreloader];
+    if(!mApplicationSingleton.firstStart) {
+        [self getBrandsFromCacheById:mApplicationSingleton.idOfCity];
+    } else {
+        [mLocationGetter startUpdates];
+        [self startPreloader];
+    }
     
     mBrandsTable.layer.cornerRadius = 10;
     [mBrandsTable.layer setBorderColor:[[UIColor colorWithRed:24.0/255.0 green:92.0/255.0 blue:52.0/255.0 alpha:1.0f] CGColor]];
@@ -170,8 +173,11 @@
             }
         }
     }
-    [self requestCity:@"Москва"];
-    isLoadingAddress = false;
+    if(mApplicationSingleton.idOfCity.intValue == 0) {
+        [self requestCity:@"Москва"];
+    } else {
+        [self getBrandsFromCacheById:mApplicationSingleton.idOfCity];
+    }
 }
 
 - (void)errorWithGettingLocation:(NSError *)error {
