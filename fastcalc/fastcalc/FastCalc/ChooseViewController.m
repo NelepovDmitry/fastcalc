@@ -75,10 +75,10 @@
     mArrayOfBrands = [[NSMutableArray alloc] init];
     mLocationGetter = [[MLocationGetter alloc] init];
     mLocationGetter.delegate = self;
+    [self startPreloader];
     if(!mApplicationSingleton.firstStart) {
         [self getBrandsFromCache];
     } else {
-        [self startPreloader];
         [mLocationGetter startUpdates];
     }
     
@@ -98,11 +98,17 @@
     [indicator release];
 }
 
+#pragma mark - Data work functions
+
 - (void)getBrandsFromCache {
     NSString *cachesDirectory = [ApplicationSingleton cacheDirectory];
     NSString *storePath = [cachesDirectory stringByAppendingPathComponent:@"/brands/brands.json"];
-    NSData *data = [NSData dataWithContentsOfFile:storePath];
-    [self getBrandsFromData:data];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:storePath]) {
+        NSData *data = [NSData dataWithContentsOfFile:storePath];
+        [self getBrandsFromData:data];
+    } else {
+        [self requestCity:@"Москва"];
+    }
 }
 
 - (void)getFastFoodsOnCityZip:(NSData *)data {

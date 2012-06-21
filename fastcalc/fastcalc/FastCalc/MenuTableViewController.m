@@ -12,6 +12,7 @@
 #import "JSON.h"
 #import "MenuItem.h"
 #import "ApplicationSingleton.h"
+#import "ZipArchive.h"
 
 @interface MenuTableViewController ()
 
@@ -101,8 +102,15 @@
     
     NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
     NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
+    
     MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
+    NSString *path = [ApplicationSingleton cacheDirectory];
+    path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
+    NSString *imagePath = [path stringByAppendingPathComponent:menuItem.menuPicturePath];
+    
     cell.textLabel.text = menuItem.menuName;
+    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    cell.menuImage.image = image;
     return cell;
 }
 
@@ -167,14 +175,19 @@
 
 - (void)nextMenu {
     indexOfMenu = (indexOfMenu + 1) % mDictOfProducts.count;
+    [self.tableView reloadData];
 }
 
 //http://fastcalc.orionsource.ru/api?apifastcalc.getMenuItemsZip={"menu_id":6,"responseBinary":1}
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getMenuItems={menu_id:6}
 - (void)requsetMenuById:(NSNumber *)menuId {
-    
+    mApplicationSingleton.idOfMenu = menuId;
     if([ApplicationSingleton isMenuExistinChache:menuId]) {
-        
+        NSString *path = [ApplicationSingleton cacheDirectory];
+        path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
+        NSString *jsonPath = [path stringByAppendingPathComponent:@"menu.json"];
+        NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
+        [self getMenuItems:jsonData];
     } else {
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [dict setObject:menuId forKey:@"menu_id"];
@@ -191,6 +204,7 @@
 #pragma mark - Private functions
 
 - (void)setMainProp {
+    mApplicationSingleton = [ApplicationSingleton createSingleton];
     mArrayOfProductsNames = [[NSMutableArray alloc] init];
     mInternetUtils = [[InternetUtils alloc] init];
     mDictOfProducts = [[NSMutableDictionary alloc] init];
@@ -198,6 +212,29 @@
 }
 
 - (void)getMenuItemsZip:(NSData *)data {
+    NSString *path = [ApplicationSingleton cacheDirectory];
+    path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
+	NSError *error;
+    if (![[NSFileManager defaultManager] createDirectoryAtPath:path
+                                   withIntermediateDirectories:NO
+                                                    attributes:nil
+                                                         error:&error])
+    {
+        NSLog(@"Create directory error: %@", error);
+    }
+    NSString *filename = @"brands.zip";
+    NSString *toDirectory = [NSString stringWithFormat:@"%@/%@", path, filename];
+    [data writeToFile:toDirectory atomically:YES];
+    
+    ZipArchive *zipArchive = [[ZipArchive alloc] init];
+    [zipArchive UnzipOpenFile:toDirectory];
+    [zipArchive UnzipFileTo:path overWrite:YES];
+    [zipArchive UnzipCloseFile];
+    [zipArchive release];
+    
+    NSString *jsonPath = [path stringByAppendingPathComponent:@"menu.json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
+    [self getMenuItems:jsonData];
     
 }
 
@@ -207,7 +244,7 @@
     
     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSDictionary *mainDict = [json JSONValue];
-    NSArray *arrayOfGroups = [mainDict valueForKeyPath:@"response.groups"];
+    NSArray *arrayOfGroups = [mainDict valueForKeyPath:@"groups"];
     
     for(NSDictionary *dictOfgroup in arrayOfGroups) {
         NSArray *objectValues = [dictOfgroup objectForKey:@"items"];

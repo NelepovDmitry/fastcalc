@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class InternetUtils, MenuItem;
+@class InternetUtils, MenuItem, ApplicationSingleton;
 
 @protocol MenuTableViewControllerDelegate <NSObject>
 
@@ -23,8 +23,7 @@
     NSInteger indexOfMenu;
     
     InternetUtils *mInternetUtils;
-    
-    
+    ApplicationSingleton *mApplicationSingleton;
 }
 
 @property (nonatomic, assign) id<MenuTableViewControllerDelegate> delegate;

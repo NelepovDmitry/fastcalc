@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define ID_OF_CITY @"id_of_city"
+#define ID_OF_MENU @"id_of_menu"
 #define NAME_OF_CITY @"name_of_city"
 #define ALREADY_RUN @"already_run"
 //-1 0 1
@@ -18,6 +19,7 @@
 
 + (ApplicationSingleton *)createSingleton;
 
+@property (nonatomic, retain) NSNumber *idOfMenu;
 @property (nonatomic, retain) NSNumber *idOfCity;
 @property (nonatomic, retain) NSString *nameOfCity;
 @property (nonatomic, assign) BOOL alreadyRun;

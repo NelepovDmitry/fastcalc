@@ -10,13 +10,14 @@
 
 @implementation MenuItem
 
-@synthesize menuName, menuPrice;
+@synthesize menuName, menuPrice, menuPicturePath;
 
 - (id)initWithArray:(NSArray *)array {
     self = [super initWithArray:array];
     if(self) {
         menuName = [self getFieldValue:@"Menu item info_Name" attrFieldType:STRING_VALUE];
         menuPrice = [self getFieldValue:@"Menu item info_Price" attrFieldType:FLOAT_VALUE];
+        menuPicturePath = [self getFieldValue:@"Menu item info_Item picture" attrFieldType:CONTENT_VALUE];
     }
     return self;
 }

@@ -10,7 +10,7 @@
 
 @implementation ApplicationSingleton
 
-@synthesize idOfCity, nameOfCity, alreadyRun, firstStart, controllerDiraction;
+@synthesize idOfCity, nameOfCity, alreadyRun, firstStart, controllerDiraction, idOfMenu;
 
 + (ApplicationSingleton *)createSingleton {
     static ApplicationSingleton *singleton;
@@ -40,7 +40,7 @@
 
 + (BOOL)isMenuExistinChache:(NSNumber *)menuId {
     NSString *cachesDirectory = [ApplicationSingleton cacheDirectory];
-    NSString *storePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%d/", menuId.intValue]];
+    NSString *storePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%d", menuId.intValue]];
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:storePath];
     return fileExists;
 }
@@ -52,12 +52,14 @@
     firstStart = true;
     if(alreadyRun) {
         firstStart = false;
+        self.idOfMenu = [NSNumber numberWithInt:[prefs integerForKey:ID_OF_MENU]];
         self.idOfCity = [NSNumber numberWithInt:[prefs integerForKey:ID_OF_CITY]];
         self.nameOfCity = [prefs stringForKey:NAME_OF_CITY];
         self.alreadyRun = [prefs boolForKey:ALREADY_RUN];
         self.controllerDiraction = [prefs integerForKey:CONTROLLERS_DIRACTION];
     } else {
         self.idOfCity = [NSNumber numberWithInt:0];
+        self.idOfMenu = [NSNumber numberWithInt:0];
         self.nameOfCity = @"";
         self.alreadyRun = YES;
         self.controllerDiraction = 1;
@@ -67,6 +69,7 @@
 
 - (void)commitSettings {
     NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setInteger:idOfMenu.intValue forKey:ID_OF_MENU];
     [prefs setInteger:idOfCity.intValue forKey:ID_OF_CITY];
     [prefs setBool:alreadyRun forKey:ALREADY_RUN];
     [prefs setObject:nameOfCity forKey:NAME_OF_CITY];
