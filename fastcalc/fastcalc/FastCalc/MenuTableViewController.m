@@ -88,16 +88,16 @@
 {
     static NSString *CellIdentifier = @"MenuCell";
     
-    MenuCell *cell= (MenuCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell= (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[MenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        NSArray *array = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        /*NSArray *array = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
         for (id currentObject in array) {
             if ([currentObject isKindOfClass:[MenuCell class]]) {
                 cell = currentObject;
                 break;
             }
-        }
+        }*/
     }
     
     NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
@@ -108,9 +108,10 @@
     path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
     NSString *imagePath = [path stringByAppendingPathComponent:menuItem.menuPicturePath];
     
+    cell.backgroundColor = [UIColor grayColor];
     cell.textLabel.text = menuItem.menuName;
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-    cell.menuImage.image = image;
+    cell.imageView.image = image;
     return cell;
 }
 
