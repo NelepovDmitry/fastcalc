@@ -76,7 +76,7 @@
     mLocationGetter = [[MLocationGetter alloc] init];
     mLocationGetter.delegate = self;
     if(!mApplicationSingleton.firstStart) {
-        [self getBrandsFromCacheById];
+        [self getBrandsFromCache];
     } else {
         [self startPreloader];
         [mLocationGetter startUpdates];
@@ -98,7 +98,7 @@
     [indicator release];
 }
 
-- (void)getBrandsFromCacheById {
+- (void)getBrandsFromCache {
     NSString *cachesDirectory = [ApplicationSingleton cacheDirectory];
     NSString *storePath = [cachesDirectory stringByAppendingPathComponent:@"/brands/brands.json"];
     NSData *data = [NSData dataWithContentsOfFile:storePath];
@@ -211,7 +211,7 @@
     if(mApplicationSingleton.idOfCity.intValue == 0) {
         [self requestCity:@"Москва"];
     } else {
-        [self getBrandsFromCacheById:mApplicationSingleton.idOfCity];
+        [self getBrandsFromCache];
     }
 }
 
@@ -224,12 +224,12 @@
             if(mApplicationSingleton.idOfCity.intValue == 0) {
                 [self requestCity:@"Москва"];
             } else {
-                [self getBrandsFromCacheById:mApplicationSingleton.idOfCity];
+                [self getBrandsFromCache];
             }
             break;
         case 256:
             if(mApplicationSingleton.idOfCity.intValue != 0)
-                [self getBrandsFromCacheById:mApplicationSingleton.idOfCity];
+                [self getBrandsFromCache];
             else {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error with connect to internet" message:@"Connect to internet" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
                 [alertView show];
@@ -243,7 +243,7 @@
             if(mApplicationSingleton.idOfCity.intValue == 0) {
                 [self requestCity:@"Москва"];
             } else {
-                [self getBrandsFromCacheById:mApplicationSingleton.idOfCity];
+                [self getBrandsFromCache];
             }
             break;
     }

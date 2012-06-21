@@ -51,7 +51,7 @@
     alreadyRun = [prefs boolForKey:ALREADY_RUN];
     firstStart = true;
     if(alreadyRun) {
-        //firstStart = false;
+        firstStart = false;
         self.idOfCity = [NSNumber numberWithInt:[prefs integerForKey:ID_OF_CITY]];
         self.nameOfCity = [prefs stringForKey:NAME_OF_CITY];
         self.alreadyRun = [prefs boolForKey:ALREADY_RUN];
