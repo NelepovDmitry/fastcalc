@@ -34,12 +34,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "FastCalc/ChooseViewController.m"
-         timestampString = "361877004.416303"
+         timestampString = "361953264.48872"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "77"
-         endingLineNumber = "77"
-         landmarkName = "-initPrivate"
+         startingLineNumber = "161"
+         endingLineNumber = "161"
+         landmarkName = "-newPhysicalLocation:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

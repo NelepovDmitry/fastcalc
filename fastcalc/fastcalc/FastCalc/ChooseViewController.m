@@ -21,6 +21,7 @@
 - (void)initPrivate;
 - (void)requestCity:(NSString *)cityName;
 - (void)getBrandsFromData:(NSData *)data;
+- (void)getMenusById:(NSNumber *)menuId;
 
 - (void)startPreloader;
 
@@ -67,7 +68,6 @@
 
 #pragma mark - Custom functions
 
-
 - (void)initPrivate {
     mInternetUtils = [[InternetUtils alloc] init];
     mApplicationSingleton = [ApplicationSingleton createSingleton];
@@ -77,8 +77,8 @@
     if(!mApplicationSingleton.firstStart) {
         [self getBrandsFromCacheById:mApplicationSingleton.idOfCity];
     } else {
-        [mLocationGetter startUpdates];
         [self startPreloader];
+        [mLocationGetter startUpdates];
     }
     
     mBrandsTable.layer.cornerRadius = 10;
@@ -183,8 +183,8 @@
 - (void)errorWithGettingLocation:(NSError *)error {
     NSInteger errorCode = [error code];
     switch (errorCode) {
+        case 0:
         case 1:
-            NSLog(@"error with location getting");
             [mApplicationSingleton updateSettings];
             if(mApplicationSingleton.idOfCity.intValue == 0) {
                 [self requestCity:@"Москва"];
@@ -204,6 +204,12 @@
             NSLog(@"error with internet");
             break;
         default:
+            [mApplicationSingleton updateSettings];
+            if(mApplicationSingleton.idOfCity.intValue == 0) {
+                [self requestCity:@"Москва"];
+            } else {
+                [self getBrandsFromCacheById:mApplicationSingleton.idOfCity];
+            }
             break;
     }
 }
