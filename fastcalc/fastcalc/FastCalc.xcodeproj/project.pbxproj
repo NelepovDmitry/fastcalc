@@ -38,6 +38,12 @@
 		84794E231578A569004010F7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E221578A569004010F7 /* Reachability.m */; };
 		84794E261578A582004010F7 /* InternetUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84794E251578A582004010F7 /* InternetUtils.m */; };
 		84794E281578A740004010F7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84794E271578A740004010F7 /* SystemConfiguration.framework */; };
+		8479C1151592FA78006F05C9 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8479C10B1592FA78006F05C9 /* ioapi.c */; };
+		8479C1161592FA78006F05C9 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 8479C10D1592FA78006F05C9 /* mztools.c */; };
+		8479C1171592FA78006F05C9 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 8479C10F1592FA78006F05C9 /* unzip.c */; };
+		8479C1181592FA78006F05C9 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 8479C1111592FA78006F05C9 /* zip.c */; };
+		8479C1191592FA78006F05C9 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8479C1141592FA78006F05C9 /* ZipArchive.mm */; };
+		8479C11F1592FAB5006F05C9 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8479C11E1592FAB5006F05C9 /* libz.1.2.5.dylib */; };
 		847B60D1157C95DD00BC8B89 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60CF157C95DD00BC8B89 /* MainViewController.m */; };
 		847B60D2157C95DD00BC8B89 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B60D0157C95DD00BC8B89 /* MainViewController.xib */; };
 		847B60D6157C988700BC8B89 /* PriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60D5157C988700BC8B89 /* PriceTableViewController.m */; };
@@ -121,6 +127,18 @@
 		84794E241578A582004010F7 /* InternetUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetUtils.h; sourceTree = "<group>"; };
 		84794E251578A582004010F7 /* InternetUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetUtils.m; sourceTree = "<group>"; };
 		84794E271578A740004010F7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8479C10A1592FA78006F05C9 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		8479C10B1592FA78006F05C9 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		8479C10C1592FA78006F05C9 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		8479C10D1592FA78006F05C9 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		8479C10E1592FA78006F05C9 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		8479C10F1592FA78006F05C9 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		8479C1101592FA78006F05C9 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		8479C1111592FA78006F05C9 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		8479C1121592FA78006F05C9 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		8479C1131592FA78006F05C9 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		8479C1141592FA78006F05C9 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		8479C11E1592FAB5006F05C9 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		847B60CE157C95DD00BC8B89 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		847B60CF157C95DD00BC8B89 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		847B60D0157C95DD00BC8B89 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -160,6 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8479C11F1592FAB5006F05C9 /* libz.1.2.5.dylib in Frameworks */,
 				2FA882DD157D48F0005DF341 /* QuartzCore.framework in Frameworks */,
 				8478CF581579F103001F0054 /* CoreLocation.framework in Frameworks */,
 				84794E281578A740004010F7 /* SystemConfiguration.framework in Frameworks */,
@@ -175,6 +194,7 @@
 		2FE5085B157D2B280010618B /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				8479C1081592FA78006F05C9 /* ZipArchive */,
 				8476D3E51590A9F200820E53 /* Reachability */,
 				8478CF3E1579EF64001F0054 /* JSON */,
 				8476D3E41590A9DB00820E53 /* MenuController */,
@@ -285,6 +305,7 @@
 		84794DF31578A143004010F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8479C11E1592FAB5006F05C9 /* libz.1.2.5.dylib */,
 				2FA882DC157D48F0005DF341 /* QuartzCore.framework */,
 				8478CF571579F103001F0054 /* CoreLocation.framework */,
 				84794E271578A740004010F7 /* SystemConfiguration.framework */,
@@ -351,6 +372,32 @@
 				847B60DA157CBB6900BC8B89 /* Choose controller */,
 			);
 			name = "Main Controllers";
+			sourceTree = "<group>";
+		};
+		8479C1081592FA78006F05C9 /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				8479C1091592FA78006F05C9 /* minizip */,
+				8479C1131592FA78006F05C9 /* ZipArchive.h */,
+				8479C1141592FA78006F05C9 /* ZipArchive.mm */,
+			);
+			path = ZipArchive;
+			sourceTree = "<group>";
+		};
+		8479C1091592FA78006F05C9 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				8479C10A1592FA78006F05C9 /* crypt.h */,
+				8479C10B1592FA78006F05C9 /* ioapi.c */,
+				8479C10C1592FA78006F05C9 /* ioapi.h */,
+				8479C10D1592FA78006F05C9 /* mztools.c */,
+				8479C10E1592FA78006F05C9 /* mztools.h */,
+				8479C10F1592FA78006F05C9 /* unzip.c */,
+				8479C1101592FA78006F05C9 /* unzip.h */,
+				8479C1111592FA78006F05C9 /* zip.c */,
+				8479C1121592FA78006F05C9 /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 		847B60DA157CBB6900BC8B89 /* Choose controller */ = {
@@ -536,6 +583,11 @@
 				2F2116D9158BB617008EA754 /* MenuItem.m in Sources */,
 				2F2116DD158BC1E0008EA754 /* BrandMenu.m in Sources */,
 				8476D3E91590BC4100820E53 /* DataWorkerHelper.m in Sources */,
+				8479C1151592FA78006F05C9 /* ioapi.c in Sources */,
+				8479C1161592FA78006F05C9 /* mztools.c in Sources */,
+				8479C1171592FA78006F05C9 /* unzip.c in Sources */,
+				8479C1181592FA78006F05C9 /* zip.c in Sources */,
+				8479C1191592FA78006F05C9 /* ZipArchive.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
