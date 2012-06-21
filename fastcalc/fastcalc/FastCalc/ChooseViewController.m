@@ -22,7 +22,6 @@
 - (void)initPrivate;
 - (void)requestCity:(NSString *)cityName;
 - (void)getBrandsFromData:(NSData *)data;
-- (void)getMenusById:(NSNumber *)menuId;
 
 - (void)startPreloader;
 - (void)getFastFoodsOnCityZip:(NSData *)data;
@@ -77,7 +76,7 @@
     mLocationGetter = [[MLocationGetter alloc] init];
     mLocationGetter.delegate = self;
     if(!mApplicationSingleton.firstStart) {
-        [self getBrandsFromCacheById:mApplicationSingleton.idOfCity];
+        [self getBrandsFromCacheById];
     } else {
         [self startPreloader];
         [mLocationGetter startUpdates];
@@ -99,15 +98,14 @@
     [indicator release];
 }
 
-- (void)getBrandsFromCacheById:(NSNumber *)cityId {
+- (void)getBrandsFromCacheById {
     NSString *cachesDirectory = [ApplicationSingleton cacheDirectory];
-    NSString *storePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.json", cityId.intValue]];
+    NSString *storePath = [cachesDirectory stringByAppendingPathComponent:@"/brands/brands.json"];
     NSData *data = [NSData dataWithContentsOfFile:storePath];
     [self getBrandsFromData:data];
 }
 
 - (void)getFastFoodsOnCityZip:(NSData *)data {
-    
     NSString *path = [ApplicationSingleton cacheDirectory];
     path = [NSString stringWithFormat:@"%@/brands", path];
 	NSError *error;
@@ -134,22 +132,23 @@
     [zipArchive UnzipCloseFile];
     [zipArchive release];
     
-    
-    
+    NSString *jsonPath = [path stringByAppendingPathComponent:@"brands.json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
+    [self getBrandsFromData:jsonData];
 }
 
 - (void)getBrandsFromData:(NSData *)data {
     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSDictionary *mainDict = [json JSONValue];
-    NSNumber *cityId = [mainDict valueForKeyPath:@"response.city.object_id"];
-    NSString *cityName = [mainDict valueForKeyPath:@"response.city.string_value"];
+    NSNumber *cityId = [mainDict valueForKeyPath:@"city.object_id"];
+    NSString *cityName = [mainDict valueForKeyPath:@"city.string_value"];
     mApplicationSingleton.idOfCity = cityId;
     mApplicationSingleton.nameOfCity = cityName;
     [mApplicationSingleton commitSettings];
-    NSArray *arrayOfBrands = [mainDict valueForKeyPath:@"response.brands.menus"];
+    NSArray *arrayOfBrands = [mainDict valueForKeyPath:@"brands.menus"];
     
     NSMutableDictionary *lastDict = [NSMutableDictionary dictionary];
-    [lastDict setObject:[mainDict valueForKeyPath:@"response.brands.brandname"] forKey:@"name"];
+    [lastDict setObject:[mainDict valueForKeyPath:@"brands.brandname"] forKey:@"name"];
     
     NSMutableArray *arrayOfMenus = [NSMutableArray array];
     for(NSDictionary *brand in [arrayOfBrands objectAtIndex:0]) {

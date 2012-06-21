@@ -23,7 +23,7 @@
     UIAlertView *mLoader;
 }
 
-- (void)getBrandsFromCacheById:(NSNumber *)brandId;
+- (void)getBrandsFromCacheById;
 - (void)updateCache;
 
 @end
