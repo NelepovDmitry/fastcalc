@@ -11,6 +11,7 @@
 #import "InternetUtils.h"
 #import "JSON.h"
 #import "MenuItem.h"
+#import "ApplicationSingleton.h"
 
 @interface MenuTableViewController ()
 
@@ -168,16 +169,23 @@
     indexOfMenu = (indexOfMenu + 1) % mDictOfProducts.count;
 }
 
+//http://fastcalc.orionsource.ru/api?apifastcalc.getMenuItemsZip={"menu_id":6,"responseBinary":1}
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getMenuItems={menu_id:6}
 - (void)requsetMenuById:(NSNumber *)menuId {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:menuId forKey:@"menu_id"];
-    [mInternetUtils makeURLRequestByNameResponser:@"getMenuItems:" 
-                                          urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
-                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getMenuItems"]
-                                        responder:self
-                             progressFunctionName:nil
-     ];
+    
+    if([ApplicationSingleton isMenuExistinChache:menuId]) {
+        
+    } else {
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setObject:menuId forKey:@"menu_id"];
+        [dict setObject:[NSNumber numberWithInt:1] forKey:@"responseBinary"];
+        [mInternetUtils makeURLRequestByNameResponser:@"getMenuItemsZip:" 
+                                              urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
+                                        requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getMenuItemsZip"]
+                                            responder:self
+                                 progressFunctionName:nil
+         ];
+    }
 }
 
 #pragma mark - Private functions
@@ -187,6 +195,10 @@
     mInternetUtils = [[InternetUtils alloc] init];
     mDictOfProducts = [[NSMutableDictionary alloc] init];
     indexOfMenu = 0;
+}
+
+- (void)getMenuItemsZip:(NSData *)data {
+    
 }
 
 - (void)getMenuItems:(NSData *)data {

@@ -38,6 +38,12 @@
 
 #pragma mark - Public functions
 
++ (BOOL)isMenuExistinChache:(NSNumber *)menuId {
+    NSString *cachesDirectory = [ApplicationSingleton cacheDirectory];
+    NSString *storePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%d/", menuId.intValue]];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:storePath];
+    return fileExists;
+}
 
 - (void)updateSettings {
     NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
@@ -45,7 +51,7 @@
     alreadyRun = [prefs boolForKey:ALREADY_RUN];
     firstStart = true;
     if(alreadyRun) {
-        firstStart = false;
+        //firstStart = false;
         self.idOfCity = [NSNumber numberWithInt:[prefs integerForKey:ID_OF_CITY]];
         self.nameOfCity = [prefs stringForKey:NAME_OF_CITY];
         self.alreadyRun = [prefs boolForKey:ALREADY_RUN];
@@ -66,6 +72,10 @@
     [prefs setObject:nameOfCity forKey:NAME_OF_CITY];
     [prefs setInteger:controllerDiraction forKey:CONTROLLERS_DIRACTION];
     [prefs synchronize];
+}
+
++ (NSString *)cacheDirectory {
+    return [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 }
 
 @end

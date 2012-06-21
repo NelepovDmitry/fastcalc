@@ -33,13 +33,39 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "FastCalc/ChooseViewController.m"
-         timestampString = "361953264.48872"
+         filePath = "FastCalc/ApplicationSingleton.m"
+         timestampString = "361954975.149124"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "161"
-         endingLineNumber = "161"
-         landmarkName = "-newPhysicalLocation:"
+         startingLineNumber = "42"
+         endingLineNumber = "42"
+         landmarkName = "+isMenuExistinChache:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "FastCalc/MenuTableViewController.m"
+         timestampString = "361960780.6252"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "176"
+         endingLineNumber = "176"
+         landmarkName = "-requsetMenuById:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "FastCalc/ChooseViewController.m"
+         timestampString = "361961760.391675"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "111"
+         endingLineNumber = "111"
+         landmarkName = "-getFastFoodsOnCityZip:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

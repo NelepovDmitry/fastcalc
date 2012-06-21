@@ -27,4 +27,7 @@
 - (void)updateSettings;
 - (void)commitSettings;
 
++ (BOOL)isMenuExistinChache:(NSNumber *)menuId;
++ (NSString *)cacheDirectory;
+
 @end

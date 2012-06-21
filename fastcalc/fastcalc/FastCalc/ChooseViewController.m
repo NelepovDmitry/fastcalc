@@ -15,6 +15,7 @@
 #import "MenuTableViewController.h"
 #import "Brand.h"
 #import "BrandMenu.h"
+#import "ZipArchive.h"
 
 @interface ChooseViewController ()
 
@@ -24,6 +25,7 @@
 - (void)getMenusById:(NSNumber *)menuId;
 
 - (void)startPreloader;
+- (void)getFastFoodsOnCityZip:(NSData *)data;
 
 @end
 
@@ -98,10 +100,42 @@
 }
 
 - (void)getBrandsFromCacheById:(NSNumber *)cityId {
-    NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *cachesDirectory = [ApplicationSingleton cacheDirectory];
     NSString *storePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.json", cityId.intValue]];
     NSData *data = [NSData dataWithContentsOfFile:storePath];
     [self getBrandsFromData:data];
+}
+
+- (void)getFastFoodsOnCityZip:(NSData *)data {
+    
+    NSString *path = [ApplicationSingleton cacheDirectory];
+    path = [NSString stringWithFormat:@"%@/brands", path];
+	NSError *error;
+	if (![[NSFileManager defaultManager] fileExistsAtPath:path])	//Does directory already exist?
+	{
+		if (![[NSFileManager defaultManager] createDirectoryAtPath:path
+									   withIntermediateDirectories:NO
+														attributes:nil
+															 error:&error])
+		{
+			NSLog(@"Create directory error: %@", error);
+		}
+	} else {
+        
+    }
+    
+    NSString *filename = @"brands.zip";
+    NSString *toDirectory = [NSString stringWithFormat:@"%@/%@", path, filename];
+    [data writeToFile:toDirectory atomically:YES];
+    
+    ZipArchive *zipArchive = [[ZipArchive alloc] init];
+    [zipArchive UnzipOpenFile:toDirectory];
+    [zipArchive UnzipFileTo:path overWrite:YES];
+    [zipArchive UnzipCloseFile];
+    [zipArchive release];
+    
+    
+    
 }
 
 - (void)getBrandsFromData:(NSData *)data {
@@ -130,22 +164,24 @@
     [mBrandsTable reloadData];
     [json release];
     
-    NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *cachesDirectory = [ApplicationSingleton cacheDirectory];
     NSString *storePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.json", mApplicationSingleton.idOfCity.intValue]];
     [data writeToFile:storePath atomically:YES];
     
     [mLoader dismissWithClickedButtonIndex:0 animated:YES];
 }
-
+//http://fastcalc.orionsource.ru/api?apifastcalc.getFastFoodsOnCityZip={"city_name":"Москва","locale":"ru","responseBinary":1}
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getFastFoodsOnCity={%22city_name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22,%22locale%22:%22ru%22}
 - (void)requestCity:(NSString *)cityName {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setObject:cityName forKey:@"city_name"];
+    [dict setObject:@"ru" forKey:@"locale"];
+    [dict setObject:[NSNumber numberWithInt:1] forKey:@"responseBinary"];
     //http://rent.orionsource.ru/api?apirent.getUserLocation={"access_token":"","google_json":""}
-    [mInternetUtils makeURLRequestByNameResponser:@"getBrandsFromData:" 
+    [mInternetUtils makeURLRequestByNameResponser:@"getFastFoodsOnCityZip:" 
                                           urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
-                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getFastFoodsOnCity"]
+                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getFastFoodsOnCityZip"]
                                         responder:self
                              progressFunctionName:nil
      ];
