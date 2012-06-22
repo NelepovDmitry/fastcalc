@@ -80,6 +80,8 @@
     currentGroupBtn = nil;
     [mPageControl release];
     mPageControl = nil;
+    [mPriceMask release];
+    mPriceMask = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -107,6 +109,7 @@
     [mPriceLbl release];
     [currentGroupBtn release];
     [mPageControl release];
+    [mPriceMask release];
     [super dealloc];
 }
 
@@ -117,6 +120,7 @@
     [mGestureRecognizerUp setDirection:UISwipeGestureRecognizerDirectionUp];
     [mGestureRecognizerLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
     [mCheckView addGestureRecognizer:mGestureRecognizerDown];
+    //[mPriceMask addGestureRecognizer:mGestureRecognizerDown];
     [mCheckView addGestureRecognizer:mGestureRecognizerUp];
     [mCheckView addGestureRecognizer:mGestureRecognizerLeft];
 }

@@ -312,7 +312,7 @@
 						<string key="NSFrame">{{100, 511}, {120, 40}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1019731510"/>
+						<reference key="NSNextKeyView" ref="158805250"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -377,7 +377,6 @@
 						<string key="NSFrame">{{259, 486}, {50, 50}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -400,7 +399,7 @@
 						<reference key="IBUIFontDescription" ref="112256551"/>
 						<reference key="IBUIFont" ref="442730239"/>
 					</object>
-					<object class="IBUIPageControl" id="1019731510">
+					<object class="IBUIPageControl" id="158805250">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">1316</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
@@ -584,9 +583,17 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">mPageControl</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="1019731510"/>
+						<reference key="destination" ref="158805250"/>
 					</object>
 					<int key="connectionID">79</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">mPriceMask</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="97418279"/>
+					</object>
+					<int key="connectionID">80</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -710,7 +717,7 @@
 							<reference ref="560746229"/>
 							<reference ref="782964466"/>
 							<reference ref="216068608"/>
-							<reference ref="1019731510"/>
+							<reference ref="158805250"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Main Scroll View</string>
@@ -868,7 +875,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">78</int>
-						<reference key="object" ref="1019731510"/>
+						<reference key="object" ref="158805250"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -913,7 +920,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">79</int>
+			<int key="maxID">80</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -957,6 +964,7 @@
 						<string key="mPaperBottomImageView">UIImageView</string>
 						<string key="mPaperTopImageView">UIImageView</string>
 						<string key="mPriceLbl">UILabel</string>
+						<string key="mPriceMask">UIImageView</string>
 						<string key="mPriceView">UIView</string>
 						<string key="mTotalLbl">UILabel</string>
 						<string key="menuTableViewController">MenuTableViewController</string>
@@ -1010,6 +1018,10 @@
 						<object class="IBToOneOutletInfo" key="mPriceLbl">
 							<string key="name">mPriceLbl</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="mPriceMask">
+							<string key="name">mPriceMask</string>
+							<string key="candidateClassName">UIImageView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="mPriceView">
 							<string key="name">mPriceView</string>

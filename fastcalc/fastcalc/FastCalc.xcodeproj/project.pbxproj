@@ -18,6 +18,8 @@
 		842615B0159484E300EDAE42 /* new_button_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 842615AC159484E300EDAE42 /* new_button_up.png */; };
 		842615B41594858E00EDAE42 /* categoty_button_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 842615B21594858E00EDAE42 /* categoty_button_down.png */; };
 		842615B51594858E00EDAE42 /* categoty_button_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842615B31594858E00EDAE42 /* categoty_button_down@2x.png */; };
+		842616861594B1AE00EDAE42 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842616831594B1AE00EDAE42 /* IIViewDeckController.m */; };
+		842616871594B1AE00EDAE42 /* WrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842616851594B1AE00EDAE42 /* WrapController.m */; };
 		844243CB157CCC6200F156A1 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844243CA157CCC6200F156A1 /* MenuCell.xib */; };
 		844243CF157CCC8000F156A1 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 844243CE157CCC8000F156A1 /* MenuCell.m */; };
 		84489A2C15945A930039311D /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F231B6158A2FFE00E6D9AC /* icon@2x.png */; };
@@ -98,6 +100,10 @@
 		842615AC159484E300EDAE42 /* new_button_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_button_up.png; sourceTree = "<group>"; };
 		842615B21594858E00EDAE42 /* categoty_button_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = categoty_button_down.png; sourceTree = "<group>"; };
 		842615B31594858E00EDAE42 /* categoty_button_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "categoty_button_down@2x.png"; sourceTree = "<group>"; };
+		842616821594B1AE00EDAE42 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
+		842616831594B1AE00EDAE42 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
+		842616841594B1AE00EDAE42 /* WrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapController.h; sourceTree = "<group>"; };
+		842616851594B1AE00EDAE42 /* WrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WrapController.m; sourceTree = "<group>"; };
 		844243CA157CCC6200F156A1 /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
 		844243CD157CCC8000F156A1 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		844243CE157CCC8000F156A1 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
@@ -216,12 +222,24 @@
 		2FE5085B157D2B280010618B /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				842616811594B1AE00EDAE42 /* ViewDeck */,
 				8479C1081592FA78006F05C9 /* ZipArchive */,
 				8476D3E51590A9F200820E53 /* Reachability */,
 				8478CF3E1579EF64001F0054 /* JSON */,
 				8476D3E41590A9DB00820E53 /* MenuController */,
 			);
 			name = Libs;
+			sourceTree = "<group>";
+		};
+		842616811594B1AE00EDAE42 /* ViewDeck */ = {
+			isa = PBXGroup;
+			children = (
+				842616821594B1AE00EDAE42 /* IIViewDeckController.h */,
+				842616831594B1AE00EDAE42 /* IIViewDeckController.m */,
+				842616841594B1AE00EDAE42 /* WrapController.h */,
+				842616851594B1AE00EDAE42 /* WrapController.m */,
+			);
+			path = ViewDeck;
 			sourceTree = "<group>";
 		};
 		8453CD1E158B75BF009E60C5 /* Main Classes */ = {
@@ -632,6 +650,8 @@
 				8479C1181592FA78006F05C9 /* zip.c in Sources */,
 				8479C1191592FA78006F05C9 /* ZipArchive.mm in Sources */,
 				84489A3715946C3E0039311D /* GroupItem.m in Sources */,
+				842616861594B1AE00EDAE42 /* IIViewDeckController.m in Sources */,
+				842616871594B1AE00EDAE42 /* WrapController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,7 +674,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gevorg Petrosyan (KYQW6GZB9J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gevorg Petrosyan (KYQW6GZB9J)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -669,6 +690,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "3668560C-80A9-43A8-8FDC-377B517C74F3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3668560C-80A9-43A8-8FDC-377B517C74F3";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -678,7 +701,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gevorg Petrosyan (KYQW6GZB9J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gevorg Petrosyan (KYQW6GZB9J)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -687,6 +711,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "3668560C-80A9-43A8-8FDC-377B517C74F3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3668560C-80A9-43A8-8FDC-377B517C74F3";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -695,11 +721,15 @@
 		84794E0F1578A143004010F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gevorg Petrosyan (KYQW6GZB9J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gevorg Petrosyan (KYQW6GZB9J)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FastCalc/FastCalc-Prefix.pch";
 				INFOPLIST_FILE = "FastCalc/FastCalc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3668560C-80A9-43A8-8FDC-377B517C74F3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3668560C-80A9-43A8-8FDC-377B517C74F3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -707,11 +737,15 @@
 		84794E101578A143004010F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gevorg Petrosyan (KYQW6GZB9J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gevorg Petrosyan (KYQW6GZB9J)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FastCalc/FastCalc-Prefix.pch";
 				INFOPLIST_FILE = "FastCalc/FastCalc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3668560C-80A9-43A8-8FDC-377B517C74F3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3668560C-80A9-43A8-8FDC-377B517C74F3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
