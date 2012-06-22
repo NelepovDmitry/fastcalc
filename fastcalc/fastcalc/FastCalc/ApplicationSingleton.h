@@ -15,7 +15,9 @@
 //-1 0 1
 #define CONTROLLERS_DIRACTION @"controller_diractions"
 
-@interface ApplicationSingleton : NSObject
+@interface ApplicationSingleton : NSObject {
+    NSString *mCacheDirectory;
+}
 
 + (ApplicationSingleton *)createSingleton;
 
@@ -30,6 +32,6 @@
 - (void)commitSettings;
 
 + (BOOL)isMenuExistinChache:(NSNumber *)menuId;
-+ (NSString *)cacheDirectory;
+- (NSString *)cacheDirectory;
 
 @end

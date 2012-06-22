@@ -26,6 +26,7 @@
 - (id)init {
     self = [super init];
     if(self) {
+        mCacheDirectory = @"";
         [self updateSettings];
     }
     return self;
@@ -33,13 +34,14 @@
 
 - (void)dealloc {
     [idOfCity release];
+    [mCacheDirectory release];
     [super dealloc];
 }
 
 #pragma mark - Public functions
 
 + (BOOL)isMenuExistinChache:(NSNumber *)menuId {
-    NSString *cachesDirectory = [ApplicationSingleton cacheDirectory];
+    NSString *cachesDirectory = [[ApplicationSingleton createSingleton] cacheDirectory];
     NSString *storePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%d", menuId.intValue]];
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:storePath];
     return fileExists;
@@ -77,8 +79,11 @@
     [prefs synchronize];
 }
 
-+ (NSString *)cacheDirectory {
-    return [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+- (NSString *)cacheDirectory {
+    if([mCacheDirectory isEqualToString:@""]) {
+        mCacheDirectory = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] retain];
+    }
+    return mCacheDirectory;
 }
 
 @end

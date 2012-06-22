@@ -11,6 +11,9 @@
 #import "PriceTableViewController.h"
 #import "MenuViewController.h"
 #import "MenuItem.h"
+#import "AppDelegate.h"
+#import "MenuViewController.h"
+#import "GroupItem.h"
 
 @interface MainViewController ()
 
@@ -73,6 +76,8 @@
     mPaperTopImageView = nil;
     [mPriceLbl release];
     mPriceLbl = nil;
+    [currentGroupBtn release];
+    currentGroupBtn = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -98,6 +103,7 @@
     [mPaperBottomImageView release];
     [mPaperTopImageView release];
     [mPriceLbl release];
+    [currentGroupBtn release];
     [super dealloc];
 }
 
@@ -209,12 +215,29 @@
 }
 
 - (IBAction)changeMenuClicked:(id)sender {
-    [menuTableViewController nextMenu];
+    static int index = 0;
+    index = (index + 1) % menuTableViewController.arrayOfMenuItemGroups.count;
+    [menuTableViewController nextMenuByIndex:index];
+    GroupItem *groupItem = [menuTableViewController.arrayOfMenuItemGroups objectAtIndex:index];
+    [currentGroupBtn setTitle:groupItem.groupName forState:UIControlStateNormal];
+}
+
+- (IBAction)menuClicked:(id)sender {
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate.viewController showLeftController:YES];
+}
+
+- (IBAction)newChecked:(id)sender {
+    [self newCheck];
 }
 
 #pragma mark - MenuTableViewController Delegate
 
 - (void)getNewPrice:(MenuItem *)menu {
+    
+    GroupItem *groupItem = [menuTableViewController.arrayOfMenuItemGroups objectAtIndex:0];
+    [currentGroupBtn setTitle:groupItem.groupName forState:UIControlStateNormal];
+    
     mPrice += menu.menuPrice.integerValue;
     mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
     [priceTableViewController addNewProduct:menu];

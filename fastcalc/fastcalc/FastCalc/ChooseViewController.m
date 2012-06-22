@@ -101,7 +101,7 @@
 #pragma mark - Data work functions
 
 - (void)getBrandsFromCache {
-    NSString *cachesDirectory = [ApplicationSingleton cacheDirectory];
+    NSString *cachesDirectory = [mApplicationSingleton cacheDirectory];
     NSString *storePath = [cachesDirectory stringByAppendingPathComponent:@"/brands/brands.json"];
     if ([[NSFileManager defaultManager] fileExistsAtPath:storePath]) {
         NSData *data = [NSData dataWithContentsOfFile:storePath];
@@ -112,7 +112,7 @@
 }
 
 - (void)getFastFoodsOnCityZip:(NSData *)data {
-    NSString *path = [ApplicationSingleton cacheDirectory];
+    NSString *path = [mApplicationSingleton cacheDirectory];
     path = [NSString stringWithFormat:@"%@/brands", path];
 	NSError *error;
 	if (![[NSFileManager defaultManager] fileExistsAtPath:path])	//Does directory already exist?
@@ -169,7 +169,7 @@
     [mBrandsTable reloadData];
     [json release];
     
-    NSString *cachesDirectory = [ApplicationSingleton cacheDirectory];
+    NSString *cachesDirectory = [mApplicationSingleton cacheDirectory];
     NSString *storePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.json", mApplicationSingleton.idOfCity.intValue]];
     [data writeToFile:storePath atomically:YES];
     

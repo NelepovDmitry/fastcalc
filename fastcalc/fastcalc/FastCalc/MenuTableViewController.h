@@ -27,8 +27,9 @@
 }
 
 @property (nonatomic, assign) id<MenuTableViewControllerDelegate> delegate;
+@property (nonatomic, retain) NSMutableArray *arrayOfMenuItemGroups;
 
-- (void)nextMenu;
+- (void)nextMenuByIndex:(NSInteger)menuIndex;
 - (void)requsetMenuById:(NSNumber *)menuId;
 
 @end

@@ -13,6 +13,7 @@
 #import "MenuItem.h"
 #import "ApplicationSingleton.h"
 #import "ZipArchive.h"
+#import "GroupItem.h"
 
 @interface MenuTableViewController ()
 
@@ -23,7 +24,7 @@
 
 @implementation MenuTableViewController
 
-@synthesize delegate;
+@synthesize delegate, arrayOfMenuItemGroups;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -84,34 +85,35 @@
     return count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (MenuCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MenuCell";
     
-    UITableViewCell *cell= (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MenuCell *cell= (MenuCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        /*NSArray *array = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+        cell = [[[MenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        NSArray *array = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
         for (id currentObject in array) {
             if ([currentObject isKindOfClass:[MenuCell class]]) {
                 cell = currentObject;
                 break;
             }
-        }*/
+        }
     }
     
     NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
     NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
     
     MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
-    NSString *path = [ApplicationSingleton cacheDirectory];
+    NSString *path = [mApplicationSingleton cacheDirectory];
     path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
     NSString *imagePath = [path stringByAppendingPathComponent:menuItem.menuPicturePath];
     
     cell.backgroundColor = [UIColor grayColor];
     cell.textLabel.text = menuItem.menuName;
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-    cell.imageView.image = image;
+    cell.menuImage.image = image;
+    cell.priceLabel.text = [NSString stringWithFormat:@"%d руб.", menuItem.menuPrice.integerValue];
     return cell;
 }
 
@@ -174,8 +176,8 @@
 
 #pragma mark - Public functions
 
-- (void)nextMenu {
-    indexOfMenu = (indexOfMenu + 1) % mDictOfProducts.count;
+- (void)nextMenuByIndex:(NSInteger)menuIndex {
+    indexOfMenu = menuIndex;
     [self.tableView reloadData];
 }
 
@@ -184,7 +186,7 @@
 - (void)requsetMenuById:(NSNumber *)menuId {
     mApplicationSingleton.idOfMenu = menuId;
     if([ApplicationSingleton isMenuExistinChache:menuId]) {
-        NSString *path = [ApplicationSingleton cacheDirectory];
+        NSString *path = [mApplicationSingleton cacheDirectory];
         path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
         NSString *jsonPath = [path stringByAppendingPathComponent:@"menu.json"];
         NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
@@ -207,13 +209,14 @@
 - (void)setMainProp {
     mApplicationSingleton = [ApplicationSingleton createSingleton];
     mArrayOfProductsNames = [[NSMutableArray alloc] init];
+    arrayOfMenuItemGroups = [[NSMutableArray alloc] init];
     mInternetUtils = [[InternetUtils alloc] init];
     mDictOfProducts = [[NSMutableDictionary alloc] init];
     indexOfMenu = 0;
 }
 
 - (void)getMenuItemsZip:(NSData *)data {
-    NSString *path = [ApplicationSingleton cacheDirectory];
+    NSString *path = [mApplicationSingleton cacheDirectory];
     path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
 	NSError *error;
     if (![[NSFileManager defaultManager] createDirectoryAtPath:path
@@ -242,12 +245,16 @@
 - (void)getMenuItems:(NSData *)data {
     [mDictOfProducts removeAllObjects];
     [mArrayOfProductsNames removeAllObjects];
+    [arrayOfMenuItemGroups removeAllObjects];
     
     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSDictionary *mainDict = [json JSONValue];
     NSArray *arrayOfGroups = [mainDict valueForKeyPath:@"groups"];
     
     for(NSDictionary *dictOfgroup in arrayOfGroups) {
+        NSDictionary *info = [dictOfgroup objectForKey:@"info"];
+        GroupItem *groupItem = [[GroupItem alloc] initWithArray:[info objectForKey:@"objectValues"]];
+        [arrayOfMenuItemGroups addObject:groupItem];
         NSArray *objectValues = [dictOfgroup objectForKey:@"items"];
         NSMutableArray *arrayOfobjects = [NSMutableArray array];
         for(NSDictionary *objectValue in objectValues) {

@@ -12,6 +12,7 @@
 @synthesize backgroundImage;
 @synthesize menuImage;
 @synthesize textLabel;
+@synthesize priceLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -31,6 +32,7 @@
     [backgroundImage release];
     [menuImage release];
     [textLabel release];
+    [priceLabel release];
     [super dealloc];
 }
 @end

@@ -26,6 +26,7 @@
     IBOutlet UIImageView *mPaperBottomImageView;
     IBOutlet UIImageView *mPaperTopImageView;
     IBOutlet UILabel *mPriceLbl;
+    IBOutlet UIButton *currentGroupBtn;
     
     NSInteger mPrice;
 }
@@ -33,6 +34,9 @@
 - (void)newCheck;
 - (IBAction)gestureTaped:(id)sender;
 - (IBAction)changeMenuClicked:(id)sender;
+- (IBAction)menuClicked:(id)sender;
+- (IBAction)newChecked:(id)sender;
+
 
 @property (retain, nonatomic) IBOutlet PriceTableViewController *priceTableViewController;
 @property (retain, nonatomic) IBOutlet MenuTableViewController *menuTableViewController;
