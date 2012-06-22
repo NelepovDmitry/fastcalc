@@ -78,6 +78,8 @@
     mPriceLbl = nil;
     [currentGroupBtn release];
     currentGroupBtn = nil;
+    [mPageControl release];
+    mPageControl = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -104,6 +106,7 @@
     [mPaperTopImageView release];
     [mPriceLbl release];
     [currentGroupBtn release];
+    [mPageControl release];
     [super dealloc];
 }
 
@@ -220,6 +223,7 @@
     [menuTableViewController nextMenuByIndex:index];
     GroupItem *groupItem = [menuTableViewController.arrayOfMenuItemGroups objectAtIndex:index];
     [currentGroupBtn setTitle:groupItem.groupName forState:UIControlStateNormal];
+    mPageControl.currentPage = index;
 }
 
 - (IBAction)menuClicked:(id)sender {
@@ -233,14 +237,20 @@
 
 #pragma mark - MenuTableViewController Delegate
 
-- (void)getNewPrice:(MenuItem *)menu {
-    
+- (void)getAllProducts {
     GroupItem *groupItem = [menuTableViewController.arrayOfMenuItemGroups objectAtIndex:0];
     [currentGroupBtn setTitle:groupItem.groupName forState:UIControlStateNormal];
+    mPageControl.numberOfPages = menuTableViewController.arrayOfMenuItemGroups.count;
+    mPageControl.currentPage = 0;
+}
+
+- (void)getNewPrice:(MenuItem *)menu {
     
     mPrice += menu.menuPrice.integerValue;
     mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
     [priceTableViewController addNewProduct:menu];
+    
+    
     
     [self setTotalPriceFrame];
     CGRect rect = BEGIN_RECT;

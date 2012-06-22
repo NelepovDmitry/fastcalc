@@ -28,6 +28,8 @@
 @property (nonatomic, assign) BOOL firstStart;
 @property (nonatomic, assign) NSInteger controllerDiraction;
 
+@property (nonatomic, retain) NSMutableDictionary *dictOfMenuImages;
+
 - (void)updateSettings;
 - (void)commitSettings;
 

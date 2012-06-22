@@ -19,10 +19,12 @@
 
 - (void)getMenuItems:(NSData *)data;
 - (void)setMainProp;
+- (void)startPreloader;
 
 @end
 
 @implementation MenuTableViewController
+@synthesize menuCell;
 
 @synthesize delegate, arrayOfMenuItemGroups;
 
@@ -48,6 +50,7 @@
 
 - (void)viewDidUnload
 {
+    [self setMenuCell:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -62,6 +65,7 @@
     [mArrayOfProductsNames release];
     [mInternetUtils release];
     [mDictOfProducts release];
+    [menuCell release];
     [super dealloc];
 }
 
@@ -91,29 +95,19 @@
     
     MenuCell *cell= (MenuCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[MenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        NSArray *array = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-        for (id currentObject in array) {
-            if ([currentObject isKindOfClass:[MenuCell class]]) {
-                cell = currentObject;
-                break;
-            }
-        }
+        [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+        cell = menuCell;
+		self.menuCell = nil;
     }
     
     NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
     NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
     
     MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
-    NSString *path = [mApplicationSingleton cacheDirectory];
-    path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
-    NSString *imagePath = [path stringByAppendingPathComponent:menuItem.menuPicturePath];
-    
-    cell.backgroundColor = [UIColor grayColor];
     cell.textLabel.text = menuItem.menuName;
-    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-    cell.menuImage.image = image;
     cell.priceLabel.text = [NSString stringWithFormat:@"%d руб.", menuItem.menuPrice.integerValue];
+    UIImage *image = [mApplicationSingleton.dictOfMenuImages objectForKey:menuItem.menuPicturePath];
+    cell.menuImage.image = image;
     return cell;
 }
 
@@ -185,6 +179,7 @@
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getMenuItems={menu_id:6}
 - (void)requsetMenuById:(NSNumber *)menuId {
     mApplicationSingleton.idOfMenu = menuId;
+    [self startPreloader];
     if([ApplicationSingleton isMenuExistinChache:menuId]) {
         NSString *path = [mApplicationSingleton cacheDirectory];
         path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
@@ -213,6 +208,17 @@
     mInternetUtils = [[InternetUtils alloc] init];
     mDictOfProducts = [[NSMutableDictionary alloc] init];
     indexOfMenu = 0;
+}
+
+- (void)startPreloader {
+    mLoader = [[[UIAlertView alloc] initWithTitle:@"Loading the data list\nPlease Wait..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil] autorelease];
+    [mLoader show];
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    // Adjust the indicator so it is up a few pixels from the bottom of the alert
+    indicator.center = CGPointMake(mLoader.bounds.size.width / 2, mLoader.bounds.size.height - 50);
+    [indicator startAnimating];
+    [mLoader addSubview:indicator];
+    [indicator release];
 }
 
 - (void)getMenuItemsZip:(NSData *)data {
@@ -266,6 +272,8 @@
         [mDictOfProducts setObject:arrayOfobjects forKey:[dictOfgroup objectForKey:@"groupname"]];
     }
     [self.tableView reloadData];
+    [delegate getAllProducts];
+    [mLoader dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 @end

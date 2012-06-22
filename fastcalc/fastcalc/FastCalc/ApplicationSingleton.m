@@ -10,7 +10,7 @@
 
 @implementation ApplicationSingleton
 
-@synthesize idOfCity, nameOfCity, alreadyRun, firstStart, controllerDiraction, idOfMenu;
+@synthesize idOfCity, nameOfCity, alreadyRun, firstStart, controllerDiraction, idOfMenu, dictOfMenuImages;
 
 + (ApplicationSingleton *)createSingleton {
     static ApplicationSingleton *singleton;
@@ -26,7 +26,7 @@
 - (id)init {
     self = [super init];
     if(self) {
-        mCacheDirectory = @"";
+        self.dictOfMenuImages = [[NSMutableDictionary alloc] init];
         [self updateSettings];
     }
     return self;
@@ -60,6 +60,7 @@
         self.alreadyRun = [prefs boolForKey:ALREADY_RUN];
         self.controllerDiraction = [prefs integerForKey:CONTROLLERS_DIRACTION];
     } else {
+        mCacheDirectory = @"";
         self.idOfCity = [NSNumber numberWithInt:0];
         self.idOfMenu = [NSNumber numberWithInt:0];
         self.nameOfCity = @"";
@@ -80,10 +81,7 @@
 }
 
 - (NSString *)cacheDirectory {
-    if([mCacheDirectory isEqualToString:@""]) {
-        mCacheDirectory = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] retain];
-    }
-    return mCacheDirectory;
+    return [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 }
 
 @end

@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class InternetUtils, MenuItem, ApplicationSingleton;
+@class InternetUtils, MenuItem, ApplicationSingleton,MenuCell;
 
 @protocol MenuTableViewControllerDelegate <NSObject>
 
 - (void)getNewPrice:(MenuItem *)price;
+- (void)getAllProducts;
 
 @end
 
@@ -24,10 +25,13 @@
     
     InternetUtils *mInternetUtils;
     ApplicationSingleton *mApplicationSingleton;
+    
+    UIAlertView *mLoader;
 }
 
 @property (nonatomic, assign) id<MenuTableViewControllerDelegate> delegate;
 @property (nonatomic, retain) NSMutableArray *arrayOfMenuItemGroups;
+@property (retain, nonatomic) IBOutlet MenuCell *menuCell;
 
 - (void)nextMenuByIndex:(NSInteger)menuIndex;
 - (void)requsetMenuById:(NSNumber *)menuId;

@@ -7,6 +7,13 @@
 //
 
 #import "MenuItem.h"
+#import "ApplicationSingleton.h"
+
+@interface MenuItem()
+
+- (void)loadImageToCache;
+
+@end
 
 @implementation MenuItem
 
@@ -18,8 +25,20 @@
         menuName = [self getFieldValue:@"Menu item info_Name" attrFieldType:STRING_VALUE];
         menuPrice = [self getFieldValue:@"Menu item info_Price" attrFieldType:FLOAT_VALUE];
         menuPicturePath = [self getFieldValue:@"Menu item info_Item picture" attrFieldType:CONTENT_VALUE];
+        [self loadImageToCache];
     }
     return self;
+}
+
+- (void)loadImageToCache {
+    ApplicationSingleton *applicationSingleton = [ApplicationSingleton createSingleton];
+    NSString *path = [applicationSingleton cacheDirectory];
+    path = [NSString stringWithFormat:@"%@/%d", path, applicationSingleton.idOfMenu.integerValue];
+    NSString *imagePath = [path stringByAppendingPathComponent:menuPicturePath];
+    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    if(image != nil) {
+        [applicationSingleton.dictOfMenuImages setObject:image forKey:menuPicturePath];
+    }
 }
 
 + (id)menuItemWithName:(NSString *)name price:(NSNumber *)price {

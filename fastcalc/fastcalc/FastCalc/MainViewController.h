@@ -27,6 +27,7 @@
     IBOutlet UIImageView *mPaperTopImageView;
     IBOutlet UILabel *mPriceLbl;
     IBOutlet UIButton *currentGroupBtn;
+    IBOutlet UIPageControl *mPageControl;
     
     NSInteger mPrice;
 }
