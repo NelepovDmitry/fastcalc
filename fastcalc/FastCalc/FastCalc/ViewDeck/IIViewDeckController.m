@@ -147,6 +147,8 @@ __typeof__(h) __h = (h);                                    \
 
 - (void)relayAppearanceMethod:(void(^)(UIViewController* controller))relay;
 - (void)relayAppearanceMethod:(void(^)(UIViewController* controller))relay forced:(BOOL)forced;
+- (CGFloat)locationOfPanner:(UIPanGestureRecognizer*)panner;
+
 
 @end 
 
@@ -1076,9 +1078,10 @@ __typeof__(h) __h = (h);                                    \
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     CGFloat px = self.slidingControllerView.frame.origin.x;
-    if (px != 0) return YES;
-        
-    CGFloat x = [self locationOfPanner:(UIPanGestureRecognizer*)gestureRecognizer];
+    if (px != 0) 
+        return YES;
+    
+    CGFloat x = [self locationOfPanner:(UIPanGestureRecognizer *)gestureRecognizer];
     BOOL ok =  YES;
 
     if (x > 0) {

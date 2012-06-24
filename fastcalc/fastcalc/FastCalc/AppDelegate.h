@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) MenuViewController *viewController;
+@property (strong, nonatomic) UIViewController *viewController;
+@property (strong, nonatomic) UIViewController *leftController;
 
 @end

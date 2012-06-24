@@ -11,11 +11,13 @@
 #import "MainViewController.h"
 #import "MenuViewController.h"
 #import "ChooseViewController.h"
+#import "IIViewDeckController.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
+@synthesize leftController = _leftController;
 
 - (void)dealloc
 {
@@ -30,20 +32,18 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     
+    self.leftController = [[ChooseViewController alloc] initWithNibName:@"ChooseViewController" bundle:nil];
     
     MainViewController *mainController = [[[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil] autorelease];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainController];
+    self.viewController = [[UINavigationController alloc] initWithRootViewController:mainController];
     
     
-    MenuViewController *rootController = [[MenuViewController alloc] initWithRootViewController:navigationController];
-    _viewController = rootController;
+    IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:self.viewController 
+                                                                                    leftViewController:self.leftController
+                                                                                   rightViewController:nil];
+    deckController.rightLedge = 100;
     
-    ChooseViewController *leftController = [[ChooseViewController alloc] initWithNibName:@"ChooseViewController" bundle:nil];
-    rootController.leftViewController = leftController;
-    
-    self.window.rootViewController = rootController;
-    
-    [rootController showLeftController:YES];
+    self.window.rootViewController = deckController;
     
     [self.window makeKeyAndVisible];
     return YES;
