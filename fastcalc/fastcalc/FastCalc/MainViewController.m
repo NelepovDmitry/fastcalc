@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "MenuViewController.h"
 #import "GroupItem.h"
+#import "IIViewDeckController.h"
 
 @interface MainViewController ()
 
@@ -232,7 +233,7 @@
 
 - (IBAction)menuClicked:(id)sender {
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    [appDelegate.viewController showLeftController:YES];
+    [appDelegate.viewController.viewDeckController toggleLeftViewAnimated:YES];
 }
 
 - (IBAction)newChecked:(id)sender {

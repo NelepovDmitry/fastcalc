@@ -10,7 +10,7 @@
 #import "InternetUtils.h"
 #import "JSON.h"
 #import "ApplicationSingleton.h"
-#import "MenuViewController.h"
+#import "IIViewDeckController.h"
 #import "MainViewController.h"
 #import "MenuTableViewController.h"
 #import "Brand.h"
@@ -305,12 +305,12 @@
     BrandMenu *brandMenu = [array objectAtIndex:indexPath.row];
     NSNumber *numberId =  brandMenu.objectId;
     
-    MenuViewController *menuController = (MenuViewController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
-    UINavigationController *rootNavController = (UINavigationController *)menuController.rootViewController;
+    UIViewController *menuController = (UIViewController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
+    UINavigationController *rootNavController = (UINavigationController *)menuController;
     NSArray *viewControllers = rootNavController.viewControllers;
     MainViewController *rootViewController = [viewControllers objectAtIndex:0];
     [rootViewController.menuTableViewController requsetMenuById:numberId];
-    [menuController showRootController:YES];
+    [menuController.viewDeckController toggleLeftViewAnimated:YES];
 }
 
 @end
