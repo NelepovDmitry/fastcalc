@@ -153,19 +153,20 @@
     [mApplicationSingleton commitSettings];
     NSArray *arrayOfBrands = [mainDict valueForKeyPath:@"brands.menus"];
     
-    NSMutableDictionary *lastDict = [NSMutableDictionary dictionary];
-    [lastDict setObject:[mainDict valueForKeyPath:@"brands.brandname"] forKey:@"name"];
-    
-    NSMutableArray *arrayOfMenus = [NSMutableArray array];
-    for(NSDictionary *brand in [arrayOfBrands objectAtIndex:0]) {
-        NSArray *objectValues = [brand objectForKey:@"objectValues"];
-        BrandMenu *brand = [[BrandMenu alloc] initWithArray:objectValues];
-        [arrayOfMenus addObject:brand];
-        [brand release];
+    for(NSArray *array in arrayOfBrands) {
+        NSMutableDictionary *lastDict = [NSMutableDictionary dictionary];
+        [lastDict setObject:[mainDict valueForKeyPath:@"brands.brandname"] forKey:@"name"];
+        NSMutableArray *arrayOfMenus = [NSMutableArray array];
+        for(NSDictionary *brand in array) {
+            NSArray *objectValues = [brand objectForKey:@"objectValues"];
+            BrandMenu *brand = [[BrandMenu alloc] initWithArray:objectValues];
+            [arrayOfMenus addObject:brand];
+            [brand release];
+        }
+        [lastDict setObject:arrayOfMenus forKey:@"menus"];
+        [mArrayOfBrands addObject:lastDict];
     }
     
-    [lastDict setObject:arrayOfMenus forKey:@"menus"];
-    [mArrayOfBrands addObject:lastDict];
     [mBrandsTable reloadData];
     [json release];
     
