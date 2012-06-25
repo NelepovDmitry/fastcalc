@@ -178,6 +178,7 @@
 //http://fastcalc.orionsource.ru/api?apifastcalc.getMenuItemsZip={"menu_id":6,"responseBinary":1}
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getMenuItems={menu_id:6}
 - (void)requsetMenuById:(NSNumber *)menuId {
+    indexOfMenu = 0;
     mApplicationSingleton.idOfMenu = menuId;
     [self startPreloader];
     if([ApplicationSingleton isMenuExistinChache:menuId]) {
