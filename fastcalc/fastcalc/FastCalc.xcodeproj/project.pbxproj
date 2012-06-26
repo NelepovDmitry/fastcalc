@@ -83,6 +83,11 @@
 		84B0B2651580E98400DE9F0A /* paper_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2511580E98400DE9F0A /* paper_top@2x.png */; };
 		84B0B2661580E98400DE9F0A /* table_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2521580E98400DE9F0A /* table_mask.png */; };
 		84B0B2671580E98400DE9F0A /* table_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2531580E98400DE9F0A /* table_mask@2x.png */; };
+		84B9E1731599A16F00A7E3D9 /* Kassa.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84B9E1711599A16F00A7E3D9 /* Kassa.wav */; };
+		84B9E1741599A16F00A7E3D9 /* Bumaga.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84B9E1721599A16F00A7E3D9 /* Bumaga.wav */; };
+		84B9E17C1599A39500A7E3D9 /* EClockPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E17A1599A39500A7E3D9 /* EClockPlayer.m */; };
+		84B9E17E1599A41800A7E3D9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B9E17D1599A41800A7E3D9 /* AudioToolbox.framework */; };
+		84B9E1801599A42200A7E3D9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B9E17F1599A42200A7E3D9 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -197,6 +202,12 @@
 		84B0B2511580E98400DE9F0A /* paper_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paper_top@2x.png"; sourceTree = "<group>"; };
 		84B0B2521580E98400DE9F0A /* table_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_mask.png; sourceTree = "<group>"; };
 		84B0B2531580E98400DE9F0A /* table_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table_mask@2x.png"; sourceTree = "<group>"; };
+		84B9E1711599A16F00A7E3D9 /* Kassa.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Kassa.wav; sourceTree = "<group>"; };
+		84B9E1721599A16F00A7E3D9 /* Bumaga.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bumaga.wav; sourceTree = "<group>"; };
+		84B9E17A1599A39500A7E3D9 /* EClockPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EClockPlayer.m; sourceTree = "<group>"; };
+		84B9E17B1599A39500A7E3D9 /* EClockPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EClockPlayer.h; sourceTree = "<group>"; };
+		84B9E17D1599A41800A7E3D9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		84B9E17F1599A42200A7E3D9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		84F231B3158A2FFC00E6D9AC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		84F231B6158A2FFE00E6D9AC /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +217,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B9E1801599A42200A7E3D9 /* AVFoundation.framework in Frameworks */,
+				84B9E17E1599A41800A7E3D9 /* AudioToolbox.framework in Frameworks */,
 				8479C11F1592FAB5006F05C9 /* libz.1.2.5.dylib in Frameworks */,
 				2FA882DD157D48F0005DF341 /* QuartzCore.framework in Frameworks */,
 				8478CF581579F103001F0054 /* CoreLocation.framework in Frameworks */,
@@ -347,6 +360,8 @@
 		84794DF31578A143004010F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84B9E17F1599A42200A7E3D9 /* AVFoundation.framework */,
+				84B9E17D1599A41800A7E3D9 /* AudioToolbox.framework */,
 				8479C11E1592FAB5006F05C9 /* libz.1.2.5.dylib */,
 				2FA882DC157D48F0005DF341 /* QuartzCore.framework */,
 				8478CF571579F103001F0054 /* CoreLocation.framework */,
@@ -387,6 +402,7 @@
 		84794E111578A1C2004010F7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				84B9E1791599A37D00A7E3D9 /* Sound Player */,
 				8476D3E61590BC2C00820E53 /* DataWorker */,
 				8453CD1E158B75BF009E60C5 /* Main Classes */,
 				8478CF63157A12C7001F0054 /* Singletons */,
@@ -465,6 +481,39 @@
 		847B60DC157CC65500BC8B89 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84B9E1701599A15B00A7E3D9 /* Sounds */,
+				84B9E16F1599A14600A7E3D9 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		847B60E9157CC92800BC8B89 /* Price Table ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				847B60D4157C988700BC8B89 /* PriceTableViewController.h */,
+				847B60D5157C988700BC8B89 /* PriceTableViewController.m */,
+				847B60EB157CC97200BC8B89 /* PriceCell.h */,
+				847B60EC157CC97200BC8B89 /* PriceCell.m */,
+				847B60EE157CC9BB00BC8B89 /* PriceCell.xib */,
+			);
+			name = "Price Table ViewController";
+			sourceTree = "<group>";
+		};
+		847B60EA157CC93800BC8B89 /* Menu Table View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				847B60D7157C98CC00BC8B89 /* MenuTableViewController.h */,
+				847B60D8157C98CC00BC8B89 /* MenuTableViewController.m */,
+				844243CD157CCC8000F156A1 /* MenuCell.h */,
+				844243CE157CCC8000F156A1 /* MenuCell.m */,
+				844243CA157CCC6200F156A1 /* MenuCell.xib */,
+			);
+			name = "Menu Table View Controller";
+			sourceTree = "<group>";
+		};
+		84B9E16F1599A14600A7E3D9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
 				842615B21594858E00EDAE42 /* categoty_button_down.png */,
 				842615B31594858E00EDAE42 /* categoty_button_down@2x.png */,
 				842615A9159484E300EDAE42 /* list_button_down.png */,
@@ -496,31 +545,25 @@
 				84B0B2521580E98400DE9F0A /* table_mask.png */,
 				84B0B2531580E98400DE9F0A /* table_mask@2x.png */,
 			);
-			name = Resources;
+			name = Images;
 			sourceTree = "<group>";
 		};
-		847B60E9157CC92800BC8B89 /* Price Table ViewController */ = {
+		84B9E1701599A15B00A7E3D9 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				847B60D4157C988700BC8B89 /* PriceTableViewController.h */,
-				847B60D5157C988700BC8B89 /* PriceTableViewController.m */,
-				847B60EB157CC97200BC8B89 /* PriceCell.h */,
-				847B60EC157CC97200BC8B89 /* PriceCell.m */,
-				847B60EE157CC9BB00BC8B89 /* PriceCell.xib */,
+				84B9E1711599A16F00A7E3D9 /* Kassa.wav */,
+				84B9E1721599A16F00A7E3D9 /* Bumaga.wav */,
 			);
-			name = "Price Table ViewController";
+			name = Sounds;
 			sourceTree = "<group>";
 		};
-		847B60EA157CC93800BC8B89 /* Menu Table View Controller */ = {
+		84B9E1791599A37D00A7E3D9 /* Sound Player */ = {
 			isa = PBXGroup;
 			children = (
-				847B60D7157C98CC00BC8B89 /* MenuTableViewController.h */,
-				847B60D8157C98CC00BC8B89 /* MenuTableViewController.m */,
-				844243CD157CCC8000F156A1 /* MenuCell.h */,
-				844243CE157CCC8000F156A1 /* MenuCell.m */,
-				844243CA157CCC6200F156A1 /* MenuCell.xib */,
+				84B9E17A1599A39500A7E3D9 /* EClockPlayer.m */,
+				84B9E17B1599A39500A7E3D9 /* EClockPlayer.h */,
 			);
-			name = "Menu Table View Controller";
+			name = "Sound Player";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -610,6 +653,8 @@
 				842615B0159484E300EDAE42 /* new_button_up.png in Resources */,
 				842615B41594858E00EDAE42 /* categoty_button_down.png in Resources */,
 				842615B51594858E00EDAE42 /* categoty_button_down@2x.png in Resources */,
+				84B9E1731599A16F00A7E3D9 /* Kassa.wav in Resources */,
+				84B9E1741599A16F00A7E3D9 /* Bumaga.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +697,7 @@
 				84489A3715946C3E0039311D /* GroupItem.m in Sources */,
 				842616861594B1AE00EDAE42 /* IIViewDeckController.m in Sources */,
 				842616871594B1AE00EDAE42 /* WrapController.m in Sources */,
+				84B9E17C1599A39500A7E3D9 /* EClockPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

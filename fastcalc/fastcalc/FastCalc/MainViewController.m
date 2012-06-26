@@ -15,10 +15,12 @@
 #import "MenuViewController.h"
 #import "GroupItem.h"
 #import "IIViewDeckController.h"
+#import "EClockPlayer.h"
 
 @interface MainViewController ()
 
 - (void)initGestureProp;
+- (void)initPlayers;
 - (void)setMainProp;
 - (void)newPriceViewAnimate;
 - (void)finishAnimation;
@@ -44,6 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initPlayers];
     [self setMainProp];
     [self initGestureProp];
     
@@ -126,6 +129,11 @@
     [mCheckView addGestureRecognizer:mGestureRecognizerLeft];
 }
 
+- (void)initPlayers {
+    mKassaPlayer = [[EClockPlayer alloc] initWithFileName:@"Kassa.wav"];
+    mBumagaPlayer = [[EClockPlayer alloc] initWithFileName:@"Bumaga.wav"];
+}
+
 - (void)setMainProp {
     //set main prop
     self.navigationController.navigationBarHidden = YES;
@@ -161,6 +169,7 @@
 }
 
 - (void)newCheck {
+    [mBumagaPlayer playAudio];
     [priceTableViewController clearCheck];
     mPrice = 0;
     mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];

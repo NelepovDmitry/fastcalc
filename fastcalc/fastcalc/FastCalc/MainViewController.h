@@ -12,6 +12,7 @@
 
 #define BEGIN_RECT CGRectMake(0, 416, 288, 416)
 
+@class EClockPlayer;
 
 @interface MainViewController : UIViewController <MenuTableViewControllerDelegate, PriceTableViewControllerDelegate, UIGestureRecognizerDelegate> {
     IBOutlet UIView *mAnimationView;
@@ -31,6 +32,9 @@
     IBOutlet UIImageView *mPriceMask;
     
     NSInteger mPrice;
+    
+    EClockPlayer *mKassaPlayer;
+    EClockPlayer *mBumagaPlayer;
 }
 
 - (void)newCheck;
