@@ -74,10 +74,10 @@
 #pragma mark - Custom functions
 
 - (void)setBorderToTheView:(UIView *)view {
-    mBrandsTable.layer.cornerRadius = 10;
-    [mBrandsTable.layer setBorderColor:[[UIColor colorWithRed:24.0/255.0 green:92.0/255.0 blue:52.0/255.0 alpha:1.0f] CGColor]];
-    [mBrandsTable.layer setBorderWidth:2.0];
-    mBrandsTable.clipsToBounds = YES;
+    view.layer.cornerRadius = 8;
+    [view.layer setBorderColor:[[UIColor colorWithRed:24.0/255.0 green:92.0/255.0 blue:52.0/255.0 alpha:1.0f] CGColor]];
+    [view.layer setBorderWidth:2.0];
+    view.clipsToBounds = YES;
 }
 
 - (void)initPrivate {
