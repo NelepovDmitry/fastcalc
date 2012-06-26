@@ -131,7 +131,9 @@
 
 - (void)initPlayers {
     mKassaPlayer = [[EClockPlayer alloc] initWithFileName:@"Kassa.wav"];
+    [mKassaPlayer adjustVolume:0.4f];
     mBumagaPlayer = [[EClockPlayer alloc] initWithFileName:@"Bumaga.wav"];
+    [mBumagaPlayer adjustVolume:0.2f];
 }
 
 - (void)setMainProp {

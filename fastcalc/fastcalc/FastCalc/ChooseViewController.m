@@ -25,6 +25,7 @@
 
 - (void)startPreloader;
 - (void)getFastFoodsOnCityZip:(NSData *)data;
+- (void)setBorderToTheView:(UIView *)view;
 
 @end
 
@@ -72,6 +73,13 @@
 
 #pragma mark - Custom functions
 
+- (void)setBorderToTheView:(UIView *)view {
+    mBrandsTable.layer.cornerRadius = 10;
+    [mBrandsTable.layer setBorderColor:[[UIColor colorWithRed:24.0/255.0 green:92.0/255.0 blue:52.0/255.0 alpha:1.0f] CGColor]];
+    [mBrandsTable.layer setBorderWidth:2.0];
+    mBrandsTable.clipsToBounds = YES;
+}
+
 - (void)initPrivate {
     mInternetUtils = [[InternetUtils alloc] init];
     mApplicationSingleton = [ApplicationSingleton createSingleton];
@@ -85,9 +93,9 @@
         [mLocationGetter startUpdates];
     }
     
-    mBrandsTable.layer.cornerRadius = 10;
-    [mBrandsTable.layer setBorderColor:[[UIColor colorWithRed:24.0/255.0 green:92.0/255.0 blue:52.0/255.0 alpha:1.0f] CGColor]];
-    [mBrandsTable.layer setBorderWidth:1.0];
+    [self setBorderToTheView:mBrandsTable];
+    [self setBorderToTheView:mLocationLbl];
+    
 }
 
 - (void)startPreloader {
@@ -182,7 +190,7 @@
 //http://fastcalc.orionsource.ru/api?apifastcalc.getFastFoodsOnCityZip={"city_name":"Москва","locale":"ru","responseBinary":1}
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getFastFoodsOnCity={%22city_name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22,%22locale%22:%22ru%22}
 - (void)requestCity:(NSString *)cityName {
-    
+    [mLocationLbl setText:cityName];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setObject:cityName forKey:@"city_name"];
     [dict setObject:@"ru" forKey:@"locale"];
@@ -198,12 +206,6 @@
 
 - (void)updateCache {
     
-}
-
-- (IBAction)reloadLocationClicked:(id)sender {
-}
-
-- (IBAction)reloadListClicked:(id)sender {
 }
 
 #pragma mark - Location Delegate 
@@ -321,6 +323,28 @@
     MainViewController *rootViewController = [viewControllers objectAtIndex:0];
     [rootViewController.menuTableViewController requsetMenuById:numberId];
     [menuController.viewDeckController toggleLeftViewAnimated:YES];
+}
+
+#pragma mark - Actions
+
+- (IBAction)reloadLocationClicked:(id)sender {
+    
+}
+
+- (IBAction)reloadListClicked:(id)sender {
+    mApplicationSingleton.idOfCity = [NSNumber numberWithInt:0];
+    [mArrayOfBrands removeAllObjects];
+    [self startPreloader];
+    [mLocationGetter startUpdates];
+}
+
+- (IBAction)rateClicked:(id)sender {
+}
+
+- (IBAction)infoClicked:(id)sender {
+}
+
+- (IBAction)soundClicked:(id)sender {
 }
 
 @end

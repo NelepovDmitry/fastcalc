@@ -19,11 +19,11 @@ BOOL didUpdate = NO;
     locationManager.delegate = self;
     // You have some options here, though higher accuracy takes longer to resolve.
     //locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    firstLocation = true;
     [locationManager startUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    static bool firstLocation = true;
 	if([self.delegate conformsToProtocol:@protocol(MLocationGetterDelegate)]) {  // Check if the class assigning itself as the delegate conforms to our protocol.  If not, the message will go nowhere.  Not good.
         if(firstLocation) {
             [self.delegate newPhysicalLocation:newLocation];

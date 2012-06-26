@@ -28,5 +28,8 @@
 - (void)updateCache;
 - (IBAction)reloadLocationClicked:(id)sender;
 - (IBAction)reloadListClicked:(id)sender;
+- (IBAction)rateClicked:(id)sender;
+- (IBAction)infoClicked:(id)sender;
+- (IBAction)soundClicked:(id)sender;
 
 @end

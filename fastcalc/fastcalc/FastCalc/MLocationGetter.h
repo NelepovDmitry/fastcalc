@@ -22,6 +22,8 @@
 @interface MLocationGetter : NSObject <CLLocationManagerDelegate> { 
     CLLocationManager *locationManager;
     id<MLocationGetterDelegate> delegate;
+    
+    BOOL firstLocation;
 }
 - (void)getUserAddress:(CLLocation *)location;
 - (void)startUpdates;
