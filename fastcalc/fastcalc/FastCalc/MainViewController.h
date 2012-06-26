@@ -13,7 +13,7 @@
 #define BEGIN_RECT CGRectMake(0, 416, 288, 416)
 
 
-@interface MainViewController : UIViewController <MenuTableViewControllerDelegate, PriceTableViewControllerDelegate> {
+@interface MainViewController : UIViewController <MenuTableViewControllerDelegate, PriceTableViewControllerDelegate, UIGestureRecognizerDelegate> {
     IBOutlet UIView *mAnimationView;
     IBOutlet UISwipeGestureRecognizer *mGestureRecognizerDown;
     IBOutlet UISwipeGestureRecognizer *mGestureRecognizerUp;

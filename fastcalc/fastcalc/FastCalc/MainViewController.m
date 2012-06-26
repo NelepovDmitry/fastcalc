@@ -211,12 +211,12 @@
         CGPoint topOffset = CGPointMake(0, 0);
         [mMainView setContentOffset:topOffset animated:YES];
         [priceTableViewController goToTop:YES];
-        [appDelegate.viewController disableGestureRecognizer:YES];
+        appDelegate.viewController.viewDeckController.panningMode = IIViewDeckNoPanning;
     } else if (gesture.direction == UISwipeGestureRecognizerDirectionUp) {
         CGPoint bottomOffset =  CGPointMake(0, mMainView.contentSize.height - mMainView.frame.size.height);
         [mMainView setContentOffset:bottomOffset animated:YES];
         [priceTableViewController goToTop:NO];
-        [appDelegate.viewController disableGestureRecognizer:NO];
+        appDelegate.viewController.viewDeckController.panningMode = IIViewDeckFullViewPanning;
     } else if(gesture.direction == UISwipeGestureRecognizerDirectionLeft) {
         [self newCheck];
     }
@@ -290,6 +290,12 @@
     CGRect checkRect = mCheckView.frame;
     checkRect.origin.y -= checkRect.size.height;
     [mCheckView setFrame:checkRect];
+}
+
+#pragma mark - Gesture Recognizer Delegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {        
+    return YES;
 }
 
 @end
