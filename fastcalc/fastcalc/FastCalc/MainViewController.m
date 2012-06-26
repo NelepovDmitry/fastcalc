@@ -260,6 +260,8 @@
 
 - (void)getNewPrice:(MenuItem *)menu {
     
+    [mKassaPlayer playAudio];
+    
     mPrice += menu.menuPrice.integerValue;
     mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
     [priceTableViewController addNewProduct:menu];
