@@ -19,11 +19,14 @@
     ApplicationSingleton *mApplicationSingleton;
     
     IBOutlet UITableView *mBrandsTable;
+    IBOutlet UILabel *mLocationLbl;
     
     UIAlertView *mLoader;
 }
 
 - (void)getBrandsFromCache;
 - (void)updateCache;
+- (IBAction)reloadLocationClicked:(id)sender;
+- (IBAction)reloadListClicked:(id)sender;
 
 @end

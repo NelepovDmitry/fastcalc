@@ -50,6 +50,8 @@
 {
     [mBrandsTable release];
     mBrandsTable = nil;
+    [mLocationLbl release];
+    mLocationLbl = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -64,6 +66,7 @@
     [mInternetUtils release];
     [mLocationGetter release];
     [mBrandsTable release];
+    [mLocationLbl release];
     [super dealloc];
 }
 
@@ -195,6 +198,12 @@
 
 - (void)updateCache {
     
+}
+
+- (IBAction)reloadLocationClicked:(id)sender {
+}
+
+- (IBAction)reloadListClicked:(id)sender {
 }
 
 #pragma mark - Location Delegate 
