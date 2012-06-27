@@ -346,12 +346,15 @@
     BrandMenu *brandMenu = [array objectAtIndex:indexPath.row];
     NSNumber *numberId =  brandMenu.objectId;
     
-    UIViewController *menuController = (UIViewController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
+    [mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:numberId];
+    [mApplicationSingleton.mainViewController.viewDeckController toggleLeftViewAnimated:YES];
+    
+    /*UIViewController *menuController = (UIViewController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
     UINavigationController *rootNavController = (UINavigationController *)menuController;
     NSArray *viewControllers = rootNavController.viewControllers;
     MainViewController *rootViewController = [viewControllers objectAtIndex:0];
     [rootViewController.menuTableViewController requsetMenuById:numberId];
-    [menuController.viewDeckController toggleLeftViewAnimated:YES];
+    [menuController.viewDeckController toggleLeftViewAnimated:YES];*/
 }
 
 #pragma mark - Actions

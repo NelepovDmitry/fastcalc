@@ -41,6 +41,7 @@
 {
     [super viewDidLoad];
     [self setMainProp];
+    [self requsetMenuById:mApplicationSingleton.idOfMenu];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -178,8 +179,13 @@
 //http://fastcalc.orionsource.ru/api?apifastcalc.getMenuItemsZip={"menu_id":6,"responseBinary":1}
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getMenuItems={menu_id:6}
 - (void)requsetMenuById:(NSNumber *)menuId {
+    if(menuId.integerValue == 0) {
+        [mLoader dismissWithClickedButtonIndex:0 animated:YES];
+        return;
+    }
     indexOfMenu = 0;
     mApplicationSingleton.idOfMenu = menuId;
+    [mApplicationSingleton commitSettings];
     [self startPreloader];
     if([ApplicationSingleton isMenuExistinChache:menuId]) {
         NSString *path = [mApplicationSingleton cacheDirectory];
@@ -273,7 +279,7 @@
         [mDictOfProducts setObject:arrayOfobjects forKey:[dictOfgroup objectForKey:@"groupname"]];
     }
     [self.tableView reloadData];
-    [delegate getAllProducts];
+    [mApplicationSingleton.mainViewController getAllProducts];
     [mLoader dismissWithClickedButtonIndex:0 animated:YES];
 }
 

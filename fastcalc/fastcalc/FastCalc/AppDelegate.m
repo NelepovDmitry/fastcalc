@@ -9,10 +9,10 @@
 #import "AppDelegate.h"
 
 #import "MainViewController.h"
-#import "MenuViewController.h"
 #import "ChooseViewController.h"
 #import "IIViewDeckController.h"
 #import "iRate.h"
+#import "ApplicationSingleton.h"
 
 @implementation AppDelegate
 
@@ -29,6 +29,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    ApplicationSingleton *appSingleton = [ApplicationSingleton createSingleton];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
@@ -38,17 +39,20 @@
     self.leftController = [[ChooseViewController alloc] initWithNibName:@"ChooseViewController" bundle:nil];
     
     MainViewController *mainController = [[[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil] autorelease];
+    appSingleton.mainViewController = mainController;
     self.viewController = [[UINavigationController alloc] initWithRootViewController:mainController];
-    
     
     IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:self.viewController 
                                                                                     leftViewController:self.leftController
                                                                                    rightViewController:nil];
     deckController.rightLedge = 100;
-    
     self.window.rootViewController = deckController;
-    
     [self.window makeKeyAndVisible];
+    
+    if(appSingleton.firstStart) {
+        [deckController toggleLeftView];
+    }
+    
     return YES;
 }
 

@@ -15,6 +15,8 @@
 //-1 0 1
 #define CONTROLLERS_DIRACTION @"controller_diractions"
 
+@class MainViewController;
+
 @interface ApplicationSingleton : NSObject {
     NSString *mCacheDirectory;
 }
@@ -29,6 +31,7 @@
 @property (nonatomic, assign) NSInteger controllerDiraction;
 
 @property (nonatomic, retain) NSMutableDictionary *dictOfMenuImages;
+@property (nonatomic, retain) MainViewController *mainViewController;
 
 - (void)updateSettings;
 - (void)commitSettings;

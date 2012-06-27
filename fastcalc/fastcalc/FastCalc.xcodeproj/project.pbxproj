@@ -10,7 +10,6 @@
 		2F2116D9158BB617008EA754 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2116D8158BB617008EA754 /* MenuItem.m */; };
 		2F2116DD158BC1E0008EA754 /* BrandMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2116DC158BC1E0008EA754 /* BrandMenu.m */; };
 		2FA882D7157D46E5005DF341 /* DDMenuController.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 2FA882D6157D46E5005DF341 /* DDMenuController.entitlements */; };
-		2FA882DB157D4764005DF341 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA882DA157D4764005DF341 /* MenuViewController.m */; };
 		2FA882DD157D48F0005DF341 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA882DC157D48F0005DF341 /* QuartzCore.framework */; };
 		842615AD159484E300EDAE42 /* list_button_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 842615A9159484E300EDAE42 /* list_button_down.png */; };
 		842615AE159484E300EDAE42 /* list_button_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 842615AA159484E300EDAE42 /* list_button_up.png */; };
@@ -119,8 +118,6 @@
 		2F2116DB158BC1DF008EA754 /* BrandMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandMenu.h; sourceTree = "<group>"; };
 		2F2116DC158BC1E0008EA754 /* BrandMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandMenu.m; sourceTree = "<group>"; };
 		2FA882D6157D46E5005DF341 /* DDMenuController.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DDMenuController.entitlements; sourceTree = "<group>"; };
-		2FA882D9157D4764005DF341 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = ../MenuViewController.h; sourceTree = "<group>"; };
-		2FA882DA157D4764005DF341 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = ../MenuViewController.m; sourceTree = "<group>"; };
 		2FA882DC157D48F0005DF341 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		842615A9159484E300EDAE42 /* list_button_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_button_down.png; sourceTree = "<group>"; };
 		842615AA159484E300EDAE42 /* list_button_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_button_up.png; sourceTree = "<group>"; };
@@ -288,7 +285,6 @@
 				8479C1081592FA78006F05C9 /* ZipArchive */,
 				8476D3E51590A9F200820E53 /* Reachability */,
 				8478CF3E1579EF64001F0054 /* JSON */,
-				8476D3E41590A9DB00820E53 /* MenuController */,
 			);
 			name = Libs;
 			sourceTree = "<group>";
@@ -328,16 +324,6 @@
 				84662911159ADACF00A49F19 /* iRate.m */,
 			);
 			name = Rate;
-			sourceTree = "<group>";
-		};
-		8476D3E41590A9DB00820E53 /* MenuController */ = {
-			isa = PBXGroup;
-			children = (
-				2FA882D9157D4764005DF341 /* MenuViewController.h */,
-				2FA882DA157D4764005DF341 /* MenuViewController.m */,
-			);
-			name = MenuController;
-			path = EGOCache;
 			sourceTree = "<group>";
 		};
 		8476D3E51590A9F200820E53 /* Reachability */ = {
@@ -785,7 +771,6 @@
 				847B60D9157C98CC00BC8B89 /* MenuTableViewController.m in Sources */,
 				847B60ED157CC97200BC8B89 /* PriceCell.m in Sources */,
 				844243CF157CCC8000F156A1 /* MenuCell.m in Sources */,
-				2FA882DB157D4764005DF341 /* MenuViewController.m in Sources */,
 				8453CD22158B75E3009E60C5 /* UDBObject.m in Sources */,
 				8453CD25158B79AE009E60C5 /* Brand.m in Sources */,
 				2F2116D9158BB617008EA754 /* MenuItem.m in Sources */,

@@ -7,10 +7,11 @@
 //
 
 #import "ApplicationSingleton.h"
+#import "MainViewController.h"
 
 @implementation ApplicationSingleton
 
-@synthesize idOfCity, nameOfCity, alreadyRun, firstStart, controllerDiraction, idOfMenu, dictOfMenuImages;
+@synthesize idOfCity, nameOfCity, alreadyRun, firstStart, controllerDiraction, idOfMenu, dictOfMenuImages, mainViewController;
 
 + (ApplicationSingleton *)createSingleton {
     static ApplicationSingleton *singleton;
