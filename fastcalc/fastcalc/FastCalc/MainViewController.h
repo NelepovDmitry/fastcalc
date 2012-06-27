@@ -42,7 +42,7 @@
 - (IBAction)changeMenuClicked:(id)sender;
 - (IBAction)menuClicked:(id)sender;
 - (IBAction)newChecked:(id)sender;
-
+- (void)volume:(float)volume;
 
 @property (retain, nonatomic) IBOutlet PriceTableViewController *priceTableViewController;
 @property (retain, nonatomic) IBOutlet MenuTableViewController *menuTableViewController;

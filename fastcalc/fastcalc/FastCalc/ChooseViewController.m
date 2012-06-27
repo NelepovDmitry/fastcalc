@@ -16,6 +16,7 @@
 #import "Brand.h"
 #import "BrandMenu.h"
 #import "ZipArchive.h"
+#import "BrandCell.h"
 
 @interface ChooseViewController ()
 
@@ -53,6 +54,10 @@
     mBrandsTable = nil;
     [mLocationLbl release];
     mLocationLbl = nil;
+    [mBrandCell release];
+    mBrandCell = nil;
+    [mSoundBtn release];
+    mSoundBtn = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -68,6 +73,8 @@
     [mLocationGetter release];
     [mBrandsTable release];
     [mLocationLbl release];
+    [mBrandCell release];
+    [mSoundBtn release];
     [super dealloc];
 }
 
@@ -83,6 +90,7 @@
 - (void)initPrivate {
     mInternetUtils = [[InternetUtils alloc] init];
     mApplicationSingleton = [ApplicationSingleton createSingleton];
+    mArrayOfBrandsMenus = [[NSMutableArray alloc] init];
     mArrayOfBrands = [[NSMutableArray alloc] init];
     mLocationGetter = [[MLocationGetter alloc] init];
     mLocationGetter.delegate = self;
@@ -162,9 +170,16 @@
     mApplicationSingleton.idOfCity = cityId;
     mApplicationSingleton.nameOfCity = cityName;
     [mApplicationSingleton commitSettings];
-    NSArray *arrayOfBrands = [mainDict valueForKeyPath:@"brands.menus"];
     
-    for(NSArray *array in arrayOfBrands) {
+    NSArray *arrayOfBrands = [mainDict valueForKeyPath:@"brands.info"];
+    for(NSDictionary *dictOfBrand in arrayOfBrands) {
+        Brand *brand = [[Brand alloc] initWithArray:[dictOfBrand objectForKey:@"objectValues"]];
+        [mArrayOfBrands addObject:brand];
+    }
+    
+    NSArray *arrayOfBrandsMenus = [mainDict valueForKeyPath:@"brands.menus"];
+    
+    for(NSArray *array in arrayOfBrandsMenus) {
         NSMutableDictionary *lastDict = [NSMutableDictionary dictionary];
         [lastDict setObject:[mainDict valueForKeyPath:@"brands.brandname"] forKey:@"name"];
         NSMutableArray *arrayOfMenus = [NSMutableArray array];
@@ -175,7 +190,7 @@
             [brand release];
         }
         [lastDict setObject:arrayOfMenus forKey:@"menus"];
-        [mArrayOfBrands addObject:lastDict];
+        [mArrayOfBrandsMenus addObject:lastDict];
     }
     
     [mBrandsTable reloadData];
@@ -271,40 +286,53 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    //UIView v = nil;
+    /*Brand *brand = [mArrayOfBrands objectAtIndex:section];
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, mBrandsTable.frame.size.width, 44)];
+    
+    
+    NSString *path = [mApplicationSingleton cacheDirectory];
+    path = [NSString stringWithFormat:@"%@/brands", path];
+    NSString *imagePath = [path stringByAppendingPathComponent:brand.brandPicturePath];
+    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    [imageView setFrame:CGRectMake(5, 5, 30, 30)];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, mBrandsTable.frame.size.width - 50, 30)];
+    [lbl setText:brand.brandName];
+    lbl.backgroundColor = [UIColor clearColor];
+    
+    [v addSubview:imageView];
+    [v addSubview:lbl];*/
     return nil;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return mArrayOfBrands.count;
+    return mArrayOfBrandsMenus.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *array = [[mArrayOfBrands objectAtIndex:section] objectForKey:@"menus"];
+    NSArray *array = [[mArrayOfBrandsMenus objectAtIndex:section] objectForKey:@"menus"];
     return array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"SearchListCell";
+    static NSString *CellIdentifier = @"BrandCell";
     
-    NSArray *array = [[mArrayOfBrands objectAtIndex:indexPath.section] objectForKey:@"menus"];
+    NSArray *array = [[mArrayOfBrandsMenus objectAtIndex:indexPath.section] objectForKey:@"menus"];
     BrandMenu *brand = [array objectAtIndex:indexPath.row];
     
-    UITableViewCell *cell= (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    BrandCell *cell= (BrandCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        /*NSArray *array = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-        for (id currentObject in array) {
-            if ([currentObject isKindOfClass:[UITableViewCell class]]) {
-                cell = currentObject;
-                break;
-            }
-        }*/
+        [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+        cell = mBrandCell;
+		mBrandCell = nil;
     }
-    cell.textLabel.text = brand.brandMenuName;
+    cell.textLabel.text = [NSString stringWithFormat:@"       %@", brand.brandMenuName];
     
     return cell;
 }
@@ -313,7 +341,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSArray *array = [[mArrayOfBrands objectAtIndex:indexPath.section] objectForKey:@"menus"];
+    NSArray *array = [[mArrayOfBrandsMenus objectAtIndex:indexPath.section] objectForKey:@"menus"];
     BrandMenu *brandMenu = [array objectAtIndex:indexPath.row];
     NSNumber *numberId =  brandMenu.objectId;
     
@@ -328,23 +356,38 @@
 #pragma mark - Actions
 
 - (IBAction)reloadLocationClicked:(id)sender {
-    
+    [self reloadListClicked:nil];
 }
 
 - (IBAction)reloadListClicked:(id)sender {
     mApplicationSingleton.idOfCity = [NSNumber numberWithInt:0];
+    [mArrayOfBrandsMenus removeAllObjects];
     [mArrayOfBrands removeAllObjects];
     [self startPreloader];
     [mLocationGetter startUpdates];
 }
 
 - (IBAction)rateClicked:(id)sender {
+    
 }
 
 - (IBAction)infoClicked:(id)sender {
+    
 }
 
 - (IBAction)soundClicked:(id)sender {
+    UIViewController *menuController = (UIViewController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
+    UINavigationController *rootNavController = (UINavigationController *)menuController;
+    NSArray *viewControllers = rootNavController.viewControllers;
+    MainViewController *rootViewController = [viewControllers objectAtIndex:0];
+    if(soundClicked) {
+        [mSoundBtn setImage:[UIImage imageNamed:@"sound_on.png"] forState:UIControlStateNormal];
+        [rootViewController volume:0.5f];
+    } else {
+        [mSoundBtn setImage:[UIImage imageNamed:@"sound_off.png"] forState:UIControlStateNormal];
+        [rootViewController volume:0];
+    }
+    soundClicked = !soundClicked;
 }
 
 @end

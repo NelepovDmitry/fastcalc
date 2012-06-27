@@ -9,12 +9,13 @@
 #import "Brand.h"
 
 @implementation Brand
-@synthesize brandName;
+@synthesize brandName, brandPicturePath;
 
 - (id)initWithArray:(NSArray *)array {
     self = [super initWithArray:array];
     if(self) {
         brandName = [self getFieldValue:@"Brand main info_Name" attrFieldType:STRING_VALUE];
+        brandPicturePath = [self getFieldValue:@"Brand main info_Logo picture" attrFieldType:CONTENT_VALUE];
     }
     return self;
 }

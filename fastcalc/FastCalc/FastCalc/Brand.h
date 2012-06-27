@@ -12,5 +12,6 @@
 @interface Brand : UDBObject 
 
 @property (nonatomic,retain) NSString *brandName;
+@property (nonatomic,retain) NSString *brandPicturePath;
 
 @end

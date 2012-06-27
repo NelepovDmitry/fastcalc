@@ -170,6 +170,11 @@
     [mCheckView setFrame:rect];
 }
 
+- (void)volume:(float)volume {
+    [mKassaPlayer adjustVolume:volume];
+    [mBumagaPlayer adjustVolume:volume];
+}
+
 - (void)newCheck {
     [mBumagaPlayer playAudio];
     [priceTableViewController clearCheck];

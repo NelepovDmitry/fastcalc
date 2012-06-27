@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "MLocationGetter.h"
 
-@class InternetUtils, ApplicationSingleton;
+@class InternetUtils, ApplicationSingleton, BrandCell;
 
 @interface ChooseViewController : UIViewController<MLocationGetterDelegate, UITableViewDataSource, UITableViewDelegate> {
+    NSMutableArray *mArrayOfBrandsMenus;
     NSMutableArray *mArrayOfBrands;
+    UIAlertView *mLoader;
     
     InternetUtils *mInternetUtils;
     MLocationGetter *mLocationGetter;
@@ -20,8 +22,10 @@
     
     IBOutlet UITableView *mBrandsTable;
     IBOutlet UILabel *mLocationLbl;
+    IBOutlet BrandCell *mBrandCell;
+    IBOutlet UIButton *mSoundBtn;
     
-    UIAlertView *mLoader;
+    bool soundClicked;
 }
 
 - (void)getBrandsFromCache;
