@@ -97,6 +97,7 @@
     mLocationGetter.delegate = self;
     [self startPreloader];
     if(!mApplicationSingleton.firstStart) {
+        mLocationLbl.text = [NSString stringWithFormat:@"     %@", mApplicationSingleton.nameOfCity];
         [self getBrandsFromCache];
     } else {
         [mLocationGetter startUpdates];
@@ -206,7 +207,7 @@
 //http://fastcalc.orionsource.ru/api?apifastcalc.getFastFoodsOnCityZip={"city_name":"Москва","locale":"ru","responseBinary":1}
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getFastFoodsOnCity={%22city_name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22,%22locale%22:%22ru%22}
 - (void)requestCity:(NSString *)cityName {
-    [mLocationLbl setText:cityName];
+    mLocationLbl.text = [NSString stringWithFormat:@"     %@", cityName];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setObject:cityName forKey:@"city_name"];
     [dict setObject:@"ru" forKey:@"locale"];
@@ -287,7 +288,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    /*Brand *brand = [mArrayOfBrands objectAtIndex:section];
+    Brand *brand = [mArrayOfBrands objectAtIndex:section];
     UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, mBrandsTable.frame.size.width, 44)];
     
     
@@ -305,8 +306,12 @@
     lbl.backgroundColor = [UIColor clearColor];
     
     [v addSubview:imageView];
-    [v addSubview:lbl];*/
-    return nil;
+    [v addSubview:lbl];
+    return v;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 44;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -333,7 +338,7 @@
         cell = mBrandCell;
 		mBrandCell = nil;
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"       %@", brand.brandMenuName];
+    cell.brandLbl.text = brand.brandMenuName;
     
     return cell;
 }
