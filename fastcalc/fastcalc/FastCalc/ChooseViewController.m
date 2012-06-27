@@ -17,6 +17,7 @@
 #import "BrandMenu.h"
 #import "ZipArchive.h"
 #import "BrandCell.h"
+#import "iRate.h"
 
 @interface ChooseViewController ()
 
@@ -368,7 +369,7 @@
 }
 
 - (IBAction)rateClicked:(id)sender {
-    
+    [[iRate sharedInstance] openRatingsPageInAppStore];
 }
 
 - (IBAction)infoClicked:(id)sender {

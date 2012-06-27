@@ -12,6 +12,7 @@
 #import "MenuViewController.h"
 #import "ChooseViewController.h"
 #import "IIViewDeckController.h"
+#import "iRate.h"
 
 @implementation AppDelegate
 
@@ -31,6 +32,8 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
+    
+    [iRate sharedInstance].appStoreID = 484567469;
     
     self.leftController = [[ChooseViewController alloc] initWithNibName:@"ChooseViewController" bundle:nil];
     
