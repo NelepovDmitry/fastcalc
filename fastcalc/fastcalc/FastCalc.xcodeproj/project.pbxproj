@@ -42,7 +42,6 @@
 		8453CD22158B75E3009E60C5 /* UDBObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8453CD21158B75E3009E60C5 /* UDBObject.m */; };
 		8453CD25158B79AE009E60C5 /* Brand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8453CD24158B79AE009E60C5 /* Brand.m */; };
 		84662912159ADACF00A49F19 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84662911159ADACF00A49F19 /* iRate.m */; };
-		8476D3E91590BC4100820E53 /* DataWorkerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8476D3E81590BC4100820E53 /* DataWorkerHelper.m */; };
 		8478CF4D1579EF73001F0054 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478CF421579EF73001F0054 /* NSObject+SBJSON.m */; };
 		8478CF4E1579EF73001F0054 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478CF441579EF73001F0054 /* NSString+SBJSON.m */; };
 		8478CF4F1579EF73001F0054 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478CF461579EF73001F0054 /* SBJSON.m */; };
@@ -156,8 +155,6 @@
 		8453CD24158B79AE009E60C5 /* Brand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Brand.m; sourceTree = "<group>"; };
 		84662910159ADACF00A49F19 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		84662911159ADACF00A49F19 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
-		8476D3E71590BC4100820E53 /* DataWorkerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataWorkerHelper.h; sourceTree = "<group>"; };
-		8476D3E81590BC4100820E53 /* DataWorkerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataWorkerHelper.m; sourceTree = "<group>"; };
 		8478CF401579EF73001F0054 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		8478CF411579EF73001F0054 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		8478CF421579EF73001F0054 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -335,15 +332,6 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
-		8476D3E61590BC2C00820E53 /* DataWorker */ = {
-			isa = PBXGroup;
-			children = (
-				8476D3E71590BC4100820E53 /* DataWorkerHelper.h */,
-				8476D3E81590BC4100820E53 /* DataWorkerHelper.m */,
-			);
-			name = DataWorker;
-			sourceTree = "<group>";
-		};
 		8478CF3E1579EF64001F0054 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,7 +435,6 @@
 			isa = PBXGroup;
 			children = (
 				84B9E1791599A37D00A7E3D9 /* Sound Player */,
-				8476D3E61590BC2C00820E53 /* DataWorker */,
 				8453CD1E158B75BF009E60C5 /* Main Classes */,
 				8478CF63157A12C7001F0054 /* Singletons */,
 				8478CF531579F0CC001F0054 /* Location Getter */,
@@ -627,8 +614,8 @@
 		84B9E1791599A37D00A7E3D9 /* Sound Player */ = {
 			isa = PBXGroup;
 			children = (
-				84B9E17A1599A39500A7E3D9 /* EClockPlayer.m */,
 				84B9E17B1599A39500A7E3D9 /* EClockPlayer.h */,
+				84B9E17A1599A39500A7E3D9 /* EClockPlayer.m */,
 			);
 			name = "Sound Player";
 			sourceTree = "<group>";
@@ -775,7 +762,6 @@
 				8453CD25158B79AE009E60C5 /* Brand.m in Sources */,
 				2F2116D9158BB617008EA754 /* MenuItem.m in Sources */,
 				2F2116DD158BC1E0008EA754 /* BrandMenu.m in Sources */,
-				8476D3E91590BC4100820E53 /* DataWorkerHelper.m in Sources */,
 				8479C1151592FA78006F05C9 /* ioapi.c in Sources */,
 				8479C1161592FA78006F05C9 /* mztools.c in Sources */,
 				8479C1171592FA78006F05C9 /* unzip.c in Sources */,
