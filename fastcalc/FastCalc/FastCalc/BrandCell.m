@@ -11,6 +11,7 @@
 @implementation BrandCell
 @synthesize brandImageView;
 @synthesize brandLbl;
+@synthesize reloadBtn;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -31,6 +32,7 @@
 - (void)dealloc {
     [brandImageView release];
     [brandLbl release];
+    [reloadBtn release];
     [super dealloc];
 }
 

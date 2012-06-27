@@ -338,6 +338,8 @@
         cell = mBrandCell;
 		mBrandCell = nil;
     }
+    cell.reloadBtn.tag = indexPath.row;
+    [cell.reloadBtn addTarget:self action:@selector(brandCellReloadClicked:) forControlEvents:UIControlEventTouchUpInside];
     cell.brandLbl.text = brand.brandMenuName;
     
     return cell;
@@ -397,6 +399,16 @@
         [rootViewController volume:0];
     }
     soundClicked = !soundClicked;
+}
+
+- (void)brandCellReloadClicked:(id)sender {
+    BrandCell * clickedCell = (BrandCell *)[[sender superview] superview];
+    NSIndexPath * clickedButtonPath = [mBrandsTable indexPathForCell:clickedCell];
+    NSArray *array = [[mArrayOfBrandsMenus objectAtIndex:clickedButtonPath.section] objectForKey:@"menus"];
+    BrandMenu *brand = [array objectAtIndex:clickedButtonPath.row];
+    [ApplicationSingleton removeDirectoryById:brand.objectId];
+    [mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:brand.objectId];
+    [mApplicationSingleton.mainViewController.viewDeckController toggleLeftViewAnimated:YES];
 }
 
 @end

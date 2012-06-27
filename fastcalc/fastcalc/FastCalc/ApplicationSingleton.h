@@ -37,6 +37,7 @@
 - (void)commitSettings;
 
 + (BOOL)isMenuExistinChache:(NSNumber *)menuId;
++ (BOOL)removeDirectoryById:(NSNumber *)menuId;
 - (NSString *)cacheDirectory;
 
 @end

@@ -271,8 +271,6 @@
     mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
     [priceTableViewController addNewProduct:menu];
     
-    
-    
     [self setTotalPriceFrame];
     CGRect rect = BEGIN_RECT;
     rect.size.height = [priceTableViewController tableView].frame.size.height + mPriceView.frame.size.height;

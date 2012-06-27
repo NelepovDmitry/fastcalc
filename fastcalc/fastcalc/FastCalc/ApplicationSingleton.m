@@ -48,6 +48,20 @@
     return fileExists;
 }
 
++ (BOOL)removeDirectoryById:(NSNumber *)menuId {
+    NSString *cachesDirectory = [[ApplicationSingleton createSingleton] cacheDirectory];
+    NSString *storePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%d", menuId.intValue]];
+	NSError *error;
+    BOOL p = NO;
+    
+	if ([[NSFileManager defaultManager] fileExistsAtPath:storePath]) {
+		if ([[NSFileManager defaultManager] removeItemAtPath:storePath error:&error]) {
+            p = YES;
+        }
+	}
+    return p;
+}
+
 - (void)updateSettings {
     NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
     [prefs synchronize];
