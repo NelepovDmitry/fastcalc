@@ -15,6 +15,10 @@
 		2FFE41DA159B7D35009DAC67 /* refresh_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE41D8159B7D35009DAC67 /* refresh_small@2x.png */; };
 		2FFE41DD159B868A009DAC67 /* PriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE41DC159B868A009DAC67 /* PriceCell.m */; };
 		2FFE41DF159B869F009DAC67 /* PriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE41DE159B869F009DAC67 /* PriceCell.xib */; };
+		2FFE41E2159B8DA6009DAC67 /* delete_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE41E0159B8DA6009DAC67 /* delete_button.png */; };
+		2FFE41E3159B8DA6009DAC67 /* delete_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE41E1159B8DA6009DAC67 /* delete_button@2x.png */; };
+		2FFE41E6159B8E83009DAC67 /* choose_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE41E4159B8E83009DAC67 /* choose_button.png */; };
+		2FFE41E7159B8E83009DAC67 /* choose_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE41E5159B8E83009DAC67 /* choose_button@2x.png */; };
 		842615AD159484E300EDAE42 /* list_button_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 842615A9159484E300EDAE42 /* list_button_down.png */; };
 		842615AE159484E300EDAE42 /* list_button_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 842615AA159484E300EDAE42 /* list_button_up.png */; };
 		842615AF159484E300EDAE42 /* new_button_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 842615AB159484E300EDAE42 /* new_button_down.png */; };
@@ -125,6 +129,10 @@
 		2FFE41DB159B868A009DAC67 /* PriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceCell.h; sourceTree = "<group>"; };
 		2FFE41DC159B868A009DAC67 /* PriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceCell.m; sourceTree = "<group>"; };
 		2FFE41DE159B869F009DAC67 /* PriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceCell.xib; sourceTree = "<group>"; };
+		2FFE41E0159B8DA6009DAC67 /* delete_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_button.png; sourceTree = "<group>"; };
+		2FFE41E1159B8DA6009DAC67 /* delete_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_button@2x.png"; sourceTree = "<group>"; };
+		2FFE41E4159B8E83009DAC67 /* choose_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choose_button.png; sourceTree = "<group>"; };
+		2FFE41E5159B8E83009DAC67 /* choose_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choose_button@2x.png"; sourceTree = "<group>"; };
 		842615A9159484E300EDAE42 /* list_button_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_button_down.png; sourceTree = "<group>"; };
 		842615AA159484E300EDAE42 /* list_button_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_button_up.png; sourceTree = "<group>"; };
 		842615AB159484E300EDAE42 /* new_button_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_button_down.png; sourceTree = "<group>"; };
@@ -552,6 +560,10 @@
 		84B9E16F1599A14600A7E3D9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2FFE41E4159B8E83009DAC67 /* choose_button.png */,
+				2FFE41E5159B8E83009DAC67 /* choose_button@2x.png */,
+				2FFE41E0159B8DA6009DAC67 /* delete_button.png */,
+				2FFE41E1159B8DA6009DAC67 /* delete_button@2x.png */,
 				2FFE41D7159B7D35009DAC67 /* refresh_small.png */,
 				2FFE41D8159B7D35009DAC67 /* refresh_small@2x.png */,
 				844C07281599CBB5005D46F1 /* sound_off.png */,
@@ -738,6 +750,10 @@
 				2FFE41D9159B7D35009DAC67 /* refresh_small.png in Resources */,
 				2FFE41DA159B7D35009DAC67 /* refresh_small@2x.png in Resources */,
 				2FFE41DF159B869F009DAC67 /* PriceCell.xib in Resources */,
+				2FFE41E2159B8DA6009DAC67 /* delete_button.png in Resources */,
+				2FFE41E3159B8DA6009DAC67 /* delete_button@2x.png in Resources */,
+				2FFE41E6159B8E83009DAC67 /* choose_button.png in Resources */,
+				2FFE41E7159B8E83009DAC67 /* choose_button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

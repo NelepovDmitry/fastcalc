@@ -58,7 +58,7 @@
 								<string key="NSFrame">{{54, 0}, {144, 43}}</string>
 								<reference key="NSSuperview" ref="837181687"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="795276417"/>
+								<reference key="NSNextKeyView" ref="947425576"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<int key="IBUIContentMode">1</int>
@@ -69,7 +69,7 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
 								</object>
-								<object class="NSColor" key="IBUIHighlightedColor" id="223667462">
+								<object class="NSColor" key="IBUIHighlightedColor" id="39073471">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
@@ -87,7 +87,7 @@
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
-							<object class="IBUIButton" id="795276417">
+							<object class="IBUIButton" id="947425576">
 								<reference key="NSNextResponder" ref="837181687"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{169, 3}, {47, 37}}</string>
@@ -98,7 +98,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<reference key="IBUIHighlightedTitleColor" ref="223667462"/>
+								<reference key="IBUIHighlightedTitleColor" ref="39073471"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
@@ -177,7 +177,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">reloadBtn</string>
 						<reference key="source" ref="514207937"/>
-						<reference key="destination" ref="795276417"/>
+						<reference key="destination" ref="947425576"/>
 					</object>
 					<int key="connectionID">11</int>
 				</object>
@@ -207,7 +207,7 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="15725484"/>
 							<reference ref="335378827"/>
-							<reference ref="795276417"/>
+							<reference ref="947425576"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -224,7 +224,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">10</int>
-						<reference key="object" ref="795276417"/>
+						<reference key="object" ref="947425576"/>
 						<reference key="parent" ref="514207937"/>
 					</object>
 				</array>

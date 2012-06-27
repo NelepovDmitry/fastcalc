@@ -338,6 +338,10 @@
         cell = mBrandCell;
 		mBrandCell = nil;
     }
+    [cell.brandImageView setImage:nil];
+    if(brand.objectId.integerValue == mApplicationSingleton.idOfMenu.integerValue) {
+        [cell.brandImageView setImage:[UIImage imageNamed:@"choose_button.png"]];
+    }
     cell.reloadBtn.tag = indexPath.row;
     [cell.reloadBtn addTarget:self action:@selector(brandCellReloadClicked:) forControlEvents:UIControlEventTouchUpInside];
     cell.brandLbl.text = brand.brandMenuName;
@@ -355,7 +359,7 @@
     
     [mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:numberId];
     [mApplicationSingleton.mainViewController.viewDeckController toggleLeftViewAnimated:YES];
-    
+    [mBrandsTable reloadData];
     /*UIViewController *menuController = (UIViewController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
     UINavigationController *rootNavController = (UINavigationController *)menuController;
     NSArray *viewControllers = rootNavController.viewControllers;
@@ -409,6 +413,7 @@
     [ApplicationSingleton removeDirectoryById:brand.objectId];
     [mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:brand.objectId];
     [mApplicationSingleton.mainViewController.viewDeckController toggleLeftViewAnimated:YES];
+    [mBrandsTable reloadData];
 }
 
 @end
