@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class InternetUtils, MenuItem, ApplicationSingleton,MenuCell;
+@class InternetUtils, MenuItem, ApplicationSingleton, MenuCell;
 
 @protocol MenuTableViewControllerDelegate <NSObject>
 

@@ -96,7 +96,8 @@
         [cell.deleteBtn addTarget:self action:@selector(deleteAtIndex:) forControlEvents:UIControlEventTouchUpInside];
     }
     MenuItem *menuItem = [mArrayOfProducts objectAtIndex:indexPath.row];
-    cell.textLabel.text = menuItem.menuName;
+    cell.nameLbl.text = menuItem.menuName;
+    cell.priceLbl.text = menuItem.menuPrice.stringValue;
     return cell;
 }
 
@@ -175,10 +176,11 @@
 #pragma  mark - Price Cell Delegate 
 
 - (void)deleteAtIndex:(id)sender {
-    UIButton *btn = sender;
-    MenuItem *menuItem = [mArrayOfProducts objectAtIndex:btn.tag];
-    [mArrayOfProducts removeObjectAtIndex:btn.tag];
-    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:btn.tag inSection:0]];
+    PriceCell * clickedCell = (PriceCell *)[[sender superview] superview];
+    NSIndexPath * clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
+    MenuItem *menuItem = [mArrayOfProducts objectAtIndex:clickedButtonPath.row];
+    [mArrayOfProducts removeObjectAtIndex:clickedButtonPath.row];
+    NSArray *paths = [NSArray arrayWithObject:clickedButtonPath];
     [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
     [self.tableView reloadData];
     [self goToTop:NO];

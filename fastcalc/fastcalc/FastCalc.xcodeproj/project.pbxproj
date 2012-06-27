@@ -13,6 +13,8 @@
 		2FA882DD157D48F0005DF341 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA882DC157D48F0005DF341 /* QuartzCore.framework */; };
 		2FFE41D9159B7D35009DAC67 /* refresh_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE41D7159B7D35009DAC67 /* refresh_small.png */; };
 		2FFE41DA159B7D35009DAC67 /* refresh_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE41D8159B7D35009DAC67 /* refresh_small@2x.png */; };
+		2FFE41DD159B868A009DAC67 /* PriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE41DC159B868A009DAC67 /* PriceCell.m */; };
+		2FFE41DF159B869F009DAC67 /* PriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE41DE159B869F009DAC67 /* PriceCell.xib */; };
 		842615AD159484E300EDAE42 /* list_button_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 842615A9159484E300EDAE42 /* list_button_down.png */; };
 		842615AE159484E300EDAE42 /* list_button_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 842615AA159484E300EDAE42 /* list_button_up.png */; };
 		842615AF159484E300EDAE42 /* new_button_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 842615AB159484E300EDAE42 /* new_button_down.png */; };
@@ -74,8 +76,6 @@
 		847B60D2157C95DD00BC8B89 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B60D0157C95DD00BC8B89 /* MainViewController.xib */; };
 		847B60D6157C988700BC8B89 /* PriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60D5157C988700BC8B89 /* PriceTableViewController.m */; };
 		847B60D9157C98CC00BC8B89 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60D8157C98CC00BC8B89 /* MenuTableViewController.m */; };
-		847B60ED157CC97200BC8B89 /* PriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60EC157CC97200BC8B89 /* PriceCell.m */; };
-		847B60EF157CC9BB00BC8B89 /* PriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B60EE157CC9BB00BC8B89 /* PriceCell.xib */; };
 		84B0B2541580E98400DE9F0A /* backgorund.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2401580E98400DE9F0A /* backgorund.png */; };
 		84B0B2551580E98400DE9F0A /* backgorund@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2411580E98400DE9F0A /* backgorund@2x.png */; };
 		84B0B2561580E98400DE9F0A /* calc_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2421580E98400DE9F0A /* calc_bg.png */; };
@@ -122,6 +122,9 @@
 		2FA882DC157D48F0005DF341 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2FFE41D7159B7D35009DAC67 /* refresh_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_small.png; sourceTree = "<group>"; };
 		2FFE41D8159B7D35009DAC67 /* refresh_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh_small@2x.png"; sourceTree = "<group>"; };
+		2FFE41DB159B868A009DAC67 /* PriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceCell.h; sourceTree = "<group>"; };
+		2FFE41DC159B868A009DAC67 /* PriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceCell.m; sourceTree = "<group>"; };
+		2FFE41DE159B869F009DAC67 /* PriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceCell.xib; sourceTree = "<group>"; };
 		842615A9159484E300EDAE42 /* list_button_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_button_down.png; sourceTree = "<group>"; };
 		842615AA159484E300EDAE42 /* list_button_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_button_up.png; sourceTree = "<group>"; };
 		842615AB159484E300EDAE42 /* new_button_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_button_down.png; sourceTree = "<group>"; };
@@ -214,9 +217,6 @@
 		847B60D5157C988700BC8B89 /* PriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceTableViewController.m; sourceTree = "<group>"; };
 		847B60D7157C98CC00BC8B89 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
 		847B60D8157C98CC00BC8B89 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
-		847B60EB157CC97200BC8B89 /* PriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceCell.h; sourceTree = "<group>"; };
-		847B60EC157CC97200BC8B89 /* PriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceCell.m; sourceTree = "<group>"; };
-		847B60EE157CC9BB00BC8B89 /* PriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceCell.xib; sourceTree = "<group>"; };
 		84B0B2401580E98400DE9F0A /* backgorund.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgorund.png; sourceTree = "<group>"; };
 		84B0B2411580E98400DE9F0A /* backgorund@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgorund@2x.png"; sourceTree = "<group>"; };
 		84B0B2421580E98400DE9F0A /* calc_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calc_bg.png; sourceTree = "<group>"; };
@@ -530,9 +530,9 @@
 			children = (
 				847B60D4157C988700BC8B89 /* PriceTableViewController.h */,
 				847B60D5157C988700BC8B89 /* PriceTableViewController.m */,
-				847B60EB157CC97200BC8B89 /* PriceCell.h */,
-				847B60EC157CC97200BC8B89 /* PriceCell.m */,
-				847B60EE157CC9BB00BC8B89 /* PriceCell.xib */,
+				2FFE41DB159B868A009DAC67 /* PriceCell.h */,
+				2FFE41DC159B868A009DAC67 /* PriceCell.m */,
+				2FFE41DE159B869F009DAC67 /* PriceCell.xib */,
 			);
 			name = "Price Table ViewController";
 			sourceTree = "<group>";
@@ -679,7 +679,6 @@
 				84794DFF1578A143004010F7 /* InfoPlist.strings in Resources */,
 				84794E181578A31B004010F7 /* ChooseViewController.xib in Resources */,
 				847B60D2157C95DD00BC8B89 /* MainViewController.xib in Resources */,
-				847B60EF157CC9BB00BC8B89 /* PriceCell.xib in Resources */,
 				844243CB157CCC6200F156A1 /* MenuCell.xib in Resources */,
 				2FA882D7157D46E5005DF341 /* DDMenuController.entitlements in Resources */,
 				84B0B2541580E98400DE9F0A /* backgorund.png in Resources */,
@@ -738,6 +737,7 @@
 				84EDDB641599DCEB002558B5 /* BrandCell.xib in Resources */,
 				2FFE41D9159B7D35009DAC67 /* refresh_small.png in Resources */,
 				2FFE41DA159B7D35009DAC67 /* refresh_small@2x.png in Resources */,
+				2FFE41DF159B869F009DAC67 /* PriceCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,7 +764,6 @@
 				847B60D1157C95DD00BC8B89 /* MainViewController.m in Sources */,
 				847B60D6157C988700BC8B89 /* PriceTableViewController.m in Sources */,
 				847B60D9157C98CC00BC8B89 /* MenuTableViewController.m in Sources */,
-				847B60ED157CC97200BC8B89 /* PriceCell.m in Sources */,
 				844243CF157CCC8000F156A1 /* MenuCell.m in Sources */,
 				8453CD22158B75E3009E60C5 /* UDBObject.m in Sources */,
 				8453CD25158B79AE009E60C5 /* Brand.m in Sources */,
@@ -781,6 +780,7 @@
 				84B9E17C1599A39500A7E3D9 /* EClockPlayer.m in Sources */,
 				84EDDB611599DCDA002558B5 /* BrandCell.m in Sources */,
 				84662912159ADACF00A49F19 /* iRate.m in Sources */,
+				2FFE41DD159B868A009DAC67 /* PriceCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

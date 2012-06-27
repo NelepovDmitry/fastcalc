@@ -2,7 +2,7 @@
 //  PriceCell.m
 //  FastCalc
 //
-//  Created by Gevorg Petrosyan on 04.06.12.
+//  Created by Петросян Геворг on 27.06.12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,6 +10,8 @@
 
 @implementation PriceCell
 @synthesize deleteBtn;
+@synthesize nameLbl;
+@synthesize priceLbl;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -29,7 +31,8 @@
 
 - (void)dealloc {
     [deleteBtn release];
+    [nameLbl release];
+    [priceLbl release];
     [super dealloc];
 }
-
 @end
