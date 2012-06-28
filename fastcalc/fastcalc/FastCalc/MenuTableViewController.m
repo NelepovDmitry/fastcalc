@@ -21,6 +21,8 @@
 - (void)setMainProp;
 - (void)startPreloader;
 
+- (void)cellClicked:(id)sender;
+
 @end
 
 @implementation MenuTableViewController
@@ -106,6 +108,7 @@
     
     MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
     cell.textLabel.text = menuItem.menuName;
+    [cell.backgroundImage addTarget:self action:@selector(cellClicked:) forControlEvents:UIControlEventTouchUpInside];
     cell.priceLabel.text = [NSString stringWithFormat:@"%d руб.", menuItem.menuPrice.integerValue];
     UIImage *image = [mApplicationSingleton.dictOfMenuImages objectForKey:menuItem.menuPicturePath];
     cell.menuImage.image = image;
@@ -226,6 +229,17 @@
     [indicator startAnimating];
     [mLoader addSubview:indicator];
     [indicator release];
+}
+
+- (void)cellClicked:(id)sender {
+    MenuCell * clickedCell = (MenuCell *)[[sender superview] superview];
+    NSIndexPath * clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
+    NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
+    NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
+    MenuItem *menuItem = [arrayOfProducts objectAtIndex:clickedButtonPath.row];
+    [delegate performSelectorInBackground:@selector(getNewPrice:) withObject:menuItem];
+    //[delegate getNewPrice:menuItem];
+    //[self tableView:self.tableView didSelectRowAtIndexPath:clickedButtonPath];
 }
 
 - (void)getMenuItemsZip:(NSData *)data {
