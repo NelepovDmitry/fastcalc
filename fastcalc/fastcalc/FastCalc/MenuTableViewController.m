@@ -23,6 +23,7 @@
 
 - (void)cellTouchUp:(id)sender;
 - (void)cellTouchDown:(id)sender;
+- (void)cellTouchUpCancel:(id)sender;
 
 @end
 
@@ -110,6 +111,7 @@
     MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
     cell.textLabel.text = menuItem.menuName;
     [cell.backgroundImage addTarget:self action:@selector(cellTouchUp:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.backgroundImage addTarget:self action:@selector(cellTouchUpCancel:) forControlEvents:UIControlEventTouchCancel];
     [cell.backgroundImage addTarget:self action:@selector(cellTouchDown:) forControlEvents:UIControlEventTouchDown];
     cell.priceLabel.text = [NSString stringWithFormat:@"%d руб.", menuItem.menuPrice.integerValue];
     UIImage *image = [mApplicationSingleton.dictOfMenuImages objectForKey:menuItem.menuPicturePath];
@@ -207,27 +209,7 @@
     }
 }
 
-#pragma mark - Private functions
-
-- (void)setMainProp {
-    mApplicationSingleton = [ApplicationSingleton createSingleton];
-    mArrayOfProductsNames = [[NSMutableArray alloc] init];
-    arrayOfMenuItemGroups = [[NSMutableArray alloc] init];
-    mInternetUtils = [[InternetUtils alloc] init];
-    mDictOfProducts = [[NSMutableDictionary alloc] init];
-    indexOfMenu = 0;
-}
-
-- (void)startPreloader {
-    mLoader = [[[UIAlertView alloc] initWithTitle:@"Loading the data list\nPlease Wait..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil] autorelease];
-    [mLoader show];
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    // Adjust the indicator so it is up a few pixels from the bottom of the alert
-    indicator.center = CGPointMake(mLoader.bounds.size.width / 2, mLoader.bounds.size.height - 50);
-    [indicator startAnimating];
-    [mLoader addSubview:indicator];
-    [indicator release];
-}
+#pragma mark - Cell touch actions
 
 - (void)cellTouchDown:(id)sender {
     MenuCell * clickedCell = (MenuCell *)[[sender superview] superview];
@@ -248,6 +230,35 @@
     [delegate performSelectorInBackground:@selector(getNewPrice:) withObject:menuItem];
     //[delegate getNewPrice:menuItem];
     //[self tableView:self.tableView didSelectRowAtIndexPath:clickedButtonPath];
+}
+
+- (void)cellTouchUpCancel:(id)sender {
+    MenuCell * clickedCell = (MenuCell *)[[sender superview] superview];
+    clickedCell.menuImage.alpha = 1;
+    clickedCell.textLabel.alpha = 1;
+    clickedCell.priceLabel.alpha = 1;
+}
+
+#pragma mark - Private functions
+
+- (void)setMainProp {
+    mApplicationSingleton = [ApplicationSingleton createSingleton];
+    mArrayOfProductsNames = [[NSMutableArray alloc] init];
+    arrayOfMenuItemGroups = [[NSMutableArray alloc] init];
+    mInternetUtils = [[InternetUtils alloc] init];
+    mDictOfProducts = [[NSMutableDictionary alloc] init];
+    indexOfMenu = 0;
+}
+
+- (void)startPreloader {
+    mLoader = [[[UIAlertView alloc] initWithTitle:@"Loading the data list\nPlease Wait..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil] autorelease];
+    [mLoader show];
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    // Adjust the indicator so it is up a few pixels from the bottom of the alert
+    indicator.center = CGPointMake(mLoader.bounds.size.width / 2, mLoader.bounds.size.height - 50);
+    [indicator startAnimating];
+    [mLoader addSubview:indicator];
+    [indicator release];
 }
 
 - (void)getMenuItemsZip:(NSData *)data {
