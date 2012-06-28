@@ -21,7 +21,8 @@
 - (void)setMainProp;
 - (void)startPreloader;
 
-- (void)cellClicked:(id)sender;
+- (void)cellTouchUp:(id)sender;
+- (void)cellTouchDown:(id)sender;
 
 @end
 
@@ -108,7 +109,8 @@
     
     MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
     cell.textLabel.text = menuItem.menuName;
-    [cell.backgroundImage addTarget:self action:@selector(cellClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.backgroundImage addTarget:self action:@selector(cellTouchUp:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.backgroundImage addTarget:self action:@selector(cellTouchDown:) forControlEvents:UIControlEventTouchDown];
     cell.priceLabel.text = [NSString stringWithFormat:@"%d руб.", menuItem.menuPrice.integerValue];
     UIImage *image = [mApplicationSingleton.dictOfMenuImages objectForKey:menuItem.menuPicturePath];
     cell.menuImage.image = image;
@@ -158,10 +160,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
-    NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
-    MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
-    [delegate getNewPrice:menuItem];
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
@@ -231,8 +229,18 @@
     [indicator release];
 }
 
-- (void)cellClicked:(id)sender {
+- (void)cellTouchDown:(id)sender {
     MenuCell * clickedCell = (MenuCell *)[[sender superview] superview];
+    clickedCell.menuImage.alpha = 0.5f;
+    clickedCell.textLabel.alpha = 0.5f;
+    clickedCell.priceLabel.alpha = 0.5f;
+}
+
+- (void)cellTouchUp:(id)sender {
+    MenuCell * clickedCell = (MenuCell *)[[sender superview] superview];
+    clickedCell.menuImage.alpha = 1;
+    clickedCell.textLabel.alpha = 1;
+    clickedCell.priceLabel.alpha = 1;
     NSIndexPath * clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
     NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
     NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
