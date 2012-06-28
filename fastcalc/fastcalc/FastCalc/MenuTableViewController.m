@@ -189,7 +189,7 @@
     indexOfMenu = 0;
     mApplicationSingleton.idOfMenu = menuId;
     [mApplicationSingleton commitSettings];
-    [self startPreloader];
+    [self performSelectorOnMainThread:@selector(startPreloader) withObject:nil waitUntilDone:YES];
     if([ApplicationSingleton isMenuExistinChache:menuId]) {
         NSString *path = [mApplicationSingleton cacheDirectory];
         path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];

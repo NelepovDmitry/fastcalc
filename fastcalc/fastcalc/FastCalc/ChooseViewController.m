@@ -356,8 +356,9 @@
     NSArray *array = [[mArrayOfBrandsMenus objectAtIndex:indexPath.section] objectForKey:@"menus"];
     BrandMenu *brandMenu = [array objectAtIndex:indexPath.row];
     NSNumber *numberId =  brandMenu.objectId;
-    
-    [mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:numberId];
+    [mApplicationSingleton.dictOfMenuImages removeAllObjects];
+    [mApplicationSingleton.mainViewController.menuTableViewController performSelectorInBackground:@selector(requsetMenuById:) withObject:numberId];
+    //[mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:numberId];
     [mApplicationSingleton.mainViewController.viewDeckController toggleLeftViewAnimated:YES];
     [mBrandsTable reloadData];
     /*UIViewController *menuController = (UIViewController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
