@@ -12,6 +12,7 @@
 @synthesize deleteBtn;
 @synthesize nameLbl;
 @synthesize priceLbl;
+@synthesize countLbl;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -33,6 +34,7 @@
     [deleteBtn release];
     [nameLbl release];
     [priceLbl release];
+    [countLbl release];
     [super dealloc];
 }
 @end

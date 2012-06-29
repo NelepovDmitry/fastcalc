@@ -179,7 +179,7 @@
     mPrice = 0;
     mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
     [UIView transitionWithView:mCheckView
-                      duration:1
+                      duration:0.5f
                        options:UIViewAnimationOptionTransitionCurlUp
                     animations:^{
                         mCheckView.hidden = YES;

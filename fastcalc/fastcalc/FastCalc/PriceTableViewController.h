@@ -20,6 +20,7 @@
 
 @interface PriceTableViewController : UITableViewController {
     NSMutableArray *mArrayOfProducts;
+    NSMutableArray *mArrayOfCounts;
 }
 
 @property (retain, nonatomic) id<PriceTableViewControllerDelegate> delegate;

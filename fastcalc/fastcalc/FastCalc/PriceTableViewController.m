@@ -115,6 +115,7 @@
 
 - (void)dealloc {
     [mArrayOfProducts release];
+    [mArrayOfCounts release];
     [super dealloc];
 }
 

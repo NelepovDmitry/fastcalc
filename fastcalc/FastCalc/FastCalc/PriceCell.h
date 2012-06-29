@@ -12,5 +12,6 @@
 @property (retain, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (retain, nonatomic) IBOutlet UILabel *nameLbl;
 @property (retain, nonatomic) IBOutlet UILabel *priceLbl;
+@property (retain, nonatomic) IBOutlet UILabel *countLbl;
 
 @end
