@@ -259,8 +259,8 @@
 
 #pragma mark - PriceTableViewController Delegate
 
-- (void)deleteProductWithPrice:(MenuItem *)menuItem {
-    mPrice -= menuItem.menuPrice.integerValue;
+- (void)deleteProductWithPrice:(MenuItem *)menuItem count:(NSNumber *)count{
+    mPrice -= menuItem.menuPrice.integerValue * count.integerValue;
     mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
     CGRect rect = mCheckView.frame;
     rect.origin.y = BEGIN_Y;

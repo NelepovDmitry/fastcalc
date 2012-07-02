@@ -42,6 +42,7 @@
     [super viewDidLoad];
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     mArrayOfProducts = [[NSMutableArray alloc] init];
+    mArrayOfCounts = [[NSMutableArray alloc] init];
     //[mArrayOfProducts addObject:[MenuItem menuItemWithName:@"чизбургер" price:[NSNumber numberWithInt:12]]];
     //[mArrayOfProducts addObject:[MenuItem menuItemWithName:@"мак" price:[NSNumber numberWithInt:12]]];
     // Uncomment the following line to preserve selection between presentations.
@@ -97,6 +98,8 @@
     MenuItem *menuItem = [mArrayOfProducts objectAtIndex:indexPath.row];
     cell.nameLbl.text = menuItem.menuName;
     cell.priceLbl.text = menuItem.menuPrice.stringValue;
+    NSNumber *countNumber = [mArrayOfCounts objectAtIndex:indexPath.row];
+    cell.countLbl.text = [NSString stringWithFormat:@"%@ x", countNumber.stringValue];
     return cell;
 }
 
@@ -121,7 +124,19 @@
 #pragma mark - Public Functions
 
 - (void)addNewProduct:(MenuItem *)menuItem {
-    [mArrayOfProducts addObject:menuItem];
+    BOOL p = false;
+    for(int i = 0; i < mArrayOfProducts.count; ++i) {
+        MenuItem *oneItem = [mArrayOfProducts objectAtIndex:i];
+        if(oneItem.objectId.integerValue == menuItem.objectId.integerValue) {
+            NSNumber *number = [mArrayOfCounts objectAtIndex:i];
+            [mArrayOfCounts replaceObjectAtIndex:i withObject:[NSNumber numberWithInt:number.integerValue + 1]];
+            p = true;
+        }
+    }
+    if(!p) {
+        [mArrayOfProducts addObject:menuItem];
+        [mArrayOfCounts addObject:[NSNumber numberWithInt:1]];
+    }
     //NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:mArrayOfProducts.count - 1 inSection:0]];
     //[self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
     [self.tableView reloadData];
@@ -148,6 +163,7 @@
 
 - (void)clearCheck {
     [mArrayOfProducts removeAllObjects];
+    [mArrayOfCounts removeAllObjects];
     [self.tableView reloadData];
     [self setTableViewFrameByCells];
 }
@@ -176,11 +192,13 @@
     PriceCell * clickedCell = (PriceCell *)[[sender superview] superview];
     NSIndexPath * clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
     MenuItem *menuItem = [mArrayOfProducts objectAtIndex:clickedButtonPath.row];
+    NSNumber *count = [mArrayOfCounts objectAtIndex:clickedButtonPath.row];
     [mArrayOfProducts removeObjectAtIndex:clickedButtonPath.row];
+    [mArrayOfCounts removeObjectAtIndex:clickedButtonPath.row];
     NSArray *paths = [NSArray arrayWithObject:clickedButtonPath];
     [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
     [self.tableView reloadData];
-    [delegate deleteProductWithPrice:menuItem];
+    [delegate deleteProductWithPrice:menuItem count:count];
 }
 
 @end

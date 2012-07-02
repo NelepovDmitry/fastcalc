@@ -14,7 +14,7 @@
 
 @protocol PriceTableViewControllerDelegate
 
-- (void)deleteProductWithPrice:(MenuItem *)menuItem;
+- (void)deleteProductWithPrice:(MenuItem *)menuItem count:(NSNumber *)count;
 
 @end
 
