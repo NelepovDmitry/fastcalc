@@ -12,6 +12,7 @@
 #import "IIViewDeckController.h"
 
 #define BEGIN_Y 416
+#define BEGIN_OFFSET 9
 
 @class EClockPlayer;
 

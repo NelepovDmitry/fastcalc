@@ -178,7 +178,7 @@
                     completion:^(BOOL finished) {
                         [self setMainCheckViewFrame];
                         CGRect rect = mCheckView.frame;
-                        rect.origin.y = BEGIN_Y;
+                        rect.origin.y = BEGIN_Y - BEGIN_OFFSET;
                         [mCheckView setFrame:rect];
                         mCheckView.hidden = NO;
                         mMaskView.clipsToBounds = YES;
@@ -298,7 +298,6 @@
     [mCheckView removeGestureRecognizer:mGestureRecognizerDown];
     [mCheckView removeGestureRecognizer:mGestureRecognizerUp];
     [mCheckView removeGestureRecognizer:mGestureRecognizerLeft];
-    //[mPriceMask addGestureRecognizer:mGestureRecognizerDown];
 }
 
 - (void)viewDeckControllerDidCloseLeftView:(IIViewDeckController *)viewDeckController animated:(BOOL)animated {
