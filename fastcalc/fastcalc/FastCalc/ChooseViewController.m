@@ -302,7 +302,9 @@
     imageView.contentMode = UIViewContentModeScaleAspectFit;
 
     UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, mBrandsTable.frame.size.width - 50, 30)];
+    [lbl setFont:[UIFont boldSystemFontOfSize:16]];
     [lbl setText:brand.brandName];
+    [lbl setTextColor:[UIColor whiteColor]];
     lbl.backgroundColor = [UIColor clearColor];
     
     [v addSubview:imageView];
@@ -338,7 +340,7 @@
         cell = mBrandCell;
 		mBrandCell = nil;
     }
-    [cell.brandImageView setImage:nil];
+    [cell.brandImageView setImage:[UIImage imageNamed:@"not_choose_button.png"]];
     if(brand.objectId.integerValue == mApplicationSingleton.idOfMenu.integerValue) {
         [cell.brandImageView setImage:[UIImage imageNamed:@"choose_button.png"]];
     }
