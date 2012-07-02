@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define BEGIN_HEIGHT 370
+#define BEGIN_HEIGHT 306
 
 @class MenuItem;
 
@@ -28,5 +28,6 @@
 - (void)clearCheck;
 - (void)goToTop:(BOOL)toTop;
 - (void)addNewProduct:(MenuItem *)menuItem;
+- (void)setTableViewFrameByCells;
 
 @end

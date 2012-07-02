@@ -23,7 +23,6 @@
 - (void)newPriceViewAnimate;
 - (void)finishAnimation;
 
-- (void)setTotalPriceFrame;
 - (void)setMainCheckViewFrame;
 
 @end
@@ -84,6 +83,8 @@
     mPageControl = nil;
     [mPriceMask release];
     mPriceMask = nil;
+    [mThanksView release];
+    mThanksView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -112,6 +113,7 @@
     [currentGroupBtn release];
     [mPageControl release];
     [mPriceMask release];
+    [mThanksView release];
     [super dealloc];
 }
 
@@ -139,6 +141,7 @@
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgorund.png"]];
     mPriceView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
+    mThanksView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     menuTableViewController.delegate = self;
     priceTableViewController.delegate = self;
     
@@ -148,24 +151,7 @@
     [mMainView setContentOffset:bottomOffset animated:NO];
     [mMainView setScrollEnabled:NO];
     
-    //set price prop
-    [priceTableViewController goToTop:NO];
-    [priceTableViewController tableView].scrollEnabled = NO;
-    
-    //set price frame
-    CGRect priceRect = [priceTableViewController tableView].frame;
-    priceRect.origin.x = 0;
-    priceRect.origin.y = 0;
-    [[priceTableViewController tableView] setFrame:priceRect];
-    CGRect totalRect = mPriceView.frame;
-    totalRect.origin.x = 0;
-    totalRect.origin.y = priceRect.origin.y + priceRect.size.height;
-    [mPriceView setFrame:totalRect];
-    
-    CGRect rect = BEGIN_RECT;
-    rect.size.height = [priceTableViewController tableView].frame.size.height + mPriceView.frame.size.height;
-    rect.origin.y = rect.origin.y - rect.size.height;
-    [mCheckView setFrame:rect];
+    [self setMainCheckViewFrame];
 }
 
 - (void)volume:(float)volume {
@@ -186,10 +172,10 @@
                         mMaskView.clipsToBounds = NO;
                     }
                     completion:^(BOOL finished) {
-                        [self setTotalPriceFrame];
-                        CGRect rect = BEGIN_RECT;
-                        rect.size.height = [priceTableViewController tableView].frame.size.height + mPriceView.frame.size.height;
-                        mCheckView.frame = rect;
+                        [self setMainCheckViewFrame];
+                        CGRect rect = mCheckView.frame;
+                        rect.origin.y = BEGIN_Y;
+                        [mCheckView setFrame:rect];
                         mCheckView.hidden = NO;
                         mMaskView.clipsToBounds = YES;
                         [self newPriceViewAnimate];
@@ -203,11 +189,6 @@
     [UIView setAnimationBeginsFromCurrentState:FALSE];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(finishAnimation)];
-    CGRect priceRect = [priceTableViewController tableView].frame;
-    priceRect.origin.x = 0;
-    priceRect.origin.y = 0;
-    [[priceTableViewController tableView] setFrame:priceRect];
-    [self setTotalPriceFrame];
     [self setMainCheckViewFrame];
     [UIView commitAnimations];
 }
@@ -264,17 +245,15 @@
 }
 
 - (void)getNewPrice:(MenuItem *)menu {
-    
     [mKassaPlayer playAudio];
     
     mPrice += menu.menuPrice.integerValue;
     mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
     [priceTableViewController addNewProduct:menu];
     
-    [self setTotalPriceFrame];
-    CGRect rect = BEGIN_RECT;
-    rect.size.height = [priceTableViewController tableView].frame.size.height + mPriceView.frame.size.height;
-    mCheckView.frame = rect;
+    CGRect rect = mCheckView.frame;
+    rect.origin.y = BEGIN_Y;
+    [mCheckView setFrame:rect];
     [self setMainCheckViewFrame];
 }
 
@@ -283,27 +262,30 @@
 - (void)deleteProductWithPrice:(MenuItem *)menuItem {
     mPrice -= menuItem.menuPrice.integerValue;
     mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
-    [self setTotalPriceFrame];
-    CGRect rect = BEGIN_RECT;
-    rect.size.height = [priceTableViewController tableView].frame.size.height + mPriceView.frame.size.height;
-    mCheckView.frame = rect;
+    CGRect rect = mCheckView.frame;
+    rect.origin.y = BEGIN_Y;
+    [mCheckView setFrame:rect];
     [self setMainCheckViewFrame];
 }
 
 #pragma mark - Set Frames Functions
 
-- (void)setTotalPriceFrame {
-    CGRect priceRect = [priceTableViewController tableView].frame;
-    CGRect totalRect = mPriceView.frame;
-    totalRect.origin.x = 0;
-    totalRect.origin.y = priceRect.origin.y + priceRect.size.height;
-    [mPriceView setFrame:totalRect];
-}
-
 - (void)setMainCheckViewFrame {
-    CGRect checkRect = mCheckView.frame;
-    checkRect.origin.y -= checkRect.size.height;
-    [mCheckView setFrame:checkRect];
+    CGRect frameOfThanksView = mThanksView.frame;
+    
+    [priceTableViewController setTableViewFrameByCells];
+    CGRect frameOfPriceTableView = priceTableViewController.tableView.frame;
+    frameOfPriceTableView.origin.y = frameOfThanksView.size.height + frameOfThanksView.origin.y;
+    
+    [priceTableViewController.tableView setFrame:frameOfPriceTableView];
+    CGRect frameOfPriceView = mPriceView.frame;
+    frameOfPriceView.origin.y = frameOfPriceTableView.origin.y + frameOfPriceTableView.size.height;
+    [mPriceView setFrame:frameOfPriceView];
+    
+    CGRect frameOfCheckView = mCheckView.frame;
+    frameOfCheckView.size.height = frameOfThanksView.size.height + frameOfPriceTableView.size.height + frameOfPriceView.size.height;
+    frameOfCheckView.origin.y = BEGIN_Y - frameOfCheckView.size.height;
+    [mCheckView setFrame:frameOfCheckView];
 }
 
 #pragma mark - Gesture Recognizer Delegate

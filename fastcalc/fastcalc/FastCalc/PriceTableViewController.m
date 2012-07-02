@@ -42,7 +42,6 @@
     [super viewDidLoad];
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     mArrayOfProducts = [[NSMutableArray alloc] init];
-    [mArrayOfProducts addObject:[MenuItem menuItemWithName:@"Спасибо за покупку" price:[NSNumber numberWithInt:0]]];
     //[mArrayOfProducts addObject:[MenuItem menuItemWithName:@"чизбургер" price:[NSNumber numberWithInt:12]]];
     //[mArrayOfProducts addObject:[MenuItem menuItemWithName:@"мак" price:[NSNumber numberWithInt:12]]];
     // Uncomment the following line to preserve selection between presentations.
@@ -124,21 +123,15 @@
 - (void)addNewProduct:(MenuItem *)menuItem {
     [mArrayOfProducts addObject:menuItem];
     //NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:mArrayOfProducts.count - 1 inSection:0]];
-    //[self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationRight];
+    //[self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
     [self.tableView reloadData];
-    [self goToTop:NO];
+    //[self goToTop:NO];
 }
 
 - (void)goToTop:(BOOL)toTop {
     int count = mArrayOfProducts.count;
     if(count > 0) {
-        if(count > 8) {
-            [self.tableView setFrame: CGRectMake(0, 0, self.tableView.frame.size.width, BEGIN_HEIGHT)];
-        } else {
-            //set size from count of cells
-            self.tableView.scrollEnabled = NO;
-            [self setTableViewFrameByCells];
-        }
+        [self setTableViewFrameByCells];
         if(toTop) {
             if(count > 8) {
                 self.tableView.scrollEnabled = YES;
@@ -155,7 +148,6 @@
 
 - (void)clearCheck {
     [mArrayOfProducts removeAllObjects];
-    [mArrayOfProducts addObject:[MenuItem menuItemWithName:@"Спасибо за покупку" price:[NSNumber numberWithInt:0]]];
     [self.tableView reloadData];
     [self setTableViewFrameByCells];
 }
@@ -167,9 +159,13 @@
     //[UIView setAnimationDuration:1.0f];
     //[UIView setAnimationBeginsFromCurrentState:FALSE];
     CGRect frame = [self.tableView frame];
-    frame.size.height = [[self.tableView dataSource] tableView: self.tableView numberOfRowsInSection: 0] *
-    [[self.tableView delegate] tableView: self.tableView heightForRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
-    frame.origin.y = 0;
+    int count = mArrayOfProducts.count;
+    if(count < 7) {
+        frame.size.height = [[self.tableView dataSource] tableView: self.tableView numberOfRowsInSection: 0] *
+        [[self.tableView delegate] tableView: self.tableView heightForRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
+    } else {
+        frame.size.height = BEGIN_HEIGHT;
+    }
     [self.tableView setFrame: frame];
     //[UIView commitAnimations];
 }
@@ -184,8 +180,6 @@
     NSArray *paths = [NSArray arrayWithObject:clickedButtonPath];
     [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
     [self.tableView reloadData];
-    [self goToTop:NO];
-    
     [delegate deleteProductWithPrice:menuItem];
 }
 

@@ -10,7 +10,7 @@
 #import "MenuTableViewController.h"
 #import "PriceTableViewController.h"
 
-#define BEGIN_RECT CGRectMake(0, 416, 288, 416)
+#define BEGIN_Y 416
 
 @class EClockPlayer;
 
@@ -22,6 +22,7 @@
     IBOutlet UILabel *mTotalLbl;
     IBOutlet UIView *mCheckView;
     IBOutlet UIView *mMaskView;
+    IBOutlet UIView *mThanksView;
     IBOutlet UIView *mPriceView;
     IBOutlet UIScrollView *mMainView;
     IBOutlet UIImageView *mPaperBottomImageView;
