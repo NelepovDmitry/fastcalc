@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "MenuTableViewController.h"
 #import "PriceTableViewController.h"
+#import "IIViewDeckController.h"
 
 #define BEGIN_Y 416
 
 @class EClockPlayer;
 
-@interface MainViewController : UIViewController <MenuTableViewControllerDelegate, PriceTableViewControllerDelegate, UIGestureRecognizerDelegate> {
+@interface MainViewController : UIViewController <MenuTableViewControllerDelegate, PriceTableViewControllerDelegate, UIGestureRecognizerDelegate, IIViewDeckControllerDelegate> {
     IBOutlet UIView *mAnimationView;
     IBOutlet UISwipeGestureRecognizer *mGestureRecognizerDown;
     IBOutlet UISwipeGestureRecognizer *mGestureRecognizerUp;
@@ -23,6 +24,7 @@
     IBOutlet UIView *mCheckView;
     IBOutlet UIView *mMaskView;
     IBOutlet UIView *mThanksView;
+    IBOutlet UILabel *mThanksLabel;
     IBOutlet UIView *mPriceView;
     IBOutlet UIScrollView *mMainView;
     IBOutlet UIImageView *mPaperBottomImageView;

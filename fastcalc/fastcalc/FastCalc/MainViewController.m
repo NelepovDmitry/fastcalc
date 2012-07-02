@@ -85,6 +85,8 @@
     mPriceMask = nil;
     [mThanksView release];
     mThanksView = nil;
+    [mThanksLabel release];
+    mThanksLabel = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -114,6 +116,7 @@
     [mPageControl release];
     [mPriceMask release];
     [mThanksView release];
+    [mThanksLabel release];
     [super dealloc];
 }
 
@@ -140,8 +143,9 @@
     //set main prop
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgorund.png"]];
+    self.viewDeckController.delegate = self;
     mPriceView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
-    mThanksView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
+    mThanksLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     menuTableViewController.delegate = self;
     priceTableViewController.delegate = self;
     
@@ -286,6 +290,21 @@
     frameOfCheckView.size.height = frameOfThanksView.size.height + frameOfPriceTableView.size.height + frameOfPriceView.size.height;
     frameOfCheckView.origin.y = BEGIN_Y - frameOfCheckView.size.height;
     [mCheckView setFrame:frameOfCheckView];
+}
+
+#pragma mark - IIViewDeckCountroller Delegate
+
+- (void)viewDeckControllerDidOpenLeftView:(IIViewDeckController*)viewDeckController animated:(BOOL)animated {
+    [mCheckView removeGestureRecognizer:mGestureRecognizerDown];
+    [mCheckView removeGestureRecognizer:mGestureRecognizerUp];
+    [mCheckView removeGestureRecognizer:mGestureRecognizerLeft];
+    //[mPriceMask addGestureRecognizer:mGestureRecognizerDown];
+}
+
+- (void)viewDeckControllerDidCloseLeftView:(IIViewDeckController *)viewDeckController animated:(BOOL)animated {
+    [mCheckView addGestureRecognizer:mGestureRecognizerDown];
+    [mCheckView addGestureRecognizer:mGestureRecognizerUp];
+    [mCheckView addGestureRecognizer:mGestureRecognizerLeft];
 }
 
 #pragma mark - Gesture Recognizer Delegate
