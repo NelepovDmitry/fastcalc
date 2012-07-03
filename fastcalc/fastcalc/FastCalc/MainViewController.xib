@@ -290,10 +290,9 @@
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="84019993"/>
 										<string key="NSReuseIdentifierKey">_NS:196</string>
-										<object class="NSColor" key="IBUIBackgroundColor">
+										<object class="NSColor" key="IBUIBackgroundColor" id="470824125">
 											<int key="NSColorSpace">3</int>
 											<bytes key="NSWhite">MQA</bytes>
-											<reference key="NSCustomColorSpace" ref="616086423"/>
 										</object>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									</object>
@@ -341,8 +340,6 @@
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">4</int>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
@@ -362,10 +359,7 @@
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<string key="IBUITitleShadowOffset">{0, -1}</string>
-						<object class="NSColor" key="IBUIHighlightedTitleColor" id="470824125">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
-						</object>
+						<reference key="IBUIHighlightedTitleColor" ref="470824125"/>
 						<reference key="IBUINormalTitleColor" ref="470824125"/>
 						<reference key="IBUINormalTitleShadowColor" ref="591932573"/>
 						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
@@ -1020,7 +1014,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">88</int>
+			<int key="maxID">89</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1160,6 +1154,7 @@
 					<string key="superclassName">UITableViewCell</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="backgroundImage">UIButton</string>
+						<string key="caloriesLabel">UILabel</string>
 						<string key="menuImage">UIImageView</string>
 						<string key="priceLabel">UILabel</string>
 						<string key="textLabel">UILabel</string>
@@ -1168,6 +1163,10 @@
 						<object class="IBToOneOutletInfo" key="backgroundImage">
 							<string key="name">backgroundImage</string>
 							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="caloriesLabel">
+							<string key="name">caloriesLabel</string>
+							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="menuImage">
 							<string key="name">menuImage</string>

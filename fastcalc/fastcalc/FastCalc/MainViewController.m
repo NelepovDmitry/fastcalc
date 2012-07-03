@@ -126,10 +126,12 @@
     [mGestureRecognizerDown setDirection:UISwipeGestureRecognizerDirectionDown];
     [mGestureRecognizerUp setDirection:UISwipeGestureRecognizerDirectionUp];
     [mGestureRecognizerLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
-    [mCheckView addGestureRecognizer:mGestureRecognizerDown];
-    //[mPriceMask addGestureRecognizer:mGestureRecognizerDown];
-    [mCheckView addGestureRecognizer:mGestureRecognizerUp];
-    [mCheckView addGestureRecognizer:mGestureRecognizerLeft];
+    [mThanksView addGestureRecognizer:mGestureRecognizerDown];
+    [mThanksView addGestureRecognizer:mGestureRecognizerUp];
+    [mThanksView addGestureRecognizer:mGestureRecognizerLeft];
+    [mPriceMask addGestureRecognizer:mGestureRecognizerDown];
+    [mPriceMask addGestureRecognizer:mGestureRecognizerUp];
+    [mPriceMask addGestureRecognizer:mGestureRecognizerLeft];
 }
 
 - (void)initPlayers {
@@ -295,20 +297,29 @@
 #pragma mark - IIViewDeckCountroller Delegate
 
 - (void)viewDeckControllerDidOpenLeftView:(IIViewDeckController*)viewDeckController animated:(BOOL)animated {
-    [mCheckView removeGestureRecognizer:mGestureRecognizerDown];
-    [mCheckView removeGestureRecognizer:mGestureRecognizerUp];
-    [mCheckView removeGestureRecognizer:mGestureRecognizerLeft];
+    [mThanksView removeGestureRecognizer:mGestureRecognizerDown];
+    [mThanksView removeGestureRecognizer:mGestureRecognizerUp];
+    [mThanksView removeGestureRecognizer:mGestureRecognizerLeft];
+    [mPriceMask addGestureRecognizer:mGestureRecognizerDown];
+    [mPriceMask addGestureRecognizer:mGestureRecognizerUp];
+    [mPriceMask addGestureRecognizer:mGestureRecognizerLeft];
 }
 
 - (void)viewDeckControllerDidCloseLeftView:(IIViewDeckController *)viewDeckController animated:(BOOL)animated {
-    [mCheckView addGestureRecognizer:mGestureRecognizerDown];
-    [mCheckView addGestureRecognizer:mGestureRecognizerUp];
-    [mCheckView addGestureRecognizer:mGestureRecognizerLeft];
+    [mThanksView addGestureRecognizer:mGestureRecognizerDown];
+    [mThanksView addGestureRecognizer:mGestureRecognizerUp];
+    [mThanksView addGestureRecognizer:mGestureRecognizerLeft];
+    [mPriceMask addGestureRecognizer:mGestureRecognizerDown];
+    [mPriceMask addGestureRecognizer:mGestureRecognizerUp];
+    [mPriceMask addGestureRecognizer:mGestureRecognizerLeft];
 }
 
 #pragma mark - Gesture Recognizer Delegate
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {        
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+
+            //[priceTableViewController.tableView removeGestureRecognizer:gestureRecognizer];
+
     return YES;
 }
 

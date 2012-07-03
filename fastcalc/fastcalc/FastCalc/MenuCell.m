@@ -13,6 +13,7 @@
 @synthesize menuImage;
 @synthesize textLabel;
 @synthesize priceLabel;
+@synthesize caloriesLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -33,6 +34,7 @@
     [menuImage release];
     [textLabel release];
     [priceLabel release];
+    [caloriesLabel release];
     [super dealloc];
 }
 @end

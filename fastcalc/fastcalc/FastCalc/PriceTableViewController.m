@@ -149,14 +149,14 @@
         [self setTableViewFrameByCells];
         if(toTop) {
             if(count > 8) {
-                self.tableView.scrollEnabled = YES;
+                //self.tableView.scrollEnabled = YES;
             } else {
-                self.tableView.scrollEnabled = NO;
+                //self.tableView.scrollEnabled = NO;
             }
         } else {
             NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:count - 1 inSection:0];
             [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-            self.tableView.scrollEnabled = NO;
+            //self.tableView.scrollEnabled = NO;
         }
     }
 }

@@ -14,5 +14,6 @@
 @property (retain, nonatomic) IBOutlet UIImageView *menuImage;
 @property (retain, nonatomic) IBOutlet UILabel *textLabel;
 @property (retain, nonatomic) IBOutlet UILabel *priceLabel;
+@property (retain, nonatomic) IBOutlet UILabel *caloriesLabel;
 
 @end
