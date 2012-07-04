@@ -300,9 +300,9 @@
     [mThanksView removeGestureRecognizer:mGestureRecognizerDown];
     [mThanksView removeGestureRecognizer:mGestureRecognizerUp];
     [mThanksView removeGestureRecognizer:mGestureRecognizerLeft];
-    [mPriceMask addGestureRecognizer:mGestureRecognizerDown];
-    [mPriceMask addGestureRecognizer:mGestureRecognizerUp];
-    [mPriceMask addGestureRecognizer:mGestureRecognizerLeft];
+    [mPriceMask removeGestureRecognizer:mGestureRecognizerDown];
+    [mPriceMask removeGestureRecognizer:mGestureRecognizerUp];
+    [mPriceMask removeGestureRecognizer:mGestureRecognizerLeft];
 }
 
 - (void)viewDeckControllerDidCloseLeftView:(IIViewDeckController *)viewDeckController animated:(BOOL)animated {
@@ -317,9 +317,6 @@
 #pragma mark - Gesture Recognizer Delegate
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-
-            //[priceTableViewController.tableView removeGestureRecognizer:gestureRecognizer];
-
     return YES;
 }
 

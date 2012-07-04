@@ -14,6 +14,7 @@
 #import "ApplicationSingleton.h"
 #import "ZipArchive.h"
 #import "GroupItem.h"
+#import "IIViewDeckController.h"
 
 @interface MenuTableViewController ()
 
@@ -24,6 +25,8 @@
 - (void)cellTouchUp:(id)sender;
 - (void)cellTouchDown:(id)sender;
 - (void)cellTouchUpCancel:(id)sender;
+
+- (void)sendRequestToServerWithObject:(id)object;
 
 @end
 
@@ -184,11 +187,11 @@
 - (void)requsetMenuById:(NSNumber *)menuId {
     if(menuId.integerValue == 0) {
         [mLoader dismissWithClickedButtonIndex:0 animated:YES];
+        [self.viewDeckController toggleLeftView];
         return;
     }
     indexOfMenu = 0;
-    mApplicationSingleton.idOfMenu = menuId;
-    [mApplicationSingleton commitSettings];
+    mMenuID = menuId;
     [self performSelectorOnMainThread:@selector(startPreloader) withObject:nil waitUntilDone:YES];
     if([ApplicationSingleton isMenuExistinChache:menuId]) {
         NSString *path = [mApplicationSingleton cacheDirectory];
@@ -197,16 +200,21 @@
         NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
         [self getMenuItems:jsonData];
     } else {
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        [dict setObject:menuId forKey:@"menu_id"];
-        [dict setObject:[NSNumber numberWithInt:1] forKey:@"responseBinary"];
-        [mInternetUtils makeURLRequestByNameResponser:@"getMenuItemsZip:" 
-                                              urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
-                                        requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getMenuItemsZip"]
-                                            responder:self
-                                 progressFunctionName:nil
-         ];
+        [self performSelectorOnMainThread:@selector(sendRequestToServerWithObject:) withObject:menuId waitUntilDone:YES];
     }
+}
+
+- (void)sendRequestToServerWithObject:(id)object {
+    NSNumber *menuId = object;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setObject:menuId forKey:@"menu_id"];
+    [dict setObject:[NSNumber numberWithInt:1] forKey:@"responseBinary"];
+    [mInternetUtils makeURLRequestByNameResponser:@"getMenuItemsZip:" 
+                                          urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
+                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getMenuItemsZip"]
+                                        responder:self
+                             progressFunctionName:nil
+     ];
 }
 
 #pragma mark - Cell touch actions
@@ -262,6 +270,9 @@
 }
 
 - (void)getMenuItemsZip:(NSData *)data {
+    mApplicationSingleton.idOfMenu = mMenuID;
+    [mApplicationSingleton commitSettings];
+    [mLoader setTitle:@"Archiving \nPlease Wait..."];
     NSString *path = [mApplicationSingleton cacheDirectory];
     path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
 	NSError *error;
@@ -289,6 +300,7 @@
 }
 
 - (void)getMenuItems:(NSData *)data {
+    [mLoader setTitle:@"Caching \nPlease Wait..."];
     [mDictOfProducts removeAllObjects];
     [mArrayOfProductsNames removeAllObjects];
     [arrayOfMenuItemGroups removeAllObjects];
@@ -296,6 +308,8 @@
     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSDictionary *mainDict = [json JSONValue];
     NSArray *arrayOfGroups = [mainDict valueForKeyPath:@"groups"];
+    
+    NSNumber *objectID;
     
     for(NSDictionary *dictOfgroup in arrayOfGroups) {
         NSDictionary *info = [dictOfgroup objectForKey:@"info"];
@@ -305,6 +319,7 @@
         NSMutableArray *arrayOfobjects = [NSMutableArray array];
         for(NSDictionary *objectValue in objectValues) {
             MenuItem *menuItem = [[MenuItem alloc] initWithArray:[objectValue objectForKey:@"objectValues"]];
+            objectID = menuItem.objectId;
             [arrayOfobjects addObject:menuItem];
             [menuItem release];
         }

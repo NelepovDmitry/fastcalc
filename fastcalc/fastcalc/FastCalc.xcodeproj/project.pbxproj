@@ -82,6 +82,7 @@
 		847B60D2157C95DD00BC8B89 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B60D0157C95DD00BC8B89 /* MainViewController.xib */; };
 		847B60D6157C988700BC8B89 /* PriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60D5157C988700BC8B89 /* PriceTableViewController.m */; };
 		847B60D9157C98CC00BC8B89 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60D8157C98CC00BC8B89 /* MenuTableViewController.m */; };
+		847B708815A4170800EC7BAE /* rouble.otf in Resources */ = {isa = PBXBuildFile; fileRef = 847B708715A4170800EC7BAE /* rouble.otf */; };
 		84B0B2541580E98400DE9F0A /* backgorund.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2401580E98400DE9F0A /* backgorund.png */; };
 		84B0B2551580E98400DE9F0A /* backgorund@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2411580E98400DE9F0A /* backgorund@2x.png */; };
 		84B0B2561580E98400DE9F0A /* calc_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2421580E98400DE9F0A /* calc_bg.png */; };
@@ -229,6 +230,7 @@
 		847B60D5157C988700BC8B89 /* PriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceTableViewController.m; sourceTree = "<group>"; };
 		847B60D7157C98CC00BC8B89 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
 		847B60D8157C98CC00BC8B89 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
+		847B708715A4170800EC7BAE /* rouble.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rouble.otf; sourceTree = "<group>"; };
 		84B0B2401580E98400DE9F0A /* backgorund.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgorund.png; sourceTree = "<group>"; };
 		84B0B2411580E98400DE9F0A /* backgorund@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgorund@2x.png"; sourceTree = "<group>"; };
 		84B0B2421580E98400DE9F0A /* calc_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calc_bg.png; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 		847B60DC157CC65500BC8B89 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				847B708715A4170800EC7BAE /* rouble.otf */,
 				84B9E1701599A15B00A7E3D9 /* Sounds */,
 				84B9E16F1599A14600A7E3D9 /* Images */,
 			);
@@ -762,6 +765,7 @@
 				2FFE41E7159B8E83009DAC67 /* choose_button@2x.png in Resources */,
 				2FCA7FBD15A2503500A6CDB3 /* not_choose_button.png in Resources */,
 				2FCA7FBE15A2503500A6CDB3 /* not_choose_button@2x.png in Resources */,
+				847B708815A4170800EC7BAE /* rouble.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

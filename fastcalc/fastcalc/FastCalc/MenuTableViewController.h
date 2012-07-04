@@ -27,6 +27,7 @@
     ApplicationSingleton *mApplicationSingleton;
     
     UIAlertView *mLoader;
+    NSNumber *mMenuID;
 }
 
 @property (nonatomic, assign) id<MenuTableViewControllerDelegate> delegate;

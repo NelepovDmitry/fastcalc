@@ -48,8 +48,8 @@
     deckController.rightLedge = 100;
     self.window.rootViewController = deckController;
     [self.window makeKeyAndVisible];
-    
-    if(appSingleton.firstStart) {
+    NSLog(@"appSingleton.idOfMenu %@", appSingleton.idOfMenu);
+    if(appSingleton.firstStart || appSingleton.idOfMenu.integerValue == 0) {
         [deckController toggleLeftView];
     }
     

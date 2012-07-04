@@ -97,7 +97,8 @@
     }
     MenuItem *menuItem = [mArrayOfProducts objectAtIndex:indexPath.row];
     cell.nameLbl.text = menuItem.menuName;
-    cell.priceLbl.text = menuItem.menuPrice.stringValue;
+    [cell.priceLbl setFont:[UIFont fontWithName:@"rouble" size:17]];
+    cell.priceLbl.text = @"c";
     NSNumber *countNumber = [mArrayOfCounts objectAtIndex:indexPath.row];
     cell.countLbl.text = [NSString stringWithFormat:@"%@ x", countNumber.stringValue];
     return cell;
@@ -148,15 +149,15 @@
     if(count > 0) {
         [self setTableViewFrameByCells];
         if(toTop) {
-            if(count > 8) {
-                //self.tableView.scrollEnabled = YES;
+            if(count > 7) {
+                self.tableView.scrollEnabled = YES;
             } else {
-                //self.tableView.scrollEnabled = NO;
+                self.tableView.scrollEnabled = NO;
             }
         } else {
             NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:count - 1 inSection:0];
             [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-            //self.tableView.scrollEnabled = NO;
+            self.tableView.scrollEnabled = NO;
         }
     }
 }
