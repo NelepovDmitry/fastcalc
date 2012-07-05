@@ -260,6 +260,7 @@
     CGRect rect = mCheckView.frame;
     rect.origin.y = BEGIN_Y;
     [mCheckView setFrame:rect];
+    [priceTableViewController goToTop:NO];
     [self setMainCheckViewFrame];
 }
 

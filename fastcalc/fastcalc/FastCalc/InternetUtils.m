@@ -74,7 +74,7 @@
         if (requestParams.length>0){
             request.HTTPBody = [requestParams dataUsingEncoding:NSUTF8StringEncoding]; // следует обратить внимание на кодировку
         }
-        NSLog(@"Request:%@",request.URL.absoluteString); 
+        NSLog(@"Request:%@", URL);
         NSURLConnection *requestConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self] ;
         if (requestConnection){
             //receivedData=[[NSMutableData data] retain];

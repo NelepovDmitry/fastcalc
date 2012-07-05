@@ -204,7 +204,7 @@
     
     [mLoader dismissWithClickedButtonIndex:0 animated:YES];
 }
-//http://fastcalc.orionsource.ru/api?apifastcalc.getFastFoodsOnCityZip={"city_name":"Москва","locale":"ru","responseBinary":1}
+//api?apifastcalc.getFastFoodsOnCityZip={"city_name":"Москва","locale":"ru","responseBinary":1}
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getFastFoodsOnCity={%22city_name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22,%22locale%22:%22ru%22}
 - (void)requestCity:(NSString *)cityName {
     mLocationLbl.text = [NSString stringWithFormat:@"     %@", cityName];
@@ -214,7 +214,7 @@
     [dict setObject:[NSNumber numberWithInt:1] forKey:@"responseBinary"];
     //http://rent.orionsource.ru/api?apirent.getUserLocation={"access_token":"","google_json":""}
     [mInternetUtils makeURLRequestByNameResponser:@"getFastFoodsOnCityZip:" 
-                                          urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
+                                          urlCall:[NSURL URLWithString:URL] 
                                     requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getFastFoodsOnCityZip"]
                                         responder:self
                              progressFunctionName:nil
@@ -341,7 +341,7 @@
 		mBrandCell = nil;
     }
     [cell.brandImageView setImage:[UIImage imageNamed:@"not_choose_button.png"]];
-    if(brand.objectId.integerValue == mApplicationSingleton.idOfMenu.integerValue) {
+    if(brand.objectId.integerValue == menuID.integerValue) {
         [cell.brandImageView setImage:[UIImage imageNamed:@"choose_button.png"]];
     }
     cell.reloadBtn.tag = indexPath.row;
@@ -358,6 +358,7 @@
     NSArray *array = [[mArrayOfBrandsMenus objectAtIndex:indexPath.section] objectForKey:@"menus"];
     BrandMenu *brandMenu = [array objectAtIndex:indexPath.row];
     NSNumber *numberId =  brandMenu.objectId;
+    menuID = numberId;
     [mApplicationSingleton.dictOfMenuImages removeAllObjects];
     [mApplicationSingleton.mainViewController.menuTableViewController performSelectorInBackground:@selector(requsetMenuById:) withObject:numberId];
     //[mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:numberId];
@@ -414,6 +415,7 @@
     NSArray *array = [[mArrayOfBrandsMenus objectAtIndex:clickedButtonPath.section] objectForKey:@"menus"];
     BrandMenu *brand = [array objectAtIndex:clickedButtonPath.row];
     [ApplicationSingleton removeDirectoryById:brand.objectId];
+    menuID = brand.objectId;
     [mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:brand.objectId];
     [mApplicationSingleton.mainViewController.viewDeckController toggleLeftViewAnimated:YES];
     [mBrandsTable reloadData];

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define URL @"http://tfc.orionsource.ru/api/"
+
 @interface OSInternetUtilsProgressInfo : NSObject
 @property(nonatomic,retain) NSString* textProgress;
 @property(nonatomic,retain) NSNumber* contentSize;

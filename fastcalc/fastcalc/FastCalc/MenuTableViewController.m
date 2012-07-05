@@ -27,6 +27,7 @@
 - (void)cellTouchUpCancel:(id)sender;
 
 - (void)sendRequestToServerWithObject:(id)object;
+- (void)progress:(NSData *)data;
 
 @end
 
@@ -182,8 +183,6 @@
     [self.tableView reloadData];
 }
 
-//http://fastcalc.orionsource.ru/api?apifastcalc.getMenuItemsZip={"menu_id":6,"responseBinary":1}
-//http://fastcalc.orionsource.ru/api/?apifastcalc.getMenuItems={menu_id:6}
 - (void)requsetMenuById:(NSNumber *)menuId {
     if(menuId.integerValue == 0) {
         [mLoader dismissWithClickedButtonIndex:0 animated:YES];
@@ -195,26 +194,13 @@
     [self performSelectorOnMainThread:@selector(startPreloader) withObject:nil waitUntilDone:YES];
     if([ApplicationSingleton isMenuExistinChache:menuId]) {
         NSString *path = [mApplicationSingleton cacheDirectory];
-        path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
+        path = [NSString stringWithFormat:@"%@/%d", path, menuId.integerValue];
         NSString *jsonPath = [path stringByAppendingPathComponent:@"menu.json"];
         NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
         [self getMenuItems:jsonData];
     } else {
         [self performSelectorOnMainThread:@selector(sendRequestToServerWithObject:) withObject:menuId waitUntilDone:YES];
     }
-}
-
-- (void)sendRequestToServerWithObject:(id)object {
-    NSNumber *menuId = object;
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:menuId forKey:@"menu_id"];
-    [dict setObject:[NSNumber numberWithInt:1] forKey:@"responseBinary"];
-    [mInternetUtils makeURLRequestByNameResponser:@"getMenuItemsZip:" 
-                                          urlCall:[NSURL URLWithString:@"http://fastcalc.orionsource.ru/api/"] 
-                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getMenuItemsZip"]
-                                        responder:self
-                             progressFunctionName:nil
-     ];
 }
 
 #pragma mark - Cell touch actions
@@ -268,6 +254,8 @@
     [mLoader addSubview:indicator];
     [indicator release];
 }
+
+
 
 - (void)getMenuItemsZip:(NSData *)data {
     mApplicationSingleton.idOfMenu = mMenuID;
@@ -329,6 +317,27 @@
     [self.tableView reloadData];
     [mApplicationSingleton.mainViewController getAllProducts];
     [mLoader dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+- (void)progress:(OSInternetUtilsProgressInfo *)data {
+    [mLoader setTitle:[NSString stringWithFormat:@"Loading in progress \n%d %%", (int)(data.contentLoaded.floatValue / data.contentSize.floatValue) * 100]];
+    //NSLog(@"loaded %f", (data.contentLoaded.floatValue / data.contentSize.floatValue) * 100);
+    //NSLog(@"data.contentLoaded %@", data.contentLoaded);
+}
+
+//http://fastcalc.orionsource.ru/api?apifastcalc.getMenuItemsZip={"menu_id":6,"responseBinary":1}
+//http://fastcalc.orionsource.ru/api/?apifastcalc.getMenuItems={menu_id:6}
+- (void)sendRequestToServerWithObject:(id)object {
+    NSNumber *menuId = object;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setObject:menuId forKey:@"menu_id"];
+    [dict setObject:[NSNumber numberWithInt:1] forKey:@"responseBinary"];
+    [mInternetUtils makeURLRequestByNameResponser:@"getMenuItemsZip:" 
+                                          urlCall:[NSURL URLWithString:URL] 
+                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getMenuItemsZip"]
+                                        responder:self
+                             progressFunctionName:@"progress:"
+     ];
 }
 
 @end

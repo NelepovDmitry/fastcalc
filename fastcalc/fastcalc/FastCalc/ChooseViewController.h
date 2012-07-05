@@ -26,6 +26,7 @@
     IBOutlet UIButton *mSoundBtn;
     
     bool soundClicked;
+    NSNumber *menuID;
 }
 
 - (void)getBrandsFromCache;
