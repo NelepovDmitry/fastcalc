@@ -157,6 +157,7 @@
             }
         } else {
             NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:count - 1 inSection:0];
+            NSLog(@"scrollIndexPath %@", scrollIndexPath);
             [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
             self.tableView.scrollEnabled = NO;
         }
@@ -199,12 +200,16 @@
     NSIndexPath * clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
     MenuItem *menuItem = [[mArrayOfProducts objectAtIndex:clickedButtonPath.row] retain];
     NSNumber *count = [[mArrayOfCounts objectAtIndex:clickedButtonPath.row] retain];
-    [mArrayOfProducts removeObjectAtIndex:clickedButtonPath.row];
-    [mArrayOfCounts removeObjectAtIndex:clickedButtonPath.row];
-    NSArray *paths = [NSArray arrayWithObject:clickedButtonPath];
-    [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationMiddle];
-    //[self.tableView reloadData];
-    [delegate deleteProductWithPrice:menuItem count:count];
+    if(count.intValue - 1 > 0) {
+        [mArrayOfCounts replaceObjectAtIndex:clickedButtonPath.row withObject:[NSNumber numberWithInt:count.intValue - 1]];
+        [self.tableView reloadData];
+    } else {
+        [mArrayOfCounts removeObjectAtIndex:clickedButtonPath.row];
+        [mArrayOfProducts removeObjectAtIndex:clickedButtonPath.row];
+        NSArray *paths = [NSArray arrayWithObject:clickedButtonPath];
+        [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationMiddle];
+    }
+    [delegate deleteProductWithPrice:menuItem count:[NSNumber numberWithInt:1]];
     [menuItem release];
     [count release];
 }
