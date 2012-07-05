@@ -99,4 +99,29 @@
     return [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 }
 
++ (void)showModalView:(UIViewController*)modalViewController delegate:(id)delegate owner:(UIViewController*)owner {
+    if (delegate!=nil){
+        [modalViewController performSelector:@selector(setDelegate:) withObject:delegate];
+    }
+    
+    CGSize size = modalViewController.view.frame.size;
+    [modalViewController setModalTransitionStyle:UIModalTransitionStylePartialCurl];
+    modalViewController.modalPresentationStyle = UIModalPresentationPageSheet;
+    
+    [owner presentModalViewController:modalViewController animated:YES];
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    modalViewController.view.superview.frame = CGRectMake(screenWidth / 2 - size.width / 2,
+                                                          screenHeight / 2 - size.height / 2,
+                                                          size.width,
+                                                          size.height);
+    modalViewController.view.superview.layer.shadowOpacity = 0;
+    UIView *view = [[modalViewController.view.superview subviews] objectAtIndex:0];
+    view.alpha = 0;
+    
+}
+
 @end

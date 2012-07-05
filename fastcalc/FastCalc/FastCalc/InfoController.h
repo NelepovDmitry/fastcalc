@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface InfoController : UIViewController
+- (IBAction)closeButtonClicked:(id)sender;
 
 @end

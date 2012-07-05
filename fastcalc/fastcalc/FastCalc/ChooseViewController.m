@@ -18,6 +18,7 @@
 #import "ZipArchive.h"
 #import "BrandCell.h"
 #import "iRate.h"
+#import "InfoController.h"
 
 @interface ChooseViewController ()
 
@@ -395,7 +396,11 @@
 }
 
 - (IBAction)infoClicked:(id)sender {
-    
+    InfoController *infoController = [[InfoController alloc] initWithNibName:@"InfoController" bundle:nil];
+    [infoController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    infoController.modalPresentationStyle = UIModalPresentationPageSheet;
+    [self presentModalViewController:infoController animated:YES];
+    //[ApplicationSingleton showModalView:infoController delegate:nil owner:self];
 }
 
 - (IBAction)soundClicked:(id)sender {
