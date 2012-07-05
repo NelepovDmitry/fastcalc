@@ -13,6 +13,7 @@
 @interface PriceTableViewController ()
 
 - (void)setTableViewFrameByCells;
+- (void)methodThatCallsScrollToRow;
 
 @end
 
@@ -156,12 +157,16 @@
                 self.tableView.scrollEnabled = NO;
             }
         } else {
-            NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:count - 1 inSection:0];
-            NSLog(@"scrollIndexPath %@", scrollIndexPath);
-            [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+            [self performSelectorOnMainThread:@selector(methodThatCallsScrollToRow) withObject:nil waitUntilDone:YES];
             self.tableView.scrollEnabled = NO;
         }
     }
+}
+
+- (void)methodThatCallsScrollToRow {
+    int count = mArrayOfProducts.count;
+    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:count - 1 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 - (void)clearCheck {

@@ -273,7 +273,7 @@
 - (void)setMainCheckViewFrameWithAnimation:(BOOL)animate {
     if(animate) {
         [UIView beginAnimations : @"Display notif" context:nil];
-        [UIView setAnimationDuration:0.45f];
+        [UIView setAnimationDuration:0.3f];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(finishAnimation)];
     }
