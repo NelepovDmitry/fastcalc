@@ -86,6 +86,8 @@
 		8486AA5915A587B6002CC573 /* Rublsign.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8486AA5815A587B6002CC573 /* Rublsign.otf */; };
 		8486AA5C15A588D6002CC573 /* Rublsi_TT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8486AA5B15A588D6002CC573 /* Rublsi_TT.ttf */; };
 		8486AA5E15A58989002CC573 /* rybl.png in Resources */ = {isa = PBXBuildFile; fileRef = 8486AA5D15A58989002CC573 /* rybl.png */; };
+		84947BEF15A5D76A00A9DA44 /* InfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84947BED15A5D76A00A9DA44 /* InfoController.m */; };
+		84947BF015A5D76A00A9DA44 /* InfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84947BEE15A5D76A00A9DA44 /* InfoController.xib */; };
 		84B0B2541580E98400DE9F0A /* backgorund.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2401580E98400DE9F0A /* backgorund.png */; };
 		84B0B2551580E98400DE9F0A /* backgorund@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2411580E98400DE9F0A /* backgorund@2x.png */; };
 		84B0B2561580E98400DE9F0A /* calc_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2421580E98400DE9F0A /* calc_bg.png */; };
@@ -237,6 +239,9 @@
 		8486AA5815A587B6002CC573 /* Rublsign.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rublsign.otf; sourceTree = "<group>"; };
 		8486AA5B15A588D6002CC573 /* Rublsi_TT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rublsi_TT.ttf; sourceTree = "<group>"; };
 		8486AA5D15A58989002CC573 /* rybl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rybl.png; sourceTree = "<group>"; };
+		84947BEC15A5D76A00A9DA44 /* InfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoController.h; sourceTree = "<group>"; };
+		84947BED15A5D76A00A9DA44 /* InfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoController.m; sourceTree = "<group>"; };
+		84947BEE15A5D76A00A9DA44 /* InfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoController.xib; sourceTree = "<group>"; };
 		84B0B2401580E98400DE9F0A /* backgorund.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgorund.png; sourceTree = "<group>"; };
 		84B0B2411580E98400DE9F0A /* backgorund@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgorund@2x.png"; sourceTree = "<group>"; };
 		84B0B2421580E98400DE9F0A /* calc_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calc_bg.png; sourceTree = "<group>"; };
@@ -436,6 +441,7 @@
 				847B60DC157CC65500BC8B89 /* Resources */,
 				2FE5085B157D2B280010618B /* Libs */,
 				84794E111578A1C2004010F7 /* Helpers */,
+				84947BEA15A5D71E00A9DA44 /* Modal Controllers */,
 				84794E131578A26C004010F7 /* Main Controllers */,
 				84794E031578A143004010F7 /* AppDelegate.h */,
 				84794E041578A143004010F7 /* AppDelegate.m */,
@@ -570,6 +576,16 @@
 				844243CA157CCC6200F156A1 /* MenuCell.xib */,
 			);
 			name = "Menu Table View Controller";
+			sourceTree = "<group>";
+		};
+		84947BEA15A5D71E00A9DA44 /* Modal Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84947BEC15A5D76A00A9DA44 /* InfoController.h */,
+				84947BED15A5D76A00A9DA44 /* InfoController.m */,
+				84947BEE15A5D76A00A9DA44 /* InfoController.xib */,
+			);
+			name = "Modal Controllers";
 			sourceTree = "<group>";
 		};
 		84B9E16F1599A14600A7E3D9 /* Images */ = {
@@ -778,6 +794,7 @@
 				8486AA5915A587B6002CC573 /* Rublsign.otf in Resources */,
 				8486AA5C15A588D6002CC573 /* Rublsi_TT.ttf in Resources */,
 				8486AA5E15A58989002CC573 /* rybl.png in Resources */,
+				84947BF015A5D76A00A9DA44 /* InfoController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,6 +838,7 @@
 				84EDDB611599DCDA002558B5 /* BrandCell.m in Sources */,
 				84662912159ADACF00A49F19 /* iRate.m in Sources */,
 				2FFE41DD159B868A009DAC67 /* PriceCell.m in Sources */,
+				84947BEF15A5D76A00A9DA44 /* InfoController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
