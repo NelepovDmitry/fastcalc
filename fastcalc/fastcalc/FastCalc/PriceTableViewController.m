@@ -137,6 +137,7 @@
     if(!p) {
         [mArrayOfProducts addObject:menuItem];
         [mArrayOfCounts addObject:[NSNumber numberWithInt:1]];
+        //[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:mArrayOfProducts.count inSection:0]] withRowAnimation:UITableViewRowAnimationMiddle];
     }
     //NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:mArrayOfProducts.count - 1 inSection:0]];
     //[self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
@@ -172,11 +173,15 @@
 #pragma mark - Private Functions
 
 - (void)setTableViewFrameByCells {
-    //[UIView beginAnimations : @"Display notif" context:nil];
-    //[UIView setAnimationDuration:1.0f];
-    //[UIView setAnimationBeginsFromCurrentState:FALSE];
+    //CGRect frame = [self.tableView frame];
+    //frame.origin.y = frame.origin.y + 44;
+    //[self.tableView setFrame:frame];
+    [UIView beginAnimations : @"Display notif" context:nil];
+    [UIView setAnimationDuration:0.5f];
+    [UIView setAnimationBeginsFromCurrentState:FALSE];
     CGRect frame = [self.tableView frame];
     int count = mArrayOfProducts.count;
+    //frame.origin.y = frame.origin.y - 44;
     if(count < 7) {
         frame.size.height = [[self.tableView dataSource] tableView: self.tableView numberOfRowsInSection: 0] *
         [[self.tableView delegate] tableView: self.tableView heightForRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
@@ -184,7 +189,7 @@
         frame.size.height = BEGIN_HEIGHT;
     }
     [self.tableView setFrame: frame];
-    //[UIView commitAnimations];
+    [UIView commitAnimations];
 }
 
 #pragma  mark - Price Cell Delegate 
@@ -197,8 +202,8 @@
     [mArrayOfProducts removeObjectAtIndex:clickedButtonPath.row];
     [mArrayOfCounts removeObjectAtIndex:clickedButtonPath.row];
     NSArray *paths = [NSArray arrayWithObject:clickedButtonPath];
-    [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
-    [self.tableView reloadData];
+    [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationMiddle];
+    //[self.tableView reloadData];
     [delegate deleteProductWithPrice:menuItem count:count];
     [menuItem release];
     [count release];

@@ -257,9 +257,9 @@
     mPriceLbl.text = [NSString stringWithFormat:@"%d", mPrice];
     [priceTableViewController addNewProduct:menu];
     
-    CGRect rect = mCheckView.frame;
-    rect.origin.y = BEGIN_Y;
-    [mCheckView setFrame:rect];
+    //CGRect rect = mCheckView.frame;
+    //rect.origin.y = BEGIN_Y;
+    //[mCheckView setFrame:rect];
     [priceTableViewController goToTop:NO];
     [self setMainCheckViewFrame];
 }
@@ -269,15 +269,18 @@
 - (void)deleteProductWithPrice:(MenuItem *)menuItem count:(NSNumber *)count{
     mPrice -= menuItem.menuPrice.integerValue * count.integerValue;
     mPriceLbl.text = [NSString stringWithFormat:@"%d", mPrice];
-    CGRect rect = mCheckView.frame;
-    rect.origin.y = BEGIN_Y;
-    [mCheckView setFrame:rect];
+    //CGRect rect = mCheckView.frame;
+    //rect.origin.y = BEGIN_Y;
+    //[mCheckView setFrame:rect];
     [self setMainCheckViewFrame];
 }
 
 #pragma mark - Set Frames Functions
 
 - (void)setMainCheckViewFrame {
+    [UIView beginAnimations : @"Display notif" context:nil];
+    [UIView setAnimationDuration:0.5f];
+
     CGRect frameOfThanksView = mThanksView.frame;
     
     [priceTableViewController setTableViewFrameByCells];
@@ -293,6 +296,7 @@
     frameOfCheckView.size.height = frameOfThanksView.size.height + frameOfPriceTableView.size.height + frameOfPriceView.size.height;
     frameOfCheckView.origin.y = BEGIN_Y - frameOfCheckView.size.height;
     [mCheckView setFrame:frameOfCheckView];
+    [UIView commitAnimations];
 }
 
 #pragma mark - IIViewDeckCountroller Delegate
