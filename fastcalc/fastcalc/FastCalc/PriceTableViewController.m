@@ -176,9 +176,9 @@
     //CGRect frame = [self.tableView frame];
     //frame.origin.y = frame.origin.y + 44;
     //[self.tableView setFrame:frame];
-    [UIView beginAnimations : @"Display notif" context:nil];
-    [UIView setAnimationDuration:0.5f];
-    [UIView setAnimationBeginsFromCurrentState:FALSE];
+    //[UIView beginAnimations : @"Display notif" context:nil];
+    //[UIView setAnimationDuration:0.5f];
+    //[UIView setAnimationBeginsFromCurrentState:FALSE];
     CGRect frame = [self.tableView frame];
     int count = mArrayOfProducts.count;
     //frame.origin.y = frame.origin.y - 44;
@@ -189,7 +189,7 @@
         frame.size.height = BEGIN_HEIGHT;
     }
     [self.tableView setFrame: frame];
-    [UIView commitAnimations];
+    //[UIView commitAnimations];
 }
 
 #pragma  mark - Price Cell Delegate 

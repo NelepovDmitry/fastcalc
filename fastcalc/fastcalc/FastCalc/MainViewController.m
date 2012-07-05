@@ -20,10 +20,9 @@
 - (void)initGestureProp;
 - (void)initPlayers;
 - (void)setMainProp;
-- (void)newPriceViewAnimate;
 - (void)finishAnimation;
 
-- (void)setMainCheckViewFrame;
+- (void)setMainCheckViewFrameWithAnimation:(BOOL)animate;
 
 @end
 
@@ -43,9 +42,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self initPlayers];
     [self setMainProp];
-    [self initGestureProp];
+    [self performSelectorInBackground:@selector(initPlayers) withObject:nil];
+    [self performSelectorInBackground:@selector(initGestureProp) withObject:nil];
     
 }
 
@@ -157,7 +156,11 @@
     [mMainView setContentOffset:bottomOffset animated:NO];
     [mMainView setScrollEnabled:NO];
     
-    [self setMainCheckViewFrame];
+    [self setMainCheckViewFrameWithAnimation:NO];
+    CGRect rect = mCheckView.frame;
+    rect.origin.y = BEGIN_Y - BEGIN_OFFSET;
+    [mCheckView setFrame:rect];
+    [self setMainCheckViewFrameWithAnimation:YES];
 }
 
 - (void)volume:(float)volume {
@@ -169,7 +172,7 @@
     [mBumagaPlayer playAudio];
     [priceTableViewController clearCheck];
     mPrice = 0;
-    mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
+    mPriceLbl.text = [NSString stringWithFormat:@"%d", mPrice];
     [UIView transitionWithView:mCheckView
                       duration:0.5f
                        options:UIViewAnimationOptionTransitionCurlUp
@@ -178,25 +181,15 @@
                         mMaskView.clipsToBounds = NO;
                     }
                     completion:^(BOOL finished) {
-                        [self setMainCheckViewFrame];
+                        [self setMainCheckViewFrameWithAnimation:NO];
                         CGRect rect = mCheckView.frame;
                         rect.origin.y = BEGIN_Y - BEGIN_OFFSET;
                         [mCheckView setFrame:rect];
                         mCheckView.hidden = NO;
                         mMaskView.clipsToBounds = YES;
-                        [self newPriceViewAnimate];
+                        mPaperTopImageView.hidden = YES;
+                        [self setMainCheckViewFrameWithAnimation:YES];
                     }];
-}
-
-- (void)newPriceViewAnimate {
-    mPaperTopImageView.hidden = YES;
-    [UIView beginAnimations : @"Display notif" context:nil];
-    [UIView setAnimationDuration:1.0f];
-    [UIView setAnimationBeginsFromCurrentState:FALSE];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(finishAnimation)];
-    [self setMainCheckViewFrame];
-    [UIView commitAnimations];
 }
 
 - (void)finishAnimation {
@@ -261,7 +254,7 @@
     //rect.origin.y = BEGIN_Y;
     //[mCheckView setFrame:rect];
     [priceTableViewController goToTop:NO];
-    [self setMainCheckViewFrame];
+    [self setMainCheckViewFrameWithAnimation:YES];
 }
 
 #pragma mark - PriceTableViewController Delegate
@@ -272,15 +265,18 @@
     //CGRect rect = mCheckView.frame;
     //rect.origin.y = BEGIN_Y;
     //[mCheckView setFrame:rect];
-    [self setMainCheckViewFrame];
+    [self setMainCheckViewFrameWithAnimation:YES];
 }
 
 #pragma mark - Set Frames Functions
 
-- (void)setMainCheckViewFrame {
-    [UIView beginAnimations : @"Display notif" context:nil];
-    [UIView setAnimationDuration:0.5f];
-
+- (void)setMainCheckViewFrameWithAnimation:(BOOL)animate {
+    if(animate) {
+        [UIView beginAnimations : @"Display notif" context:nil];
+        [UIView setAnimationDuration:0.45f];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(finishAnimation)];
+    }
     CGRect frameOfThanksView = mThanksView.frame;
     
     [priceTableViewController setTableViewFrameByCells];
@@ -296,7 +292,9 @@
     frameOfCheckView.size.height = frameOfThanksView.size.height + frameOfPriceTableView.size.height + frameOfPriceView.size.height;
     frameOfCheckView.origin.y = BEGIN_Y - frameOfCheckView.size.height;
     [mCheckView setFrame:frameOfCheckView];
-    [UIView commitAnimations];
+    if(animate) {
+        [UIView commitAnimations];
+    }
 }
 
 #pragma mark - IIViewDeckCountroller Delegate
