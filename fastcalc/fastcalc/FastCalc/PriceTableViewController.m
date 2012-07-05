@@ -192,14 +192,16 @@
 - (void)deleteAtIndex:(id)sender {
     PriceCell * clickedCell = (PriceCell *)[[sender superview] superview];
     NSIndexPath * clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
-    MenuItem *menuItem = [mArrayOfProducts objectAtIndex:clickedButtonPath.row];
-    NSNumber *count = [mArrayOfCounts objectAtIndex:clickedButtonPath.row];
+    MenuItem *menuItem = [[mArrayOfProducts objectAtIndex:clickedButtonPath.row] retain];
+    NSNumber *count = [[mArrayOfCounts objectAtIndex:clickedButtonPath.row] retain];
     [mArrayOfProducts removeObjectAtIndex:clickedButtonPath.row];
     [mArrayOfCounts removeObjectAtIndex:clickedButtonPath.row];
     NSArray *paths = [NSArray arrayWithObject:clickedButtonPath];
     [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
     [self.tableView reloadData];
     [delegate deleteProductWithPrice:menuItem count:count];
+    [menuItem release];
+    [count release];
 }
 
 @end

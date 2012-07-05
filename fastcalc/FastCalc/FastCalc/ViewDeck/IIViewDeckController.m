@@ -1177,8 +1177,8 @@ __typeof__(h) __h = (h);                                    \
     
     [self setSlidingFrameForOffset:x];
     
-    BOOL rightWasHidden = self.rightController.view.hidden;
-    BOOL leftWasHidden = self.leftController.view.hidden;
+    //BOOL rightWasHidden = self.rightController.view.hidden;
+    //BOOL leftWasHidden = self.leftController.view.hidden;
     
     [self performOffsetDelegate:@selector(viewDeckController:didPanToOffset:) offset:x];
     

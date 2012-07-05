@@ -52,7 +52,7 @@
     if(appSingleton.firstStart || appSingleton.idOfMenu.integerValue == 0) {
         [deckController toggleLeftView];
     }
-    
+    [mainController release];
     return YES;
 }
 

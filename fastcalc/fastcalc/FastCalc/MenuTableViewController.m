@@ -288,6 +288,8 @@
 }
 
 - (void)getMenuItems:(NSData *)data {
+    mApplicationSingleton.idOfMenu = mMenuID;
+    [mApplicationSingleton commitSettings];
     [mLoader setTitle:@"Caching \nPlease Wait..."];
     [mDictOfProducts removeAllObjects];
     [mArrayOfProductsNames removeAllObjects];

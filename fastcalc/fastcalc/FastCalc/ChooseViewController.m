@@ -95,6 +95,7 @@
     mArrayOfBrands = [[NSMutableArray alloc] init];
     mLocationGetter = [[MLocationGetter alloc] init];
     mLocationGetter.delegate = self;
+    menuID = mApplicationSingleton.idOfMenu;
     [self startPreloader];
     if(!mApplicationSingleton.firstStart) {
         mLocationLbl.text = [NSString stringWithFormat:@"     %@", mApplicationSingleton.nameOfCity];
@@ -177,6 +178,7 @@
     for(NSDictionary *dictOfBrand in arrayOfBrands) {
         Brand *brand = [[Brand alloc] initWithArray:[dictOfBrand objectForKey:@"objectValues"]];
         [mArrayOfBrands addObject:brand];
+        [brand release];
     }
     
     NSArray *arrayOfBrandsMenus = [mainDict valueForKeyPath:@"brands.menus"];
@@ -244,7 +246,7 @@
         }
     }
     if(mApplicationSingleton.idOfCity.intValue == 0) {
-        [self requestCity:@"Москва"];
+        [self requestCity:cityName];
     } else {
         [self getBrandsFromCache];
     }
@@ -309,6 +311,8 @@
     
     [v addSubview:imageView];
     [v addSubview:lbl];
+    [imageView release];
+    [lbl release];
     return v;
 }
 
