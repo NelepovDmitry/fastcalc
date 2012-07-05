@@ -34,6 +34,7 @@
     IBOutlet UIButton *currentGroupBtn;
     IBOutlet UIPageControl *mPageControl;
     IBOutlet UIImageView *mPriceMask;
+    IBOutlet UIView *mPriceViewBackground;
     NSInteger mPrice;
     
     EClockPlayer *mKassaPlayer;
