@@ -254,7 +254,7 @@
     [mKassaPlayer playAudio];
     
     mPrice += menu.menuPrice.integerValue;
-    mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
+    mPriceLbl.text = [NSString stringWithFormat:@"%d", mPrice];
     [priceTableViewController addNewProduct:menu];
     
     CGRect rect = mCheckView.frame;
@@ -268,7 +268,7 @@
 
 - (void)deleteProductWithPrice:(MenuItem *)menuItem count:(NSNumber *)count{
     mPrice -= menuItem.menuPrice.integerValue * count.integerValue;
-    mPriceLbl.text = [NSString stringWithFormat:@"%d руб.", mPrice];
+    mPriceLbl.text = [NSString stringWithFormat:@"%d", mPrice];
     CGRect rect = mCheckView.frame;
     rect.origin.y = BEGIN_Y;
     [mCheckView setFrame:rect];

@@ -117,7 +117,7 @@
     [cell.backgroundImage addTarget:self action:@selector(cellTouchUp:) forControlEvents:UIControlEventTouchUpInside];
     [cell.backgroundImage addTarget:self action:@selector(cellTouchUpCancel:) forControlEvents:UIControlEventTouchCancel];
     [cell.backgroundImage addTarget:self action:@selector(cellTouchDown:) forControlEvents:UIControlEventTouchDown];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%d руб.", menuItem.menuPrice.integerValue];
+    cell.priceLabel.text = menuItem.menuPrice.stringValue;
     UIImage *image = [mApplicationSingleton.dictOfMenuImages objectForKey:menuItem.menuPicturePath];
     cell.menuImage.image = image;
     return cell;

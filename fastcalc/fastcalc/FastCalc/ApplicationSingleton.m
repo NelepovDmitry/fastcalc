@@ -27,7 +27,6 @@
 - (id)init {
     self = [super init];
     if(self) {
-        self.dictOfMenuImages = [[NSMutableDictionary alloc] init];
         [self updateSettings];
     }
     return self;
@@ -67,6 +66,7 @@
     [prefs synchronize];
     alreadyRun = [prefs boolForKey:ALREADY_RUN];
     firstStart = true;
+    self.dictOfMenuImages = [[NSMutableDictionary alloc] init];
     if(alreadyRun) {
         firstStart = false;
         self.idOfMenu = [NSNumber numberWithInt:[prefs integerForKey:ID_OF_MENU]];

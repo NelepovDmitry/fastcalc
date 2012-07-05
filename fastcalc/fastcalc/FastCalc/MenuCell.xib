@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">11D50d</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1934</string>
-		<string key="IBDocument.AppKitVersion">1138.32</string>
-		<string key="IBDocument.HIToolboxVersion">568.00</string>
+		<int key="IBDocument.SystemTarget">1296</int>
+		<string key="IBDocument.SystemVersion">11E53</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
+		<string key="IBDocument.AppKitVersion">1138.47</string>
+		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">931</string>
+			<string key="NS.object.0">1181</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBUITableViewCell</string>
@@ -129,10 +129,10 @@
 							<object class="IBUILabel" id="239526127">
 								<reference key="NSNextResponder" ref="504862170"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{218, 2}, {60, 28}}</string>
+								<string key="NSFrame">{{218, 2}, {44, 28}}</string>
 								<reference key="NSSuperview" ref="504862170"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="848627834"/>
+								<reference key="NSNextKeyView" ref="703539886"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<int key="IBUIContentMode">7</int>
@@ -143,8 +143,16 @@
 								<reference key="IBUIHighlightedColor" ref="487393366"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
-								<reference key="IBUIFontDescription" ref="740869017"/>
-								<reference key="IBUIFont" ref="605248074"/>
+								<int key="IBUITextAlignment">2</int>
+								<object class="IBUIFontDescription" key="IBUIFontDescription">
+									<int key="type">2</int>
+									<double key="pointSize">17</double>
+								</object>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Helvetica-Bold</string>
+									<double key="NSSize">17</double>
+									<int key="NSfFlags">16</int>
+								</object>
 							</object>
 							<object class="IBUILabel" id="848627834">
 								<reference key="NSNextResponder" ref="504862170"/>
@@ -167,8 +175,23 @@
 								<reference key="IBUIFontDescription" ref="740869017"/>
 								<reference key="IBUIFont" ref="605248074"/>
 							</object>
+							<object class="IBUIImageView" id="703539886">
+								<reference key="NSNextResponder" ref="504862170"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{262, 11}, {13, 13}}</string>
+								<reference key="NSSuperview" ref="504862170"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="848627834"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">rybl.png</string>
+								</object>
+							</object>
 						</array>
-						<string key="NSFrameSize">{320, 63}</string>
+						<string key="NSFrameSize">{288, 45}</string>
 						<reference key="NSSuperview" ref="655163176"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="441974763"/>
@@ -273,6 +296,7 @@
 							<reference ref="441974763"/>
 							<reference ref="239526127"/>
 							<reference ref="848627834"/>
+							<reference ref="703539886"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -303,6 +327,11 @@
 						<reference key="parent" ref="655163176"/>
 						<string key="objectName">calories</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">17</int>
+						<reference key="object" ref="703539886"/>
+						<reference key="parent" ref="655163176"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -314,6 +343,7 @@
 				<real value="1" key="10.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="2.CustomClassName">MenuCell</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -323,7 +353,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">16</int>
+			<int key="maxID">17</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -389,14 +419,15 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1280" key="NS.object.0"/>
+			<real value="1296" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="cell_off.png">{288, 46}</string>
 			<string key="cell_on.png">{288, 46}</string>
+			<string key="rybl.png">{23, 26}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">931</string>
+		<string key="IBCocoaTouchPluginVersion">1181</string>
 	</data>
 </archive>

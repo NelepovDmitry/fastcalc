@@ -97,8 +97,8 @@
     }
     MenuItem *menuItem = [mArrayOfProducts objectAtIndex:indexPath.row];
     cell.nameLbl.text = menuItem.menuName;
-    [cell.priceLbl setFont:[UIFont fontWithName:@"rouble" size:17]];
-    cell.priceLbl.text = @"c";
+    //NSLog(@"priceLbl font %@", cell.priceLbl.font);
+    cell.priceLbl.text = menuItem.menuPrice.stringValue;
     NSNumber *countNumber = [mArrayOfCounts objectAtIndex:indexPath.row];
     cell.countLbl.text = [NSString stringWithFormat:@"%@ x", countNumber.stringValue];
     return cell;
