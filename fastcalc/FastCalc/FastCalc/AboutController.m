@@ -14,6 +14,7 @@
 @end
 
 @implementation AboutController
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,8 +42,10 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
 - (IBAction)closeClicked:(id)sender {
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cancelButtonClicked:)]) {
+        [self.delegate cancelButtonClicked:self];
+    }
 }
+
 @end

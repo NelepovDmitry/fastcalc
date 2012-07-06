@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MLocationGetter.h"
+#import "AboutController.h"
 
 @class InternetUtils, ApplicationSingleton, BrandCell;
 
-@interface ChooseViewController : UIViewController<MLocationGetterDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface ChooseViewController : UIViewController<MLocationGetterDelegate, AboutControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
     NSMutableArray *mArrayOfBrandsMenus;
     NSMutableArray *mArrayOfBrands;
     UIAlertView *mLoader;
@@ -19,6 +20,7 @@
     InternetUtils *mInternetUtils;
     MLocationGetter *mLocationGetter;
     ApplicationSingleton *mApplicationSingleton;
+    AboutController *aboutController;
     
     IBOutlet UITableView *mBrandsTable;
     IBOutlet UILabel *mLocationLbl;

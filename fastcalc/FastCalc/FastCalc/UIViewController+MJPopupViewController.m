@@ -70,7 +70,7 @@
     popupView.layer.shadowOpacity = 0.5;
     
     // Add semi overlay
-    UIView *overlayView = [[UIView alloc] initWithFrame:sourceView.bounds];
+    UIView *overlayView = [[[UIView alloc] initWithFrame:sourceView.bounds] autorelease];
     overlayView.tag = kMJOverlayViewTag;
     overlayView.backgroundColor = [UIColor clearColor];
     
@@ -81,6 +81,7 @@
     backgroundView.backgroundColor = [UIColor clearColor];
     backgroundView.alpha = 0.0f;
     [overlayView addSubview:backgroundView];
+    [backgroundView release];
     
     // Make the Background Clickable
     UIButton * dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -293,7 +293,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     Brand *brand = [mArrayOfBrands objectAtIndex:section];
-    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, mBrandsTable.frame.size.width, 44)];
+    UIView *v = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, mBrandsTable.frame.size.width, 44)] autorelease];
     
     
     NSString *path = [mApplicationSingleton cacheDirectory];
@@ -397,7 +397,8 @@
 }
 
 - (IBAction)infoClicked:(id)sender {
-    AboutController *aboutController = [[AboutController alloc] initWithNibName:@"AboutController" bundle:nil];
+    aboutController = [[AboutController alloc] initWithNibName:@"AboutController" bundle:nil];
+    aboutController.delegate = self;
     [self presentPopupViewController:aboutController animationType:MJPopupViewAnimationFade];
 }
 
@@ -426,6 +427,13 @@
     [mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:brand.objectId];
     [mApplicationSingleton.mainViewController.viewDeckController toggleLeftViewAnimated:YES];
     [mBrandsTable reloadData];
+}
+
+#pragma mark - AboutController delegate
+
+- (void)cancelButtonClicked:(AboutController *)aAboutController {
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    aboutController = nil;
 }
 
 @end

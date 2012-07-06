@@ -92,6 +92,8 @@
 		84ABC63C15A6E4ED0052AA56 /* InfoProductController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84ABC63A15A6E4ED0052AA56 /* InfoProductController.xib */; };
 		84ABC64515A6FD820052AA56 /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABC64215A6FD820052AA56 /* MJPopupBackgroundView.m */; };
 		84ABC64615A6FD820052AA56 /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABC64415A6FD820052AA56 /* UIViewController+MJPopupViewController.m */; };
+		84ABC65015A715A40052AA56 /* modal_window.png in Resources */ = {isa = PBXBuildFile; fileRef = 84ABC64E15A715A40052AA56 /* modal_window.png */; };
+		84ABC65115A715A40052AA56 /* modal_window@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84ABC64F15A715A40052AA56 /* modal_window@2x.png */; };
 		84B0B2541580E98400DE9F0A /* backgorund.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2401580E98400DE9F0A /* backgorund.png */; };
 		84B0B2551580E98400DE9F0A /* backgorund@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2411580E98400DE9F0A /* backgorund@2x.png */; };
 		84B0B2561580E98400DE9F0A /* calc_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2421580E98400DE9F0A /* calc_bg.png */; };
@@ -253,6 +255,8 @@
 		84ABC64215A6FD820052AA56 /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPopupBackgroundView.m; sourceTree = "<group>"; };
 		84ABC64315A6FD820052AA56 /* UIViewController+MJPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MJPopupViewController.h"; sourceTree = "<group>"; };
 		84ABC64415A6FD820052AA56 /* UIViewController+MJPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MJPopupViewController.m"; sourceTree = "<group>"; };
+		84ABC64E15A715A40052AA56 /* modal_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_window.png; sourceTree = "<group>"; };
+		84ABC64F15A715A40052AA56 /* modal_window@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "modal_window@2x.png"; sourceTree = "<group>"; };
 		84B0B2401580E98400DE9F0A /* backgorund.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgorund.png; sourceTree = "<group>"; };
 		84B0B2411580E98400DE9F0A /* backgorund@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgorund@2x.png"; sourceTree = "<group>"; };
 		84B0B2421580E98400DE9F0A /* calc_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calc_bg.png; sourceTree = "<group>"; };
@@ -614,9 +618,19 @@
 			name = MJPopupController;
 			sourceTree = "<group>";
 		};
+		84ABC64C15A715910052AA56 /* ModalViews */ = {
+			isa = PBXGroup;
+			children = (
+				84ABC64E15A715A40052AA56 /* modal_window.png */,
+				84ABC64F15A715A40052AA56 /* modal_window@2x.png */,
+			);
+			name = ModalViews;
+			sourceTree = "<group>";
+		};
 		84B9E16F1599A14600A7E3D9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				84ABC64C15A715910052AA56 /* ModalViews */,
 				8486AA5D15A58989002CC573 /* rybl.png */,
 				2FCA7FBB15A2503500A6CDB3 /* not_choose_button.png */,
 				2FCA7FBC15A2503500A6CDB3 /* not_choose_button@2x.png */,
@@ -822,6 +836,8 @@
 				8486AA5E15A58989002CC573 /* rybl.png in Resources */,
 				84ABC63715A6E4330052AA56 /* AboutController.xib in Resources */,
 				84ABC63C15A6E4ED0052AA56 /* InfoProductController.xib in Resources */,
+				84ABC65015A715A40052AA56 /* modal_window.png in Resources */,
+				84ABC65115A715A40052AA56 /* modal_window@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
