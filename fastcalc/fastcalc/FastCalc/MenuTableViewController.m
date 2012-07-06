@@ -108,18 +108,19 @@
         cell = menuCell;
 		self.menuCell = nil;
     }
-    
-    NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
-    NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
-    
-    MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
-    cell.textLabel.text = menuItem.menuName;
-    [cell.backgroundImage addTarget:self action:@selector(cellTouchUp:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.backgroundImage addTarget:self action:@selector(cellTouchUpCancel:) forControlEvents:UIControlEventTouchCancel];
-    [cell.backgroundImage addTarget:self action:@selector(cellTouchDown:) forControlEvents:UIControlEventTouchDown];
-    cell.priceLabel.text = menuItem.menuPrice.stringValue;
-    UIImage *image = [mApplicationSingleton.dictOfMenuImages objectForKey:menuItem.menuPicturePath];
-    cell.menuImage.image = image;
+    if(mArrayOfProductsNames.count > indexOfMenu) {
+        NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
+        NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
+        
+        MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
+        cell.textLabel.text = menuItem.menuName;
+        [cell.backgroundImage addTarget:self action:@selector(cellTouchUp:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.backgroundImage addTarget:self action:@selector(cellTouchUpCancel:) forControlEvents:UIControlEventTouchCancel];
+        [cell.backgroundImage addTarget:self action:@selector(cellTouchDown:) forControlEvents:UIControlEventTouchDown];
+        cell.priceLabel.text = menuItem.menuPrice.stringValue;
+        UIImage *image = [mApplicationSingleton.dictOfMenuImages objectForKey:menuItem.menuPicturePath];
+        cell.menuImage.image = image;
+    }
     return cell;
 }
 

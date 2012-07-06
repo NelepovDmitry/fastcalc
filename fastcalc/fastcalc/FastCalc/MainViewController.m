@@ -218,11 +218,13 @@
 
 - (IBAction)changeMenuClicked:(id)sender {
     static int index = 0;
-    index = (index + 1) % menuTableViewController.arrayOfMenuItemGroups.count;
-    [menuTableViewController nextMenuByIndex:index];
-    GroupItem *groupItem = [menuTableViewController.arrayOfMenuItemGroups objectAtIndex:index];
-    [currentGroupBtn setTitle:groupItem.groupName forState:UIControlStateNormal];
-    mPageControl.currentPage = index;
+    if(menuTableViewController.arrayOfMenuItemGroups.count > 0) {
+        index = (index + 1) % menuTableViewController.arrayOfMenuItemGroups.count;
+        [menuTableViewController nextMenuByIndex:index];
+        GroupItem *groupItem = [menuTableViewController.arrayOfMenuItemGroups objectAtIndex:index];
+        [currentGroupBtn setTitle:groupItem.groupName forState:UIControlStateNormal];
+        mPageControl.currentPage = index;
+    }
 }
 
 - (IBAction)menuClicked:(id)sender {
