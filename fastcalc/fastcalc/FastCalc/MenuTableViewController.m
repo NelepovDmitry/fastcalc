@@ -322,7 +322,7 @@
 }
 
 - (void)progress:(OSInternetUtilsProgressInfo *)data {
-    [mLoader setTitle:[NSString stringWithFormat:@"Loading in progress \n%d %%", (int)(data.contentLoaded.floatValue / data.contentSize.floatValue) * 100]];
+    [mLoader setTitle:[NSString stringWithFormat:@"Loading in progress \n%d %%", (int)((data.contentLoaded.floatValue / data.contentSize.floatValue) * 100)]];
     //NSLog(@"loaded %f", (data.contentLoaded.floatValue / data.contentSize.floatValue) * 100);
     //NSLog(@"data.contentLoaded %@", data.contentLoaded);
 }
