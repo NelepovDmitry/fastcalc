@@ -82,9 +82,6 @@
 		847B60D2157C95DD00BC8B89 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B60D0157C95DD00BC8B89 /* MainViewController.xib */; };
 		847B60D6157C988700BC8B89 /* PriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60D5157C988700BC8B89 /* PriceTableViewController.m */; };
 		847B60D9157C98CC00BC8B89 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60D8157C98CC00BC8B89 /* MenuTableViewController.m */; };
-		847B708815A4170800EC7BAE /* rouble.otf in Resources */ = {isa = PBXBuildFile; fileRef = 847B708715A4170800EC7BAE /* rouble.otf */; };
-		8486AA5915A587B6002CC573 /* Rublsign.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8486AA5815A587B6002CC573 /* Rublsign.otf */; };
-		8486AA5C15A588D6002CC573 /* Rublsi_TT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8486AA5B15A588D6002CC573 /* Rublsi_TT.ttf */; };
 		8486AA5E15A58989002CC573 /* rybl.png in Resources */ = {isa = PBXBuildFile; fileRef = 8486AA5D15A58989002CC573 /* rybl.png */; };
 		84ABC63615A6E4330052AA56 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABC63415A6E4330052AA56 /* AboutController.m */; };
 		84ABC63715A6E4330052AA56 /* AboutController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84ABC63515A6E4330052AA56 /* AboutController.xib */; };
@@ -241,9 +238,6 @@
 		847B60D5157C988700BC8B89 /* PriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceTableViewController.m; sourceTree = "<group>"; };
 		847B60D7157C98CC00BC8B89 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
 		847B60D8157C98CC00BC8B89 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
-		847B708715A4170800EC7BAE /* rouble.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rouble.otf; sourceTree = "<group>"; };
-		8486AA5815A587B6002CC573 /* Rublsign.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rublsign.otf; sourceTree = "<group>"; };
-		8486AA5B15A588D6002CC573 /* Rublsi_TT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rublsi_TT.ttf; sourceTree = "<group>"; };
 		8486AA5D15A58989002CC573 /* rybl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rybl.png; sourceTree = "<group>"; };
 		84ABC63315A6E4330052AA56 /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
 		84ABC63415A6E4330052AA56 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
@@ -561,9 +555,6 @@
 		847B60DC157CC65500BC8B89 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8486AA5B15A588D6002CC573 /* Rublsi_TT.ttf */,
-				8486AA5815A587B6002CC573 /* Rublsign.otf */,
-				847B708715A4170800EC7BAE /* rouble.otf */,
 				84B9E1701599A15B00A7E3D9 /* Sounds */,
 				84B9E16F1599A14600A7E3D9 /* Images */,
 			);
@@ -830,9 +821,6 @@
 				2FFE41E7159B8E83009DAC67 /* choose_button@2x.png in Resources */,
 				2FCA7FBD15A2503500A6CDB3 /* not_choose_button.png in Resources */,
 				2FCA7FBE15A2503500A6CDB3 /* not_choose_button@2x.png in Resources */,
-				847B708815A4170800EC7BAE /* rouble.otf in Resources */,
-				8486AA5915A587B6002CC573 /* Rublsign.otf in Resources */,
-				8486AA5C15A588D6002CC573 /* Rublsi_TT.ttf in Resources */,
 				8486AA5E15A58989002CC573 /* rybl.png in Resources */,
 				84ABC63715A6E4330052AA56 /* AboutController.xib in Resources */,
 				84ABC63C15A6E4ED0052AA56 /* InfoProductController.xib in Resources */,
