@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AboutController : UIViewController
+- (IBAction)closeClicked:(id)sender;
 
 @end

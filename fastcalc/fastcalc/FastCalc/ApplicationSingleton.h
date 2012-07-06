@@ -38,7 +38,6 @@
 
 + (BOOL)isMenuExistinChache:(NSNumber *)menuId;
 + (BOOL)removeDirectoryById:(NSNumber *)menuId;
-+ (void)showModalView:(UIViewController*)modalViewController delegate:(id)delegate owner:(UIViewController*)owner;
 - (NSString *)cacheDirectory;
 
 @end

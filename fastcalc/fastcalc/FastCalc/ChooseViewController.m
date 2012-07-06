@@ -13,6 +13,7 @@
 #import "IIViewDeckController.h"
 #import "MainViewController.h"
 #import "MenuTableViewController.h"
+#import "UIViewController+MJPopupViewController.h"
 #import "Brand.h"
 #import "BrandMenu.h"
 #import "ZipArchive.h"
@@ -397,10 +398,7 @@
 
 - (IBAction)infoClicked:(id)sender {
     AboutController *aboutController = [[AboutController alloc] initWithNibName:@"AboutController" bundle:nil];
-    [aboutController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    aboutController.modalPresentationStyle = UIModalPresentationPageSheet;
-    [self presentModalViewController:aboutController animated:YES];
-    //[ApplicationSingleton showModalView:infoController delegate:nil owner:self];
+    [self presentPopupViewController:aboutController animationType:MJPopupViewAnimationFade];
 }
 
 - (IBAction)soundClicked:(id)sender {

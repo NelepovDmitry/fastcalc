@@ -7,6 +7,7 @@
 //
 
 #import "AboutController.h"
+#import "UIViewController+MJPopupViewController.h"
 
 @interface AboutController ()
 
@@ -41,4 +42,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)closeClicked:(id)sender {
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+}
 @end
