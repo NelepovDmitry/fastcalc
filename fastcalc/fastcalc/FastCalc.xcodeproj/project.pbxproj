@@ -86,8 +86,10 @@
 		8486AA5915A587B6002CC573 /* Rublsign.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8486AA5815A587B6002CC573 /* Rublsign.otf */; };
 		8486AA5C15A588D6002CC573 /* Rublsi_TT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8486AA5B15A588D6002CC573 /* Rublsi_TT.ttf */; };
 		8486AA5E15A58989002CC573 /* rybl.png in Resources */ = {isa = PBXBuildFile; fileRef = 8486AA5D15A58989002CC573 /* rybl.png */; };
-		84947BEF15A5D76A00A9DA44 /* InfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84947BED15A5D76A00A9DA44 /* InfoController.m */; };
-		84947BF015A5D76A00A9DA44 /* InfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84947BEE15A5D76A00A9DA44 /* InfoController.xib */; };
+		84ABC63615A6E4330052AA56 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABC63415A6E4330052AA56 /* AboutController.m */; };
+		84ABC63715A6E4330052AA56 /* AboutController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84ABC63515A6E4330052AA56 /* AboutController.xib */; };
+		84ABC63B15A6E4ED0052AA56 /* InfoProductController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABC63915A6E4ED0052AA56 /* InfoProductController.m */; };
+		84ABC63C15A6E4ED0052AA56 /* InfoProductController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84ABC63A15A6E4ED0052AA56 /* InfoProductController.xib */; };
 		84B0B2541580E98400DE9F0A /* backgorund.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2401580E98400DE9F0A /* backgorund.png */; };
 		84B0B2551580E98400DE9F0A /* backgorund@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2411580E98400DE9F0A /* backgorund@2x.png */; };
 		84B0B2561580E98400DE9F0A /* calc_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B0B2421580E98400DE9F0A /* calc_bg.png */; };
@@ -239,9 +241,12 @@
 		8486AA5815A587B6002CC573 /* Rublsign.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rublsign.otf; sourceTree = "<group>"; };
 		8486AA5B15A588D6002CC573 /* Rublsi_TT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rublsi_TT.ttf; sourceTree = "<group>"; };
 		8486AA5D15A58989002CC573 /* rybl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rybl.png; sourceTree = "<group>"; };
-		84947BEC15A5D76A00A9DA44 /* InfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoController.h; sourceTree = "<group>"; };
-		84947BED15A5D76A00A9DA44 /* InfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoController.m; sourceTree = "<group>"; };
-		84947BEE15A5D76A00A9DA44 /* InfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoController.xib; sourceTree = "<group>"; };
+		84ABC63315A6E4330052AA56 /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
+		84ABC63415A6E4330052AA56 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
+		84ABC63515A6E4330052AA56 /* AboutController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutController.xib; sourceTree = "<group>"; };
+		84ABC63815A6E4ED0052AA56 /* InfoProductController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoProductController.h; sourceTree = "<group>"; };
+		84ABC63915A6E4ED0052AA56 /* InfoProductController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoProductController.m; sourceTree = "<group>"; };
+		84ABC63A15A6E4ED0052AA56 /* InfoProductController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoProductController.xib; sourceTree = "<group>"; };
 		84B0B2401580E98400DE9F0A /* backgorund.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgorund.png; sourceTree = "<group>"; };
 		84B0B2411580E98400DE9F0A /* backgorund@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgorund@2x.png"; sourceTree = "<group>"; };
 		84B0B2421580E98400DE9F0A /* calc_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calc_bg.png; sourceTree = "<group>"; };
@@ -581,9 +586,12 @@
 		84947BEA15A5D71E00A9DA44 /* Modal Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				84947BEC15A5D76A00A9DA44 /* InfoController.h */,
-				84947BED15A5D76A00A9DA44 /* InfoController.m */,
-				84947BEE15A5D76A00A9DA44 /* InfoController.xib */,
+				84ABC63315A6E4330052AA56 /* AboutController.h */,
+				84ABC63415A6E4330052AA56 /* AboutController.m */,
+				84ABC63515A6E4330052AA56 /* AboutController.xib */,
+				84ABC63815A6E4ED0052AA56 /* InfoProductController.h */,
+				84ABC63915A6E4ED0052AA56 /* InfoProductController.m */,
+				84ABC63A15A6E4ED0052AA56 /* InfoProductController.xib */,
 			);
 			name = "Modal Controllers";
 			sourceTree = "<group>";
@@ -794,7 +802,8 @@
 				8486AA5915A587B6002CC573 /* Rublsign.otf in Resources */,
 				8486AA5C15A588D6002CC573 /* Rublsi_TT.ttf in Resources */,
 				8486AA5E15A58989002CC573 /* rybl.png in Resources */,
-				84947BF015A5D76A00A9DA44 /* InfoController.xib in Resources */,
+				84ABC63715A6E4330052AA56 /* AboutController.xib in Resources */,
+				84ABC63C15A6E4ED0052AA56 /* InfoProductController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,7 +847,8 @@
 				84EDDB611599DCDA002558B5 /* BrandCell.m in Sources */,
 				84662912159ADACF00A49F19 /* iRate.m in Sources */,
 				2FFE41DD159B868A009DAC67 /* PriceCell.m in Sources */,
-				84947BEF15A5D76A00A9DA44 /* InfoController.m in Sources */,
+				84ABC63615A6E4330052AA56 /* AboutController.m in Sources */,
+				84ABC63B15A6E4ED0052AA56 /* InfoProductController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,18 +1,18 @@
 //
-//  InfoController.m
+//  InfoProductController.m
 //  FastCalc
 //
-//  Created by Gevorg Petrosyan on 05.07.12.
+//  Created by Gevorg Petrosyan on 06.07.12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "InfoController.h"
+#import "InfoProductController.h"
 
-@interface InfoController ()
+@interface InfoProductController ()
 
 @end
 
-@implementation InfoController
+@implementation InfoProductController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,12 +39,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-
-
-- (IBAction)closeButtonClicked:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end
