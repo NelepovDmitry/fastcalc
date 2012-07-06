@@ -22,7 +22,7 @@
 - (void)setMainProp;
 - (void)finishAnimation;
 
-- (void)setMainCheckViewFrameWithAnimation:(BOOL)animate;
+- (void)setMainCheckViewFrameWithAnimation:(BOOL)animate duration:(float)duration;
 
 @end
 
@@ -156,11 +156,11 @@
     [mMainView setContentOffset:bottomOffset animated:NO];
     [mMainView setScrollEnabled:NO];
     
-    [self setMainCheckViewFrameWithAnimation:NO];
+    [self setMainCheckViewFrameWithAnimation:NO duration:0];
     CGRect rect = mCheckView.frame;
     rect.origin.y = BEGIN_Y - BEGIN_OFFSET;
     [mCheckView setFrame:rect];
-    [self setMainCheckViewFrameWithAnimation:YES];
+    [self setMainCheckViewFrameWithAnimation:YES duration:0.5f];
 }
 
 - (void)volume:(float)volume {
@@ -181,14 +181,14 @@
                         mMaskView.clipsToBounds = NO;
                     }
                     completion:^(BOOL finished) {
-                        [self setMainCheckViewFrameWithAnimation:NO];
+                        [self setMainCheckViewFrameWithAnimation:NO duration:0.0f];
                         CGRect rect = mCheckView.frame;
                         rect.origin.y = BEGIN_Y - BEGIN_OFFSET;
                         [mCheckView setFrame:rect];
                         mCheckView.hidden = NO;
                         mMaskView.clipsToBounds = YES;
                         mPaperTopImageView.hidden = YES;
-                        [self setMainCheckViewFrameWithAnimation:YES];
+                        [self setMainCheckViewFrameWithAnimation:YES duration:0.5f];
                     }];
 }
 
@@ -254,7 +254,7 @@
     //rect.origin.y = BEGIN_Y;
     //[mCheckView setFrame:rect];
     [priceTableViewController goToTop:NO];
-    [self setMainCheckViewFrameWithAnimation:YES];
+    [self setMainCheckViewFrameWithAnimation:YES duration:0.3f];
 }
 
 #pragma mark - PriceTableViewController Delegate
@@ -265,15 +265,15 @@
     //CGRect rect = mCheckView.frame;
     //rect.origin.y = BEGIN_Y;
     //[mCheckView setFrame:rect];
-    [self setMainCheckViewFrameWithAnimation:YES];
+    [self setMainCheckViewFrameWithAnimation:YES duration:0.3f];
 }
 
 #pragma mark - Set Frames Functions
 
-- (void)setMainCheckViewFrameWithAnimation:(BOOL)animate {
+- (void)setMainCheckViewFrameWithAnimation:(BOOL)animate duration:(float)duration {
     if(animate) {
         [UIView beginAnimations : @"Display notif" context:nil];
-        [UIView setAnimationDuration:0.3f];
+        [UIView setAnimationDuration:duration];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(finishAnimation)];
     }
