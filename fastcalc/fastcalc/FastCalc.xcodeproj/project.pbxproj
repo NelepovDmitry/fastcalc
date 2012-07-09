@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2F2116D9158BB617008EA754 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2116D8158BB617008EA754 /* MenuItem.m */; };
 		2F2116DD158BC1E0008EA754 /* BrandMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2116DC158BC1E0008EA754 /* BrandMenu.m */; };
-		2FA882D7157D46E5005DF341 /* DDMenuController.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 2FA882D6157D46E5005DF341 /* DDMenuController.entitlements */; };
 		2FA882DD157D48F0005DF341 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA882DC157D48F0005DF341 /* QuartzCore.framework */; };
 		2FCA7FBD15A2503500A6CDB3 /* not_choose_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FCA7FBB15A2503500A6CDB3 /* not_choose_button.png */; };
 		2FCA7FBE15A2503500A6CDB3 /* not_choose_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FCA7FBC15A2503500A6CDB3 /* not_choose_button@2x.png */; };
@@ -133,7 +132,6 @@
 		2F2116D8158BB617008EA754 /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItem.m; sourceTree = "<group>"; };
 		2F2116DB158BC1DF008EA754 /* BrandMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandMenu.h; sourceTree = "<group>"; };
 		2F2116DC158BC1E0008EA754 /* BrandMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandMenu.m; sourceTree = "<group>"; };
-		2FA882D6157D46E5005DF341 /* DDMenuController.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DDMenuController.entitlements; sourceTree = "<group>"; };
 		2FA882DC157D48F0005DF341 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2FCA7FBB15A2503500A6CDB3 /* not_choose_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = not_choose_button.png; sourceTree = "<group>"; };
 		2FCA7FBC15A2503500A6CDB3 /* not_choose_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "not_choose_button@2x.png"; sourceTree = "<group>"; };
@@ -447,7 +445,6 @@
 		84794DFA1578A143004010F7 /* FastCalc */ = {
 			isa = PBXGroup;
 			children = (
-				2FA882D6157D46E5005DF341 /* DDMenuController.entitlements */,
 				847B60DC157CC65500BC8B89 /* Resources */,
 				2FE5085B157D2B280010618B /* Libs */,
 				84794E111578A1C2004010F7 /* Helpers */,
@@ -757,7 +754,6 @@
 				84794E181578A31B004010F7 /* ChooseViewController.xib in Resources */,
 				847B60D2157C95DD00BC8B89 /* MainViewController.xib in Resources */,
 				844243CB157CCC6200F156A1 /* MenuCell.xib in Resources */,
-				2FA882D7157D46E5005DF341 /* DDMenuController.entitlements in Resources */,
 				84B0B2541580E98400DE9F0A /* backgorund.png in Resources */,
 				84B0B2551580E98400DE9F0A /* backgorund@2x.png in Resources */,
 				84B0B2561580E98400DE9F0A /* calc_bg.png in Resources */,

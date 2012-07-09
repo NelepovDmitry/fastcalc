@@ -142,6 +142,7 @@
 
 - (void)setMainProp {
     //set main prop
+    isFinishedCut = true;
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgorund.png"]];
     self.viewDeckController.delegate = self;
@@ -169,31 +170,35 @@
 }
 
 - (void)newCheck {
-    [mBumagaPlayer playAudio];
-    [priceTableViewController clearCheck];
-    mPrice = 0;
-    mPriceLbl.text = [NSString stringWithFormat:@"%d", mPrice];
-    [UIView transitionWithView:mCheckView
-                      duration:0.5f
-                       options:UIViewAnimationOptionTransitionCurlUp
-                    animations:^{
-                        mCheckView.hidden = YES;
-                        mMaskView.clipsToBounds = NO;
-                    }
-                    completion:^(BOOL finished) {
-                        [self setMainCheckViewFrameWithAnimation:NO duration:0.0f];
-                        CGRect rect = mCheckView.frame;
-                        rect.origin.y = BEGIN_Y - BEGIN_OFFSET;
-                        [mCheckView setFrame:rect];
-                        mCheckView.hidden = NO;
-                        mMaskView.clipsToBounds = YES;
-                        mPaperTopImageView.hidden = YES;
-                        [self setMainCheckViewFrameWithAnimation:YES duration:0.5f];
-                    }];
+    if(isFinishedCut) {
+        isFinishedCut = false;
+        [mBumagaPlayer playAudio];
+        [priceTableViewController clearCheck];
+        mPrice = 0;
+        mPriceLbl.text = [NSString stringWithFormat:@"%d", mPrice];
+        [UIView transitionWithView:mCheckView
+                          duration:0.5f
+                           options:UIViewAnimationOptionTransitionCurlUp
+                        animations:^{
+                            mCheckView.hidden = YES;
+                            mMaskView.clipsToBounds = NO;
+                        }
+                        completion:^(BOOL finished) {
+                            [self setMainCheckViewFrameWithAnimation:NO duration:0.0f];
+                            CGRect rect = mCheckView.frame;
+                            rect.origin.y = BEGIN_Y - BEGIN_OFFSET;
+                            [mCheckView setFrame:rect];
+                            mCheckView.hidden = NO;
+                            mMaskView.clipsToBounds = YES;
+                            mPaperTopImageView.hidden = YES;
+                            [self setMainCheckViewFrameWithAnimation:YES duration:0.5f];
+                        }];
+    }
 }
 
 - (void)finishAnimation {
     mPaperTopImageView.hidden = NO;
+    isFinishedCut = true;
 }
 
 #pragma mark - Actions
