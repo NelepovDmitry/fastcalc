@@ -157,6 +157,7 @@
     menuTableViewController.delegate = self;
     priceTableViewController.delegate = self;
     mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * menuTableViewController.arrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
+    mScrollViewForTableView.pagingEnabled = YES;
     
     //set scroll prop
     [mMainView setContentSize:CGSizeMake(320, 830)];
