@@ -14,6 +14,7 @@
 @synthesize textLabel;
 @synthesize priceLabel;
 @synthesize caloriesLabel;
+@synthesize rublImage;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -35,6 +36,7 @@
     [textLabel release];
     [priceLabel release];
     [caloriesLabel release];
+    [rublImage release];
     [super dealloc];
 }
 @end

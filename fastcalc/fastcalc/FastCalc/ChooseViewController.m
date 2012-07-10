@@ -100,7 +100,7 @@
     menuID = mApplicationSingleton.idOfMenu;
     [self startPreloader];
     if(!mApplicationSingleton.firstStart) {
-        mLocationLbl.text = [NSString stringWithFormat:@"  %@", NSLocalizedString(@"localizationString", @"")];
+        mLocationLbl.text = [NSString stringWithFormat:@"  %@  ", NSLocalizedString(@"localizationString", @"")];
         [self getBrandsFromCache];
     } else {
         [self newPhysicalLocation:nil];
@@ -212,7 +212,7 @@
 //api?apifastcalc.getFastFoodsOnCityZip={"city_name":"Москва","locale":"ru","responseBinary":1}
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getFastFoodsOnCity={%22city_name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22,%22locale%22:%22ru%22}
 - (void)requestCity:(NSString *)cityName {
-    mLocationLbl.text = [NSString stringWithFormat:@"  %@", NSLocalizedString(@"localizationString", @"")];
+    mLocationLbl.text = [NSString stringWithFormat:@"  %@  ", NSLocalizedString(@"localizationString", @"")];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setObject:cityName forKey:@"city_name"];
     [dict setObject:@"ru" forKey:@"locale"];

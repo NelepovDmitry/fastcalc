@@ -86,6 +86,8 @@
     mThanksView = nil;
     [mThanksLabel release];
     mThanksLabel = nil;
+    [mBrandImage release];
+    mBrandImage = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -116,6 +118,7 @@
     [mPriceMask release];
     [mThanksView release];
     [mThanksLabel release];
+    [mBrandImage release];
     [super dealloc];
 }
 

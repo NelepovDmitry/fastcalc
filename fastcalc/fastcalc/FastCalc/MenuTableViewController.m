@@ -211,6 +211,7 @@
     clickedCell.menuImage.alpha = 0.5f;
     clickedCell.textLabel.alpha = 0.5f;
     clickedCell.priceLabel.alpha = 0.5f;
+    clickedCell.rublImage.alpha = 0.5f;
 }
 
 - (void)cellTouchUp:(id)sender {
@@ -218,6 +219,7 @@
     clickedCell.menuImage.alpha = 1;
     clickedCell.textLabel.alpha = 1;
     clickedCell.priceLabel.alpha = 1;
+    clickedCell.rublImage.alpha = 1;
     NSIndexPath * clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
     NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
     NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
