@@ -368,7 +368,8 @@
     NSNumber *numberId =  brandMenu.objectId;
     menuID = numberId;
     [mApplicationSingleton.dictOfMenuImages removeAllObjects];
-    [mApplicationSingleton.mainViewController.menuTableViewController performSelectorInBackground:@selector(requsetMenuById:) withObject:numberId];
+    //[mApplicationSingleton.mainViewController.menuTableViewController performSelectorInBackground:@selector(requsetMenuById:) withObject:numberId];
+    [mApplicationSingleton.mainViewController performSelectorInBackground:@selector(requsetMenuById:) withObject:numberId];
     //[mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:numberId];
     [mApplicationSingleton.mainViewController.viewDeckController toggleLeftViewAnimated:YES];
     [mBrandsTable reloadData];

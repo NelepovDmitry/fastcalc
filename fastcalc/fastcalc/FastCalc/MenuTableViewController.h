@@ -19,22 +19,13 @@
 
 
 @interface MenuTableViewController : UITableViewController {
-    NSMutableArray *mArrayOfProductsNames;
-    NSMutableDictionary *mDictOfProducts;
-    NSInteger indexOfMenu;
-    
-    InternetUtils *mInternetUtils;
+    NSMutableArray *arrayOfProducts;
     ApplicationSingleton *mApplicationSingleton;
-    
-    UIAlertView *mLoader;
-    NSNumber *mMenuID;
 }
 
 @property (nonatomic, assign) id<MenuTableViewControllerDelegate> delegate;
-@property (nonatomic, retain) NSMutableArray *arrayOfMenuItemGroups;
 @property (retain, nonatomic) IBOutlet MenuCell *menuCell;
 
-- (void)nextMenuByIndex:(NSInteger)menuIndex;
-- (void)requsetMenuById:(NSNumber *)menuId;
+- (void)setArrayOfTableView:(NSArray *)array;
 
 @end

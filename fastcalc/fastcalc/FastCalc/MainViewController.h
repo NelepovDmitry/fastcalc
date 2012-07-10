@@ -36,12 +36,22 @@
     IBOutlet UIImageView *mPriceMask;
     IBOutlet UIImageView *mBrandImage;
     IBOutlet UIScrollView *mScrollViewForTableView;
-    NSInteger mPrice;
     
     EClockPlayer *mKassaPlayer;
     EClockPlayer *mBumagaPlayer;
+    InternetUtils *mInternetUtils;
+    ApplicationSingleton *mApplicationSingleton;
+    MenuTableViewController *secondMenuTableViewController;
     
     BOOL isFinishedCut;
+    
+    NSInteger mPrice;
+    NSMutableDictionary *mDictOfMenus;
+    NSMutableArray *mArrayOfProductsNames;
+    NSMutableArray *mArrayOfMenuItemGroups;
+    UIAlertView *mLoader;
+    NSInteger indexOfMenu;
+    NSNumber *mMenuID;
 }
 
 - (void)newCheck;

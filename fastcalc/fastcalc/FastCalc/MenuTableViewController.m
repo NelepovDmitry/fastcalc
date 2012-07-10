@@ -20,21 +20,17 @@
 
 - (void)getMenuItems:(NSData *)data;
 - (void)setMainProp;
-- (void)startPreloader;
 
 - (void)cellTouchUp:(id)sender;
 - (void)cellTouchDown:(id)sender;
 - (void)cellTouchUpCancel:(id)sender;
-
-- (void)sendRequestToServerWithObject:(id)object;
-- (void)progress:(NSData *)data;
 
 @end
 
 @implementation MenuTableViewController
 @synthesize menuCell;
 
-@synthesize delegate, arrayOfMenuItemGroups;
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -49,7 +45,7 @@
 {
     [super viewDidLoad];
     [self setMainProp];
-    [self requsetMenuById:mApplicationSingleton.idOfMenu];
+    //[self requsetMenuById:mApplicationSingleton.idOfMenu];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -71,9 +67,6 @@
 }
 
 - (void)dealloc {
-    [mArrayOfProductsNames release];
-    [mInternetUtils release];
-    [mDictOfProducts release];
     [menuCell release];
     [super dealloc];
 }
@@ -89,13 +82,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    int count = 0;
+    /*int count = 0;
     if(mArrayOfProductsNames.count > indexOfMenu) {
         NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
         NSArray *arrayOfBrands = [mDictOfProducts objectForKey:key];
         count = arrayOfBrands.count;
-    }
-    return count;
+    }*/
+    return arrayOfProducts.count;
 }
 
 - (MenuCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -104,13 +97,14 @@
     
     MenuCell *cell= (MenuCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-        cell = menuCell;
-		self.menuCell = nil;
+        // Load the top-level objects from the custom cell XIB.
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+        // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
+        cell = [topLevelObjects objectAtIndex:0];
     }
-    if(mArrayOfProductsNames.count > indexOfMenu) {
-        NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
-        NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
+    //if(arrayOfProducts.count > indexOfMenu) {
+        //NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
+        //NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
         
         MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
         cell.textLabel.text = menuItem.menuName;
@@ -120,7 +114,7 @@
         cell.priceLabel.text = menuItem.menuPrice.stringValue;
         UIImage *image = [mApplicationSingleton.dictOfMenuImages objectForKey:menuItem.menuPicturePath];
         cell.menuImage.image = image;
-    }
+    //}
     return cell;
 }
 
@@ -179,29 +173,10 @@
 
 #pragma mark - Public functions
 
-- (void)nextMenuByIndex:(NSInteger)menuIndex {
-    indexOfMenu = menuIndex;
+- (void)setArrayOfTableView:(NSArray *)array {
+    [arrayOfProducts removeAllObjects];
+    arrayOfProducts = [[NSMutableArray alloc] initWithArray:array];
     [self.tableView reloadData];
-}
-
-- (void)requsetMenuById:(NSNumber *)menuId {
-    if(menuId.integerValue == 0) {
-        [mLoader dismissWithClickedButtonIndex:0 animated:YES];
-        [self.viewDeckController toggleLeftView];
-        return;
-    }
-    indexOfMenu = 0;
-    mMenuID = menuId;
-    [self performSelectorOnMainThread:@selector(startPreloader) withObject:nil waitUntilDone:YES];
-    if([ApplicationSingleton isMenuExistinChache:menuId]) {
-        NSString *path = [mApplicationSingleton cacheDirectory];
-        path = [NSString stringWithFormat:@"%@/%d", path, menuId.integerValue];
-        NSString *jsonPath = [path stringByAppendingPathComponent:@"menu.json"];
-        NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
-        [self getMenuItems:jsonData];
-    } else {
-        [self performSelectorOnMainThread:@selector(sendRequestToServerWithObject:) withObject:menuId waitUntilDone:YES];
-    }
 }
 
 #pragma mark - Cell touch actions
@@ -221,8 +196,8 @@
     clickedCell.priceLabel.alpha = 1;
     clickedCell.rublImage.alpha = 1;
     NSIndexPath * clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
-    NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
-    NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
+    //NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
+    //NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
     MenuItem *menuItem = [arrayOfProducts objectAtIndex:clickedButtonPath.row];
     [delegate performSelectorInBackground:@selector(getNewPrice:) withObject:menuItem];
     //[delegate getNewPrice:menuItem];
@@ -240,109 +215,8 @@
 
 - (void)setMainProp {
     mApplicationSingleton = [ApplicationSingleton createSingleton];
-    mArrayOfProductsNames = [[NSMutableArray alloc] init];
-    arrayOfMenuItemGroups = [[NSMutableArray alloc] init];
-    mInternetUtils = [[InternetUtils alloc] init];
-    mDictOfProducts = [[NSMutableDictionary alloc] init];
-    indexOfMenu = 0;
-}
-
-- (void)startPreloader {
-    mLoader = [[[UIAlertView alloc] initWithTitle:@"Loading the data list\nPlease Wait..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil] autorelease];
-    [mLoader show];
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    // Adjust the indicator so it is up a few pixels from the bottom of the alert
-    indicator.center = CGPointMake(mLoader.bounds.size.width / 2, mLoader.bounds.size.height - 50);
-    [indicator startAnimating];
-    [mLoader addSubview:indicator];
-    [indicator release];
-}
-
-
-
-- (void)getMenuItemsZip:(NSData *)data {
-    mApplicationSingleton.idOfMenu = mMenuID;
-    [mApplicationSingleton commitSettings];
-    [mLoader setTitle:@"Archiving \nPlease Wait..."];
-    NSString *path = [mApplicationSingleton cacheDirectory];
-    path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
-	NSError *error;
-    if (![[NSFileManager defaultManager] createDirectoryAtPath:path
-                                   withIntermediateDirectories:NO
-                                                    attributes:nil
-                                                         error:&error])
-    {
-        NSLog(@"Create directory error: %@", error);
-    }
-    NSString *filename = @"brands.zip";
-    NSString *toDirectory = [NSString stringWithFormat:@"%@/%@", path, filename];
-    [data writeToFile:toDirectory atomically:YES];
-    
-    ZipArchive *zipArchive = [[ZipArchive alloc] init];
-    [zipArchive UnzipOpenFile:toDirectory];
-    [zipArchive UnzipFileTo:path overWrite:YES];
-    [zipArchive UnzipCloseFile];
-    [zipArchive release];
-    
-    NSString *jsonPath = [path stringByAppendingPathComponent:@"menu.json"];
-    NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
-    [self getMenuItems:jsonData];
-    
-}
-
-- (void)getMenuItems:(NSData *)data {
-    mApplicationSingleton.idOfMenu = mMenuID;
-    [mApplicationSingleton commitSettings];
-    [mLoader setTitle:@"Caching \nPlease Wait..."];
-    [mDictOfProducts removeAllObjects];
-    [mArrayOfProductsNames removeAllObjects];
-    [arrayOfMenuItemGroups removeAllObjects];
-    
-    NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSDictionary *mainDict = [json JSONValue];
-    NSArray *arrayOfGroups = [mainDict valueForKeyPath:@"groups"];
-    
-    NSNumber *objectID;
-    
-    for(NSDictionary *dictOfgroup in arrayOfGroups) {
-        NSDictionary *info = [dictOfgroup objectForKey:@"info"];
-        GroupItem *groupItem = [[GroupItem alloc] initWithArray:[info objectForKey:@"objectValues"]];
-        [arrayOfMenuItemGroups addObject:groupItem];
-        NSArray *objectValues = [dictOfgroup objectForKey:@"items"];
-        NSMutableArray *arrayOfobjects = [NSMutableArray array];
-        for(NSDictionary *objectValue in objectValues) {
-            MenuItem *menuItem = [[MenuItem alloc] initWithArray:[objectValue objectForKey:@"objectValues"]];
-            objectID = menuItem.objectId;
-            [arrayOfobjects addObject:menuItem];
-            [menuItem release];
-        }
-        [mArrayOfProductsNames addObject:[dictOfgroup objectForKey:@"groupname"]];
-        [mDictOfProducts setObject:arrayOfobjects forKey:[dictOfgroup objectForKey:@"groupname"]];
-    }
-    [self.tableView reloadData];
-    [mApplicationSingleton.mainViewController getAllProducts];
-    [mLoader dismissWithClickedButtonIndex:0 animated:YES];
-}
-
-- (void)progress:(OSInternetUtilsProgressInfo *)data {
-    [mLoader setTitle:[NSString stringWithFormat:@"Loading in progress \n%d %%", (int)((data.contentLoaded.floatValue / data.contentSize.floatValue) * 100)]];
-    //NSLog(@"loaded %f", (data.contentLoaded.floatValue / data.contentSize.floatValue) * 100);
-    //NSLog(@"data.contentLoaded %@", data.contentLoaded);
-}
-
-//http://fastcalc.orionsource.ru/api?apifastcalc.getMenuItemsZip={"menu_id":6,"responseBinary":1}
-//http://fastcalc.orionsource.ru/api/?apifastcalc.getMenuItems={menu_id:6}
-- (void)sendRequestToServerWithObject:(id)object {
-    NSNumber *menuId = object;
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:menuId forKey:@"menu_id"];
-    [dict setObject:[NSNumber numberWithInt:1] forKey:@"responseBinary"];
-    [mInternetUtils makeURLRequestByNameResponser:@"getMenuItemsZip:" 
-                                          urlCall:[NSURL URLWithString:URL] 
-                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getMenuItemsZip"]
-                                        responder:self
-                             progressFunctionName:@"progress:"
-     ];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
 
 @end

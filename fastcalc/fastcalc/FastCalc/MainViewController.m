@@ -14,6 +14,10 @@
 #import "GroupItem.h"
 #import "IIViewDeckController.h"
 #import "EClockPlayer.h"
+#import "ApplicationSingleton.h"
+#import "JSON.h"
+#import "InternetUtils.h"
+#import "ZipArchive.h"
 
 @interface MainViewController ()
 
@@ -23,6 +27,8 @@
 - (void)finishAnimation;
 
 - (void)setMainCheckViewFrameWithAnimation:(BOOL)animate duration:(float)duration;
+- (void)requsetMenuById:(NSNumber *)menuId;
+- (void)getMenuItems:(NSData *)data;
 
 @end
 
@@ -52,6 +58,8 @@
 {
     [self setPriceTableViewController:nil];
     [self setMenuTableViewController:nil];
+    [secondMenuTableViewController release];
+    secondMenuTableViewController = nil;
     [mAnimationView release];
     mAnimationView = nil;
     [mGestureRecognizerDown release];
@@ -102,6 +110,7 @@
 
 - (void)dealloc {
     [priceTableViewController release];
+    [secondMenuTableViewController release];
     [menuTableViewController release];
     [mAnimationView release];
     [mGestureRecognizerDown release];
@@ -148,6 +157,12 @@
 
 - (void)setMainProp {
     //set main prop
+    mApplicationSingleton = [ApplicationSingleton createSingleton];
+    mArrayOfProductsNames = [[NSMutableArray alloc] init];
+    mArrayOfMenuItemGroups = [[NSMutableArray alloc] init];
+    mInternetUtils = [[InternetUtils alloc] init];
+    mDictOfMenus = [[NSMutableDictionary alloc] init];
+    indexOfMenu = 0;
     isFinishedCut = true;
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgorund.png"]];
@@ -156,9 +171,21 @@
     mThanksLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     menuTableViewController.delegate = self;
     priceTableViewController.delegate = self;
-    mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * menuTableViewController.arrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
-    mScrollViewForTableView.pagingEnabled = YES;
     
+    secondMenuTableViewController = [[MenuTableViewController alloc] init];
+    secondMenuTableViewController.delegate = self;
+    secondMenuTableViewController.tableView.rowHeight = 46;
+    secondMenuTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    secondMenuTableViewController.tableView.backgroundColor = menuTableViewController.tableView.backgroundColor;
+    secondMenuTableViewController.view.frame = menuTableViewController.view.frame;
+    CGRect rect = secondMenuTableViewController.view.frame;
+    rect.origin.x = menuTableViewController.tableView.frame.size.width;
+    [secondMenuTableViewController.view setFrame:rect];
+    
+    mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
+    mScrollViewForTableView.pagingEnabled = YES;
+    [mScrollViewForTableView addSubview:secondMenuTableViewController.view];
+
     //set scroll prop
     [mMainView setContentSize:CGSizeMake(320, 830)];
     CGPoint bottomOffset = CGPointMake(0, mMainView.contentSize.height - mMainView.frame.size.height);
@@ -166,7 +193,7 @@
     [mMainView setScrollEnabled:NO];
     
     [self setMainCheckViewFrameWithAnimation:NO duration:0];
-    CGRect rect = mCheckView.frame;
+    rect = mCheckView.frame;
     rect.origin.y = BEGIN_Y - BEGIN_OFFSET;
     [mCheckView setFrame:rect];
     [self setMainCheckViewFrameWithAnimation:YES duration:0.5f];
@@ -230,14 +257,16 @@
 }
 
 - (IBAction)changeMenuClicked:(id)sender {
-    static int index = 0;
-    if(menuTableViewController.arrayOfMenuItemGroups.count > 0) {
-        index = (index + 1) % menuTableViewController.arrayOfMenuItemGroups.count;
-        [menuTableViewController nextMenuByIndex:index];
-        GroupItem *groupItem = [menuTableViewController.arrayOfMenuItemGroups objectAtIndex:index];
+    if(mArrayOfMenuItemGroups.count > 0) {
+        indexOfMenu = (indexOfMenu + 1) % mArrayOfMenuItemGroups.count;
+        //[menuTableViewController nextMenuByIndex:index];
+        GroupItem *groupItem = [mArrayOfMenuItemGroups objectAtIndex:indexOfMenu];
         [currentGroupBtn setTitle:groupItem.groupName forState:UIControlStateNormal];
-        mPageControl.currentPage = index;
-        mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * menuTableViewController.arrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
+        mPageControl.currentPage = indexOfMenu;
+        NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
+        NSArray *arrayOfProducts = [mDictOfMenus objectForKey:key];
+        [menuTableViewController setArrayOfTableView:arrayOfProducts];
+        mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
     }
 }
 
@@ -253,9 +282,9 @@
 #pragma mark - MenuTableViewController Delegate
 
 - (void)getAllProducts {
-    GroupItem *groupItem = [menuTableViewController.arrayOfMenuItemGroups objectAtIndex:0];
+    GroupItem *groupItem = [mArrayOfMenuItemGroups objectAtIndex:0];
     [currentGroupBtn setTitle:groupItem.groupName forState:UIControlStateNormal];
-    mPageControl.numberOfPages = menuTableViewController.arrayOfMenuItemGroups.count;
+    mPageControl.numberOfPages = mArrayOfMenuItemGroups.count;
     mPageControl.currentPage = 0;
 }
 
@@ -271,6 +300,22 @@
     //[mCheckView setFrame:rect];
     [priceTableViewController goToTop:NO];
     [self setMainCheckViewFrameWithAnimation:YES duration:0.3f];
+}
+
+#pragma mark - Scroll View delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    static NSInteger previousPage = 0;
+    CGFloat pageWidth = scrollView.frame.size.width;
+    float fractionalPage = scrollView.contentOffset.x / pageWidth;
+    NSInteger page = lround(fractionalPage);
+    if (previousPage != page) {
+        // Page has changed
+        // Do your thing!
+        previousPage = page;
+    }
+    mPageControl.currentPage = previousPage;
+    //NSLog(@"previousPage %d", previousPage);
 }
 
 #pragma mark - PriceTableViewController Delegate
@@ -337,6 +382,135 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
+}
+
+#pragma mark - Menu table view loader functions
+
+- (void)requsetMenuById:(NSNumber *)menuId {
+    if(menuId.integerValue == 0) {
+        [mLoader dismissWithClickedButtonIndex:0 animated:YES];
+        [self.viewDeckController toggleLeftView];
+        return;
+    }
+    indexOfMenu = 0;
+    mMenuID = menuId;
+    [self performSelectorOnMainThread:@selector(startPreloader) withObject:nil waitUntilDone:YES];
+    if([ApplicationSingleton isMenuExistinChache:menuId]) {
+        NSString *path = [mApplicationSingleton cacheDirectory];
+        path = [NSString stringWithFormat:@"%@/%d", path, menuId.integerValue];
+        NSString *jsonPath = [path stringByAppendingPathComponent:@"menu.json"];
+        NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
+        [self getMenuItems:jsonData];
+    } else {
+        [self performSelectorOnMainThread:@selector(sendRequestToServerWithObject:) withObject:menuId waitUntilDone:YES];
+    }
+}
+
+//http://fastcalc.orionsource.ru/api?apifastcalc.getMenuItemsZip={"menu_id":6,"responseBinary":1}
+//http://fastcalc.orionsource.ru/api/?apifastcalc.getMenuItems={menu_id:6}
+- (void)sendRequestToServerWithObject:(id)object {
+    NSNumber *menuId = object;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setObject:menuId forKey:@"menu_id"];
+    [dict setObject:[NSNumber numberWithInt:1] forKey:@"responseBinary"];
+    [mInternetUtils makeURLRequestByNameResponser:@"getMenuItemsZip:" 
+                                          urlCall:[NSURL URLWithString:URL] 
+                                    requestParams:[NSDictionary dictionaryWithObject:[dict JSONRepresentation] forKey:@"apifastcalc.getMenuItemsZip"]
+                                        responder:self
+                             progressFunctionName:@"progress:"
+     ];
+}
+
+- (void)progress:(OSInternetUtilsProgressInfo *)data {
+    [mLoader setTitle:[NSString stringWithFormat:@"Loading in progress \n%d %%", (int)((data.contentLoaded.floatValue / data.contentSize.floatValue) * 100)]];
+    //NSLog(@"loaded %f", (data.contentLoaded.floatValue / data.contentSize.floatValue) * 100);
+    //NSLog(@"data.contentLoaded %@", data.contentLoaded);
+}
+
+- (void)getMenuItemsZip:(NSData *)data {
+    mApplicationSingleton.idOfMenu = mMenuID;
+    [mApplicationSingleton commitSettings];
+    [mLoader setTitle:@"Archiving \nPlease Wait..."];
+    NSString *path = [mApplicationSingleton cacheDirectory];
+    path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
+	NSError *error;
+    if (![[NSFileManager defaultManager] createDirectoryAtPath:path
+                                   withIntermediateDirectories:NO
+                                                    attributes:nil
+                                                         error:&error])
+    {
+        NSLog(@"Create directory error: %@", error);
+    }
+    NSString *filename = @"brands.zip";
+    NSString *toDirectory = [NSString stringWithFormat:@"%@/%@", path, filename];
+    [data writeToFile:toDirectory atomically:YES];
+    
+    ZipArchive *zipArchive = [[ZipArchive alloc] init];
+    [zipArchive UnzipOpenFile:toDirectory];
+    [zipArchive UnzipFileTo:path overWrite:YES];
+    [zipArchive UnzipCloseFile];
+    [zipArchive release];
+    
+    NSString *jsonPath = [path stringByAppendingPathComponent:@"menu.json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
+    [self getMenuItems:jsonData];
+    
+}
+
+- (void)getMenuItems:(NSData *)data {
+    mApplicationSingleton.idOfMenu = mMenuID;
+    [mApplicationSingleton commitSettings];
+    [mLoader setTitle:@"Caching \nPlease Wait..."];
+    [mDictOfMenus removeAllObjects];
+    [mArrayOfProductsNames removeAllObjects];
+    [mArrayOfMenuItemGroups removeAllObjects];
+    
+    NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSDictionary *mainDict = [json JSONValue];
+    NSArray *arrayOfGroups = [mainDict valueForKeyPath:@"groups"];
+    
+    NSNumber *objectID;
+    
+    for(NSDictionary *dictOfgroup in arrayOfGroups) {
+        NSDictionary *info = [dictOfgroup objectForKey:@"info"];
+        GroupItem *groupItem = [[GroupItem alloc] initWithArray:[info objectForKey:@"objectValues"]];
+        [mArrayOfMenuItemGroups addObject:groupItem];
+        NSArray *objectValues = [dictOfgroup objectForKey:@"items"];
+        NSMutableArray *arrayOfobjects = [NSMutableArray array];
+        for(NSDictionary *objectValue in objectValues) {
+            MenuItem *menuItem = [[MenuItem alloc] initWithArray:[objectValue objectForKey:@"objectValues"]];
+            objectID = menuItem.objectId;
+            [arrayOfobjects addObject:menuItem];
+            [menuItem release];
+        }
+        [mArrayOfProductsNames addObject:[dictOfgroup objectForKey:@"groupname"]];
+        [mDictOfMenus setObject:arrayOfobjects forKey:[dictOfgroup objectForKey:@"groupname"]];
+    }
+    NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
+    NSArray *arrayOfProducts = [mDictOfMenus objectForKey:key];
+    [menuTableViewController setArrayOfTableView:arrayOfProducts];
+    if(mArrayOfProductsNames.count > indexOfMenu + 1) {
+        NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu + 1];
+        NSArray *arrayOfProducts = [mDictOfMenus objectForKey:key];
+        [secondMenuTableViewController setArrayOfTableView:arrayOfProducts];
+    }
+    //[self.tableView reloadData];
+    mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
+    
+    [self getAllProducts];
+    [mLoader dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+
+- (void)startPreloader {
+    mLoader = [[[UIAlertView alloc] initWithTitle:@"Loading the data list\nPlease Wait..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil] autorelease];
+    [mLoader show];
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    // Adjust the indicator so it is up a few pixels from the bottom of the alert
+    indicator.center = CGPointMake(mLoader.bounds.size.width / 2, mLoader.bounds.size.height - 50);
+    [indicator startAnimating];
+    [mLoader addSubview:indicator];
+    [indicator release];
 }
 
 @end
