@@ -182,6 +182,8 @@
     rect.origin.x = menuTableViewController.tableView.frame.size.width;
     [secondMenuTableViewController.view setFrame:rect];
     
+    [self requsetMenuById:mApplicationSingleton.idOfMenu];
+    
     mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
     mScrollViewForTableView.pagingEnabled = YES;
     [mScrollViewForTableView addSubview:secondMenuTableViewController.view];
@@ -313,6 +315,10 @@
         // Page has changed
         // Do your thing!
         previousPage = page;
+    }
+    if(mPageControl.currentPage != previousPage) {
+        NSLog(@"mPageControl.currentPage %d", mPageControl.currentPage);
+        NSLog(@"previousPage %d", previousPage);
     }
     mPageControl.currentPage = previousPage;
     //NSLog(@"previousPage %d", previousPage);
