@@ -100,10 +100,10 @@
     menuID = mApplicationSingleton.idOfMenu;
     [self startPreloader];
     if(!mApplicationSingleton.firstStart) {
-        mLocationLbl.text = [NSString stringWithFormat:@"     %@", mApplicationSingleton.nameOfCity];
+        mLocationLbl.text = [NSString stringWithFormat:@"  %@", NSLocalizedString(@"localizationString", @"")];
         [self getBrandsFromCache];
     } else {
-        [mLocationGetter startUpdates];
+        [self newPhysicalLocation:nil];
     }
     
     [self setBorderToTheView:mBrandsTable];
@@ -174,6 +174,7 @@
     NSString *cityName = [mainDict valueForKeyPath:@"city.string_value"];
     mApplicationSingleton.idOfCity = cityId;
     mApplicationSingleton.nameOfCity = cityName;
+    
     [mApplicationSingleton commitSettings];
     
     NSArray *arrayOfBrands = [mainDict valueForKeyPath:@"brands.info"];
@@ -211,10 +212,11 @@
 //api?apifastcalc.getFastFoodsOnCityZip={"city_name":"Москва","locale":"ru","responseBinary":1}
 //http://fastcalc.orionsource.ru/api/?apifastcalc.getFastFoodsOnCity={%22city_name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22,%22locale%22:%22ru%22}
 - (void)requestCity:(NSString *)cityName {
-    mLocationLbl.text = [NSString stringWithFormat:@"     %@", cityName];
+    mLocationLbl.text = [NSString stringWithFormat:@"  %@", NSLocalizedString(@"localizationString", @"")];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setObject:cityName forKey:@"city_name"];
     [dict setObject:@"ru" forKey:@"locale"];
+    [dict setObject:@"RUS" forKey:@"iso_country"];
     [dict setObject:[NSNumber numberWithInt:1] forKey:@"responseBinary"];
     //http://rent.orionsource.ru/api?apirent.getUserLocation={"access_token":"","google_json":""}
     [mInternetUtils makeURLRequestByNameResponser:@"getFastFoodsOnCityZip:" 
@@ -232,7 +234,7 @@
 #pragma mark - Location Delegate 
 
 - (void)newPhysicalLocation:(CLLocation *)location {
-    [mLocationGetter getUserAddress:location];
+    /*[mLocationGetter getUserAddress:location];
     NSDictionary *dictOfFullLocal = [mLocationGetter.addresJSON JSONValue];
     NSArray *types = [[dictOfFullLocal valueForKeyPath:@"results.address_components"] objectAtIndex:0];
     NSString *cityName = @"";
@@ -246,9 +248,9 @@
                 break;
             }
         }
-    }
+    }*/
     if(mApplicationSingleton.idOfCity.intValue == 0) {
-        [self requestCity:cityName];
+        [self requestCity:@"Москва"];
     } else {
         [self getBrandsFromCache];
     }
@@ -389,7 +391,8 @@
     [mArrayOfBrandsMenus removeAllObjects];
     [mArrayOfBrands removeAllObjects];
     [self startPreloader];
-    [mLocationGetter startUpdates];
+    //[mLocationGetter startUpdates];
+    [self newPhysicalLocation:nil];
 }
 
 - (IBAction)rateClicked:(id)sender {

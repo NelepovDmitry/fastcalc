@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  FastCalc
+
+  Created by Gevorg Petrosyan on 10.07.12.
+  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+*/
+
+"localizationString" = "Цены действительны по России";

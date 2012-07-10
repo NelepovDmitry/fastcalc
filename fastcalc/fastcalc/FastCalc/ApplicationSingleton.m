@@ -33,7 +33,6 @@
 }
 
 - (void)dealloc {
-    [idOfCity release];
     [mCacheDirectory release];
     [super dealloc];
 }
@@ -87,8 +86,8 @@
 
 - (void)commitSettings {
     NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setInteger:idOfMenu.intValue forKey:ID_OF_MENU];
-    [prefs setInteger:idOfCity.intValue forKey:ID_OF_CITY];
+    [prefs setInteger:self.idOfMenu.intValue forKey:ID_OF_MENU];
+    [prefs setInteger:self.idOfCity.intValue forKey:ID_OF_CITY];
     [prefs setBool:alreadyRun forKey:ALREADY_RUN];
     [prefs setObject:nameOfCity forKey:NAME_OF_CITY];
     [prefs setInteger:controllerDiraction forKey:CONTROLLERS_DIRACTION];

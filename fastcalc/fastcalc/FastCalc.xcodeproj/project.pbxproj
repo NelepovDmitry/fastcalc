@@ -77,6 +77,7 @@
 		8479C1181592FA78006F05C9 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 8479C1111592FA78006F05C9 /* zip.c */; };
 		8479C1191592FA78006F05C9 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8479C1141592FA78006F05C9 /* ZipArchive.mm */; };
 		8479C11F1592FAB5006F05C9 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8479C11E1592FAB5006F05C9 /* libz.1.2.5.dylib */; };
+		847AA78F15AC1BC100589B7B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 847AA79115AC1BC100589B7B /* Localizable.strings */; };
 		847B60D1157C95DD00BC8B89 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60CF157C95DD00BC8B89 /* MainViewController.m */; };
 		847B60D2157C95DD00BC8B89 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B60D0157C95DD00BC8B89 /* MainViewController.xib */; };
 		847B60D6157C988700BC8B89 /* PriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60D5157C988700BC8B89 /* PriceTableViewController.m */; };
@@ -229,6 +230,7 @@
 		8479C1131592FA78006F05C9 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		8479C1141592FA78006F05C9 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
 		8479C11E1592FAB5006F05C9 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		847AA79015AC1BC100589B7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		847B60CE157C95DD00BC8B89 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		847B60CF157C95DD00BC8B89 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		847B60D0157C95DD00BC8B89 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				84794DFD1578A143004010F7 /* InfoPlist.strings */,
 				84794E001578A143004010F7 /* main.m */,
 				84794E021578A143004010F7 /* FastCalc-Prefix.pch */,
+				847AA79115AC1BC100589B7B /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ru,
 			);
 			mainGroup = 84794DE51578A142004010F7;
 			productRefGroup = 84794DF11578A143004010F7 /* Products */;
@@ -822,6 +826,7 @@
 				84ABC63C15A6E4ED0052AA56 /* InfoProductController.xib in Resources */,
 				84ABC65015A715A40052AA56 /* modal_window.png in Resources */,
 				84ABC65115A715A40052AA56 /* modal_window@2x.png in Resources */,
+				847AA78F15AC1BC100589B7B /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,6 +886,14 @@
 				84794DFE1578A143004010F7 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		847AA79115AC1BC100589B7B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				847AA79015AC1BC100589B7B /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
