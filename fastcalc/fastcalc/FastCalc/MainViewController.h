@@ -35,6 +35,7 @@
     IBOutlet UIPageControl *mPageControl;
     IBOutlet UIImageView *mPriceMask;
     IBOutlet UIImageView *mBrandImage;
+    IBOutlet UIScrollView *mScrollViewForTableView;
     NSInteger mPrice;
     
     EClockPlayer *mKassaPlayer;

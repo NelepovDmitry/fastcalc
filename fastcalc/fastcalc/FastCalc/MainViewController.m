@@ -88,6 +88,8 @@
     mThanksLabel = nil;
     [mBrandImage release];
     mBrandImage = nil;
+    [mScrollViewForTableView release];
+    mScrollViewForTableView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -119,6 +121,7 @@
     [mThanksView release];
     [mThanksLabel release];
     [mBrandImage release];
+    [mScrollViewForTableView release];
     [super dealloc];
 }
 
@@ -153,6 +156,7 @@
     mThanksLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     menuTableViewController.delegate = self;
     priceTableViewController.delegate = self;
+    mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * menuTableViewController.arrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
     
     //set scroll prop
     [mMainView setContentSize:CGSizeMake(320, 830)];
@@ -232,6 +236,7 @@
         GroupItem *groupItem = [menuTableViewController.arrayOfMenuItemGroups objectAtIndex:index];
         [currentGroupBtn setTitle:groupItem.groupName forState:UIControlStateNormal];
         mPageControl.currentPage = index;
+        mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * menuTableViewController.arrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
     }
 }
 
