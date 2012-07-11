@@ -196,7 +196,8 @@
     [mMainView setContentSize:CGSizeMake(320, 830)];
     [mMainView setShowsHorizontalScrollIndicator:NO];
     [mMainView setShowsVerticalScrollIndicator:NO];
-    mMainView.pagingEnabled = YES;
+    //mMainView.pagingEnabled = YES;
+    mMainView.bounces = NO;
     CGPoint bottomOffset = CGPointMake(0, mMainView.contentSize.height - mMainView.frame.size.height);
     [mMainView setContentOffset:bottomOffset animated:NO];
     //[mMainView setScrollEnabled:NO];
@@ -312,7 +313,8 @@
 #pragma mark - Scroll View delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    mAppDelegate.viewController.viewDeckController.panningMode = IIViewDeckNoPanning;
+    //if(scrollView == mMainView)
+        //mAppDelegate.viewController.viewDeckController.panningMode = IIViewDeckNoPanning;
     static NSInteger previousPage = 0;
     CGFloat pageWidth = scrollView.frame.size.width;
     float fractionalPage = scrollView.contentOffset.x / pageWidth;
