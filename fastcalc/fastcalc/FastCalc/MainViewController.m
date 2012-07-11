@@ -197,6 +197,7 @@
     [mMainView setShowsHorizontalScrollIndicator:NO];
     [mMainView setShowsVerticalScrollIndicator:NO];
     mMainView.pagingEnabled = YES;
+    mMainView.bounces = NO;
     CGPoint bottomOffset = CGPointMake(0, mMainView.contentSize.height - mMainView.frame.size.height);
     [mMainView setContentOffset:bottomOffset animated:NO];
     //[mMainView setScrollEnabled:NO];
