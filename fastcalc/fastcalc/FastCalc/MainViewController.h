@@ -42,6 +42,7 @@
     InternetUtils *mInternetUtils;
     ApplicationSingleton *mApplicationSingleton;
     MenuTableViewController *secondMenuTableViewController;
+    AppDelegate *mAppDelegate;
     
     BOOL isFinishedCut;
     

@@ -140,11 +140,11 @@
     [mGestureRecognizerDown setDirection:UISwipeGestureRecognizerDirectionDown];
     [mGestureRecognizerUp setDirection:UISwipeGestureRecognizerDirectionUp];
     [mGestureRecognizerLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
-    [mThanksView addGestureRecognizer:mGestureRecognizerDown];
-    [mThanksView addGestureRecognizer:mGestureRecognizerUp];
+    //[mThanksView addGestureRecognizer:mGestureRecognizerDown];
+    //[mThanksView addGestureRecognizer:mGestureRecognizerUp];
     [mThanksView addGestureRecognizer:mGestureRecognizerLeft];
-    [mPriceMask addGestureRecognizer:mGestureRecognizerDown];
-    [mPriceMask addGestureRecognizer:mGestureRecognizerUp];
+    //[mPriceMask addGestureRecognizer:mGestureRecognizerDown];
+    //[mPriceMask addGestureRecognizer:mGestureRecognizerUp];
     [mPriceMask addGestureRecognizer:mGestureRecognizerLeft];
 }
 
@@ -187,12 +187,19 @@
     mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
     mScrollViewForTableView.pagingEnabled = YES;
     [mScrollViewForTableView addSubview:secondMenuTableViewController.view];
-
+    [mScrollViewForTableView setShowsHorizontalScrollIndicator:NO];
+    [mScrollViewForTableView setShowsVerticalScrollIndicator:NO];
+    
+    mAppDelegate = [UIApplication sharedApplication].delegate;
+    
     //set scroll prop
     [mMainView setContentSize:CGSizeMake(320, 830)];
+    [mMainView setShowsHorizontalScrollIndicator:NO];
+    [mMainView setShowsVerticalScrollIndicator:NO];
+    mMainView.pagingEnabled = YES;
     CGPoint bottomOffset = CGPointMake(0, mMainView.contentSize.height - mMainView.frame.size.height);
     [mMainView setContentOffset:bottomOffset animated:NO];
-    [mMainView setScrollEnabled:NO];
+    //[mMainView setScrollEnabled:NO];
     
     [self setMainCheckViewFrameWithAnimation:NO duration:0];
     rect = mCheckView.frame;
@@ -241,18 +248,17 @@
 #pragma mark - Actions
 
 - (IBAction)gestureTaped:(id)sender {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     UISwipeGestureRecognizer *gesture = sender;
     if(gesture.direction == UISwipeGestureRecognizerDirectionDown) {
         CGPoint topOffset = CGPointMake(0, 0);
         [mMainView setContentOffset:topOffset animated:YES];
         [priceTableViewController goToTop:YES];
-        appDelegate.viewController.viewDeckController.panningMode = IIViewDeckNoPanning;
+        mAppDelegate.viewController.viewDeckController.panningMode = IIViewDeckNoPanning;
     } else if (gesture.direction == UISwipeGestureRecognizerDirectionUp) {
         CGPoint bottomOffset =  CGPointMake(0, mMainView.contentSize.height - mMainView.frame.size.height);
         [mMainView setContentOffset:bottomOffset animated:YES];
         [priceTableViewController goToTop:NO];
-        appDelegate.viewController.viewDeckController.panningMode = IIViewDeckFullViewPanning;
+        mAppDelegate.viewController.viewDeckController.panningMode = IIViewDeckFullViewPanning;
     } else if(gesture.direction == UISwipeGestureRecognizerDirectionLeft) {
         [self newCheck];
     }
@@ -273,8 +279,7 @@
 }
 
 - (IBAction)menuClicked:(id)sender {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    [appDelegate.viewController.viewDeckController toggleLeftViewAnimated:YES];
+    [mAppDelegate.viewController.viewDeckController toggleLeftViewAnimated:YES];
 }
 
 - (IBAction)newChecked:(id)sender {
@@ -307,6 +312,7 @@
 #pragma mark - Scroll View delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    mAppDelegate.viewController.viewDeckController.panningMode = IIViewDeckNoPanning;
     static NSInteger previousPage = 0;
     CGFloat pageWidth = scrollView.frame.size.width;
     float fractionalPage = scrollView.contentOffset.x / pageWidth;
@@ -322,6 +328,12 @@
     }
     mPageControl.currentPage = previousPage;
     //NSLog(@"previousPage %d", previousPage);
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if(scrollView.contentOffset.y >= 350 && scrollView == mMainView) {
+        mAppDelegate.viewController.viewDeckController.panningMode = IIViewDeckFullViewPanning;
+    }
 }
 
 #pragma mark - PriceTableViewController Delegate
@@ -367,21 +379,23 @@
 #pragma mark - IIViewDeckCountroller Delegate
 
 - (void)viewDeckControllerDidOpenLeftView:(IIViewDeckController*)viewDeckController animated:(BOOL)animated {
-    [mThanksView removeGestureRecognizer:mGestureRecognizerDown];
-    [mThanksView removeGestureRecognizer:mGestureRecognizerUp];
+    //[mThanksView removeGestureRecognizer:mGestureRecognizerDown];
+    //[mThanksView removeGestureRecognizer:mGestureRecognizerUp];
     [mThanksView removeGestureRecognizer:mGestureRecognizerLeft];
-    [mPriceMask removeGestureRecognizer:mGestureRecognizerDown];
-    [mPriceMask removeGestureRecognizer:mGestureRecognizerUp];
+    //[mPriceMask removeGestureRecognizer:mGestureRecognizerDown];
+    //[mPriceMask removeGestureRecognizer:mGestureRecognizerUp];
     [mPriceMask removeGestureRecognizer:mGestureRecognizerLeft];
+    [mMainView setScrollEnabled:NO];
 }
 
 - (void)viewDeckControllerDidCloseLeftView:(IIViewDeckController *)viewDeckController animated:(BOOL)animated {
-    [mThanksView addGestureRecognizer:mGestureRecognizerDown];
-    [mThanksView addGestureRecognizer:mGestureRecognizerUp];
+    //[mThanksView addGestureRecognizer:mGestureRecognizerDown];
+    //[mThanksView addGestureRecognizer:mGestureRecognizerUp];
     [mThanksView addGestureRecognizer:mGestureRecognizerLeft];
-    [mPriceMask addGestureRecognizer:mGestureRecognizerDown];
-    [mPriceMask addGestureRecognizer:mGestureRecognizerUp];
+    //[mPriceMask addGestureRecognizer:mGestureRecognizerDown];
+    //[mPriceMask addGestureRecognizer:mGestureRecognizerUp];
     [mPriceMask addGestureRecognizer:mGestureRecognizerLeft];
+    [mMainView setScrollEnabled:YES];
 }
 
 #pragma mark - Gesture Recognizer Delegate
