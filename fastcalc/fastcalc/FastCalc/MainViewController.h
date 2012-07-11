@@ -41,7 +41,6 @@
     EClockPlayer *mBumagaPlayer;
     InternetUtils *mInternetUtils;
     ApplicationSingleton *mApplicationSingleton;
-    MenuTableViewController *secondMenuTableViewController;
     AppDelegate *mAppDelegate;
     
     BOOL isFinishedCut;
@@ -50,6 +49,7 @@
     NSMutableDictionary *mDictOfMenus;
     NSMutableArray *mArrayOfProductsNames;
     NSMutableArray *mArrayOfMenuItemGroups;
+    NSMutableArray *mArrayOfMenuControllers;
     UIAlertView *mLoader;
     NSInteger indexOfMenu;
     NSNumber *mMenuID;

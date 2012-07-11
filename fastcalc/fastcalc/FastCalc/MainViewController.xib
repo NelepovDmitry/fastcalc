@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1296</int>
+		<int key="IBDocument.SystemTarget">1280</int>
 		<string key="IBDocument.SystemVersion">11E53</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1934</string>
 		<string key="IBDocument.AppKitVersion">1138.47</string>
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1181</string>
+			<string key="NS.object.0">931</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBUISwipeGestureRecognizer</string>
@@ -62,30 +62,6 @@
 					<object class="IBUIScrollView" id="404727727">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">301</int>
-						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUITableView" id="326047165">
-								<reference key="NSNextResponder" ref="404727727"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrameSize">{288, 264}</string>
-								<reference key="NSSuperview" ref="404727727"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="158805250"/>
-								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">2</int>
-									<bytes key="NSRGB">MC4xOTYwNzg0NDk1IDAuMTk2MDc4NDQ5NSAwLjE5NjA3ODQ0OTUAA</bytes>
-								</object>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<bool key="IBUIAlwaysBounceVertical">YES</bool>
-								<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
-								<bool key="IBUIAllowsSelection">NO</bool>
-								<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
-								<float key="IBUIRowHeight">46</float>
-								<float key="IBUISectionHeaderHeight">22</float>
-								<float key="IBUISectionFooterHeight">22</float>
-							</object>
-						</array>
 						<string key="NSFrame">{{16, 550}, {288, 264}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
@@ -505,6 +481,28 @@
 					<reference key="NSCustomColorSpace" ref="616086423"/>
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+			</object>
+			<object class="IBUITableView" id="326047165">
+				<reference key="NSNextResponder"/>
+				<int key="NSvFlags">292</int>
+				<string key="NSFrameSize">{288, 264}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="158805250"/>
+				<string key="NSReuseIdentifierKey">_NS:9</string>
+				<object class="NSColor" key="IBUIBackgroundColor">
+					<int key="NSColorSpace">2</int>
+					<bytes key="NSRGB">MC4xOTYwNzg0NDk1IDAuMTk2MDc4NDQ5NSAwLjE5NjA3ODQ0OTUAA</bytes>
+				</object>
+				<bool key="IBUIClipsSubviews">YES</bool>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<bool key="IBUIAlwaysBounceVertical">YES</bool>
+				<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
+				<bool key="IBUIAllowsSelection">NO</bool>
+				<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
+				<float key="IBUIRowHeight">46</float>
+				<float key="IBUISectionHeaderHeight">22</float>
+				<float key="IBUISectionFooterHeight">22</float>
 			</object>
 			<object class="IBUITableViewController" id="72799437">
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
@@ -1052,15 +1050,13 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">95</int>
 						<reference key="object" ref="404727727"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="326047165"/>
-						</array>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
 						<reference key="object" ref="326047165"/>
-						<reference key="parent" ref="404727727"/>
+						<reference key="parent" ref="0"/>
 						<string key="objectName">Menu Table View</string>
 					</object>
 				</array>
@@ -1330,7 +1326,7 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1296" key="NS.object.0"/>
+			<real value="1280" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
@@ -1347,6 +1343,6 @@
 			<string key="rybl.png">{23, 26}</string>
 			<string key="table_mask.png">{296, 275}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1181</string>
+		<string key="IBCocoaTouchPluginVersion">931</string>
 	</data>
 </archive>

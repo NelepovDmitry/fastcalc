@@ -57,9 +57,6 @@
 - (void)viewDidUnload
 {
     [self setPriceTableViewController:nil];
-    [self setMenuTableViewController:nil];
-    [secondMenuTableViewController release];
-    secondMenuTableViewController = nil;
     [mAnimationView release];
     mAnimationView = nil;
     [mGestureRecognizerDown release];
@@ -109,8 +106,6 @@
 }
 
 - (void)dealloc {
-    [priceTableViewController release];
-    [secondMenuTableViewController release];
     [menuTableViewController release];
     [mAnimationView release];
     [mGestureRecognizerDown release];
@@ -157,6 +152,7 @@
 
 - (void)setMainProp {
     //set main prop
+    mArrayOfMenuControllers = [[NSMutableArray alloc] init];
     mApplicationSingleton = [ApplicationSingleton createSingleton];
     mArrayOfProductsNames = [[NSMutableArray alloc] init];
     mArrayOfMenuItemGroups = [[NSMutableArray alloc] init];
@@ -169,24 +165,13 @@
     self.viewDeckController.delegate = self;
     mPriceView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
     mThanksLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper_texture.png"]];
-    menuTableViewController.delegate = self;
+    //menuTableViewController.delegate = self;
     priceTableViewController.delegate = self;
-    
-    secondMenuTableViewController = [[MenuTableViewController alloc] init];
-    secondMenuTableViewController.delegate = self;
-    secondMenuTableViewController.tableView.rowHeight = 46;
-    secondMenuTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    secondMenuTableViewController.tableView.backgroundColor = menuTableViewController.tableView.backgroundColor;
-    secondMenuTableViewController.view.frame = menuTableViewController.view.frame;
-    CGRect rect = secondMenuTableViewController.view.frame;
-    rect.origin.x = menuTableViewController.tableView.frame.size.width;
-    [secondMenuTableViewController.view setFrame:rect];
     
     [self requsetMenuById:mApplicationSingleton.idOfMenu];
     
     mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
     mScrollViewForTableView.pagingEnabled = YES;
-    [mScrollViewForTableView addSubview:secondMenuTableViewController.view];
     [mScrollViewForTableView setShowsHorizontalScrollIndicator:NO];
     [mScrollViewForTableView setShowsVerticalScrollIndicator:NO];
     
@@ -203,7 +188,7 @@
     //[mMainView setScrollEnabled:NO];
     
     [self setMainCheckViewFrameWithAnimation:NO duration:0];
-    rect = mCheckView.frame;
+    CGRect rect = mCheckView.frame;
     rect.origin.y = BEGIN_Y - BEGIN_OFFSET;
     [mCheckView setFrame:rect];
     [self setMainCheckViewFrameWithAnimation:YES duration:0.5f];
@@ -271,11 +256,12 @@
         //[menuTableViewController nextMenuByIndex:index];
         GroupItem *groupItem = [mArrayOfMenuItemGroups objectAtIndex:indexOfMenu];
         [currentGroupBtn setTitle:groupItem.groupName forState:UIControlStateNormal];
-        mPageControl.currentPage = indexOfMenu;
         NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
         NSArray *arrayOfProducts = [mDictOfMenus objectForKey:key];
-        [menuTableViewController setArrayOfTableView:arrayOfProducts];
+        MenuTableViewController *controller = [mArrayOfMenuControllers objectAtIndex:indexOfMenu];
+        [controller setArrayOfTableView:arrayOfProducts];
         mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
+        [mScrollViewForTableView setContentOffset:CGPointMake(indexOfMenu * menuTableViewController.tableView.frame.size.width, 0) animated:YES];
     }
 }
 
@@ -327,6 +313,9 @@
     if(mPageControl.currentPage != previousPage) {
         NSLog(@"mPageControl.currentPage %d", mPageControl.currentPage);
         NSLog(@"previousPage %d", previousPage);
+        
+        //mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
+        //[mScrollViewForTableView setContentOffset:CGPointMake(indexOfMenu * menuTableViewController.tableView.frame.size.width, 0) animated:YES];
     }
     mPageControl.currentPage = previousPage;
     //NSLog(@"previousPage %d", previousPage);
@@ -336,6 +325,16 @@
     if(scrollView.contentOffset.y >= 350 && scrollView == mMainView) {
         mAppDelegate.viewController.viewDeckController.panningMode = IIViewDeckFullViewPanning;
     }
+    indexOfMenu = mPageControl.currentPage;
+    //[menuTableViewController nextMenuByIndex:index];
+    GroupItem *groupItem = [mArrayOfMenuItemGroups objectAtIndex:indexOfMenu];
+    [currentGroupBtn setTitle:groupItem.groupName forState:UIControlStateNormal];
+    mPageControl.currentPage = indexOfMenu;
+    NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
+    NSArray *arrayOfProducts = [mDictOfMenus objectForKey:key];
+    MenuTableViewController *controller = [mArrayOfMenuControllers objectAtIndex:indexOfMenu];
+    [controller setArrayOfTableView:arrayOfProducts];
+
 }
 
 #pragma mark - PriceTableViewController Delegate
@@ -486,6 +485,7 @@
     [mDictOfMenus removeAllObjects];
     [mArrayOfProductsNames removeAllObjects];
     [mArrayOfMenuItemGroups removeAllObjects];
+    [mArrayOfMenuControllers removeAllObjects];
     
     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSDictionary *mainDict = [json JSONValue];
@@ -508,13 +508,25 @@
         [mArrayOfProductsNames addObject:[dictOfgroup objectForKey:@"groupname"]];
         [mDictOfMenus setObject:arrayOfobjects forKey:[dictOfgroup objectForKey:@"groupname"]];
     }
-    NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
-    NSArray *arrayOfProducts = [mDictOfMenus objectForKey:key];
-    [menuTableViewController setArrayOfTableView:arrayOfProducts];
-    if(mArrayOfProductsNames.count > indexOfMenu + 1) {
-        NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu + 1];
+    //NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
+    //NSArray *arrayOfProducts = [mDictOfMenus objectForKey:key];
+    //[menuTableViewController setArrayOfTableView:arrayOfProducts];
+    for(int i = 0; i < mArrayOfProductsNames.count; ++i) {
+        MenuTableViewController *mMenuTableViewController = [[MenuTableViewController alloc] init];
+        mMenuTableViewController.delegate = self;
+        mMenuTableViewController.tableView.rowHeight = 46;
+        mMenuTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        mMenuTableViewController.tableView.backgroundColor = menuTableViewController.tableView.backgroundColor;
+        mMenuTableViewController.view.frame = menuTableViewController.view.frame;
+        CGRect rect = mMenuTableViewController.view.frame;
+        rect.origin.x = mMenuTableViewController.tableView.frame.size.width * i;
+        [mMenuTableViewController.view setFrame:rect];
+        NSString *key = [mArrayOfProductsNames objectAtIndex:i];
         NSArray *arrayOfProducts = [mDictOfMenus objectForKey:key];
-        [secondMenuTableViewController setArrayOfTableView:arrayOfProducts];
+        [mMenuTableViewController setArrayOfTableView:arrayOfProducts];
+        [mScrollViewForTableView addSubview:mMenuTableViewController.view];
+        [mArrayOfMenuControllers addObject:mMenuTableViewController];
+        
     }
     //[self.tableView reloadData];
     mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
