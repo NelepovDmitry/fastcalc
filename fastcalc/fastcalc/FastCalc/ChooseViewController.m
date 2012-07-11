@@ -296,7 +296,8 @@
 {
     Brand *brand = [mArrayOfBrands objectAtIndex:section];
     UIView *v = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, mBrandsTable.frame.size.width, 44)] autorelease];
-    
+    UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(0, 43, mBrandsTable.frame.size.width, 1)];
+    [separator setBackgroundColor:tableView.separatorColor];
     
     NSString *path = [mApplicationSingleton cacheDirectory];
     path = [NSString stringWithFormat:@"%@/brands", path];
@@ -315,8 +316,10 @@
     
     [v addSubview:imageView];
     [v addSubview:lbl];
+    [v addSubview:separator];
     [imageView release];
     [lbl release];
+    [separator release];
     return v;
 }
 

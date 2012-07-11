@@ -209,6 +209,7 @@
     clickedCell.menuImage.alpha = 1;
     clickedCell.textLabel.alpha = 1;
     clickedCell.priceLabel.alpha = 1;
+    clickedCell.rublImage.alpha = 1;
 }
 
 #pragma mark - Private functions

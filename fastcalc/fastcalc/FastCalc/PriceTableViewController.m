@@ -101,7 +101,7 @@
     //NSLog(@"priceLbl font %@", cell.priceLbl.font);
     cell.priceLbl.text = menuItem.menuPrice.stringValue;
     NSNumber *countNumber = [mArrayOfCounts objectAtIndex:indexPath.row];
-    cell.countLbl.text = [NSString stringWithFormat:@"%@ x", countNumber.stringValue];
+    cell.countLbl.text = [NSString stringWithFormat:@"%@x", countNumber.stringValue];
     return cell;
 }
 

@@ -135,11 +135,11 @@
     [mGestureRecognizerDown setDirection:UISwipeGestureRecognizerDirectionDown];
     [mGestureRecognizerUp setDirection:UISwipeGestureRecognizerDirectionUp];
     [mGestureRecognizerLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
-    //[mThanksView addGestureRecognizer:mGestureRecognizerDown];
-    //[mThanksView addGestureRecognizer:mGestureRecognizerUp];
+    [mThanksView addGestureRecognizer:mGestureRecognizerDown];
+    [mThanksView addGestureRecognizer:mGestureRecognizerUp];
     [mThanksView addGestureRecognizer:mGestureRecognizerLeft];
-    //[mPriceMask addGestureRecognizer:mGestureRecognizerDown];
-    //[mPriceMask addGestureRecognizer:mGestureRecognizerUp];
+    [mPriceMask addGestureRecognizer:mGestureRecognizerDown];
+    [mPriceMask addGestureRecognizer:mGestureRecognizerUp];
     [mPriceMask addGestureRecognizer:mGestureRecognizerLeft];
 }
 
@@ -183,6 +183,7 @@
     [mMainView setShowsVerticalScrollIndicator:NO];
     //mMainView.pagingEnabled = YES;
     mMainView.bounces = NO;
+    mMainView.scrollEnabled = NO;
     CGPoint bottomOffset = CGPointMake(0, mMainView.contentSize.height - mMainView.frame.size.height);
     [mMainView setContentOffset:bottomOffset animated:NO];
     //[mMainView setScrollEnabled:NO];
@@ -380,23 +381,25 @@
 #pragma mark - IIViewDeckCountroller Delegate
 
 - (void)viewDeckControllerDidOpenLeftView:(IIViewDeckController*)viewDeckController animated:(BOOL)animated {
-    //[mThanksView removeGestureRecognizer:mGestureRecognizerDown];
-    //[mThanksView removeGestureRecognizer:mGestureRecognizerUp];
+    [mThanksView removeGestureRecognizer:mGestureRecognizerDown];
+    [mThanksView removeGestureRecognizer:mGestureRecognizerUp];
     [mThanksView removeGestureRecognizer:mGestureRecognizerLeft];
-    //[mPriceMask removeGestureRecognizer:mGestureRecognizerDown];
-    //[mPriceMask removeGestureRecognizer:mGestureRecognizerUp];
+    [mPriceMask removeGestureRecognizer:mGestureRecognizerDown];
+    [mPriceMask removeGestureRecognizer:mGestureRecognizerUp];
     [mPriceMask removeGestureRecognizer:mGestureRecognizerLeft];
     [mMainView setScrollEnabled:NO];
+    mScrollViewForTableView.userInteractionEnabled = NO;
 }
 
 - (void)viewDeckControllerDidCloseLeftView:(IIViewDeckController *)viewDeckController animated:(BOOL)animated {
-    //[mThanksView addGestureRecognizer:mGestureRecognizerDown];
-    //[mThanksView addGestureRecognizer:mGestureRecognizerUp];
+    [mThanksView addGestureRecognizer:mGestureRecognizerDown];
+    [mThanksView addGestureRecognizer:mGestureRecognizerUp];
     [mThanksView addGestureRecognizer:mGestureRecognizerLeft];
-    //[mPriceMask addGestureRecognizer:mGestureRecognizerDown];
-    //[mPriceMask addGestureRecognizer:mGestureRecognizerUp];
+    [mPriceMask addGestureRecognizer:mGestureRecognizerDown];
+    [mPriceMask addGestureRecognizer:mGestureRecognizerUp];
     [mPriceMask addGestureRecognizer:mGestureRecognizerLeft];
     [mMainView setScrollEnabled:YES];
+    mScrollViewForTableView.userInteractionEnabled = YES;
 }
 
 #pragma mark - Gesture Recognizer Delegate

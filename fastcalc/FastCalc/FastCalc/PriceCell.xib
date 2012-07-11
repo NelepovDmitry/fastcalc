@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1296</int>
+		<int key="IBDocument.SystemTarget">1280</int>
 		<string key="IBDocument.SystemVersion">11E53</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1934</string>
 		<string key="IBDocument.AppKitVersion">1138.47</string>
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1181</string>
+			<string key="NS.object.0">931</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBUIButton</string>
@@ -44,7 +44,7 @@
 							<object class="IBUIButton" id="21871866">
 								<reference key="NSNextResponder" ref="563304435"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{6, 3}, {51, 37}}</string>
+								<string key="NSFrame">{{2, 0}, {38, 44}}</string>
 								<reference key="NSSuperview" ref="563304435"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="108035601"/>
@@ -82,7 +82,7 @@
 							<object class="IBUILabel" id="591777912">
 								<reference key="NSNextResponder" ref="563304435"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{86, 0}, {139, 44}}</string>
+								<string key="NSFrame">{{74, 0}, {139, 44}}</string>
 								<reference key="NSSuperview" ref="563304435"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="492666791"/>
@@ -166,7 +166,7 @@
 								<string key="NSFrame">{{261, 16}, {13, 13}}</string>
 								<reference key="NSSuperview" ref="563304435"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="94442533"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -175,8 +175,23 @@
 									<string key="NSResourceName">rybl.png</string>
 								</object>
 							</object>
+							<object class="IBUIImageView" id="94442533">
+								<reference key="NSNextResponder" ref="563304435"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{0, 43}, {288, 1}}</string>
+								<reference key="NSSuperview" ref="563304435"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
+								<string key="NSReuseIdentifierKey">_NS:567</string>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">seporator.png</string>
+								</object>
+							</object>
 						</array>
-						<string key="NSFrameSize">{288, 43}</string>
+						<string key="NSFrameSize">{320, 43}</string>
 						<reference key="NSSuperview" ref="1008277151"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="21871866"/>
@@ -264,6 +279,7 @@
 							<reference ref="108035601"/>
 							<reference ref="492666791"/>
 							<reference ref="45423557"/>
+							<reference ref="94442533"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -293,6 +309,11 @@
 						<reference key="object" ref="45423557"/>
 						<reference key="parent" ref="1008277151"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">12</int>
+						<reference key="object" ref="94442533"/>
+						<reference key="parent" ref="1008277151"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -301,6 +322,7 @@
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="2.CustomClassName">PriceCell</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -312,7 +334,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">11</int>
+			<int key="maxID">12</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -362,14 +384,15 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1296" key="NS.object.0"/>
+			<real value="1280" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="delete_button.png">{20, 20}</string>
 			<string key="rybl.png">{23, 26}</string>
+			<string key="seporator.png">{289, 1}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1181</string>
+		<string key="IBCocoaTouchPluginVersion">931</string>
 	</data>
 </archive>
