@@ -8,10 +8,11 @@
 
 #import "ApplicationSingleton.h"
 #import "MainViewController.h"
+#import "Brand.h"
 
 @implementation ApplicationSingleton
 
-@synthesize idOfCity, nameOfCity, alreadyRun, firstStart, controllerDiraction, idOfMenu, dictOfMenuImages, mainViewController;
+@synthesize idOfCity, nameOfCity, alreadyRun, firstStart, controllerDiraction, idOfMenu, dictOfMenuImages, mainViewController, brandPath;
 
 + (ApplicationSingleton *)createSingleton {
     static ApplicationSingleton *singleton;
@@ -73,6 +74,7 @@
         self.nameOfCity = [prefs stringForKey:NAME_OF_CITY];
         self.alreadyRun = [prefs boolForKey:ALREADY_RUN];
         self.controllerDiraction = [prefs integerForKey:CONTROLLERS_DIRACTION];
+        self.brandPath = [prefs stringForKey:BRAND_PATH];
     } else {
         mCacheDirectory = @"";
         self.idOfCity = [NSNumber numberWithInt:0];
@@ -80,6 +82,7 @@
         self.nameOfCity = @"";
         self.alreadyRun = YES;
         self.controllerDiraction = 1;
+        self.brandPath = @"";
         [self commitSettings];
     }
 }
@@ -88,9 +91,10 @@
     NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
     [prefs setInteger:self.idOfMenu.intValue forKey:ID_OF_MENU];
     [prefs setInteger:self.idOfCity.intValue forKey:ID_OF_CITY];
-    [prefs setBool:alreadyRun forKey:ALREADY_RUN];
-    [prefs setObject:nameOfCity forKey:NAME_OF_CITY];
-    [prefs setInteger:controllerDiraction forKey:CONTROLLERS_DIRACTION];
+    [prefs setBool:self.alreadyRun forKey:ALREADY_RUN];
+    [prefs setObject:self.nameOfCity forKey:NAME_OF_CITY];
+    [prefs setInteger:self.controllerDiraction forKey:CONTROLLERS_DIRACTION];
+    [prefs setObject:self.brandPath forKey:BRAND_PATH];
     [prefs synchronize];
 }
 

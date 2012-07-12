@@ -18,6 +18,7 @@
 #import "JSON.h"
 #import "InternetUtils.h"
 #import "ZipArchive.h"
+#import "Brand.h"
 
 @interface MainViewController ()
 
@@ -160,6 +161,7 @@
     mArrayOfMenuItemGroups = [[NSMutableArray alloc] init];
     mInternetUtils = [[InternetUtils alloc] init];
     mDictOfMenus = [[NSMutableDictionary alloc] init];
+    mPageControl.numberOfPages = 0;
     indexOfMenu = 0;
     isFinishedCut = true;
     self.navigationController.navigationBarHidden = YES;
@@ -170,8 +172,8 @@
     //menuTableViewController.delegate = self;
     priceTableViewController.delegate = self;
     
-    //[self performSelectorInBackground:@selector(requsetMenuById:) withObject:mApplicationSingleton.idOfMenu];
-    [self requsetMenuById:mApplicationSingleton.idOfMenu];
+    [self performSelectorInBackground:@selector(requsetMenuById:) withObject:mApplicationSingleton.idOfMenu];
+    //[self requsetMenuById:mApplicationSingleton.idOfMenu];
     
     mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
     mScrollViewForTableView.pagingEnabled = YES;
@@ -417,6 +419,12 @@
         [mLoader dismissWithClickedButtonIndex:0 animated:YES];
         return;
     }
+    NSString *path = [mApplicationSingleton cacheDirectory];
+    path = [NSString stringWithFormat:@"%@/brands", path];
+    NSString *imagePath = [path stringByAppendingPathComponent:mApplicationSingleton.brandPath];
+    NSLog(@"mApplicationSingleton.brand.brandPicturePath %@", mApplicationSingleton.brandPath);
+    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    [mBrandImage setImage:image];
     indexOfMenu = 0;
     mMenuID = menuId;
     [self performSelectorOnMainThread:@selector(startPreloader) withObject:nil waitUntilDone:YES];
@@ -447,7 +455,7 @@
 }
 
 - (void)progress:(OSInternetUtilsProgressInfo *)data {
-    [mLoader setTitle:[NSString stringWithFormat:@"Loading in progress \n%d %%", (int)((data.contentLoaded.floatValue / data.contentSize.floatValue) * 100)]];
+    [mLoader setTitle:[NSString stringWithFormat:@"Загрузка меню... \n%d %%", (int)((data.contentLoaded.floatValue / data.contentSize.floatValue) * 100)]];
     //NSLog(@"loaded %f", (data.contentLoaded.floatValue / data.contentSize.floatValue) * 100);
     //NSLog(@"data.contentLoaded %@", data.contentLoaded);
 }
@@ -455,7 +463,7 @@
 - (void)getMenuItemsZip:(NSData *)data {
     mApplicationSingleton.idOfMenu = mMenuID;
     [mApplicationSingleton commitSettings];
-    [mLoader setTitle:@"Archiving \nPlease Wait..."];
+    [mLoader setTitle:@"Архивация \nПожалуйста подождите..."];
     NSString *path = [mApplicationSingleton cacheDirectory];
     path = [NSString stringWithFormat:@"%@/%d", path, mApplicationSingleton.idOfMenu.integerValue];
 	NSError *error;
@@ -540,7 +548,7 @@
 
 
 - (void)startPreloader {
-    mLoader = [[[UIAlertView alloc] initWithTitle:@"Loading the data list\nPlease Wait..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil] autorelease];
+    mLoader = [[[UIAlertView alloc] initWithTitle:@"Загрузка меню\nПожалуйста подождите..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil] autorelease];
     [mLoader show];
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     // Adjust the indicator so it is up a few pixels from the bottom of the alert

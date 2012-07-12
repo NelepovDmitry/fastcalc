@@ -31,6 +31,7 @@
 - (void)startPreloader;
 - (void)getFastFoodsOnCityZip:(NSData *)data;
 - (void)setBorderToTheView:(UIView *)view;
+- (void)showDonate;
 
 @end
 
@@ -114,7 +115,7 @@
 }
 
 - (void)startPreloader {
-    mLoader = [[[UIAlertView alloc] initWithTitle:@"Loading the data list\nPlease Wait..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil] autorelease];
+    mLoader = [[[UIAlertView alloc] initWithTitle:@"Загрузка списка брендов\nПожалуйста подождите..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil] autorelease];
     [mLoader show];
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     // Adjust the indicator so it is up a few pixels from the bottom of the alert
@@ -374,6 +375,10 @@
     NSNumber *numberId =  brandMenu.objectId;
     menuID = numberId;
     [mApplicationSingleton.dictOfMenuImages removeAllObjects];
+    Brand *brand = [mArrayOfBrands objectAtIndex:indexPath.section];
+    mApplicationSingleton.brandPath = brand.brandPicturePath;
+    [mApplicationSingleton commitSettings];
+    
     //[mApplicationSingleton.mainViewController.menuTableViewController performSelectorInBackground:@selector(requsetMenuById:) withObject:numberId];
     [mApplicationSingleton.mainViewController performSelectorInBackground:@selector(requsetMenuById:) withObject:numberId];
     //[mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:numberId];
@@ -388,10 +393,6 @@
 }
 
 #pragma mark - Actions
-
-- (IBAction)donateClicked:(id)sender {
-    
-}
 
 - (IBAction)reloadLocationClicked:(id)sender {
     [self reloadListClicked:nil];
@@ -438,6 +439,9 @@
     BrandMenu *brand = [array objectAtIndex:clickedButtonPath.row];
     [ApplicationSingleton removeDirectoryById:brand.objectId];
     menuID = brand.objectId;
+    Brand *brandP = [mArrayOfBrands objectAtIndex:clickedButtonPath.section];
+    mApplicationSingleton.brandPath = brandP.brandPicturePath;
+    [mApplicationSingleton commitSettings];
     [mApplicationSingleton.mainViewController requsetMenuById:brand.objectId];
     [mApplicationSingleton.mainViewController.viewDeckController toggleLeftViewAnimated:YES];
     [mBrandsTable reloadData];
@@ -448,6 +452,12 @@
 - (void)cancelButtonClicked:(AboutController *)aAboutController {
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     aboutController = nil;
+}
+
+#pragma mark - Donate functions
+
+- (IBAction)donateClicked:(id)sender {
+    //UIAlertView *donate
 }
 
 @end

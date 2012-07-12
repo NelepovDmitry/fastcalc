@@ -14,8 +14,9 @@
 #define ALREADY_RUN @"already_run"
 //-1 0 1
 #define CONTROLLERS_DIRACTION @"controller_diractions"
+#define BRAND_PATH @"brand_path"
 
-@class MainViewController;
+@class MainViewController, Brand;
 
 @interface ApplicationSingleton : NSObject {
     NSString *mCacheDirectory;
@@ -29,6 +30,7 @@
 @property (nonatomic, assign) BOOL alreadyRun;
 @property (nonatomic, assign) BOOL firstStart;
 @property (nonatomic, assign) NSInteger controllerDiraction;
+@property (nonatomic, retain) NSString *brandPath;
 
 @property (nonatomic, retain) NSMutableDictionary *dictOfMenuImages;
 @property (nonatomic, retain) MainViewController *mainViewController;
