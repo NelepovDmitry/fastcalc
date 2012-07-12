@@ -300,8 +300,6 @@
 #pragma mark - Scroll View delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    //if(scrollView == mMainView)
-        //mAppDelegate.viewController.viewDeckController.panningMode = IIViewDeckNoPanning;
     static NSInteger previousPage = 0;
     CGFloat pageWidth = scrollView.frame.size.width;
     float fractionalPage = scrollView.contentOffset.x / pageWidth;
@@ -323,9 +321,6 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if(scrollView.contentOffset.y >= 350 && scrollView == mMainView) {
-        mAppDelegate.viewController.viewDeckController.panningMode = IIViewDeckFullViewPanning;
-    }
     indexOfMenu = mPageControl.currentPage;
     //[menuTableViewController nextMenuByIndex:index];
     GroupItem *groupItem = [mArrayOfMenuItemGroups objectAtIndex:indexOfMenu];

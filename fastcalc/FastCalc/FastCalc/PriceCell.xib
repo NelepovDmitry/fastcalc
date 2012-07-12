@@ -44,7 +44,7 @@
 							<object class="IBUIButton" id="21871866">
 								<reference key="NSNextResponder" ref="563304435"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{2, 0}, {38, 44}}</string>
+								<string key="NSFrame">{{4, 0}, {38, 44}}</string>
 								<reference key="NSSuperview" ref="563304435"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="108035601"/>
@@ -166,7 +166,7 @@
 								<string key="NSFrame">{{261, 16}, {13, 13}}</string>
 								<reference key="NSSuperview" ref="563304435"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="94442533"/>
+								<reference key="NSNextKeyView" ref="310980061"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -175,7 +175,7 @@
 									<string key="NSResourceName">rybl.png</string>
 								</object>
 							</object>
-							<object class="IBUIImageView" id="94442533">
+							<object class="IBUIImageView" id="310980061">
 								<reference key="NSNextResponder" ref="563304435"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{0, 43}, {288, 1}}</string>
@@ -279,7 +279,7 @@
 							<reference ref="108035601"/>
 							<reference ref="492666791"/>
 							<reference ref="45423557"/>
-							<reference ref="94442533"/>
+							<reference ref="310980061"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -311,7 +311,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">12</int>
-						<reference key="object" ref="94442533"/>
+						<reference key="object" ref="310980061"/>
 						<reference key="parent" ref="1008277151"/>
 					</object>
 				</array>
