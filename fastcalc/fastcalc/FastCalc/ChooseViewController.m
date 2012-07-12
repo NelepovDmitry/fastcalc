@@ -296,6 +296,7 @@
 {
     Brand *brand = [mArrayOfBrands objectAtIndex:section];
     UIView *v = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, mBrandsTable.frame.size.width, 44)] autorelease];
+    v.backgroundColor = [UIColor colorWithRed:0.0 / 255.0 green:59.0 / 255.0 blue:18.0 / 255.0 alpha:1];
     UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(0, 43, mBrandsTable.frame.size.width, 1)];
     [separator setBackgroundColor:tableView.separatorColor];
     
@@ -305,10 +306,10 @@
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    [imageView setFrame:CGRectMake(5, 5, 30, 30)];
+    [imageView setFrame:CGRectMake(5, 3, 35, 35)];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
 
-    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, mBrandsTable.frame.size.width - 50, 30)];
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(46, 5, mBrandsTable.frame.size.width - 50, 30)];
     [lbl setFont:[UIFont boldSystemFontOfSize:16]];
     [lbl setText:brand.brandName];
     [lbl setTextColor:[UIColor whiteColor]];
@@ -431,7 +432,7 @@
     BrandMenu *brand = [array objectAtIndex:clickedButtonPath.row];
     [ApplicationSingleton removeDirectoryById:brand.objectId];
     menuID = brand.objectId;
-    [mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:brand.objectId];
+    [mApplicationSingleton.mainViewController requsetMenuById:brand.objectId];
     [mApplicationSingleton.mainViewController.viewDeckController toggleLeftViewAnimated:YES];
     [mBrandsTable reloadData];
 }

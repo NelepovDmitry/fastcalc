@@ -27,7 +27,6 @@
 - (void)finishAnimation;
 
 - (void)setMainCheckViewFrameWithAnimation:(BOOL)animate duration:(float)duration;
-- (void)requsetMenuById:(NSNumber *)menuId;
 - (void)getMenuItems:(NSData *)data;
 
 @end
@@ -168,6 +167,7 @@
     //menuTableViewController.delegate = self;
     priceTableViewController.delegate = self;
     
+    //[self performSelectorInBackground:@selector(requsetMenuById:) withObject:mApplicationSingleton.idOfMenu];
     [self requsetMenuById:mApplicationSingleton.idOfMenu];
     
     mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
@@ -382,7 +382,7 @@
     [mPriceMask removeGestureRecognizer:mGestureRecognizerDown];
     [mPriceMask removeGestureRecognizer:mGestureRecognizerUp];
     [mPriceMask removeGestureRecognizer:mGestureRecognizerLeft];
-    [mMainView setScrollEnabled:NO];
+    //[mMainView setScrollEnabled:NO];
     mScrollViewForTableView.userInteractionEnabled = NO;
 }
 
@@ -393,7 +393,7 @@
     [mPriceMask addGestureRecognizer:mGestureRecognizerDown];
     [mPriceMask addGestureRecognizer:mGestureRecognizerUp];
     [mPriceMask addGestureRecognizer:mGestureRecognizerLeft];
-    [mMainView setScrollEnabled:YES];
+    //[mMainView setScrollEnabled:YES];
     mScrollViewForTableView.userInteractionEnabled = YES;
 }
 
@@ -408,7 +408,6 @@
 - (void)requsetMenuById:(NSNumber *)menuId {
     if(menuId.integerValue == 0) {
         [mLoader dismissWithClickedButtonIndex:0 animated:YES];
-        [self.viewDeckController toggleLeftView];
         return;
     }
     indexOfMenu = 0;
@@ -524,7 +523,6 @@
         [mMenuTableViewController setArrayOfTableView:arrayOfProducts];
         [mScrollViewForTableView addSubview:mMenuTableViewController.view];
         [mArrayOfMenuControllers addObject:mMenuTableViewController];
-        
     }
     //[self.tableView reloadData];
     mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);

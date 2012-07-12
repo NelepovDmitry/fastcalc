@@ -61,6 +61,7 @@
 - (IBAction)menuClicked:(id)sender;
 - (IBAction)newChecked:(id)sender;
 - (void)volume:(float)volume;
+- (void)requsetMenuById:(NSNumber *)menuId;
 
 @property (retain, nonatomic) IBOutlet PriceTableViewController *priceTableViewController;
 @property (retain, nonatomic) IBOutlet MenuTableViewController *menuTableViewController;
