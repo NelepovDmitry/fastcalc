@@ -498,6 +498,9 @@
     [mArrayOfProductsNames removeAllObjects];
     [mArrayOfMenuItemGroups removeAllObjects];
     [mArrayOfMenuControllers removeAllObjects];
+    for(UIView *view in mScrollViewForTableView.subviews) {
+        [view removeFromSuperview];
+    }
     
     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSDictionary *mainDict = [json JSONValue];
@@ -538,9 +541,11 @@
         [mMenuTableViewController setArrayOfTableView:arrayOfProducts];
         [mScrollViewForTableView addSubview:mMenuTableViewController.view];
         [mArrayOfMenuControllers addObject:mMenuTableViewController];
+        [mMenuTableViewController release];
     }
     //[self.tableView reloadData];
     mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
+    mScrollViewForTableView.contentOffset = CGPointMake(0, 0);
     
     [self getAllProducts];
     [mLoader dismissWithClickedButtonIndex:0 animated:YES];

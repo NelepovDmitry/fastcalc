@@ -179,13 +179,13 @@
 												<int key="IBUIBaselineAdjustment">1</int>
 												<float key="IBUIMinimumFontSize">10</float>
 												<int key="IBUITextAlignment">1</int>
-												<object class="IBUIFontDescription" key="IBUIFontDescription" id="112256551">
+												<object class="IBUIFontDescription" key="IBUIFontDescription">
 													<int key="type">2</int>
-													<double key="pointSize">15</double>
+													<double key="pointSize">16</double>
 												</object>
-												<object class="NSFont" key="IBUIFont" id="161477925">
+												<object class="NSFont" key="IBUIFont">
 													<string key="NSName">Helvetica-Bold</string>
-													<double key="NSSize">15</double>
+													<double key="NSSize">16</double>
 													<int key="NSfFlags">16</int>
 												</object>
 											</object>
@@ -451,8 +451,15 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">categoty_button_down.png</string>
 						</object>
-						<reference key="IBUIFontDescription" ref="112256551"/>
-						<reference key="IBUIFont" ref="161477925"/>
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="112256551">
+							<int key="type">2</int>
+							<double key="pointSize">15</double>
+						</object>
+						<object class="NSFont" key="IBUIFont" id="590810578">
+							<string key="NSName">Helvetica-Bold</string>
+							<double key="NSSize">15</double>
+							<int key="NSfFlags">16</int>
+						</object>
 					</object>
 					<object class="IBUIButton" id="216068608">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -481,7 +488,7 @@
 							<string key="NSResourceName">list_button_up.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="112256551"/>
-						<reference key="IBUIFont" ref="161477925"/>
+						<reference key="IBUIFont" ref="590810578"/>
 					</object>
 					<object class="IBUIButton" id="782964466">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -509,7 +516,7 @@
 							<string key="NSResourceName">new_button_up.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="112256551"/>
-						<reference key="IBUIFont" ref="161477925"/>
+						<reference key="IBUIFont" ref="590810578"/>
 					</object>
 					<object class="IBUIPageControl" id="158805250">
 						<reference key="NSNextResponder" ref="191373211"/>
