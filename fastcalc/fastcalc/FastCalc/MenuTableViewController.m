@@ -106,14 +106,15 @@
         //NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
         //NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
         
-        MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
-        cell.textLabel.text = menuItem.menuName;
-        [cell.backgroundImage addTarget:self action:@selector(cellTouchUp:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.backgroundImage addTarget:self action:@selector(cellTouchUpCancel:) forControlEvents:UIControlEventTouchCancel];
-        [cell.backgroundImage addTarget:self action:@selector(cellTouchDown:) forControlEvents:UIControlEventTouchDown];
-        cell.priceLabel.text = menuItem.menuPrice.stringValue;
-        UIImage *image = [mApplicationSingleton.dictOfMenuImages objectForKey:menuItem.menuPicturePath];
-        cell.menuImage.image = image;
+    MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
+    cell.textLabel.text = menuItem.menuName;
+    [cell.backgroundImage addTarget:self action:@selector(cellTouchUp:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.backgroundImage addTarget:self action:@selector(cellTouchUpCancel:) forControlEvents:UIControlEventTouchCancel];
+    [cell.backgroundImage addTarget:self action:@selector(cellTouchDown:) forControlEvents:UIControlEventTouchDown];
+    cell.priceLabel.text = menuItem.menuPrice.stringValue;
+    UIImage *image = [mApplicationSingleton.dictOfMenuImages objectForKey:menuItem.menuPicturePath];
+    cell.menuImage.image = image;
+    cell.caloriesLabel.text = menuItem.menuKcal.stringValue;
     //}
     return cell;
 }
@@ -187,6 +188,7 @@
     clickedCell.textLabel.alpha = 0.5f;
     clickedCell.priceLabel.alpha = 0.5f;
     clickedCell.rublImage.alpha = 0.5f;
+    clickedCell.caloriesLabel.alpha = 0.5f;
 }
 
 - (void)cellTouchUp:(id)sender {
@@ -195,6 +197,7 @@
     clickedCell.textLabel.alpha = 1;
     clickedCell.priceLabel.alpha = 1;
     clickedCell.rublImage.alpha = 1;
+    clickedCell.caloriesLabel.alpha = 1;
     NSIndexPath * clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
     //NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
     //NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
@@ -210,6 +213,7 @@
     clickedCell.textLabel.alpha = 1;
     clickedCell.priceLabel.alpha = 1;
     clickedCell.rublImage.alpha = 1;
+    clickedCell.caloriesLabel.alpha = 1;
 }
 
 #pragma mark - Private functions

@@ -36,6 +36,7 @@
     IBOutlet UIImageView *mPriceMask;
     IBOutlet UIImageView *mBrandImage;
     IBOutlet UIScrollView *mScrollViewForTableView;
+    IBOutlet UILabel *mKcalLbl;
     
     EClockPlayer *mKassaPlayer;
     EClockPlayer *mBumagaPlayer;
@@ -46,6 +47,7 @@
     BOOL isFinishedCut;
     
     NSInteger mPrice;
+    NSInteger mKcal;
     NSMutableDictionary *mDictOfMenus;
     NSMutableArray *mArrayOfProductsNames;
     NSMutableArray *mArrayOfMenuItemGroups;

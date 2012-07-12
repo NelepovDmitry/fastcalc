@@ -94,6 +94,8 @@
     mBrandImage = nil;
     [mScrollViewForTableView release];
     mScrollViewForTableView = nil;
+    [mKcalLbl release];
+    mKcalLbl = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -125,6 +127,7 @@
     [mThanksLabel release];
     [mBrandImage release];
     [mScrollViewForTableView release];
+    [mKcalLbl release];
     [super dealloc];
 }
 
@@ -286,8 +289,10 @@
 - (void)getNewPrice:(MenuItem *)menu {
     [mKassaPlayer playAudio];
     
+    mKcal += menu.menuKcal.floatValue;
     mPrice += menu.menuPrice.integerValue;
     mPriceLbl.text = [NSString stringWithFormat:@"%d", mPrice];
+    mKcalLbl.text = [NSString stringWithFormat:@"%d", mKcal];
     [priceTableViewController addNewProduct:menu];
     
     //CGRect rect = mCheckView.frame;

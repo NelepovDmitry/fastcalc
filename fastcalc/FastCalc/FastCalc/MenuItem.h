@@ -13,6 +13,7 @@
 
 @property (nonatomic, retain) NSString *menuName;
 @property (nonatomic, retain) NSNumber *menuPrice;
+@property (nonatomic, retain) NSNumber *menuKcal;
 @property (nonatomic, retain) NSString *menuPicturePath;
 
 + (id)menuItemWithName:(NSString *)name price:(NSNumber *)price;

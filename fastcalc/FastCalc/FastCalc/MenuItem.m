@@ -17,7 +17,7 @@
 
 @implementation MenuItem
 
-@synthesize menuName, menuPrice, menuPicturePath;
+@synthesize menuName, menuPrice, menuPicturePath, menuKcal;
 
 - (id)initWithArray:(NSArray *)array {
     self = [super initWithArray:array];
@@ -25,6 +25,7 @@
         menuName = [self getFieldValue:@"Menu item info_Name" attrFieldType:STRING_VALUE];
         menuPrice = [self getFieldValue:@"Menu item info_Price" attrFieldType:FLOAT_VALUE];
         menuPicturePath = [self getFieldValue:@"Menu item info_Item picture" attrFieldType:CONTENT_VALUE];
+        menuKcal = [self getFieldValue:@"Menu item info_Calories" attrFieldType:FLOAT_VALUE];
         [self loadImageToCache];
     }
     return self;
