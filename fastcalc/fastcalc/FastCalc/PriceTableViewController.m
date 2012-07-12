@@ -102,6 +102,7 @@
     cell.priceLbl.text = menuItem.menuPrice.stringValue;
     NSNumber *countNumber = [mArrayOfCounts objectAtIndex:indexPath.row];
     cell.countLbl.text = [NSString stringWithFormat:@"%@x", countNumber.stringValue];
+    cell.kCalLbl.text = menuItem.menuKcal.stringValue;
     return cell;
 }
 

@@ -340,9 +340,11 @@
 
 #pragma mark - PriceTableViewController Delegate
 
-- (void)deleteProductWithPrice:(MenuItem *)menuItem count:(NSNumber *)count{
+- (void)deleteProductWithPrice:(MenuItem *)menuItem count:(NSNumber *)count {
     mPrice -= menuItem.menuPrice.integerValue * count.integerValue;
+    mKcal -= menuItem.menuKcal.floatValue * count.integerValue;
     mPriceLbl.text = [NSString stringWithFormat:@"%d", mPrice];
+    mKcalLbl.text = [NSString stringWithFormat:@"%d", mKcal];
     //CGRect rect = mCheckView.frame;
     //rect.origin.y = BEGIN_Y;
     //[mCheckView setFrame:rect];
