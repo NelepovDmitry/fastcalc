@@ -10,7 +10,7 @@
 #import "MLocationGetter.h"
 #import "AboutController.h"
 
-@class InternetUtils, ApplicationSingleton, BrandCell;
+@class InternetUtils, ApplicationSingleton, BrandCell, FMStore;
 
 @interface ChooseViewController : UIViewController<MLocationGetterDelegate, AboutControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
     NSMutableArray *mArrayOfBrandsMenus;
@@ -21,6 +21,7 @@
     MLocationGetter *mLocationGetter;
     ApplicationSingleton *mApplicationSingleton;
     AboutController *aboutController;
+    FMStore *mStore;
     
     IBOutlet UITableView *mBrandsTable;
     IBOutlet UILabel *mLocationLbl;
@@ -31,6 +32,7 @@
     NSNumber *menuID;
 }
 
+- (IBAction)donateClicked:(id)sender;
 - (void)getBrandsFromCache;
 - (void)updateCache;
 - (IBAction)reloadLocationClicked:(id)sender;

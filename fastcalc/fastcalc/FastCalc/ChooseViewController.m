@@ -20,6 +20,7 @@
 #import "BrandCell.h"
 #import "iRate.h"
 #import "AboutController.h"
+#import "FMStore.h"
 
 @interface ChooseViewController ()
 
@@ -91,6 +92,7 @@
 }
 
 - (void)initPrivate {
+    mStore = [FMStore sharedStore];
     mInternetUtils = [[InternetUtils alloc] init];
     mApplicationSingleton = [ApplicationSingleton createSingleton];
     mArrayOfBrandsMenus = [[NSMutableArray alloc] init];
@@ -386,6 +388,10 @@
 }
 
 #pragma mark - Actions
+
+- (IBAction)donateClicked:(id)sender {
+    
+}
 
 - (IBAction)reloadLocationClicked:(id)sender {
     [self reloadListClicked:nil];

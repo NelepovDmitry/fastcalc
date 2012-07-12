@@ -13,6 +13,13 @@
 		2F76CEC215AE3B9300D835E9 /* seporator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F76CEC015AE3B9300D835E9 /* seporator@2x.png */; };
 		2FA882DD157D48F0005DF341 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA882DC157D48F0005DF341 /* QuartzCore.framework */; };
 		2FCA3CE615AF2CC500F26E5E /* rybl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FCA3CE515AF2CC500F26E5E /* rybl@2x.png */; };
+		2FCA3CE915AF300E00F26E5E /* button_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FCA3CE715AF300E00F26E5E /* button_down@2x.png */; };
+		2FCA3CEA15AF300E00F26E5E /* button_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FCA3CE815AF300E00F26E5E /* button_up@2x.png */; };
+		2FCA3CF815AF31AE00F26E5E /* FMObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA3CF515AF31AE00F26E5E /* FMObserver.m */; };
+		2FCA3CF915AF31AE00F26E5E /* FMStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA3CF715AF31AE00F26E5E /* FMStore.m */; };
+		2FCA3CFB15AF32D100F26E5E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCA3CFA15AF32D100F26E5E /* StoreKit.framework */; };
+		2FCA3CFE15AF340A00F26E5E /* button_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FCA3CFC15AF340900F26E5E /* button_down.png */; };
+		2FCA3CFF15AF340A00F26E5E /* button_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FCA3CFD15AF340900F26E5E /* button_up.png */; };
 		2FCA7FBD15A2503500A6CDB3 /* not_choose_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FCA7FBB15A2503500A6CDB3 /* not_choose_button.png */; };
 		2FCA7FBE15A2503500A6CDB3 /* not_choose_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FCA7FBC15A2503500A6CDB3 /* not_choose_button@2x.png */; };
 		2FFE41D9159B7D35009DAC67 /* refresh_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE41D7159B7D35009DAC67 /* refresh_small.png */; };
@@ -140,6 +147,15 @@
 		2F76CEC015AE3B9300D835E9 /* seporator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seporator@2x.png"; sourceTree = "<group>"; };
 		2FA882DC157D48F0005DF341 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2FCA3CE515AF2CC500F26E5E /* rybl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rybl@2x.png"; sourceTree = "<group>"; };
+		2FCA3CE715AF300E00F26E5E /* button_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_down@2x.png"; sourceTree = "<group>"; };
+		2FCA3CE815AF300E00F26E5E /* button_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_up@2x.png"; sourceTree = "<group>"; };
+		2FCA3CF415AF31AE00F26E5E /* FMObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMObserver.h; sourceTree = "<group>"; };
+		2FCA3CF515AF31AE00F26E5E /* FMObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMObserver.m; sourceTree = "<group>"; };
+		2FCA3CF615AF31AE00F26E5E /* FMStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMStore.h; sourceTree = "<group>"; };
+		2FCA3CF715AF31AE00F26E5E /* FMStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMStore.m; sourceTree = "<group>"; };
+		2FCA3CFA15AF32D100F26E5E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		2FCA3CFC15AF340900F26E5E /* button_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_down.png; sourceTree = "<group>"; };
+		2FCA3CFD15AF340900F26E5E /* button_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_up.png; sourceTree = "<group>"; };
 		2FCA7FBB15A2503500A6CDB3 /* not_choose_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = not_choose_button.png; sourceTree = "<group>"; };
 		2FCA7FBC15A2503500A6CDB3 /* not_choose_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "not_choose_button@2x.png"; sourceTree = "<group>"; };
 		2FFE41D7159B7D35009DAC67 /* refresh_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_small.png; sourceTree = "<group>"; };
@@ -303,6 +319,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FCA3CFB15AF32D100F26E5E /* StoreKit.framework in Frameworks */,
 				84B9E1801599A42200A7E3D9 /* AVFoundation.framework in Frameworks */,
 				84B9E17E1599A41800A7E3D9 /* AudioToolbox.framework in Frameworks */,
 				8479C11F1592FAB5006F05C9 /* libz.1.2.5.dylib in Frameworks */,
@@ -318,9 +335,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FCA3CF315AF319B00F26E5E /* Donate */ = {
+			isa = PBXGroup;
+			children = (
+				2FCA3CF415AF31AE00F26E5E /* FMObserver.h */,
+				2FCA3CF515AF31AE00F26E5E /* FMObserver.m */,
+				2FCA3CF615AF31AE00F26E5E /* FMStore.h */,
+				2FCA3CF715AF31AE00F26E5E /* FMStore.m */,
+			);
+			name = Donate;
+			sourceTree = "<group>";
+		};
 		2FE5085B157D2B280010618B /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				2FCA3CF315AF319B00F26E5E /* Donate */,
 				84ABC64715A6FD850052AA56 /* MJPopupController */,
 				8466290F159ADAB700A49F19 /* Rate */,
 				842616811594B1AE00EDAE42 /* ViewDeck */,
@@ -437,6 +466,7 @@
 		84794DF31578A143004010F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2FCA3CFA15AF32D100F26E5E /* StoreKit.framework */,
 				84B9E17F1599A42200A7E3D9 /* AVFoundation.framework */,
 				84B9E17D1599A41800A7E3D9 /* AudioToolbox.framework */,
 				8479C11E1592FAB5006F05C9 /* libz.1.2.5.dylib */,
@@ -627,6 +657,10 @@
 		84B9E16F1599A14600A7E3D9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2FCA3CFC15AF340900F26E5E /* button_down.png */,
+				2FCA3CFD15AF340900F26E5E /* button_up.png */,
+				2FCA3CE715AF300E00F26E5E /* button_down@2x.png */,
+				2FCA3CE815AF300E00F26E5E /* button_up@2x.png */,
 				2FCA3CE515AF2CC500F26E5E /* rybl@2x.png */,
 				2F76CEBF15AE3B9300D835E9 /* seporator.png */,
 				2F76CEC015AE3B9300D835E9 /* seporator@2x.png */,
@@ -839,6 +873,10 @@
 				2F76CEC115AE3B9300D835E9 /* seporator.png in Resources */,
 				2F76CEC215AE3B9300D835E9 /* seporator@2x.png in Resources */,
 				2FCA3CE615AF2CC500F26E5E /* rybl@2x.png in Resources */,
+				2FCA3CE915AF300E00F26E5E /* button_down@2x.png in Resources */,
+				2FCA3CEA15AF300E00F26E5E /* button_up@2x.png in Resources */,
+				2FCA3CFE15AF340A00F26E5E /* button_down.png in Resources */,
+				2FCA3CFF15AF340A00F26E5E /* button_up.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -886,6 +924,8 @@
 				84ABC63B15A6E4ED0052AA56 /* InfoProductController.m in Sources */,
 				84ABC64515A6FD820052AA56 /* MJPopupBackgroundView.m in Sources */,
 				84ABC64615A6FD820052AA56 /* UIViewController+MJPopupViewController.m in Sources */,
+				2FCA3CF815AF31AE00F26E5E /* FMObserver.m in Sources */,
+				2FCA3CF915AF31AE00F26E5E /* FMStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

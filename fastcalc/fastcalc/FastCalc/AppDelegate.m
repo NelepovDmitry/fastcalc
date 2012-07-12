@@ -13,6 +13,7 @@
 #import "IIViewDeckController.h"
 #import "iRate.h"
 #import "ApplicationSingleton.h"
+#import "FMStore.h"
 
 @implementation AppDelegate
 
@@ -35,6 +36,7 @@
     // Override point for customization after application launch.
     
     [iRate sharedInstance].appStoreID = 484567469;
+    [FMStore sharedStore];
     
     self.leftController = [[ChooseViewController alloc] initWithNibName:@"ChooseViewController" bundle:nil];
     
