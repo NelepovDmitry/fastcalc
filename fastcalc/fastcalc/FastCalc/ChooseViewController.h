@@ -25,7 +25,6 @@
     
     IBOutlet UITableView *mBrandsTable;
     IBOutlet UILabel *mLocationLbl;
-    IBOutlet BrandCell *mBrandCell;
     IBOutlet UIButton *mSoundBtn;
     
     bool soundClicked;

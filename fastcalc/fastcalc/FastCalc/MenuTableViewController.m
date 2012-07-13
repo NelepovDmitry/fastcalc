@@ -97,15 +97,15 @@
     
     MenuCell *cell= (MenuCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        // Load the top-level objects from the custom cell XIB.
-        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-        // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
-        cell = [topLevelObjects objectAtIndex:0];
+        cell = [[[MenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        NSArray *array = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+        for (id currentObject in array) {
+            if ([currentObject isKindOfClass:[MenuCell class]]) {
+                cell = currentObject;
+                break;
+            }
+        }
     }
-    //if(arrayOfProducts.count > indexOfMenu) {
-        //NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
-        //NSArray *arrayOfProducts = [mDictOfProducts objectForKey:key];
-        
     MenuItem *menuItem = [arrayOfProducts objectAtIndex:indexPath.row];
     cell.textLabel.text = menuItem.menuName;
     [cell.backgroundImage addTarget:self action:@selector(cellTouchUp:) forControlEvents:UIControlEventTouchUpInside];
@@ -115,7 +115,6 @@
     UIImage *image = [mApplicationSingleton.dictOfMenuImages objectForKey:menuItem.menuPicturePath];
     cell.menuImage.image = image;
     cell.caloriesLabel.text = menuItem.menuKcal.stringValue;
-    //}
     return cell;
 }
 

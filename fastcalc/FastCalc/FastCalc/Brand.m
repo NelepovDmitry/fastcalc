@@ -16,6 +16,7 @@
     if(self) {
         brandName = [self getFieldValue:@"Brand main info_Name" attrFieldType:STRING_VALUE];
         brandPicturePath = [self getFieldValue:@"Brand main info_Logo picture" attrFieldType:CONTENT_VALUE];
+        NSLog(@"brandPicturePath %@", brandPicturePath);
     }
     return self;
 }

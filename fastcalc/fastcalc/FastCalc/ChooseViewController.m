@@ -59,8 +59,6 @@
     mBrandsTable = nil;
     [mLocationLbl release];
     mLocationLbl = nil;
-    [mBrandCell release];
-    mBrandCell = nil;
     [mSoundBtn release];
     mSoundBtn = nil;
     [super viewDidUnload];
@@ -78,7 +76,6 @@
     [mLocationGetter release];
     [mBrandsTable release];
     [mLocationLbl release];
-    [mBrandCell release];
     [mSoundBtn release];
     [super dealloc];
 }
@@ -164,6 +161,7 @@
     [zipArchive UnzipFileTo:path overWrite:YES];
     [zipArchive UnzipCloseFile];
     [zipArchive release];
+    NSLog(@"toDirectory %@", toDirectory);
     
     NSString *jsonPath = [path stringByAppendingPathComponent:@"brands.json"];
     NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
@@ -307,8 +305,12 @@
     path = [NSString stringWithFormat:@"%@/brands", path];
     NSString *imagePath = [path stringByAppendingPathComponent:brand.brandPicturePath];
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    UIImageView *imageView;
+    if(image == nil) {
+        imageView = [[UIImageView alloc] init];
+    } else {
+        imageView = [[UIImageView alloc] initWithImage:image];
+    }
     [imageView setFrame:CGRectMake(5, 3, 35, 35)];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
 
@@ -351,9 +353,14 @@
     
     BrandCell *cell= (BrandCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
-        cell = mBrandCell;
-		mBrandCell = nil;
+        cell = [[[BrandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        NSArray *array = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+        for (id currentObject in array) {
+            if ([currentObject isKindOfClass:[BrandCell class]]) {
+                cell = currentObject;
+                break;
+            }
+        }
     }
     [cell.brandImageView setImage:[UIImage imageNamed:@"not_choose_button.png"]];
     if(brand.objectId.integerValue == menuID.integerValue) {
@@ -362,7 +369,7 @@
     cell.reloadBtn.tag = indexPath.row;
     [cell.reloadBtn addTarget:self action:@selector(brandCellReloadClicked:) forControlEvents:UIControlEventTouchUpInside];
     cell.brandLbl.text = brand.brandMenuName;
-    
+    NSLog(@"cell %@", cell);
     return cell;
 }
 
@@ -380,6 +387,7 @@
     [mApplicationSingleton commitSettings];
     
     //[mApplicationSingleton.mainViewController.menuTableViewController performSelectorInBackground:@selector(requsetMenuById:) withObject:numberId];
+    NSLog(@"mApplicationSingleton.mainViewController %@", numberId);
     [mApplicationSingleton.mainViewController performSelectorInBackground:@selector(requsetMenuById:) withObject:numberId];
     //[mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:numberId];
     [mApplicationSingleton.mainViewController.viewDeckController toggleLeftViewAnimated:YES];
@@ -457,7 +465,29 @@
 #pragma mark - Donate functions
 
 - (IBAction)donateClicked:(id)sender {
-    //UIAlertView *donate
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Пожертвование" message:@"Помогите дальнейшему развитию программы" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"1$", @"5$", @"10$", nil];
+    [alert show];
+    [alert release];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:
+            NSLog(@"Cancel");
+            break;
+        case 1:
+            NSLog(@"1$");
+            break;
+        case 2:
+            NSLog(@"5$");
+            break;
+        case 3:
+            NSLog(@"10$");
+            break;
+        default:
+            break;
+    }
+    //NSLog(@"%@", mStore.purchasableObjects);
 }
 
 @end
