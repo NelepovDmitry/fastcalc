@@ -426,7 +426,7 @@
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
     [mBrandImage setImage:image];
     indexOfMenu = 0;
-    mMenuID = menuId;
+    mMenuID = [menuId retain];
     [self performSelectorOnMainThread:@selector(startPreloader) withObject:nil waitUntilDone:YES];
     if([ApplicationSingleton isMenuExistinChache:menuId]) {
         NSString *path = [mApplicationSingleton cacheDirectory];
@@ -493,7 +493,7 @@
 - (void)getMenuItems:(NSData *)data {
     mApplicationSingleton.idOfMenu = mMenuID;
     [mApplicationSingleton commitSettings];
-    [mLoader setTitle:@"Caching \nPlease Wait..."];
+    [mLoader setTitle:@"Caching \nПожалуйста подождите..."];
     [mDictOfMenus removeAllObjects];
     [mArrayOfProductsNames removeAllObjects];
     [mArrayOfMenuItemGroups removeAllObjects];

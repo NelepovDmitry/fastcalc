@@ -80,6 +80,10 @@
     [super dealloc];
 }
 
+- (void)didReceiveMemoryWarning {
+    NSLog(@"didReceiveMemoryWarning");
+}
+
 #pragma mark - Custom functions
 
 - (void)setBorderToTheView:(UIView *)view {
@@ -350,7 +354,6 @@
     
     NSArray *array = [[mArrayOfBrandsMenus objectAtIndex:indexPath.section] objectForKey:@"menus"];
     BrandMenu *brand = [array objectAtIndex:indexPath.row];
-    
     BrandCell *cell= (BrandCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[BrandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -363,13 +366,13 @@
         }
     }
     [cell.brandImageView setImage:[UIImage imageNamed:@"not_choose_button.png"]];
+    
     if(brand.objectId.integerValue == menuID.integerValue) {
         [cell.brandImageView setImage:[UIImage imageNamed:@"choose_button.png"]];
     }
     cell.reloadBtn.tag = indexPath.row;
     [cell.reloadBtn addTarget:self action:@selector(brandCellReloadClicked:) forControlEvents:UIControlEventTouchUpInside];
     cell.brandLbl.text = brand.brandMenuName;
-    NSLog(@"cell %@", cell);
     return cell;
 }
 
@@ -377,27 +380,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [menuID release];
     NSArray *array = [[mArrayOfBrandsMenus objectAtIndex:indexPath.section] objectForKey:@"menus"];
+    NSLog(@"array %@", mArrayOfBrandsMenus);
+    NSLog(@"array %@", [array objectAtIndex:indexPath.row]);
     BrandMenu *brandMenu = [array objectAtIndex:indexPath.row];
-    NSNumber *numberId =  brandMenu.objectId;
-    menuID = numberId;
+    menuID = [[NSNumber alloc] initWithInt:brandMenu.objectId.intValue];
     [mApplicationSingleton.dictOfMenuImages removeAllObjects];
     Brand *brand = [mArrayOfBrands objectAtIndex:indexPath.section];
     mApplicationSingleton.brandPath = brand.brandPicturePath;
     [mApplicationSingleton commitSettings];
     
     //[mApplicationSingleton.mainViewController.menuTableViewController performSelectorInBackground:@selector(requsetMenuById:) withObject:numberId];
-    NSLog(@"mApplicationSingleton.mainViewController %@", numberId);
-    [mApplicationSingleton.mainViewController performSelectorInBackground:@selector(requsetMenuById:) withObject:numberId];
-    //[mApplicationSingleton.mainViewController.menuTableViewController requsetMenuById:numberId];
+    [mApplicationSingleton.mainViewController performSelectorInBackground:@selector(requsetMenuById:) withObject:menuID];
+    //[mApplicationSingleton.mainViewController requsetMenuById:menuID];
     [mApplicationSingleton.mainViewController.viewDeckController toggleLeftViewAnimated:YES];
     [mBrandsTable reloadData];
-    /*UIViewController *menuController = (UIViewController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).viewController;
-    UINavigationController *rootNavController = (UINavigationController *)menuController;
-    NSArray *viewControllers = rootNavController.viewControllers;
-    MainViewController *rootViewController = [viewControllers objectAtIndex:0];
-    [rootViewController.menuTableViewController requsetMenuById:numberId];
-    [menuController.viewDeckController toggleLeftViewAnimated:YES];*/
 }
 
 #pragma mark - Actions

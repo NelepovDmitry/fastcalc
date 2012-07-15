@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define URL @"http://tfc.orionsource.ru/api/"
+#define URL @"http://fastcalc.orionsource.ru/api/"
 
 @interface OSInternetUtilsProgressInfo : NSObject
 @property(nonatomic,retain) NSString* textProgress;
