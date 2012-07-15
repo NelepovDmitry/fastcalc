@@ -11,8 +11,8 @@
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>icon-114x114.png</string>
-		<string>icon-114х114.png</string>
-		<string>icon-57х57.png</string>
+		<string>icon@2x.png</string>
+		<string>icon.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -21,8 +21,8 @@
 			<key>CFBundleIconFiles</key>
 			<array>
 				<string>icon-114x114.png</string>
-				<string>icon-114х114.png</string>
-				<string>icon-57х57.png</string>
+				<string>icon@2x.png</string>
+				<string>icon.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
@@ -50,13 +50,13 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarHidden</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIStatusBarHidden</key>
-	<true/>
 </dict>
 </plist>

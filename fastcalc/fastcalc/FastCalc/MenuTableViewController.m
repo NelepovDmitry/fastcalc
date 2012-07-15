@@ -17,8 +17,6 @@
 #import "IIViewDeckController.h"
 
 @interface MenuTableViewController ()
-
-- (void)getMenuItems:(NSData *)data;
 - (void)setMainProp;
 
 - (void)cellTouchUp:(id)sender;
@@ -28,7 +26,6 @@
 @end
 
 @implementation MenuTableViewController
-@synthesize menuCell;
 
 @synthesize delegate;
 
@@ -55,7 +52,6 @@
 
 - (void)viewDidUnload
 {
-    [self setMenuCell:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -67,7 +63,6 @@
 }
 
 - (void)dealloc {
-    [menuCell release];
     [super dealloc];
 }
 

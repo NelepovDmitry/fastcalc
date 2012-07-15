@@ -24,7 +24,6 @@
 }
 
 @property (nonatomic, assign) id<MenuTableViewControllerDelegate> delegate;
-@property (retain, nonatomic) IBOutlet MenuCell *menuCell;
 
 - (void)setArrayOfTableView:(NSArray *)array;
 

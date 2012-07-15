@@ -525,13 +525,11 @@
         [mArrayOfProductsNames addObject:[dictOfgroup objectForKey:@"groupname"]];
         [mDictOfMenus setObject:arrayOfobjects forKey:[dictOfgroup objectForKey:@"groupname"]];
     }
-    //NSString *key = [mArrayOfProductsNames objectAtIndex:indexOfMenu];
-    //NSArray *arrayOfProducts = [mDictOfMenus objectForKey:key];
-    //[menuTableViewController setArrayOfTableView:arrayOfProducts];
     for(int i = 0; i < mArrayOfProductsNames.count; ++i) {
         MenuTableViewController *mMenuTableViewController = [[MenuTableViewController alloc] init];
         mMenuTableViewController.delegate = self;
         mMenuTableViewController.tableView.rowHeight = 46;
+        mMenuTableViewController.tableView.separatorColor = [UIColor clearColor];
         mMenuTableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         mMenuTableViewController.tableView.backgroundColor = menuTableViewController.tableView.backgroundColor;
         mMenuTableViewController.view.frame = menuTableViewController.view.frame;
@@ -545,10 +543,8 @@
         [mArrayOfMenuControllers addObject:mMenuTableViewController];
         [mMenuTableViewController release];
     }
-    //[self.tableView reloadData];
     mScrollViewForTableView.contentSize = CGSizeMake(menuTableViewController.tableView.frame.size.width * mArrayOfMenuItemGroups.count, mScrollViewForTableView.frame.size.height);
     mScrollViewForTableView.contentOffset = CGPointMake(0, 0);
-    
     [self getAllProducts];
     [mLoader dismissWithClickedButtonIndex:0 animated:YES];
 }

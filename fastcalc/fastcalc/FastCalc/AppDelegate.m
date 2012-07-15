@@ -35,7 +35,7 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     
-    [iRate sharedInstance].appStoreID = 484567469;
+    [iRate sharedInstance].appStoreID = 544872895;
     [FMStore sharedStore];
     
     self.leftController = [[ChooseViewController alloc] initWithNibName:@"ChooseViewController" bundle:nil];
@@ -50,9 +50,8 @@
     deckController.rightLedge = 100;
     self.window.rootViewController = deckController;
     [self.window makeKeyAndVisible];
-    NSLog(@"appSingleton.idOfMenu %@", appSingleton.idOfMenu);
     if(appSingleton.firstStart || appSingleton.idOfMenu.integerValue == 0) {
-        [deckController toggleLeftView];
+        [deckController performSelector:@selector(toggleLeftView) withObject:nil afterDelay:1.0f];
     }
     [mainController release];
     return YES;
