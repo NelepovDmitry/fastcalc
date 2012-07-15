@@ -291,6 +291,10 @@
 }
 
 - (void)getNewPrice:(MenuItem *)menu {
+    [self performSelectorOnMainThread:@selector(getNewPriceOnMainThread:) withObject:menu waitUntilDone:YES];
+}
+
+- (void)getNewPriceOnMainThread:(MenuItem *)menu {
     [mKassaPlayer playAudio];
     
     mKcal += menu.menuKcal.floatValue;
@@ -304,6 +308,7 @@
     //[mCheckView setFrame:rect];
     [self setMainCheckViewFrameWithAnimation:YES duration:0.3f];
     [priceTableViewController goToTop:NO];
+
 }
 
 #pragma mark - Scroll View delegate
