@@ -158,18 +158,16 @@
                 self.tableView.scrollEnabled = NO;
             }
         } else {
-            [self performSelectorOnMainThread:@selector(methodThatCallsScrollToRow) withObject:nil waitUntilDone:YES];
             self.tableView.scrollEnabled = NO;
+            [self performSelectorOnMainThread:@selector(methodThatCallsScrollToRow) withObject:nil waitUntilDone:YES];
         }
     }
 }
 
 - (void)methodThatCallsScrollToRow {
-    @synchronized(self.tableView) {
-        int count = mArrayOfProducts.count;
-        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:count - 1 inSection:0];
-        [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    }
+    int count = mArrayOfProducts.count;
+    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:count - 1 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 - (void)clearCheck {

@@ -102,11 +102,11 @@
     mLocationGetter = [[MLocationGetter alloc] init];
     mLocationGetter.delegate = self;
     menuID = mApplicationSingleton.idOfMenu;
-    [self startPreloader];
     if(!mApplicationSingleton.firstStart) {
         mLocationLbl.text = [NSString stringWithFormat:@"  %@  ", NSLocalizedString(@"localizationString", @"")];
         [self getBrandsFromCache];
     } else {
+        [self startPreloader];
         [self newPhysicalLocation:nil];
     }
     

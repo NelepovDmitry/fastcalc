@@ -212,6 +212,8 @@
         [priceTableViewController clearCheck];
         mPrice = 0;
         mPriceLbl.text = [NSString stringWithFormat:@"%d", mPrice];
+        mKcal = 0;
+        mKcalLbl.text = [NSString stringWithFormat:@"%d", mKcal];
         [UIView transitionWithView:mCheckView
                           duration:0.5f
                            options:UIViewAnimationOptionTransitionCurlUp
@@ -300,8 +302,8 @@
     //CGRect rect = mCheckView.frame;
     //rect.origin.y = BEGIN_Y;
     //[mCheckView setFrame:rect];
-    [priceTableViewController goToTop:NO];
     [self setMainCheckViewFrameWithAnimation:YES duration:0.3f];
+    [priceTableViewController goToTop:NO];
 }
 
 #pragma mark - Scroll View delegate
@@ -550,7 +552,6 @@
     [self getAllProducts];
     [mLoader dismissWithClickedButtonIndex:0 animated:YES];
 }
-
 
 - (void)startPreloader {
     mLoader = [[[UIAlertView alloc] initWithTitle:@"Загрузка меню\nПожалуйста подождите..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: nil] autorelease];

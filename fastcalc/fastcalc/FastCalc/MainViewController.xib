@@ -143,27 +143,10 @@
 										<reference key="NSNextResponder" ref="696399524"/>
 										<int key="NSvFlags">292</int>
 										<array class="NSMutableArray" key="NSSubviews">
-											<object class="IBUIImageView" id="1018294338">
-												<reference key="NSNextResponder" ref="550177060"/>
-												<int key="NSvFlags">256</int>
-												<string key="NSFrameSize">{288, 14}</string>
-												<reference key="NSSuperview" ref="550177060"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="749998345"/>
-												<bool key="IBUIOpaque">NO</bool>
-												<bool key="IBUIClipsSubviews">YES</bool>
-												<int key="IBUIContentMode">4</int>
-												<bool key="IBUIMultipleTouchEnabled">YES</bool>
-												<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-												<object class="NSCustomResource" key="IBUIImage" id="326477978">
-													<string key="NSClassName">NSImage</string>
-													<string key="NSResourceName">paper_top.png</string>
-												</object>
-											</object>
 											<object class="IBUILabel" id="749998345">
 												<reference key="NSNextResponder" ref="550177060"/>
 												<int key="NSvFlags">292</int>
-												<string key="NSFrame">{{0, 14}, {288, 42}}</string>
+												<string key="NSFrame">{{0, 10}, {288, 46}}</string>
 												<reference key="NSSuperview" ref="550177060"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="495034088"/>
@@ -187,6 +170,23 @@
 													<string key="NSName">Helvetica-Bold</string>
 													<double key="NSSize">16</double>
 													<int key="NSfFlags">16</int>
+												</object>
+											</object>
+											<object class="IBUIImageView" id="1018294338">
+												<reference key="NSNextResponder" ref="550177060"/>
+												<int key="NSvFlags">256</int>
+												<string key="NSFrameSize">{288, 14}</string>
+												<reference key="NSSuperview" ref="550177060"/>
+												<reference key="NSWindow"/>
+												<reference key="NSNextKeyView" ref="749998345"/>
+												<bool key="IBUIOpaque">NO</bool>
+												<bool key="IBUIClipsSubviews">YES</bool>
+												<int key="IBUIContentMode">4</int>
+												<bool key="IBUIMultipleTouchEnabled">YES</bool>
+												<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+												<object class="NSCustomResource" key="IBUIImage" id="326477978">
+													<string key="NSClassName">NSImage</string>
+													<string key="NSResourceName">paper_top.png</string>
 												</object>
 											</object>
 											<object class="IBUIImageView" id="495034088">
@@ -496,7 +496,6 @@
 						<string key="NSFrame">{{259, 486}, {50, 50}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -564,7 +563,6 @@
 				<string key="NSFrameSize">{288, 264}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">2</int>
@@ -1083,8 +1081,8 @@
 						<int key="objectID">84</int>
 						<reference key="object" ref="550177060"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="1018294338"/>
 							<reference ref="749998345"/>
+							<reference ref="1018294338"/>
 							<reference ref="495034088"/>
 						</array>
 						<reference key="parent" ref="696399524"/>
