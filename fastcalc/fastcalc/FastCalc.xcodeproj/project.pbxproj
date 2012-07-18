@@ -966,8 +966,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gevorg Petrosyan (7MZ7EKP275)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gevorg Petrosyan (7MZ7EKP275)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gevorg Petrosyan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gevorg Petrosyan";
+				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -976,8 +977,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "D05B9FD0-C678-40DC-99E1-92DFAD50ADAD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D05B9FD0-C678-40DC-99E1-92DFAD50ADAD";
+				PROVISIONING_PROFILE = "21943B79-A832-4FF9-8338-F7D7CCDF6780";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "21943B79-A832-4FF9-8338-F7D7CCDF6780";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -986,15 +987,16 @@
 		2F2455DD15B0895B002D05A0 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gevorg Petrosyan (7MZ7EKP275)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gevorg Petrosyan (7MZ7EKP275)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gevorg Petrosyan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gevorg Petrosyan";
+				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FastCalc/FastCalc-Prefix.pch";
 				INFOPLIST_FILE = "FastCalc/FastCalc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D05B9FD0-C678-40DC-99E1-92DFAD50ADAD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D05B9FD0-C678-40DC-99E1-92DFAD50ADAD";
+				PROVISIONING_PROFILE = "21943B79-A832-4FF9-8338-F7D7CCDF6780";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "21943B79-A832-4FF9-8338-F7D7CCDF6780";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -1004,8 +1006,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gevorg Petrosyan (7MZ7EKP275)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gevorg Petrosyan (7MZ7EKP275)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gevorg Petrosyan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gevorg Petrosyan";
+				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1020,8 +1023,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PROVISIONING_PROFILE = "D05B9FD0-C678-40DC-99E1-92DFAD50ADAD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D05B9FD0-C678-40DC-99E1-92DFAD50ADAD";
+				PROVISIONING_PROFILE = "21943B79-A832-4FF9-8338-F7D7CCDF6780";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "21943B79-A832-4FF9-8338-F7D7CCDF6780";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1031,8 +1034,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gevorg Petrosyan (7MZ7EKP275)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gevorg Petrosyan (7MZ7EKP275)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gevorg Petrosyan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gevorg Petrosyan";
+				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1041,8 +1045,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "D05B9FD0-C678-40DC-99E1-92DFAD50ADAD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D05B9FD0-C678-40DC-99E1-92DFAD50ADAD";
+				PROVISIONING_PROFILE = "21943B79-A832-4FF9-8338-F7D7CCDF6780";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "21943B79-A832-4FF9-8338-F7D7CCDF6780";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1051,15 +1055,16 @@
 		84794E0F1578A143004010F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gevorg Petrosyan (7MZ7EKP275)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gevorg Petrosyan (7MZ7EKP275)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gevorg Petrosyan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gevorg Petrosyan";
+				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FastCalc/FastCalc-Prefix.pch";
 				INFOPLIST_FILE = "FastCalc/FastCalc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D05B9FD0-C678-40DC-99E1-92DFAD50ADAD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D05B9FD0-C678-40DC-99E1-92DFAD50ADAD";
+				PROVISIONING_PROFILE = "21943B79-A832-4FF9-8338-F7D7CCDF6780";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "21943B79-A832-4FF9-8338-F7D7CCDF6780";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1067,15 +1072,16 @@
 		84794E101578A143004010F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gevorg Petrosyan (7MZ7EKP275)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gevorg Petrosyan (7MZ7EKP275)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gevorg Petrosyan";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gevorg Petrosyan";
+				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FastCalc/FastCalc-Prefix.pch";
 				INFOPLIST_FILE = "FastCalc/FastCalc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D05B9FD0-C678-40DC-99E1-92DFAD50ADAD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D05B9FD0-C678-40DC-99E1-92DFAD50ADAD";
+				PROVISIONING_PROFILE = "21943B79-A832-4FF9-8338-F7D7CCDF6780";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "21943B79-A832-4FF9-8338-F7D7CCDF6780";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
